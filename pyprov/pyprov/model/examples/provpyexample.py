@@ -1,7 +1,8 @@
 import json
 import datetime
-from provpy.model.core import *
-from provpy.model.common import *
+from pyprov.model.type import *
+from pyprov.model.relation import *
+from pyprov.model.bundle import *
 
 FOAF = PROVNamespace("foaf","http://xmlns.com/foaf/0.1/")
 ex = PROVNamespace("ex","http://www.example.com/")
