@@ -70,7 +70,7 @@ en = examplegraph.add_entity('en',account=acc0)
 
 a1 = Activity("a1")
 examplegraph.add(a1)
-testcommon = wasStartedBy(a1,a0)
+testcommon = wasStartedByActivity(a1,a0)
 examplegraph.add(testcommon)
 
 #print json.dumps(examplegraph.to_provJSON(),indent=4)

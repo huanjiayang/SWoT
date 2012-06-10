@@ -30,155 +30,7 @@ class Relation(Record):
         return self._json
         
     
-
-class wasGeneratedBy(Relation):
-    
-    def __init__(self, entity, activity, identifier=None, time=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-        self.prov_type = PROV_REC_GENERATION
-        self.entity=entity
-        self.activity=activity
-        self.time = time
-        self._attributelist.extend([self.entity,self.activity,self.time])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['activity'] = self.activity
-        if self.time is not None:
-            record_attributes['time'] = self.time
-        return record_attributes
-    
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
-        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
-        if self.time is not None:
-            self._json[self._idJSON]['prov:time']=self._convert_value_JSON(self.time,nsdict)
-        self._provcontainer['wasGeneratedBy']=self._json
-        return self._provcontainer
-    
-
-class Used(Relation):
-    
-    def __init__(self,activity,entity,identifier=None,time=None,attributes=None,account=None):
-        Relation.__init__(self,identifier,attributes,account)
-        self.prov_type = PROV_REC_USAGE
-        self.entity=entity
-        self.activity=activity
-        self.time = time
-        self._attributelist.extend([self.entity,self.activity,self.time])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['activity'] = self.activity
-        if self.time is not None:
-            record_attributes['time'] = self.time
-        return record_attributes
-
-        
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
-        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
-        if self.time is not None:
-            self._json[self._idJSON]['prov:time']=self._convert_value_JSON(self.time,nsdict)
-        self._provcontainer['used']=self._json
-        return self._provcontainer
-    
-
-class wasAssociatedWith(Relation):
-    
-    def __init__(self, activity, agent, identifier=None, attributes=None, account=None):
-        Relation.__init__(self,identifier,attributes,account)
-        self.prov_type = PROV_REC_ACTIVITY_ASSOCIATION
-        self.activity=activity
-        self.agent=agent
-        self._attributelist.extend([self.agent,self.activity])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['agent'] = self.agent
-        record_attributes['activity'] = self.activity
-        return record_attributes
-
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
-        self._json[self._idJSON]['prov:agent']=self.agent._idJSON
-        self._provcontainer['wasAssociatedWith']=self._json
-        return self._provcontainer
-    
-
-class wasStartedBy(Relation):
-    
-    def __init__(self,activity,agent,identifier=None,attributes=None,account=None):
-        Relation.__init__(self,identifier,attributes,account)
-        self.prov_type = PROV_REC_START
-        self.activity=activity
-        self.agent=agent
-        self._attributelist.extend([self.agent,self.activity])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['activity'] = self.activity
-        return record_attributes
-
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
-        self._json[self._idJSON]['prov:agent']=self.agent._idJSON
-        self._provcontainer['wasStartedBy']=self._json
-        return self._provcontainer
-    
-
-class wasEndedBy(Relation):
-    
-    def __init__(self,activity,agent,identifier=None,attributes=None,account=None):
-        Relation.__init__(self,identifier,attributes,account)
-        self.prov_type = PROV_REC_END
-        self.activity=activity
-        self.agent=agent
-        self._attributelist.extend([self.agent,self.activity])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['activity'] = self.activity
-        return record_attributes
-        
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
-        self._json[self._idJSON]['prov:agent']=self.agent._idJSON
-        self._provcontainer['wasEndedBy']=self._json
-        return self._provcontainer
-        
-
-class actedOnBehalfOf(Relation):
-    
-    def __init__(self, subordinate, responsible, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-        self.prov_type = PROV_REC_RESPONSIBILITY
-        self.subordinate = subordinate
-        self.responsible = responsible
-        self._attributelist.extend([self.subordinate,self.responsible])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['subordinate'] = self.subordinate
-        record_attributes['responsible'] = self.responsible
-        return record_attributes
-
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:subordinate']=self.subordinate._idJSON
-        self._json[self._idJSON]['prov:responsible']=self.responsible._idJSON
-        self._provcontainer['actedOnBehalfOf']=self._json
-        return self._provcontainer
-    
+# Entity to Entity relations
 
 class wasDerivedFrom(Relation):
     
@@ -220,139 +72,6 @@ class wasDerivedFrom(Relation):
         return self._provcontainer
                         
 
-class alternateOf(Relation):
-    
-    def __init__(self,subject,alternate,identifier=None,attributes=None,account=None):
-        Relation.__init__(self,identifier,attributes,account)
-        self.prov_type = PROV_REC_ALTERNATE
-        self.subject = subject
-        self.alternate = alternate
-        self._attributelist.extend([self.subject,self.alternate])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['subject'] = self.subject
-        record_attributes['alternate'] = self.alternate
-        return record_attributes
-
-
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:subject']=self.subject._idJSON
-        self._json[self._idJSON]['prov:alternate']=self.alternate._idJSON
-        self._provcontainer['alternateOf']=self._json
-        return self._provcontainer
- 
- 
-class specializationOf(Relation):
-    
-    def __init__(self,subject,specialization,identifier=None,attributes=None,account=None):
-        Relation.__init__(self,identifier,attributes,account)
-        self.prov_type = PROV_REC_SPECIALIZATION
-        self.subject = subject
-        self.specialization = specialization
-        self._attributelist.extend([self.subject,self.specialization])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['subject'] = self.subject
-        record_attributes['specialization'] = self.specialization
-        return record_attributes
-
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:subject']=self.subject._idJSON
-        self._json[self._idJSON]['prov:specialization']=self.specialization._idJSON
-        self._provcontainer['specializationOf']=self._json
-        return self._provcontainer
-               
-
-class hasAnnotation(Relation):
-    
-    def __init__(self, record, note, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-        self.prov_type = PROV_REC_ANNOTATION
-        self.record=record
-        self.note=note
-        self._attributelist.extend([self.record, self.note])
-
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:record']=self.record._idJSON
-        self._json[self._idJSON]['prov:note']=self.note._idJSON
-        self._provcontainer['hasAnnotation']=self._json
-        return self._provcontainer
-
-
-# Common relations
-
-
-class tracedTo(Relation):
-    
-    def __init__(self, entity, ancestor, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-#        self.prov_type = PROV_REC_GENERATION
-        self.entity=entity
-        self.ancestor=ancestor
-        self._attributelist.extend([self.entity,self.ancestor])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['ancestor'] = self.ancestor
-        return record_attributes
-    
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
-        self._json[self._idJSON]['prov:ancestor']=self.ancestor._idJSON
-        self._provcontainer['tracedTo']=self._json
-        return self._provcontainer
-
-class wasInformedBy(Relation):
-    
-    def __init__(self, informed, informant, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-#        self.prov_type = PROV_REC_GENERATION
-        self.informed=informed
-        self.informant=informant
-        self._attributelist.extend([self.informed,self.informant])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['informed'] = self.informed
-        record_attributes['informant'] = self.informant
-        return record_attributes
-    
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:informed']=self.informed._idJSON
-        self._json[self._idJSON]['prov:informant']=self.informant._idJSON
-        self._provcontainer['wasInformedBy']=self._json
-        return self._provcontainer
-
-class wasStartedBy(Relation):
-    
-    def __init__(self, started, starter, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-#        self.prov_type = PROV_REC_GENERATION
-        self.started=started
-        self.starter=starter
-        self._attributelist.extend([self.started,self.starter])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['started'] = self.started
-        record_attributes['starter'] = self.starter
-        return record_attributes
-    
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:started']=self.started._idJSON
-        self._json[self._idJSON]['prov:starter']=self.starter._idJSON
-        self._provcontainer['wasStartedBy']=self._json
-        return self._provcontainer
-
 class wasRevisionOf(Relation):
     
     def __init__(self, newer, older, responsibility=None, identifier=None, attributes=None, account=None):
@@ -381,29 +100,8 @@ class wasRevisionOf(Relation):
             self._json[self._idJSON]['prov:responsibility']=self.responsibility._idJSON
         self._provcontainer['wasRevisionOf']=self._json
         return self._provcontainer
-    
-class wasAttributedTo(Relation):
-    
-    def __init__(self, entity, agent, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-#        self.prov_type = PROV_REC_GENERATION
-        self.entity=entity
-        self.agent=agent
-        self._attributelist.extend([self.entity,self.agent])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['agent'] = self.agent
-        return record_attributes
-    
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
-        self._json[self._idJSON]['prov:agent']=self.agent._idJSON
-        self._provcontainer['wasAttributedTo']=self._json
-        return self._provcontainer
-    
+
+
 class wasQuotedFrom(Relation):
     
     def __init__(self, quote, quoted, quoterAgent=None, quotedAgent=None, identifier=None, attributes=None, account=None):
@@ -439,6 +137,381 @@ class wasQuotedFrom(Relation):
             self._json[self._idJSON]['prov:quotedAgent']=self.quotedAgent._idJSON
         self._provcontainer['wasQuotedFrom']=self._json
         return self._provcontainer
+
+
+class hadOriginalSource(Relation):
+    
+    def __init__(self, entity, source, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+#        self.prov_type = PROV_REC_GENERATION
+        self.entity=entity
+        self.source=source
+        self._attributelist.extend([self.entity,self.source])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['source'] = self.source
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._json[self._idJSON]['prov:source']=self.source._idJSON
+        self._provcontainer['hadOriginalSource']=self._json
+        return self._provcontainer
+    
+
+class alternateOf(Relation):
+    
+    def __init__(self,subject,alternate,identifier=None,attributes=None,account=None):
+        Relation.__init__(self,identifier,attributes,account)
+        self.prov_type = PROV_REC_ALTERNATE
+        self.subject = subject
+        self.alternate = alternate
+        self._attributelist.extend([self.subject,self.alternate])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['subject'] = self.subject
+        record_attributes['alternate'] = self.alternate
+        return record_attributes
+
+
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:subject']=self.subject._idJSON
+        self._json[self._idJSON]['prov:alternate']=self.alternate._idJSON
+        self._provcontainer['alternateOf']=self._json
+        return self._provcontainer
+    
+
+class specializationOf(Relation):
+    
+    def __init__(self,subject,specialization,identifier=None,attributes=None,account=None):
+        Relation.__init__(self,identifier,attributes,account)
+        self.prov_type = PROV_REC_SPECIALIZATION
+        self.subject = subject
+        self.specialization = specialization
+        self._attributelist.extend([self.subject,self.specialization])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['subject'] = self.subject
+        record_attributes['specialization'] = self.specialization
+        return record_attributes
+
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:subject']=self.subject._idJSON
+        self._json[self._idJSON]['prov:specialization']=self.specialization._idJSON
+        self._provcontainer['specializationOf']=self._json
+        return self._provcontainer
+               
+
+#Entity to Activity relations
+  
+class wasGeneratedBy(Relation):
+    
+    def __init__(self, entity, activity, identifier=None, time=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+        self.prov_type = PROV_REC_GENERATION
+        self.entity=entity
+        self.activity=activity
+        self.time = time
+        self._attributelist.extend([self.entity,self.activity,self.time])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['activity'] = self.activity
+        if self.time is not None:
+            record_attributes['time'] = self.time
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
+        if self.time is not None:
+            self._json[self._idJSON]['prov:time']=self._convert_value_JSON(self.time,nsdict)
+        self._provcontainer['wasGeneratedBy']=self._json
+        return self._provcontainer
+    
+
+class wasInvalidatedBy(Relation):
+
+    def __init__(self, entity, activity, identifier=None, time=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+        self.prov_type = PROV_REC_INVALIDATION
+        self.entity=entity
+        self.activity=activity
+        self.time = time
+        self._attributelist.extend([self.entity,self.activity,self.time])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['activity'] = self.activity
+        if self.time is not None:
+            record_attributes['time'] = self.time
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
+        if self.time is not None:
+            self._json[self._idJSON]['prov:time']=self._convert_value_JSON(self.time,nsdict)
+        self._provcontainer['wasInvalidatedBy']=self._json
+        return self._provcontainer
+
+
+# Entity to Agent relation
+
+class wasAttributedTo(Relation):
+    
+    def __init__(self, entity, agent, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+#        self.prov_type = PROV_REC_GENERATION
+        self.entity=entity
+        self.agent=agent
+        self._attributelist.extend([self.entity,self.agent])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['agent'] = self.agent
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._json[self._idJSON]['prov:agent']=self.agent._idJSON
+        self._provcontainer['wasAttributedTo']=self._json
+        return self._provcontainer
+
+
+# Activity to Entity relation
+
+class Used(Relation):
+    
+    def __init__(self,activity,entity,identifier=None,time=None,attributes=None,account=None):
+        Relation.__init__(self,identifier,attributes,account)
+        self.prov_type = PROV_REC_USAGE
+        self.entity=entity
+        self.activity=activity
+        self.time = time
+        self._attributelist.extend([self.entity,self.activity,self.time])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['activity'] = self.activity
+        if self.time is not None:
+            record_attributes['time'] = self.time
+        return record_attributes
+
+        
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
+        if self.time is not None:
+            self._json[self._idJSON]['prov:time']=self._convert_value_JSON(self.time,nsdict)
+        self._provcontainer['used']=self._json
+        return self._provcontainer
+    
+
+class wasStartedBy(Relation):
+    
+    def __init__(self,activity,entity,identifier=None,attributes=None,account=None):
+        Relation.__init__(self,identifier,attributes,account)
+        self.prov_type = PROV_REC_START
+        self.activity=activity
+        self.entity=entity
+        self._attributelist.extend([self.entity,self.activity])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['activity'] = self.activity
+        return record_attributes
+
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._provcontainer['wasStartedBy']=self._json
+        return self._provcontainer
+    
+
+class wasEndedBy(Relation):
+    
+    def __init__(self,activity,entity,identifier=None,attributes=None,account=None):
+        Relation.__init__(self,identifier,attributes,account)
+        self.prov_type = PROV_REC_END
+        self.activity=activity
+        self.entity=entity
+        self._attributelist.extend([self.entity,self.activity])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['activity'] = self.activity
+        return record_attributes
+        
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._provcontainer['wasEndedBy']=self._json
+        return self._provcontainer
+        
+
+# Activity to Activity relations
+
+class wasStartedByActivity(Relation):
+    
+    def __init__(self, started, starter, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+#        self.prov_type = PROV_REC_GENERATION
+        self.started=started
+        self.starter=starter
+        self._attributelist.extend([self.started,self.starter])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['started'] = self.started
+        record_attributes['starter'] = self.starter
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:started']=self.started._idJSON
+        self._json[self._idJSON]['prov:starter']=self.starter._idJSON
+        self._provcontainer['wasStartedByActivity']=self._json
+        return self._provcontainer
+    
+
+class wasInformedBy(Relation):
+    
+    def __init__(self, informed, informant, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+#        self.prov_type = PROV_REC_GENERATION
+        self.informed=informed
+        self.informant=informant
+        self._attributelist.extend([self.informed,self.informant])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['informed'] = self.informed
+        record_attributes['informant'] = self.informant
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:informed']=self.informed._idJSON
+        self._json[self._idJSON]['prov:informant']=self.informant._idJSON
+        self._provcontainer['wasInformedBy']=self._json
+        return self._provcontainer
+
+
+# Activity to Agent relation
+
+class wasAssociatedWith(Relation):
+    
+    def __init__(self, activity, agent, identifier=None, attributes=None, account=None):
+        Relation.__init__(self,identifier,attributes,account)
+        self.prov_type = PROV_REC_ACTIVITY_ASSOCIATION
+        self.activity=activity
+        self.agent=agent
+        self._attributelist.extend([self.agent,self.activity])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['agent'] = self.agent
+        record_attributes['activity'] = self.activity
+        return record_attributes
+
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:activity']=self.activity._idJSON
+        self._json[self._idJSON]['prov:agent']=self.agent._idJSON
+        self._provcontainer['wasAssociatedWith']=self._json
+        return self._provcontainer
+    
+
+#Agent to Agent relation
+
+class actedOnBehalfOf(Relation):
+    
+    def __init__(self, subordinate, responsible, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+        self.prov_type = PROV_REC_RESPONSIBILITY
+        self.subordinate = subordinate
+        self.responsible = responsible
+        self._attributelist.extend([self.subordinate,self.responsible])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['subordinate'] = self.subordinate
+        record_attributes['responsible'] = self.responsible
+        return record_attributes
+
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:subordinate']=self.subordinate._idJSON
+        self._json[self._idJSON]['prov:responsible']=self.responsible._idJSON
+        self._provcontainer['actedOnBehalfOf']=self._json
+        return self._provcontainer
+    
+
+# Records to Note relation
+
+class hasAnnotation(Relation):
+    
+    def __init__(self, record, note, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+        self.prov_type = PROV_REC_ANNOTATION
+        self.record=record
+        self.note=note
+        self._attributelist.extend([self.record, self.note])
+
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:record']=self.record._idJSON
+        self._json[self._idJSON]['prov:note']=self.note._idJSON
+        self._provcontainer['hasAnnotation']=self._json
+        return self._provcontainer
+
+
+
+'''
+
+class tracedTo(Relation):
+    
+    def __init__(self, entity, ancestor, identifier=None, attributes=None, account=None):
+        Relation.__init__(self, identifier, attributes, account)
+#        self.prov_type = PROV_REC_GENERATION
+        self.entity=entity
+        self.ancestor=ancestor
+        self._attributelist.extend([self.entity,self.ancestor])
+        
+    def get_record_attributes(self):
+        record_attributes = {}
+        record_attributes['entity'] = self.entity
+        record_attributes['ancestor'] = self.ancestor
+        return record_attributes
+    
+    def to_provJSON(self,nsdict):
+        Relation.to_provJSON(self,nsdict)
+        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
+        self._json[self._idJSON]['prov:ancestor']=self.ancestor._idJSON
+        self._provcontainer['tracedTo']=self._json
+        return self._provcontainer
+
+
     
 class wasSummaryOf(Relation):
     
@@ -462,25 +535,4 @@ class wasSummaryOf(Relation):
         self._provcontainer['wasSummaryOf']=self._json
         return self._provcontainer
     
-class hadOriginalSource(Relation):
-    
-    def __init__(self, entity, source, identifier=None, attributes=None, account=None):
-        Relation.__init__(self, identifier, attributes, account)
-#        self.prov_type = PROV_REC_GENERATION
-        self.entity=entity
-        self.source=source
-        self._attributelist.extend([self.entity,self.source])
-        
-    def get_record_attributes(self):
-        record_attributes = {}
-        record_attributes['entity'] = self.entity
-        record_attributes['source'] = self.source
-        return record_attributes
-    
-    def to_provJSON(self,nsdict):
-        Relation.to_provJSON(self,nsdict)
-        self._json[self._idJSON]['prov:entity']=self.entity._idJSON
-        self._json[self._idJSON]['prov:source']=self.source._idJSON
-        self._provcontainer['hadOriginalSource']=self._json
-        return self._provcontainer
-    
+'''

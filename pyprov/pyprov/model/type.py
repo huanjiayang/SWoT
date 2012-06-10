@@ -16,6 +16,7 @@ PROV_REC_DERIVATION             = 17
 PROV_REC_ALTERNATE              = 18
 PROV_REC_SPECIALIZATION         = 19
 PROV_REC_ANNOTATION             = 99
+PROV_REC_INVALIDATION           = 101
 
 PROV_RECORD_TYPES = (
     (PROV_REC_ENTITY,               u'Entity'),

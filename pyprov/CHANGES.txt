@@ -1,1 +1,4 @@
+v1.0.1, 10/06/2012 -- Minor update release
+* Changes to comply with 3rd work draft of PROV data model specification.
+
 v1.0.0, 09/06/2012 -- Initial release.
