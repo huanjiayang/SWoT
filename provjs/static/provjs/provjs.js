@@ -61,7 +61,8 @@ function provjs(json){
 		                             "wasAttributedTo",
 		                             "wasQuotedFrom",
 		                             "wasSummaryOf",
-		                             "hadOriginalSource"];
+		                             "hadOriginalSource",
+		                             "wasInvalidatedBy"];
 	this._provdmterms["record"] = ["account"].concat(this._provdmterms["element"],this._provdmterms["relation"]);
 	
 	this._provattributes = {"used" : {"provattr1":"prov:activity","provattr2":"prov:entity"},
@@ -73,14 +74,16 @@ function provjs(json){
 				            "wasDerivedFrom" : {"provattr1":"prov:generatedentity","provattr2":"prov:usedentity"},
 				            "wasEndedBy" : {"provattr1":"prov:activity","provattr2":"prov:agent"},
 				            "wasGeneratedBy" : {"provattr1":"prov:entity","provattr2":"prov:activity"},
-				            "wasStartedBy" : {"provattr1":"prov:activity","provattr2":"prov:agent"},
+				            "wasStartedBy" : {"provattr1":"prov:activity","provattr2":"prov:entity"},
+				            "wasStartedByActivity" : {"provattr1":"prov:started","provattr2":"prov:starter"},
 				            "tracedTo" : {"provattr1":"prov:entity","provattr2":"prov:ancestor"},
 				            "wasInformedBy" : {"provattr1":"prov:informed","provattr2":"prov:informant"},
 				            "wasRevisionOf" : {"provattr1":"prov:newer","provattr2":"prov:older"},
 				            "wasAttributedTo" : {"provattr1":"prov:entity","provattr2":"prov:agent"},
 				            "wasQuotedFrom" : {"provattr1":"prov:quote","provattr2":"prov:quoted"},
 				            "wasSummaryOf" : {"provattr1":"prov:summarizedEntity","provattr2":"prov:fullEntity"},
-				            "hadOriginalSource" : {"provattr1":"prov:entity","provattr2":"prov:source"}}
+				            "hadOriginalSource" : {"provattr1":"prov:entity","provattr2":"prov:source"},
+				            "wasInvalidatedBy" : {"provattr1":"prov:entity","provattr2":"prov:activity"}}
 
 	this.getNamespaceDict = getNamespaceDict;
 	this.processJSON = processJSON;

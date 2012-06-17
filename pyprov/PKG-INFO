@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: provpy
+Version: 1.0.0
+Summary: A Python implementation of PROV data model.
+Home-page: http://github.com/huanjiayang
+Author: Huanjia Yang
+Author-email: huanjiayang@hotmail.com
+License: LICENSE.txt
+Description: PyPROV is a Python implementation of the PROV Data Model.
+Platform: UNKNOWN
