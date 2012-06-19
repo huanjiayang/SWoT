@@ -5,8 +5,6 @@ Created on 15 Jun 2012
 '''
 import rdflib
 import rdfextras
-from pyprov.model.core import *
-from pyprov.model.common import *
 from rdflib.graph import Graph, ConjunctiveGraph
 from rdflib.namespace import Namespace
 from rdflib.term import Literal
@@ -16,7 +14,7 @@ from rdflib import plugin
 from rdflib.store import Store, NO_STORE, VALID_STORE
 
 # Define Namespace
-ns = Namespace("http://homesensor.com#")
+hs = Namespace("http://homesensor.com#")
 
 #
 Node1 = URIRef("http://homesensor.com/SN/Node1#")
@@ -41,7 +39,7 @@ mystore = plugin.get('Sleepycat', Store)('mystore')
 
 #
 g = ConjunctiveGraph(store=mystore)
-g.bind("homesensor",ns)
+g.bind("homesensor",hs)
 
 
 # open store if it exists
@@ -58,30 +56,43 @@ else:
 
 #
 gNode1 = Graph(store="Sleepycat",identifier = SNode1)
+gNode1.open("store_folder", create=True)
 
 gNode2 = Graph(store="Sleepycat",identifier = SNode2)
+gNode2.open("store_folder", create=True)
 
 gNode3 = Graph(store="Sleepycat",identifier = SNode3)
+gNode3.open("store_folder", create=True)
 
 gNode4 = Graph(store="Sleepycat",identifier = SNode4)
-
+gNode4.open("store_folder", create=True)
 
 # Addition of triples to store
 
-gNode1.add((URIRef('http://homesensor.com/SN/Node1/Temp'),ns['temperature'], Literal('64')))
-gNode1.add((URIRef('http://homesensor.com/SN/Node1/Light'), ns['Light'], Literal('')))
-gNode1.add((URIRef('http://homesensor.com/SN/Node1/Humidity'), ns['Humidity'], Literal('')))
+gNode1.add((SNode1, hs['hasTemperature'], Literal('64')))
+gNode1.add((SNode1, hs['hasLight'], Literal('50')))
+gNode1.add((SNode1, hs['hasHumidity'], Literal('55')))
+gNode1.add((SNode1, hs['Located'], Literal('')))
+gNode1.add((SNode1, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode1.add((SNode1, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 
 
 
-gNode2.add((URIRef('http://homesensor.com/SN/Node2/Temp'),ns['temperature'], Literal('64')))
-gNode2.add((URIRef('http://homesensor.com/SN/Node2/Light'), ns['Light'], Literal('')))
-gNode2.add((URIRef('http://homesensor.com/SN/Node2/Humidity'), ns['Humidity'], Literal('')))
+
+gNode2.add((SNode2, hs['hasTemperature'], Literal('64')))
+gNode2.add((SNode2, hs['hasLight'], Literal('56')))
+gNode2.add((SNode2, hs['hasHumidity'], Literal('40')))
+gNode2.add((SNode2, hs['Located'], Literal('')))
+gNode2.add((SNode2, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode2.add((SNode2, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 
 
-gNode3.add((URIRef('http://homesensor.com/SN/Node3/Temp'),ns['temperature'], Literal('64')))
-gNode3.add((URIRef('http://homesensor.com/SN/Node3/Light'), ns['Light'], Literal('')))
-gNode3.add((URIRef('http://homesensor.com/SN/Node3/Humidity'), ns['Humidity'], Literal('')))
+gNode3.add((SNode3,hs['hasTemperature'], Literal('64')))
+gNode3.add((SNode3, hs['hasLight'], Literal('67')))
+gNode3.add((SNode3, hs['hasHumidity'], Literal('88')))
+gNode3.add((SNode3, hs['Located'], Literal('')))
+gNode3.add((SNode3, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode3.add((SNode3, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 
 
 
