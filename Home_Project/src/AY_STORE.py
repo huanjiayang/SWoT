@@ -16,17 +16,12 @@ from rdflib.store import Store, NO_STORE, VALID_STORE
 # Define Namespace
 hs = Namespace("http://homesensor.com#")
 
-#
-Node1 = URIRef("http://homesensor.com/SN/Node1#")
-Node2 = URIRef("http://homesensor.com/SN/Node2#")
-Node3= URIRef("http://homesensor.com/SN/Node3#")
-Node4= URIRef("http://homesensor.com/SN/Node4#")
 
 #
-SNode1 = URIRef("http://homesensor.com/SN/Node1#")
-SNode2 = URIRef("http://homesensor.com/SN/Node2#")
-SNode3= URIRef("http://homesensor.com/SN/Node3#")
-SNode4= URIRef("http://homesensor.com/SN/Node4#")
+SNode1 = URIRef("http://homesensor.com/Node1/")
+SNode2 = URIRef("http://homesensor.com/Node2/")
+SNode3= URIRef("http://homesensor.com/Node3/")
+SNode4= URIRef("http://homesensor.com/Node4/")
 
 
 
@@ -35,36 +30,24 @@ configString = "/var/tmp/mystore"
 
 # Get the Sleepycat plugin.
 mystore = plugin.get('Sleepycat', Store)('mystore')
-
+mystore.open("ay_folder", create=True)
 
 #
 g = ConjunctiveGraph(store=mystore)
 g.bind("homesensor",hs)
 
 
-# open store if it exists
-rt = mystore.open("store_folder", create=False)
-if rt == NO_STORE:
-    
-    # There is no underlying Sleepycat infrastructure, create it
-    mystore.open("store_folder", create=True)
-else:
-    assert rt == VALID_STORE, "The underlying store is corrupt"
-
-
-
-
 #
-gNode1 = Graph(store="Sleepycat",identifier = SNode1)
+gNode1 = Graph(store=mystore,identifier = SNode1)
 gNode1.open("store_folder", create=True)
 
-gNode2 = Graph(store="Sleepycat",identifier = SNode2)
+gNode2 = Graph(store=mystore,identifier = SNode2)
 gNode2.open("store_folder", create=True)
 
-gNode3 = Graph(store="Sleepycat",identifier = SNode3)
+gNode3 = Graph(store=mystore,identifier = SNode3)
 gNode3.open("store_folder", create=True)
 
-gNode4 = Graph(store="Sleepycat",identifier = SNode4)
+gNode4 = Graph(store=mystore,identifier = SNode4)
 gNode4.open("store_folder", create=True)
 
 # Addition of triples to store
