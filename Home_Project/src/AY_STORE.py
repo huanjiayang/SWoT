@@ -30,7 +30,7 @@ configString = "/var/tmp/mystore"
 
 # Get the Sleepycat plugin.
 mystore = plugin.get('Sleepycat', Store)('mystore')
-mystore.open("ay_folder", create=True)
+mystore.open("ay_folder", create=False)
 
 #
 g = ConjunctiveGraph(store=mystore)
@@ -38,17 +38,9 @@ g.bind("homesensor",hs)
 
 
 #
-gNode1 = Graph(store=mystore,identifier = SNode1)
-gNode1.open("store_folder", create=True)
+gNode1 = Graph(store=mystore)
 
-gNode2 = Graph(store=mystore,identifier = SNode2)
-gNode2.open("store_folder", create=True)
 
-gNode3 = Graph(store=mystore,identifier = SNode3)
-gNode3.open("store_folder", create=True)
-
-gNode4 = Graph(store=mystore,identifier = SNode4)
-gNode4.open("store_folder", create=True)
 
 # Addition of triples to store
 
@@ -62,20 +54,20 @@ gNode1.add((SNode1, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 
 
 
-gNode2.add((SNode2, hs['hasTemperature'], Literal('64')))
-gNode2.add((SNode2, hs['hasLight'], Literal('56')))
-gNode2.add((SNode2, hs['hasHumidity'], Literal('40')))
-gNode2.add((SNode2, hs['Located'], Literal('')))
-gNode2.add((SNode2, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
-gNode2.add((SNode2, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode1.add((SNode2, hs['hasTemperature'], Literal('64')))
+gNode1.add((SNode2, hs['hasLight'], Literal('56')))
+gNode1.add((SNode2, hs['hasHumidity'], Literal('40')))
+gNode1.add((SNode2, hs['Located'], Literal('')))
+gNode1.add((SNode2, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode1.add((SNode2, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 
 
-gNode3.add((SNode3,hs['hasTemperature'], Literal('64')))
-gNode3.add((SNode3, hs['hasLight'], Literal('67')))
-gNode3.add((SNode3, hs['hasHumidity'], Literal('88')))
-gNode3.add((SNode3, hs['Located'], Literal('')))
-gNode3.add((SNode3, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
-gNode3.add((SNode3, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode1.add((SNode3,hs['hasTemperature'], Literal('64')))
+gNode1.add((SNode3, hs['hasLight'], Literal('67')))
+gNode1.add((SNode3, hs['hasHumidity'], Literal('88')))
+gNode1.add((SNode3, hs['Located'], Literal('')))
+gNode1.add((SNode3, hs['StartTime'],  Literal("2012-06-19T01:52:02Z")))
+gNode1.add((SNode3, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 
 
 
@@ -83,15 +75,6 @@ gNode3.add((SNode3, hs['EndTime'],  Literal("2012-06-19T01:52:02Z")))
 print gNode1.serialize(format='n3')
 print "==================="
 
-print gNode2.serialize(format='n3')
-print "==================="
-
-print gNode3.serialize(format='n3')
-print "==================="
-
-
-print gNode4.serialize(format='n3')
-print "==================="
 
 
 
