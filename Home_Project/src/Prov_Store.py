@@ -84,6 +84,12 @@ class WSNPROV:
     def createEntity(self):
         pass
     
+    def _toRDF(self):
+        
+        tripledict = {'subject01' : {'predicate01_01' : 'object01_01',},
+                      'subject02' : {'pred02_01' : 'obj02_01'}}
+        return tripledict
+    
     
 
 
