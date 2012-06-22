@@ -67,8 +67,7 @@ PRIVATE tsUart	asUart[2];				 					 /**< Uart data */
  *
  * This function opens and configures a UART for input and output. Parameters
  * to this function allow the baud rate, parity, word length and stop bits to
- * be set. Additionally, hardware flow control using RTS/CTS or software flow
- * using XON/XOFF can be specified.
+ * be set.
  */
 /****************************************************************************/
 PUBLIC 	bool_t 		UART_bOpen (
@@ -114,12 +113,6 @@ PUBLIC 	bool_t 		UART_bOpen (
 			/* Start with port unopened */
 			asUart[u8Uart].bOpened = FALSE;
 
-			/* Calculate divisor for baud rate = 16MHz / (16 x baud rate) */
-			u16Divisor   = (uint16)(16000000UL / (16UL * u32BaudRate));
-			/* Correct for rounding errors */
-			u32Remainder = (uint32)(16000000UL % (16UL * u32BaudRate));
-			if (u32Remainder >= ((16UL * u32BaudRate) / 2)) u16Divisor += 1;
-
 			/* UART operating in 2-wire mode */
 			vAHI_UartSetRTSCTS();
 			/* Enable UART */
@@ -131,10 +124,25 @@ PUBLIC 	bool_t 		UART_bOpen (
 			asUart[u8Uart].bOpened = TRUE;
 
 			/* Set baud rate */
-			vAHI_UartSetBaudDivisor(u8Uart, u16Divisor);
+			vAHI_UartSetBaudRate(u8Uart, E_AHI_UART_RATE_115200);
 			/* Set control */
 			vAHI_UartSetControl(u8Uart, bEvenParity, bEnableParity, u8WordLength, bOneStopBit, (asUart[u8Uart].u8RxDisable == 0) ? TRUE : FALSE);
-}
+
+
+			/* Set UART interrupts */
+					vAHI_UartSetInterrupt(u8Uart,
+										  FALSE, 		 				 /* ModemStatus */
+										  FALSE,						  /* RxLineStatus */
+										  TRUE,							  /* TxFifoEmpty */
+										  TRUE,							  /* RxData */
+										  E_AHI_UART_FIFO_LEVEL_14);
+
+					return TRUE;		   /** \retval TRUE Valid UART specified. */
+				}
+
+				return FALSE;			   /** \retval FALSE Invalid UART specified. */
+			}
+		}
 
 }
 
