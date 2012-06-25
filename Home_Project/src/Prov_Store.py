@@ -27,15 +27,27 @@ createtime = 'datetime...'
 #
 S_Network = URIRef("http://homesensor.com/")
 Readings = hs['Reading']
+
 Communication = hs("Communication")
 Discovery = hs("discovery")
 S_Node = hs("S_Node")
 Sensor = hs("Sensor")
 
+Communication = URIRef("http://homesensor.com/Activity/")
+Discovery = URIRef("http://homesensor.com/Activity/")
+S_Node = URIRef("http://homesensor.com/S_node/")
+Sensor = URIRef("http://homsensor.com/Sensor/")
+
+
 graph=Graph(store='Sleepycat',identifier='test')
 graph.open("provfolder", create=False)
 
 # Addition of triples to graph
+
+
+
+
+
 
 
 
@@ -133,6 +145,7 @@ class WSNPROV:
     
 
   
+
 # commit graph
 #graph.commit()
 
