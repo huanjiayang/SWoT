@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zpscfg:ZigbeeWirelessNetwork xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zpscfg="http://www.jennic.com/zpscfg" DefaultExtendedPANId="0x0000000000000000" MaxNumberNodes="20" Version="1.1" DefaultSecurityEnabled="true">
+  <Profiles Name="ZDP" Id="0x0000">
+    <Clusters Name="NWK_addr_req" Id="0x0000"/>
+    <Clusters Name="IEEE_addr_req" Id="0x0001"/>
+    <Clusters Name="Node_Desc_req" Id="0x0002"/>
+    <Clusters Name="Power_Desc_req" Id="0x0003"/>
+    <Clusters Name="Simple_Desc_req" Id="0x0004"/>
+    <Clusters Name="Active_EP_req" Id="0x0005"/>
+    <Clusters Name="Match_Desc_req" Id="0x0006"/>
+    <Clusters Name="Complex_Desc_req" Id="0x0010"/>
+    <Clusters Name="User_Desc_req" Id="0x0011"/>
+    <Clusters Name="Discovery_Cache_req" Id="0x0012"/>
+    <Clusters Name="Device_annce" Id="0x0013"/>
+    <Clusters Name="User_Desc_set" Id="0x0014"/>
+    <Clusters Name="System_Server_Discovery_req" Id="0x0015"/>
+    <Clusters Name="Discovery_store_req" Id="0x0016"/>
+    <Clusters Name="Node_Desc_store_req" Id="0x0017"/>
+    <Clusters Name="Power_Desc_store_req" Id="0x0018"/>
+    <Clusters Name="Active_EP_store_req" Id="0x0019"/>
+    <Clusters Name="Simple_Desc_store_req" Id="0x001A"/>
+    <Clusters Name="Remove_node_cache_req" Id="0x001B"/>
+    <Clusters Name="Find_node_chache_req" Id="0x001C"/>
+    <Clusters Name="Extended_Simple_Desc_req" Id="0x001D"/>
+    <Clusters Name="Extended_Active_EP_req" Id="0x001E"/>
+    <Clusters Name="End_Device_Bind_req" Id="0x0020"/>
+    <Clusters Name="Bind_req" Id="0x0021"/>
+    <Clusters Name="Unbind_req" Id="0x0022"/>
+    <Clusters Name="Bind_Register_req" Id="0x0023"/>
+    <Clusters Name="Replace_Device_req" Id="0x0024"/>
+    <Clusters Name="Store_Bkup_Bind_Entry_req" Id="0x0025"/>
+    <Clusters Name="Remove_Bkup_Bind_Entry_req" Id="0x0026"/>
+    <Clusters Name="Backup_Bind_Table_req" Id="0x0027"/>
+    <Clusters Name="Recover_Bind_Table_req" Id="0x0028"/>
+    <Clusters Name="Backup_Source_Bind_req" Id="0x0029"/>
+    <Clusters Name="Recover_Source_Bind_req" Id="0x002A"/>
+    <Clusters Name="Mgmt_NWK_Disc_req" Id="0x0030"/>
+    <Clusters Name="Mgmt_Lqi_req" Id="0x0031"/>
+    <Clusters Name="Mgmt_Rtg_req" Id="0x0032"/>
+    <Clusters Name="Mgmt_Bind_req" Id="0x0033"/>
+    <Clusters Name="Mgmt_Leave_req" Id="0x0034"/>
+    <Clusters Name="Mgmt_Direct_Join_req" Id="0x0035"/>
+    <Clusters Name="Mgmt_Permit_Joining_req" Id="0x0036"/>
+    <Clusters Name="Mgmt_Cache_req" Id="0x0037"/>
+    <Clusters Name="Mgmt_NWK_Update_req" Id="0x0038"/>
+    <Clusters Name="NWK_addr_rsp" Id="0x8000"/>
+    <Clusters Name="IEEE_addr_rsp" Id="0x8001"/>
+    <Clusters Name="Node_Desc_rsp" Id="0x8002"/>
+    <Clusters Name="Power_Desc_rsp" Id="0x8003"/>
+    <Clusters Name="Simple_Desc_rsp" Id="0x8004"/>
+    <Clusters Name="Active_EP_rsp" Id="0x8005"/>
+    <Clusters Name="Match_Desc_rsp" Id="0x8006"/>
+    <Clusters Name="Complex_Desc_rsp" Id="0x8010"/>
+    <Clusters Name="User_Desc_rsp" Id="0x8011"/>
+    <Clusters Name="Discovery_Cache_rsp" Id="0x8012"/>
+    <Clusters Name="User_Desc_conf" Id="0x8014"/>
+    <Clusters Name="System_Server_Discovery_rsp" Id="0x8015"/>
+    <Clusters Name="Discovery_store_rsp" Id="0x8016"/>
+    <Clusters Name="Node_Desc_store_rsp" Id="0x8017"/>
+    <Clusters Name="Power_Desc_store_rsp" Id="0x8018"/>
+    <Clusters Name="Active_EP_store_rsp" Id="0x8019"/>
+    <Clusters Name="Simple_Desc_store_rsp" Id="0x801A"/>
+    <Clusters Name="Remove_node_cache_rsp" Id="0x801B"/>
+    <Clusters Name="Find_node_chache_rsp" Id="0x801C"/>
+    <Clusters Name="Extended_Simple_Desc_rsp" Id="0x801D"/>
+    <Clusters Name="Extended_Active_EP_rsp" Id="0x801E"/>
+    <Clusters Name="End_Device_Bind_rsp" Id="0x8020"/>
+    <Clusters Name="Bind_rsp" Id="0x8021"/>
+    <Clusters Name="Unbind_rsp" Id="0x8022"/>
+    <Clusters Name="Bind_Register_rsp" Id="0x8023"/>
+    <Clusters Name="Replace_Device_rsp" Id="0x8024"/>
+    <Clusters Name="Store_Bkup_Bind_Entry_rsp" Id="0x8025"/>
+    <Clusters Name="Remove_Bkup_Bind_Entry_rsp" Id="0x8026"/>
+    <Clusters Name="Backup_Bind_Table_rsp" Id="0x8027"/>
+    <Clusters Name="Recover_Bind_Table_rsp" Id="0x8028"/>
+    <Clusters Name="Backup_Source_Bind_rsp" Id="0x8029"/>
+    <Clusters Name="Recover_Source_Bind_rsp" Id="0x802A"/>
+    <Clusters Name="Mgmt_NWK_Disc_rsp" Id="0x8030"/>
+    <Clusters Name="Mgmt_Lqi_rsp" Id="0x8031"/>
+    <Clusters Name="Mgmt_Rtg_rsp" Id="0x8032"/>
+    <Clusters Name="Mgmt_Bind_rsp" Id="0x8033"/>
+    <Clusters Name="Mgmt_Leave_rsp" Id="0x8034"/>
+    <Clusters Name="Mgmt_Direct_Join_rsp" Id="0x8035"/>
+    <Clusters Name="Mgmt_Permit_Joining_rsp" Id="0x8036"/>
+    <Clusters Name="Mgmt_Cache_rsp" Id="0x8037"/>
+    <Clusters Name="Mgmt_NWK_Update_rsp" Id="0x8038"/>
+  </Profiles>
+  <Profiles Name="JENNIC_WUART" Id="0x1134">
+    <Clusters Name="APP" Id="0x4311"/>
+  </Profiles>
+  <Coordinator Name="WUART_COORDINATOR" DiscoveryNeighbourTableSize="16" ActiveNeighbourTableSize="21" RouteDiscoveryTableSize="16" RoutingTableSize="16" BroadcastTransactionTableSize="9" RouteRecordTableSize="4" AddressMapTableSize="16" SecurityMaterialSets="2" MaxNumSimultaneousApsdeReq="5" MaxNumSimultaneousApsdeAckReq="3" MACMutexName="mutexMAC" ZPSMutexName="mutexZPS" FragmentationMaxNumSimulRx="0" FragmentationMaxNumSimulTx="0" DefaultEventMessageName="APP_msgZpsEvents" MACDcfmIndMessage="zps_msgDcfmInd" MACTimeEventMessage="zps_msgTimeEvents" apsNonMemberRadius="2" apsDesignatedCoordinator="true" apsUseInsecureJoin="true" apsMaxWindowSize="8" apsInterframeDelay="10" APSDuplicateTableSize="1" apsSecurityTimeoutPeriod="1000" apsUseExtPANId="0x0000000000000000" InitialNetworkKey="WUART_COORDINATOR->PreConfiguredNwkKey" SecurityEnabled="false" MACMlmeDcfmIndMessage="zps_msgMlmeDcfmInd" MACMcpsDcfmIndMessage="zps_msgMcpsDcfmInd" APSPersistenceTime="100" NumAPSMESimulCommands="4" PermitJoiningTime="255">
+    <Endpoints Id="0" Enabled="true" ApplicationDeviceId="0" ApplicationDeviceVersion="0" Profile="ZDP" Name="ZDO">
+      <InputClusters Cluster="NWK_addr_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="IEEE_addr_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Match_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Complex_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_Cache_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Device_annce" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_set" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="System_Server_Discovery_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_store_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_store_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_store_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_store_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_store_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_node_cache_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Find_node_chache_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Simple_Desc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Active_EP_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="End_Device_Bind_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Unbind_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_Register_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Replace_Device_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Store_Bkup_Bind_Entry_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_Bkup_Bind_Entry_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Bind_Table_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Bind_Table_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Source_Bind_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Source_Bind_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Disc_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Lqi_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Rtg_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Bind_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Leave_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Direct_Join_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Permit_Joining_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Cache_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Update_req" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="NWK_addr_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="IEEE_addr_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Match_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Complex_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_Cache_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_conf" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="System_Server_Discovery_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_store_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_store_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_store_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_store_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_store_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_node_cache_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Find_node_chache_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Simple_Desc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Active_EP_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="End_Device_Bind_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Unbind_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_Register_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Replace_Device_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Store_Bkup_Bind_Entry_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_Bkup_Bind_Entry_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Bind_Table_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Bind_Table_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Source_Bind_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Source_Bind_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Disc_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Lqi_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Rtg_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Bind_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Leave_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Direct_Join_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Permit_Joining_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Cache_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Update_rsp" RxAPDU="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="NWK_addr_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="IEEE_addr_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Match_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Complex_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_Cache_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Device_annce" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_set" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="System_Server_Discovery_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_store_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_store_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_store_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_store_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_store_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_node_cache_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Find_node_chache_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Simple_Desc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Active_EP_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="End_Device_Bind_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Unbind_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_Register_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Replace_Device_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Store_Bkup_Bind_Entry_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_Bkup_Bind_Entry_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Bind_Table_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Bind_Table_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Source_Bind_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Source_Bind_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Disc_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Lqi_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Rtg_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Bind_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Leave_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Direct_Join_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Permit_Joining_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Cache_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Update_req" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="NWK_addr_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="IEEE_addr_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Match_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Complex_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_Cache_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_conf" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="System_Server_Discovery_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_store_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_store_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_store_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_store_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_store_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_node_cache_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Find_node_chache_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Simple_Desc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Active_EP_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="End_Device_Bind_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Unbind_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_Register_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Replace_Device_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Store_Bkup_Bind_Entry_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_Bkup_Bind_Entry_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Bind_Table_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Bind_Table_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Source_Bind_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Source_Bind_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Disc_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Lqi_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Rtg_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Bind_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Leave_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Direct_Join_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Permit_Joining_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Cache_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Update_rsp" TxAPDUs="WUART_COORDINATOR->apduZDP" Discoverable="false"/>
+    </Endpoints>
+    <Endpoints Id="34" Enabled="true" ApplicationDeviceId="2" ApplicationDeviceVersion="0" Profile="JENNIC_WUART" Message="APP_EP_Events" Name="APP">
+      <InputClusters Cluster="APP" RxAPDU="WUART_COORDINATOR->apduAppEpRxData" Discoverable="true"/>
+      <OutputClusters Cluster="APP" TxAPDUs="WUART_COORDINATOR->apduAppEpTxData" Discoverable="true"/>
+    </Endpoints>
+    <PDUConfiguration NumNPDUs="16" PDUMMutexName="mutexPDUM">
+      <APDUs Id="WUART_COORDINATOR->apduZDP" Name="apduZDP" Size="100" Instances="3"/>
+      <APDUs Id="WUART_COORDINATOR->apduAppEpRxData" Name="apduAppEpRxData" Size="80" Instances="1"/>
+      <APDUs Id="WUART_COORDINATOR->apduAppEpTxData" Name="apduAppEpTxData" Size="80" Instances="1"/>
+    </PDUConfiguration>
+    <ChannelMask Channel11="false" Channel12="false" Channel13="false" Channel14="false" Channel15="false" Channel16="false" Channel17="false" Channel18="false" Channel19="false" Channel20="false" Channel21="false" Channel22="false" Channel23="true" Channel24="false" Channel25="false" Channel26="false"/>
+    <NodeDescriptor ManufacturerCode="0" LogicalType="ZC" ComplexDescriptorAvailable="false" UserDescriptorAvailable="false" APSFlags="0" FrequencyBand="2.4GHz" AlternatePANCoordinator="true" DeviceType="true" PowerSource="true" RxOnWhenIdle="true" Security="false" AllocateAddress="true" MaximumBufferSize="127" MaximumIncomingTransferSize="80" MaximumOutgoingTransferSize="80" ExtendedActiveEndpointListAvailable="false" ExtendedSimpleDescriptorListAvailable="false" PrimaryTrustCenter="true" BackupTrustCenter="false" PrimaryBindingTableCache="false" BackupBindingTableCache="false" PrimaryDiscoveryCache="false" BackupDiscoveryCache="false" NetworkManager="true"/>
+    <NodePowerDescriptor ConstantPower="true" RechargeableBattery="false" DisposableBattery="false" DefaultPowerSource="Constant Power" DefaultPowerMode="Synchronised with RxOnWhenIdle"/>
+    <BindingTable Size="8"/>
+    <TrustCenter DeviceTableSize="20">
+      <Keys xsi:type="zpscfg:PreConfiguredNwkKey" KeySequenceNumber="1" Key="0x00000000000000000000000000001134" Id="WUART_COORDINATOR->PreConfiguredNwkKey"/>
+    </TrustCenter>
+    <ZDOServers>
+      <DefaultServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <ZdoClient OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <DeviceAnnceServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <ActiveEpServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <NwkAddrServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <IeeeAddrServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <SystemServerDiscoveryServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <NodeDescServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <PowerDescServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <MatchDescServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <SimpleDescServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <MgmtLqiServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <MgmtLeaveServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <MgmtNWKUpdateServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <PermitJoiningServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <MgmtRtgServer OutputAPdu="WUART_COORDINATOR->apduZDP"/>
+      <EndDeviceBindServer OutputAPdu="WUART_COORDINATOR->apduZDP" Timeout="5" BindingTimeout="10" BindNumRetries="3"/>
+    </ZDOServers>
+  </Coordinator>
+  <ChildNodes xsi:type="zpscfg:Router" Name="WUART_ROUTER" DiscoveryNeighbourTableSize="16" ActiveNeighbourTableSize="21" RouteDiscoveryTableSize="16" RoutingTableSize="16" BroadcastTransactionTableSize="9" RouteRecordTableSize="4" AddressMapTableSize="16" SecurityMaterialSets="2" MaxNumSimultaneousApsdeReq="5" MaxNumSimultaneousApsdeAckReq="3" MACMutexName="mutexMAC" ZPSMutexName="mutexZPS" FragmentationMaxNumSimulRx="0" FragmentationMaxNumSimulTx="0" DefaultEventMessageName="APP_msgZpsEvents" MACDcfmIndMessage="zps_msgDcfmInd" MACTimeEventMessage="zps_msgTimeEvents" apsNonMemberRadius="2" apsDesignatedCoordinator="false" apsUseInsecureJoin="true" apsMaxWindowSize="8" apsInterframeDelay="10" APSDuplicateTableSize="1" apsSecurityTimeoutPeriod="1000" apsUseExtPANId="0x0000000000000000" InitialNetworkKey="WUART_COORDINATOR->PreConfiguredNwkKey" SecurityEnabled="false" MACMlmeDcfmIndMessage="zps_msgMlmeDcfmInd" MACMcpsDcfmIndMessage="zps_msgMcpsDcfmInd" APSPersistenceTime="100" NumAPSMESimulCommands="4" PermitJoiningTime="255" ScanDuration="3" NetworkSelection="User Selected">
+    <Endpoints Id="0" Enabled="true" ApplicationDeviceId="0" ApplicationDeviceVersion="0" Profile="ZDP" Name="ZDO">
+      <InputClusters Cluster="NWK_addr_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="IEEE_addr_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Match_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Complex_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_Cache_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Device_annce" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_set" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="System_Server_Discovery_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_store_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_store_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_store_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_store_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_store_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_node_cache_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Find_node_chache_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Simple_Desc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Active_EP_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="End_Device_Bind_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Unbind_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_Register_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Replace_Device_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Store_Bkup_Bind_Entry_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_Bkup_Bind_Entry_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Bind_Table_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Bind_Table_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Source_Bind_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Source_Bind_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Disc_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Lqi_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Rtg_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Bind_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Leave_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Direct_Join_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Permit_Joining_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Cache_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Update_req" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="NWK_addr_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="IEEE_addr_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Match_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Complex_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_Cache_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="User_Desc_conf" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="System_Server_Discovery_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Discovery_store_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Node_Desc_store_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Power_Desc_store_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Active_EP_store_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Simple_Desc_store_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_node_cache_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Find_node_chache_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Simple_Desc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Extended_Active_EP_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="End_Device_Bind_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Unbind_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Bind_Register_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Replace_Device_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Store_Bkup_Bind_Entry_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Remove_Bkup_Bind_Entry_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Bind_Table_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Bind_Table_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Backup_Source_Bind_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Recover_Source_Bind_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Disc_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Lqi_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Rtg_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Bind_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Leave_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Direct_Join_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Permit_Joining_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_Cache_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <InputClusters Cluster="Mgmt_NWK_Update_rsp" RxAPDU="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="NWK_addr_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="IEEE_addr_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Match_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Complex_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_Cache_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Device_annce" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_set" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="System_Server_Discovery_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_store_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_store_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_store_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_store_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_store_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_node_cache_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Find_node_chache_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Simple_Desc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Active_EP_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="End_Device_Bind_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Unbind_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_Register_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Replace_Device_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Store_Bkup_Bind_Entry_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_Bkup_Bind_Entry_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Bind_Table_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Bind_Table_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Source_Bind_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Source_Bind_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Disc_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Lqi_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Rtg_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Bind_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Leave_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Direct_Join_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Permit_Joining_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Cache_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Update_req" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="NWK_addr_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="IEEE_addr_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Match_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Complex_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_Cache_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="User_Desc_conf" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="System_Server_Discovery_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Discovery_store_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Node_Desc_store_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Power_Desc_store_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Active_EP_store_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Simple_Desc_store_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_node_cache_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Find_node_chache_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Simple_Desc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Extended_Active_EP_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="End_Device_Bind_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Unbind_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Bind_Register_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Replace_Device_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Store_Bkup_Bind_Entry_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Remove_Bkup_Bind_Entry_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Bind_Table_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Bind_Table_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Backup_Source_Bind_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Recover_Source_Bind_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Disc_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Lqi_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Rtg_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Bind_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Leave_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Direct_Join_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Permit_Joining_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_Cache_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+      <OutputClusters Cluster="Mgmt_NWK_Update_rsp" TxAPDUs="WUART_ROUTER->apduZDP" Discoverable="false"/>
+    </Endpoints>
+    <Endpoints Id="34" Enabled="true" ApplicationDeviceId="2" ApplicationDeviceVersion="0" Profile="JENNIC_WUART" Message="APP_EP_Events" Name="APP">
+      <InputClusters Cluster="APP" RxAPDU="WUART_ROUTER->apduAppEpRxData" Discoverable="true"/>
+      <OutputClusters Cluster="APP" TxAPDUs="WUART_ROUTER->apduAppEpTxData" Discoverable="true"/>
+    </Endpoints>
+    <PDUConfiguration NumNPDUs="16" PDUMMutexName="mutexPDUM">
+      <APDUs Id="WUART_ROUTER->apduZDP" Name="apduZDP" Size="100" Instances="3"/>
+      <APDUs Id="WUART_ROUTER->apduAppEpRxData" Name="apduAppEpRxData" Size="80" Instances="1"/>
+      <APDUs Id="WUART_ROUTER->apduAppEpTxData" Name="apduAppEpTxData" Size="80" Instances="1"/>
+    </PDUConfiguration>
+    <ChannelMask Channel11="false" Channel12="false" Channel13="false" Channel14="false" Channel15="false" Channel16="false" Channel17="false" Channel18="false" Channel19="false" Channel20="false" Channel21="false" Channel22="false" Channel23="true" Channel24="false" Channel25="false" Channel26="false"/>
+    <NodeDescriptor ManufacturerCode="0" LogicalType="ZR" ComplexDescriptorAvailable="false" UserDescriptorAvailable="false" APSFlags="0" FrequencyBand="2.4GHz" AlternatePANCoordinator="false" DeviceType="true" PowerSource="true" RxOnWhenIdle="true" Security="false" AllocateAddress="true" MaximumBufferSize="127" MaximumIncomingTransferSize="80" MaximumOutgoingTransferSize="80" ExtendedActiveEndpointListAvailable="false" ExtendedSimpleDescriptorListAvailable="false" PrimaryTrustCenter="false" BackupTrustCenter="false" PrimaryBindingTableCache="false" BackupBindingTableCache="false" PrimaryDiscoveryCache="false" BackupDiscoveryCache="false" NetworkManager="false"/>
+    <NodePowerDescriptor ConstantPower="true" RechargeableBattery="false" DisposableBattery="false" DefaultPowerSource="Constant Power" DefaultPowerMode="Synchronised with RxOnWhenIdle"/>
+    <BindingTable Size="8"/>
+    <ZDOServers>
+      <DefaultServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <ZdoClient OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <DeviceAnnceServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <ActiveEpServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <NwkAddrServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <IeeeAddrServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <SystemServerDiscoveryServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <NodeDescServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <PowerDescServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <MatchDescServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <SimpleDescServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <MgmtLqiServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <MgmtLeaveServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <MgmtNWKUpdateServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <PermitJoiningServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+      <MgmtRtgServer OutputAPdu="WUART_ROUTER->apduZDP"/>
+    </ZDOServers>
+  </ChildNodes>
+</zpscfg:ZigbeeWirelessNetwork>
