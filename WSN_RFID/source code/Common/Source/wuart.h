@@ -65,8 +65,7 @@
 #define WUART_PARITY	FALSE					/**< Enable parity */
 #define WUART_WORDLEN	E_AHI_UART_WORD_LEN_8	/**< Word length */
 #define WUART_ONESTOP	TRUE					/**< One stop bit */
-#define WUART_RTSCTS	TRUE					/**< RTS/CTS flow control */
-#define WUART_XONXOFF	FALSE					/**< XON/XOFF flow control */
+
 
 /** WUART states */
 #define WUART_STATE_NONE	 	   0			/**< Not in network */

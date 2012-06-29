@@ -187,8 +187,6 @@ PUBLIC void WUART_vInit(void)
 					  WUART_PARITY,
 					  WUART_WORDLEN,
 					  WUART_ONESTOP,
-					  WUART_RTSCTS,
-					  WUART_XONXOFF,
 					  &asQueue[WUART_QUEUE_TX],
 					  &asQueue[WUART_QUEUE_RX]))
 	{
