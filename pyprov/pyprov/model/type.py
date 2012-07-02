@@ -125,6 +125,8 @@ class Record(object):
 
         self.account = account
         
+        self.rdftriples = {}
+        
     def __str__(self):
         if self.identifier is not None:
             return str(self.identifier)
@@ -190,6 +192,15 @@ class Record(object):
         attributes = self.get_record_attributes()
         attributes.update(self.attributes) 
         return attributes
+    
+    def _toRDF(self):
+        self.rdftriples[self.identifier] = {}
+        if self.attributes is not None:
+            for attr in self.attributes.keys():
+                self.rdftriples[self.identifier][attr] = self.attributes[attr]
+                
+        return self.rdftriples
+
 
 class PROVType(Record):
     
@@ -220,6 +231,13 @@ class PROVType(Record):
             if valuetojson is not None:
                 self._json[self._idJSON][attribute] = valuetojson
         return self._json
+    
+    def _toRDF(self):
+        Record._toRDF(self)
+        
+        # Add here the codes that are specific for this class (in this case PROVType)
+        
+        return self.rdftriples
 
 
 class Entity(PROVType):
