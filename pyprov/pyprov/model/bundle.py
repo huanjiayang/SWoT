@@ -359,6 +359,9 @@ class PROVContainer(Bundle):
             else:
                 pass # TODO: what if a namespace with prefix 'default' is already defined
         return self._provcontainer
+    
+    def _toRDF(self):
+        Bundle._toRDF(self)
 
 
 class Account(Record,Bundle):
@@ -407,3 +410,11 @@ class Account(Record,Bundle):
                 self._provcontainer[attrtojson] = self._provcontainer[attribute]
                 del self._provcontainer[attribute]
         return self._provcontainer
+    
+    def _toRDF(self):
+        Bundle._toRDF(self)
+        self.rdftriples[self.identifier] = {}
+        if attributes is not None:
+        for attr in self.attributes.keys():
+        self.rdftriples[self.identifier][attr] = self.attributes[attr]
+        return self.rdftriples

@@ -28,6 +28,9 @@ class Relation(Record):
             if valuetojson is not None:
                 self._json[self._idJSON][attribute] = valuetojson
         return self._json
+    
+    def _toRDF(self):
+        Record._toRDF(self)
         
     
 # Entity to Entity relations
@@ -70,6 +73,9 @@ class wasDerivedFrom(Relation):
             self._json[self._idJSON]['prov:usage']=self.usage._idJSON
         self._provcontainer['wasDerivedFrom']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
                         
 
 class wasRevisionOf(Relation):
@@ -100,6 +106,9 @@ class wasRevisionOf(Relation):
             self._json[self._idJSON]['prov:responsibility']=self.responsibility._idJSON
         self._provcontainer['wasRevisionOf']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
 
 
 class wasQuotedFrom(Relation):
@@ -137,6 +146,9 @@ class wasQuotedFrom(Relation):
             self._json[self._idJSON]['prov:quotedAgent']=self.quotedAgent._idJSON
         self._provcontainer['wasQuotedFrom']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
 
 
 class hadOriginalSource(Relation):
@@ -161,6 +173,8 @@ class hadOriginalSource(Relation):
         self._provcontainer['hadOriginalSource']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
 
 class alternateOf(Relation):
     
@@ -185,6 +199,9 @@ class alternateOf(Relation):
         self._provcontainer['alternateOf']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 class specializationOf(Relation):
     
@@ -207,6 +224,9 @@ class specializationOf(Relation):
         self._json[self._idJSON]['prov:specialization']=self.specialization._idJSON
         self._provcontainer['specializationOf']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
                
 
 #Entity to Activity relations
@@ -238,6 +258,9 @@ class wasGeneratedBy(Relation):
         self._provcontainer['wasGeneratedBy']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 class wasInvalidatedBy(Relation):
 
@@ -265,6 +288,9 @@ class wasInvalidatedBy(Relation):
             self._json[self._idJSON]['prov:time']=self._convert_value_JSON(self.time,nsdict)
         self._provcontainer['wasInvalidatedBy']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
 
 
 # Entity to Agent relation
@@ -290,6 +316,9 @@ class wasAttributedTo(Relation):
         self._json[self._idJSON]['prov:agent']=self.agent._idJSON
         self._provcontainer['wasAttributedTo']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
 
 
 # Activity to Entity relation
@@ -322,6 +351,9 @@ class Used(Relation):
         self._provcontainer['used']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 class wasStartedBy(Relation):
     
@@ -345,6 +377,9 @@ class wasStartedBy(Relation):
         self._provcontainer['wasStartedBy']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 class wasEndedBy(Relation):
     
@@ -367,6 +402,9 @@ class wasEndedBy(Relation):
         self._json[self._idJSON]['prov:entity']=self.entity._idJSON
         self._provcontainer['wasEndedBy']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
         
 
 # Activity to Activity relations
@@ -393,6 +431,9 @@ class wasStartedByActivity(Relation):
         self._provcontainer['wasStartedByActivity']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 class wasInformedBy(Relation):
     
@@ -415,6 +456,9 @@ class wasInformedBy(Relation):
         self._json[self._idJSON]['prov:informant']=self.informant._idJSON
         self._provcontainer['wasInformedBy']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        Relation._toRDF(self)
 
 
 # Activity to Agent relation
@@ -441,6 +485,9 @@ class wasAssociatedWith(Relation):
         self._provcontainer['wasAssociatedWith']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 #Agent to Agent relation
 
@@ -466,6 +513,9 @@ class actedOnBehalfOf(Relation):
         self._provcontainer['actedOnBehalfOf']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        Relation._toRDF(self)
+    
 
 # Records to Note relation
 
@@ -485,7 +535,8 @@ class hasAnnotation(Relation):
         self._provcontainer['hasAnnotation']=self._json
         return self._provcontainer
 
-
+   def _toRDF(self):
+        Relation._toRDF(self)
 
 '''
 
