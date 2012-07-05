@@ -37,16 +37,15 @@ PROV_RECORD_TYPES = (
 )
 
 class PROVIdentifier(object):
-    ''' Represent provenance identifier '''
+    
     def __init__(self,name):
         self.name = name
         
     def uri(self):
-     ''' Uniform Resource identifier '''   
         return self.name
 
 class PROVQname(PROVIdentifier):
-     ''' PROVIdentifier is parent class to PROVQname '''
+    
     def __init__(self,name,prefix=None,namespacename=None,localname=None):
         PROVIdentifier.__init__(self, name)
         self.namespacename = namespacename
@@ -89,7 +88,7 @@ class PROVQname(PROVIdentifier):
 
 
 class PROVNamespace(PROVIdentifier):
-    ''' PROVIdentifier is parent class to PROVNamespace '''
+    
     def __init__(self,prefix,namespacename):
         self.prefix = prefix
         self.namespacename = str(namespacename)
@@ -195,15 +194,16 @@ class Record(object):
         return attributes
     
     def _toRDF(self):
-         
-      self.rdftriples[self.identifier] = {}
-      if self.attributes is not None:
-      for attr in self.attributes.keys():
-      self.rdftriples[self.identifier][attr] = self.attributes[attr]
-      return self.rdftriples
+        self.rdftriples[self.identifier] = {}
+        if self.attributes is not None:
+            for attr in self.attributes.keys():
+                self.rdftriples[self.identifier][attr] = self.attributes[attr]
+                
+        return self.rdftriples
+
 
 class PROVType(Record):
-    ''' Record is parent class to PROVType '''
+    
     def __init__(self, identifier=None, attributes=None, account=None):
         if identifier is None:
             raise PROVGraph_Error("An PROVType is always required to have an identifier")
@@ -232,18 +232,16 @@ class PROVType(Record):
                 self._json[self._idJSON][attribute] = valuetojson
         return self._json
     
-    def _toRDF(self): 
-        Record._toRDF(self) 
-        self.rdftriples[self.identifier] = {'URIRef'}
-        if attributes is not None:
-        for attr in self.attributes.keys():
-        self.rdftriples[self.identifier][attr] = self.attributes[attr]
-        return self.rdftriples
+    def _toRDF(self):
+        Record._toRDF(self)
         
+        # Add here the codes that are specific for this class (in this case PROVType)
+        
+        return self.rdftriples
 
 
 class Entity(PROVType):
-    ''' PROVType is parent class to Entity '''
+
     def __init__(self, identifier=None, attributes=None, account=None):
         PROVType.__init__(self, identifier, attributes, account)
         self.prov_type = PROV_REC_ENTITY
@@ -253,16 +251,9 @@ class Entity(PROVType):
         self._provcontainer['entity']=self._json
         return self._provcontainer
     
-    def _toRDF(self):
-        PROVType._toRDF(self)
-        self.rdftriples[self.identifier] = {'URIRef'} 
-        if attributes is not None:
-        for attr in self.attributes.keys():
-        self.rdftriples[self.identifier][attr] = self.attributes[attr]
-        return self.rdftriples
 
 class Activity(PROVType):
-    ''' PROVType is parent class to Activity '''
+    
     def __init__(self, identifier=None, starttime=None, endtime=None, attributes=None, account=None):
         PROVType.__init__(self, identifier, attributes, account)
         self.prov_type = PROV_REC_ACTIVITY
@@ -287,18 +278,10 @@ class Activity(PROVType):
             self._json[self._idJSON]['prov:endtime']=self._convert_value_JSON(self.endtime,nsdict)
         self._provcontainer['activity']=self._json
         return self._provcontainer
-    
-    def _toRDF(self):
-        PROVType._toRDF(self)
-        self.rdftriples[self.identifier] = {'URIRef'} 
-        if attributes is not None:
-        for attr in self.attributes.keys():
-        self.rdftriples[self.identifier][attr] = self.attributes[attr]
-        return self.rdftriples
 
 
 class Agent(Entity):
-      
+
     def __init__(self, identifier=None, attributes=None, account=None):
         Entity.__init__(self, identifier, attributes, account)
         self.prov_type = PROV_REC_AGENT
@@ -308,18 +291,10 @@ class Agent(Entity):
         self._provcontainer['entity']=self._json
         #TODO: How to mark an Agent?
         return self._provcontainer
-    
-    def _toRDF(self):
-        Entity._toRDF(self)
-        self.rdftriples[self.identifier] = {'foaf'} 
-        if attributes is not None:
-        for attr in self.attributes.keys():
-        self.rdftriples[self.identifier][attr] = self.attributes[attr]
-        return self.rdftriples
         
 
 class Note(PROVType):
-   ''' PROVType is parent class to Note '''
+
     def __init__(self, identifier=None, attributes=None, account=None):
         PROVType.__init__(self, identifier, attributes, account)
         self.prov_type = PROV_REC_NOTE
@@ -329,13 +304,7 @@ class Note(PROVType):
         self._provcontainer['note']=self._json
         return self._provcontainer
 
- def _toRDF(self):
-        PROVType._toRDF(self)
-        self.rdftriples[self.identifier] = {} 
-        if attributes is not None:
-        for attr in self.attributes.keys():
-        self.rdftriples[self.identifier][attr] = self.attributes[attr]
-        return self.rdftriples
+
 
     
 

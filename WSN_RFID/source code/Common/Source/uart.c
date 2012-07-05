@@ -1,3 +1,38 @@
+/****************************************************************************/
+/*!
+ *\MODULE              UART (Application Layer)
+ *
+ *\COMPONENT           $HeadURL: https://www.collabnet.nxp.com/svn/lprf_apps/Application_Notes/JN-AN-1134-ZigBee-PRO-Serial-Cable-Replacement/Tags/Release_1v3-Public/Common/Source/uart.c $
+ *
+ *\VERSION			   $Revision: 5800 $
+ *
+ *\REVISION            $Id: uart.c 5800 2010-04-20 13:20:20Z mlook $
+ *
+ *\DATED               $Date: 2010-04-20 14:20:20 +0100 (Tue, 20 Apr 2010) $
+ *
+ *\AUTHOR              $Author: mlook $
+ *
+ *\DESCRIPTION         UART (Application Layer) - implementation.
+ */
+/****************************************************************************
+ *
+ * This software is owned by Jennic and/or its supplier and is protected
+ * under applicable copyright laws. All rights are reserved. We grant You,
+ * and any third parties, a license to use this software solely and
+ * exclusively on Jennic products. You, and any third parties must reproduce
+ * the copyright and warranty notice and any other legend of ownership on each
+ * copy or partial copy of the software.
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS". JENNIC MAKES NO WARRANTIES, WHETHER
+ * EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE,
+ * ACCURACY OR LACK OF NEGLIGENCE. JENNIC SHALL NOT, IN ANY CIRCUMSTANCES,
+ * BE LIABLE FOR ANY DAMAGES, INCLUDING, BUT NOT LIMITED TO, SPECIAL,
+ * INCIDENTAL OR CONSEQUENTIAL DAMAGES FOR ANY REASON WHATSOEVER.
+ *
+ * Copyright Jennic Ltd 2010. All rights reserved
+ *
+ ****************************************************************************/
 
 /****************************************************************************/
 /***        Include files                                                 ***/
@@ -61,7 +96,7 @@ typedef struct
 /***        Local Function Prototypes                                     ***/
 /****************************************************************************/
 PRIVATE void     UART_vInterrupt		(uint32, uint32);
-PRIVATE void     UART_vRts  			(uint8, bool_t);
+//PRIVATE void     UART_vRts  			(uint8, bool_t);
 #if 0
 PRIVATE void     UART_vAfc  			(uint8, bool_t);
 #endif
@@ -111,7 +146,10 @@ PUBLIC 	bool_t 		UART_bOpen (
 		QUEUE_tsData   *psTxQueue,		/**< Transmit queue pointer */
 		QUEUE_tsData   *psRxQueue)		/**< Receive queue pointer */
 {
-  	/* Valid uart ? */
+    uint16 	  u16Divisor;		/* Baud rate divisor */
+    uint32 	  u32Remainder;		/* Baud rate remainder */
+
+	/* Valid uart ? */
 	if (u8Uart < 2)
 	{
 		/* Uart 0 ? */
@@ -137,13 +175,15 @@ PUBLIC 	bool_t 		UART_bOpen (
 		asUart[u8Uart].u8TxDisable = 0;
 		asUart[u8Uart].u8RxDisable = 0;
 
-
 		/* Start with port unopened */
 		asUart[u8Uart].bOpened = FALSE;
 
+	    /* Calculate divisor for baud rate = 16MHz / (16 x baud rate) */
+    	u16Divisor   = (uint16)(16000000UL / (16UL * u32BaudRate));
+	    /* Correct for rounding errors */
+    	u32Remainder = (uint32)(16000000UL % (16UL * u32BaudRate));
+	    if (u32Remainder >= ((16UL * u32BaudRate) / 2)) u16Divisor += 1;
 
-	    /* UART operating in 2-wire mode  release pins for CTS and RTS */
-	    vAHI_UartSetRTSCTS(u8Uart, FALSE);
 		/* Enable UART */
 		vAHI_UartEnable(u8Uart);
 		/* Reset UART */
@@ -151,17 +191,16 @@ PUBLIC 	bool_t 		UART_bOpen (
 		vAHI_UartReset(u8Uart, FALSE, FALSE);
 		/* Note we've opened the UART */
 		asUart[u8Uart].bOpened = TRUE;
-
+	    /* Allow use of RTS/CTS pins with UART if required */
+   		vAHI_UartSetRTSCTS(u8Uart, FALSE);
 #if 0
 		/* Disable automatic flow control */
 		UART_vAfc(u8Uart, FALSE);
 #endif
 		/* Set baud rate */
-		vAHI_UartSetBaudRate(u8Uart, E_AHI_UART_RATE_115200);
-
+		vAHI_UartSetBaudDivisor(u8Uart, u16Divisor);
 		/* Set control */
 		vAHI_UartSetControl(u8Uart, bEvenParity, bEnableParity, u8WordLength, bOneStopBit, (asUart[u8Uart].u8RxDisable == 0) ? TRUE : FALSE);
-		/* Using RTS/CTS flow control ? */
 
 		/* Not JenOS ? */
 		#if !UART_JENOS
@@ -174,7 +213,7 @@ PUBLIC 	bool_t 		UART_bOpen (
 
 		/* Set UART interrupts */
 		vAHI_UartSetInterrupt(u8Uart,
-							  FALSE,				 		  /* ModemStatus */
+							  FALSE, 		  				  /* ModemStatus */
 							  FALSE,						  /* RxLineStatus */
 							  TRUE,							  /* TxFifoEmpty */
 							  TRUE,							  /* RxData */
@@ -305,40 +344,40 @@ PUBLIC bool_t UART_bOpened (uint8 u8Uart)
  * <b>UART_bRtsCts</b> &mdash; Returns if specified UART is using RTS/CTS flow control.
  */
 /****************************************************************************/
-/*PUBLIC bool_t UART_bRtsCts (uint8 u8Uart)
-{
-	return ((u8Uart < 2) ? asUart[u8Uart].bRtsCts : FALSE);
-}
-*/
+//PUBLIC bool_t UART_bRtsCts (uint8 u8Uart)
+//{
+//	return ((u8Uart < 2) ? asUart[u8Uart].bRtsCts : FALSE);
+//}
+
 /****************************************************************************/
 /**
  * <b>UART_bXonXoff</b> &mdash; Returns if specified UART is using XON/XOFF flow control.
  */
 /****************************************************************************/
-/*PUBLIC bool_t UART_bXonXoff (uint8 u8Uart)
-{
-	return ((u8Uart < 2) ? asUart[u8Uart].bXonXoff : FALSE);
-}
-*/
+//PUBLIC bool_t UART_bXonXoff (uint8 u8Uart)
+//{
+//	return ((u8Uart < 2) ? asUart[u8Uart].bXonXoff : FALSE);
+//}
+
 /****************************************************************************/
 /**
  * <b>UART_bRts</b> &mdash; Returns if specified UART has RTS on.
  */
 /****************************************************************************/
-/*PUBLIC bool_t UART_bRts (uint8 u8Uart)
-{
-	return ((u8Uart < 2) ? asUart[u8Uart].bRts : FALSE);
-}
+//PUBLIC bool_t UART_bRts (uint8 u8Uart)
+//{
+//	return ((u8Uart < 2) ? asUart[u8Uart].bRts : FALSE);
+//}
 
 /****************************************************************************/
 /**
  * <b>UART_bCts</b> &mdash; Returns if specified UART has CTS on.
  */
 /****************************************************************************/
-/*PUBLIC bool_t UART_bCts (uint8 u8Uart)
-{
-	return ((u8Uart < 2) ? asUart[u8Uart].bRts : FALSE);
-}
+//PUBLIC bool_t UART_bCts (uint8 u8Uart)
+//{
+//	return ((u8Uart < 2) ? asUart[u8Uart].bRts : FALSE);
+//}
 
 /****************************************************************************/
 /**
@@ -370,16 +409,7 @@ PUBLIC bool_t UART_bRxEnable(uint8 u8Uart, uint8 u8Enable)
 			/* Debug */
 			DBG_vPrintf(UART_TRACE, " ENABLED RX");
 
-			/* Controlling RTS from application ? */
-			/*if (asUart[u8Uart].bRtsCts)
-			{
-				/* Set RTS manually */
-				/*UART_vRts(u8Uart, TRUE);
-			}
-			/* Controlling XON/XOFF from application ? */
-			/*else if (asUart[u8Uart].bXonXoff == TRUE)
-			{*/
-				/* Output XON character direct to UART */
+			/* Output XON character direct to UART */
 			vAHI_UartWriteData(u8Uart, CHAR_XON);
 			/* Expect a tx interrupt */
 			asUart[u8Uart].bTxInt = TRUE;
@@ -423,16 +453,7 @@ PUBLIC bool_t UART_bRxDisable(uint8 u8Uart, uint8 u8Disable)
 			/* Debug */
 			DBG_vPrintf(UART_TRACE, " DISABLED RX");
 
-			/* Controlling RTS from application ? */
-			/*if (asUart[u8Uart].bRtsCts)
-			{
-				/* Set RTS manually */
-			/*	UART_vRts(u8Uart, FALSE);
-			}*/
-			/* Controlling XON/XOFF from application ?
-			else if (asUart[u8Uart].bXonXoff == TRUE)
-			{
-				/* Output XOFF character direct to UART */
+			/* Output XOFF character direct to UART */
 			vAHI_UartWriteData(u8Uart, CHAR_XOFF);
 			/* Expect a tx interrupt */
 			asUart[u8Uart].bTxInt = TRUE;
@@ -831,7 +852,7 @@ PRIVATE void UART_vInterrupt(uint32 u32Device, 	 	/**< Interrupting device */
 					         uint32 u32ItemBitmap) 	/**< Interrupt bitmask */
 {
 	uint8 u8LineStatus;
-	uint8 u8ModemStatus;
+//	uint8 u8ModemStatus;
 	uint8 u8RxChar;
 	uint8 u8Uart = 0xFF;
 	uint8 u8Data;
@@ -853,36 +874,19 @@ PRIVATE void UART_vInterrupt(uint32 u32Device, 	 	/**< Interrupting device */
 			/* We will service this interrupt but might generate another */
 			asUart[u8Uart].bTxInt = FALSE;
         }
-		/* Modem status changed ? */
-		if ((u32ItemBitmap & 0xFF) == E_AHI_UART_INT_MODEM)
-		{
-			/* Read modem status */
-			u8ModemStatus = u8AHI_UartReadModemStatus(u8Uart);
-			/* Has CTS changed ? */
-			if (u8ModemStatus & E_AHI_UART_MS_DCTS)
-			{
-				/* Controlling flow from application using CTS ? */
-				if (asUart[u8Uart].bRtsCts == TRUE)
-				{
-					/* Note current CTS setting (CTS bit set means CTS has cleared) */
-					asUart[u8Uart].bCts = (u8ModemStatus & 0x10) ? FALSE : TRUE;
-					/* Enabling transmit ? */
-					if (asUart[u8Uart].bCts)
-					{
-						UART_bTxEnable(u8Uart, UART_ABLE_UARTIO);
-					}
-					/* Disabling transmit ? */
-					else
-					{
-						UART_bTxDisable(u8Uart, UART_ABLE_UARTIO);
-					}
+		UART_bTxEnable(u8Uart, UART_ABLE_UARTIO);
+//
+//		/* Disabling transmit ? */
+//		else
+//		{
+//			UART_bTxDisable(u8Uart, UART_ABLE_UARTIO);
+//		}
 				}
-			}
-		}
+
+
 
     	/* Data to receive ? */
-        if ((u32ItemBitmap & 0xFF) == E_AHI_UART_INT_RXDATA ||
-        	(u32ItemBitmap & 0xFF) == E_AHI_UART_INT_TIMEOUT)
+        if ((u32ItemBitmap & 0xFF) == E_AHI_UART_INT_RXDATA || (u32ItemBitmap & 0xFF) == E_AHI_UART_INT_TIMEOUT)
         {
 			/* While there is data in the receive fifo */
 			while (u8AHI_UartReadLineStatus(u8Uart) & E_AHI_UART_LS_DR)
@@ -891,8 +895,7 @@ PRIVATE void UART_vInterrupt(uint32 u32Device, 	 	/**< Interrupting device */
 				u8RxChar = u8AHI_UartReadData(u8Uart);
 
 				/* Using XON/XOFF flow control and this is an XON/XOFF character ? */
-				if (asUart[u8Uart].bXonXoff == TRUE &&
-				   (u8RxChar == CHAR_XON || u8RxChar == CHAR_XOFF))
+				if (u8RxChar == CHAR_XON || u8RxChar == CHAR_XOFF)
 				{
 					/* Enabling transmit ? */
 					if (u8RxChar == CHAR_XON)
@@ -973,7 +976,7 @@ PRIVATE void UART_vInterrupt(uint32 u32Device, 	 	/**< Interrupting device */
 			}
         }
     }
-}
+
 
 /****************************************************************************/
 /**
@@ -982,26 +985,26 @@ PRIVATE void UART_vInterrupt(uint32 u32Device, 	 	/**< Interrupting device */
  * Directly using MCR register.
  */
 /****************************************************************************/
-PRIVATE void UART_vRts(uint8 u8Uart,	/**< Uart to set RTS for */
-					   bool_t bEnable)	/**< RTS status */
-{
-    /* Valid and open uart ? */
-    if (u8Uart < 2 && asUart[u8Uart].bOpened)
-    {
-		uint32 *pu32Reg;
-		uint32   u32Val;
-
-		/* Get offset to Modem Control Register */
-		pu32Reg    = (uint32 *)(asUart[u8Uart].u32Address + UART_OFFSET_MCR);
-		/* Enable or disable bit as appropriate */
-		if (bEnable) u32Val = 0x00;
-		else		 u32Val = 0x02;
-		/* Write value back to register */
-		*pu32Reg   = u32Val;
-		/* Note rts value */
-		asUart[u8Uart].bRts  = bEnable;
-	}
-}
+//PRIVATE void UART_vRts(uint8 u8Uart,	/**< Uart to set RTS for */
+//					   bool_t bEnable)	/**< RTS status */
+//{
+//    /* Valid and open uart ? */
+//    if (u8Uart < 2 && asUart[u8Uart].bOpened)
+//    {
+//		uint32 *pu32Reg;
+//		uint32   u32Val;
+//
+//		/* Get offset to Modem Control Register */
+//		pu32Reg    = (uint32 *)(asUart[u8Uart].u32Address + UART_OFFSET_MCR);
+//		/* Enable or disable bit as appropriate */
+//		if (bEnable) u32Val = 0x00;
+//		else		 u32Val = 0x02;
+//		/* Write value back to register */
+//		*pu32Reg   = u32Val;
+//		/* Note rts value */
+//		asUart[u8Uart].bRts  = bEnable;
+//	}
+//}
 
 #if 0
 /****************************************************************************/
