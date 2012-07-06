@@ -32,6 +32,8 @@ class Relation(Record):
     def _toRDF(self):
         Record._toRDF(self)
         
+        return self.rdftriples
+        
     
 # Entity to Entity relations
 
@@ -76,6 +78,17 @@ class wasDerivedFrom(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.generatedentity]['prov:generatedentity']=self.generatedentity
+        self.rdftriples[self.usedentity]['prov:usedentity']=self.usedentity
+        if self.activity is not None:
+            self.rdftriples[self.activity]['prov:activity']=self.activity
+        if self.generation is not None:
+            self.rdftriples[self.generation]['prov:generation']=self.generation
+        if self.usage is not None:
+            self.rdftriples[self.usage]['prov:usage']=self.usage
+        self.rdftriples['wasDerivedFrom']=self.rdftriples
+        return self.rdftriples
+        
                         
 
 class wasRevisionOf(Relation):
@@ -109,6 +122,13 @@ class wasRevisionOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.newer]['prov:newer']=self.newer
+        self.rdftriples[self.older]['prov:older']=self.older
+        if self.responsibility is not None:
+            self.rdftriples[self.responsibility]['prov:responsibility']=self.responsibility
+        self.rdftriples['wasRevisionOf']=self.rdftriples
+        return self.rdftriples
+    
 
 
 class wasQuotedFrom(Relation):
@@ -149,6 +169,14 @@ class wasQuotedFrom(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.quote]['prov:quote']=self.quote
+        self.rdftriples[self.quoted]['prov:quoted']=self.quoted
+        if self.quoterAgent is not None:
+            self.rdftriples[self.quoterAgent]['prov:quoterAgent']=self.quoterAgent
+        if self.quoterAgent is not None:
+            self.rdftriples[self.quotedAgent]['prov:quotedAgent']=self.quotedAgent
+        self.rdftriples['wasQuotedFrom']=self.rdftriples
+        return self.rdftriples
 
 
 class hadOriginalSource(Relation):
@@ -175,6 +203,10 @@ class hadOriginalSource(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.entity]['prov:entity']=self.entity
+        self.rdftriples[self.source]['prov:source']=self.source
+        self.rdftriples['hadOriginalSource'] = self.rdftriples
+        return self.rdftriples
 
 class alternateOf(Relation):
     
@@ -201,6 +233,10 @@ class alternateOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.subject]['prov:subject']=self.subject
+        self.rdftriples[self.alternate]['prov:alternate']=self.alternate
+        self.rdftriples['alternateOf'] = self.rdftriples
+        return self.rdftriples
     
 
 class specializationOf(Relation):
@@ -227,6 +263,10 @@ class specializationOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.subject]['prov:subject']=self.subject
+        self.rdftriples[self.specialization]['prov:specialization']=self.specialization
+        self.rdftriples['specializationOf'] = self.rdftriples
+        return self.rdftriples
                
 
 #Entity to Activity relations
@@ -260,7 +300,12 @@ class wasGeneratedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-    
+        self.rdftriples[self.entity]['prov:entity']=self.entity
+        self.rdftriples[self.activity]['prov:activity']=self.activity
+        if self.time is not None:
+            self.rdftriples[self.time]['prov:time']=self.time
+        self.rdftriples['wasGeneratedBy'] = self.rdftriples
+        return self.rdftriples
 
 class wasInvalidatedBy(Relation):
 
@@ -291,6 +336,12 @@ class wasInvalidatedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.entity]['prov:entity']=self.entity
+        self.rdftriples[self.activity]['prov:activity']=self.activity
+        if self.time is not None:
+            self.rdftriples[self.time]['prov:time']=self.time
+        self.rdftriples['wasInvalidatedBy'] = self.rdftriples
+        return self.rdftriples
 
 
 # Entity to Agent relation
@@ -319,6 +370,11 @@ class wasAttributedTo(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.entity]['prov:entity']=self.entity
+        self.rdftriples[self.activity]['prov:agent']=self.agent
+        self.rdftriples['wasAttributedTo'] = self.rdftriples
+        return self.rdftriples
+
 
 
 # Activity to Entity relation
@@ -353,6 +409,10 @@ class Used(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.activity]['prov:activity'] = self.activity
+        self.rdftriples[self.entity]['prov:entity'] = self.entity
+        self.rdftriples['Used'] = self.rdftriples
+        return self.rdftriples
     
 
 class wasStartedBy(Relation):
@@ -379,6 +439,10 @@ class wasStartedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.activity]['prov:activity'] = self.activity
+        self.rdftriples[self.entity]['prov:entity'] = self.entity
+        self.rdftriples['wasStartedBy'] = self.rdftriples
+        return self.rdftriples
     
 
 class wasEndedBy(Relation):
@@ -405,6 +469,10 @@ class wasEndedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.activity]['prov:activity'] = self.activity
+        self.rdftriples[self.entity]['prov:entity'] = self.entity
+        self.rdftriples['wasEndedBy'] = self.rdftriples
+        return self.rdftriples
         
 
 # Activity to Activity relations
@@ -433,6 +501,10 @@ class wasStartedByActivity(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.started]['prov:started'] = self.started
+        self.rdftriples[self.starter]['prov:starter'] = self.starter
+        self.rdftriples['wasStartedByActivity'] = self.rdftriples
+        return self.rdftriples
     
 
 class wasInformedBy(Relation):
@@ -459,7 +531,10 @@ class wasInformedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-
+        self.rdftriples[self.informed]['prov:informed'] = self.informed
+        self.rdftriples[self.informant]['prov:informant'] = self.informant
+        self.rdftriples['wasInformedBy']=self.rdftriples
+        return self.rdftriples
 
 # Activity to Agent relation
 
@@ -487,7 +562,10 @@ class wasAssociatedWith(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-    
+        self.rdftriples[self.activity]['prov:activity']=self.activity
+        self.rdftriples[self.agent]['prov:agent']=self.agent
+        self.rdftriples['wasAssociatedWith']=self.rdftriples
+        return self.rdftriples
 
 #Agent to Agent relation
 
@@ -515,7 +593,10 @@ class actedOnBehalfOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-    
+        self.rdftriples[self.surbordinate]['prov:subordinate']=self.subordinate
+        self.rdftriples[self.responsible]['prov:responsible']=self.responsible
+        self.rdftriples['actedOnBehalfof']=self.rdftriples
+        return self.rdftriples
 
 # Records to Note relation
 
@@ -537,6 +618,10 @@ class hasAnnotation(Relation):
 
    def _toRDF(self):
         Relation._toRDF(self)
+        self.rdftriples[self.record]['prov:record']=self.record
+        self.rdftriples[self.note]['prov:note']=self.note
+        self.rdftriples['hasAnnotation']=self.rdftriples
+        return self.rdftriples
 
 '''
 

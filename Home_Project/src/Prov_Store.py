@@ -156,10 +156,11 @@ class WSNPROV:
         
         return tripledict
     
-    
-    def RDF_toStore(self):
+
         
+         
         
+
         
         
         

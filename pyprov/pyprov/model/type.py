@@ -251,6 +251,11 @@ class Entity(PROVType):
         self._provcontainer['entity']=self._json
         return self._provcontainer
     
+    def _toRDF(self):
+        PROVType._toRDF(self)
+        
+        return self.rdftriples
+    
 
 class Activity(PROVType):
     
@@ -278,7 +283,15 @@ class Activity(PROVType):
             self._json[self._idJSON]['prov:endtime']=self._convert_value_JSON(self.endtime,nsdict)
         self._provcontainer['activity']=self._json
         return self._provcontainer
-
+    
+    def to_RDF(self):
+        PROVType.to_RDF(self)
+        if self.starttime is not None:
+            self.rdftriples[self.starttime]['prov:starttime'] = self.starttime
+        if self.endtime is not None:
+            self.rdftriples[self.endtime]['prov:endtime'] = self.endtime
+        self.rdftriples['activity'] = self.rdftriples
+        return self.rdftriples
 
 class Agent(Entity):
 
@@ -291,6 +304,13 @@ class Agent(Entity):
         self._provcontainer['entity']=self._json
         #TODO: How to mark an Agent?
         return self._provcontainer
+    
+    def to_RDF(self):
+        Entity.to_RDF(self)
+        
+        return self.rdftriples
+        
+        
         
 
 class Note(PROVType):
@@ -303,6 +323,11 @@ class Note(PROVType):
         PROVType.to_provJSON(self,nsdict)
         self._provcontainer['note']=self._json
         return self._provcontainer
+    
+    def _toRDF(self):
+        PROVType._toRDF(self)
+        
+        return self.rdftriples
 
 
 
