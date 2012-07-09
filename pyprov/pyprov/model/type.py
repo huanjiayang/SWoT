@@ -99,6 +99,7 @@ class PROVNamespace(PROVIdentifier):
         
 xsd = PROVNamespace("xsd",'http://www.w3.org/2001/XMLSchema-datatypes#')
 prov = PROVNamespace("prov",'http://www.w3.org/ns/prov-dm/')
+rdf = PROVNamespace("rdf","http://www.w3.org/1999/02/22-rdf-syntax-ns#")
 
 
 class Record(object):
@@ -287,10 +288,10 @@ class Activity(PROVType):
     def to_RDF(self):
         PROVType.to_RDF(self)
         if self.starttime is not None:
-            self.rdftriples[self.starttime]['prov:starttime'] = self.starttime
+            self.rdftriples[self.identifier][prov['starttime'] = self.starttime
         if self.endtime is not None:
-            self.rdftriples[self.endtime]['prov:endtime'] = self.endtime
-        self.rdftriples['activity'] = self.rdftriples
+            self.rdftriples[self.identifier][prov['endtime'] = self.endtime
+        self.rdftriples[self.identifier][rdf['type']] = prov['activity']
         return self.rdftriples
 
 class Agent(Entity):
