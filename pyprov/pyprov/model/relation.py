@@ -78,15 +78,15 @@ class wasDerivedFrom(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.generatedentity]['prov:generatedentity']=self.generatedentity
-        self.rdftriples[self.usedentity]['prov:usedentity']=self.usedentity
+        self.rdftriples[self.identifier][prov['generatedentity']]=self.generatedentity
+        self.rdftriples[self.identifier][prov['usedentity']]=self.usedentity
         if self.activity is not None:
-            self.rdftriples[self.activity]['prov:activity']=self.activity
+            self.rdftriples[self.identifier][prov['activity']]=self.activity
         if self.generation is not None:
-            self.rdftriples[self.generation]['prov:generation']=self.generation
+            self.rdftriples[self.identifier][prov['generation']]=self.generation
         if self.usage is not None:
-            self.rdftriples[self.usage]['prov:usage']=self.usage
-        self.rdftriples['wasDerivedFrom']=self.rdftriples
+            self.rdftriples[self.identifier][prov['usage']]=self.usage
+        self.rdftriples[self.identifier][rdf['type']] = prov['wasDerivedFrom']
         return self.rdftriples
         
                         
