@@ -288,17 +288,9 @@ class Activity(PROVType):
     def to_RDF(self):
         PROVType.to_RDF(self)
         if self.starttime is not None:
-<<<<<<< HEAD
-         self.rdftriples[self.identifier][prov['starttime'] = self.starttime
-=======
             self.rdftriples[self.identifier][prov['starttime'] = self.starttime
->>>>>>> branch 'master' of https://github.com/huanjiayang/SWoT.git
         if self.endtime is not None:
-<<<<<<< HEAD
-         self.rdftriples[self.identifier][prov['endtime'] = self.endtime
-=======
             self.rdftriples[self.identifier][prov['endtime'] = self.endtime
->>>>>>> branch 'master' of https://github.com/huanjiayang/SWoT.git
         self.rdftriples[self.identifier][rdf['type']] = prov['activity']
         return self.rdftriples
 
