@@ -86,11 +86,7 @@ class wasDerivedFrom(Relation):
             self.rdftriples[self.identifier][prov['generation']]=self.generation
         if self.usage is not None:
             self.rdftriples[self.identifier][prov['usage']]=self.usage
-<<<<<<< HEAD
-        self.rdftriples[self.identifier][rdf['type']]= prov['wasDerivedFrom']
-=======
         self.rdftriples[self.identifier][rdf['type']] = prov['wasDerivedFrom']
->>>>>>> branch 'master' of https://github.com/huanjiayang/SWoT.git
         return self.rdftriples
         
                         
