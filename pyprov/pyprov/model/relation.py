@@ -86,7 +86,11 @@ class wasDerivedFrom(Relation):
             self.rdftriples[self.identifier][prov['generation']]=self.generation
         if self.usage is not None:
             self.rdftriples[self.identifier][prov['usage']]=self.usage
+<<<<<<< HEAD
+        self.rdftriples[self.identifier][rdf['type']]= prov['wasDerivedFrom']
+=======
         self.rdftriples[self.identifier][rdf['type']] = prov['wasDerivedFrom']
+>>>>>>> branch 'master' of https://github.com/huanjiayang/SWoT.git
         return self.rdftriples
         
                         
@@ -122,11 +126,11 @@ class wasRevisionOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.newer]['prov:newer']=self.newer
-        self.rdftriples[self.older]['prov:older']=self.older
+        self.rdftriples[self.identifier][prov['newer'] = self.newer
+        self.rdftriples[self.identifier][prov['older'] = self.older
         if self.responsibility is not None:
-            self.rdftriples[self.responsibility]['prov:responsibility']=self.responsibility
-        self.rdftriples['wasRevisionOf']=self.rdftriples
+            self.rdftriples[self.identifier][prov['responsibility']=self.responsibility
+        self.rdftriples[self.identifier][rdf['type']] = prov['wasRevisionOf']
         return self.rdftriples
     
 
@@ -169,13 +173,13 @@ class wasQuotedFrom(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.quote]['prov:quote']=self.quote
-        self.rdftriples[self.quoted]['prov:quoted']=self.quoted
+        self.rdftriples[self.identifier][prov['quote']]=self.quote
+        self.rdftriples[self.identifier][prov[quoted]]=self.quoted
         if self.quoterAgent is not None:
-            self.rdftriples[self.quoterAgent]['prov:quoterAgent']=self.quoterAgent
+            self.rdftriples[self.identifier][prov[quoterAgent]]=self.quoterAgent
         if self.quoterAgent is not None:
-            self.rdftriples[self.quotedAgent]['prov:quotedAgent']=self.quotedAgent
-        self.rdftriples['wasQuotedFrom']=self.rdftriples
+            self.rdftriples[self.identifier][prov[quotedAgent]]=self.quotedAgent
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasQuotedFrom']
         return self.rdftriples
 
 
@@ -203,9 +207,9 @@ class hadOriginalSource(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.entity]['prov:entity']=self.entity
-        self.rdftriples[self.source]['prov:source']=self.source
-        self.rdftriples['hadOriginalSource'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][prov['source']]=self.source
+        self.rdftriples[self.identifier][rdf['type']]= prov['hadOriginalSource']
         return self.rdftriples
 
 class alternateOf(Relation):
@@ -233,9 +237,9 @@ class alternateOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.subject]['prov:subject']=self.subject
-        self.rdftriples[self.alternate]['prov:alternate']=self.alternate
-        self.rdftriples['alternateOf'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['subject']]=self.subject
+        self.rdftriples[self.identifier][prov['alternate']]=self.alternate
+        self.rdftriples[self.identifier][rdf['type']]= prov['alternateOf']
         return self.rdftriples
     
 
@@ -263,9 +267,9 @@ class specializationOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.subject]['prov:subject']=self.subject
-        self.rdftriples[self.specialization]['prov:specialization']=self.specialization
-        self.rdftriples['specializationOf'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['subject']]=self.subject
+        self.rdftriples[self.identifier][prov['specialization']]=self.specialization
+        self.rdftriples[self.identifier][rdf['type']]= prov['specializationOf']
         return self.rdftriples
                
 
@@ -300,11 +304,11 @@ class wasGeneratedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.entity]['prov:entity']=self.entity
-        self.rdftriples[self.activity]['prov:activity']=self.activity
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][prov['activity']]=self.activity
         if self.time is not None:
-            self.rdftriples[self.time]['prov:time']=self.time
-        self.rdftriples['wasGeneratedBy'] = self.rdftriples
+            self.rdftriples[self.identifier][prov[time]]=self.time
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasGeneratedBy']
         return self.rdftriples
 
 class wasInvalidatedBy(Relation):
@@ -336,12 +340,14 @@ class wasInvalidatedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.entity]['prov:entity']=self.entity
-        self.rdftriples[self.activity]['prov:activity']=self.activity
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][prov['activity']]=self.activity
         if self.time is not None:
-            self.rdftriples[self.time]['prov:time']=self.time
-        self.rdftriples['wasInvalidatedBy'] = self.rdftriples
+            self.rdftriples[self.identifier][prov[time]]=self.time
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasInvalidatedBy']
         return self.rdftriples
+    
+    
 
 
 # Entity to Agent relation
@@ -370,9 +376,11 @@ class wasAttributedTo(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.entity]['prov:entity']=self.entity
-        self.rdftriples[self.activity]['prov:agent']=self.agent
-        self.rdftriples['wasAttributedTo'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][prov['agent']]=self.agent
+        if self.time is not None:
+            self.rdftriples[self.identifier][prov[time]]=self.time
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasAttributedTo']
         return self.rdftriples
 
 
@@ -409,9 +417,9 @@ class Used(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.activity]['prov:activity'] = self.activity
-        self.rdftriples[self.entity]['prov:entity'] = self.entity
-        self.rdftriples['Used'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['activity']]=self.activity
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][rdf['type']]=prov['Used']
         return self.rdftriples
     
 
@@ -439,9 +447,9 @@ class wasStartedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.activity]['prov:activity'] = self.activity
-        self.rdftriples[self.entity]['prov:entity'] = self.entity
-        self.rdftriples['wasStartedBy'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['activity']]=self.activity
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasStartedBy']
         return self.rdftriples
     
 
@@ -469,9 +477,9 @@ class wasEndedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.activity]['prov:activity'] = self.activity
-        self.rdftriples[self.entity]['prov:entity'] = self.entity
-        self.rdftriples['wasEndedBy'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['activity']]=self.activity
+        self.rdftriples[self.identifier][prov['entity']]=self.entity
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasEndedBy']
         return self.rdftriples
         
 
@@ -501,9 +509,9 @@ class wasStartedByActivity(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.started]['prov:started'] = self.started
-        self.rdftriples[self.starter]['prov:starter'] = self.starter
-        self.rdftriples['wasStartedByActivity'] = self.rdftriples
+        self.rdftriples[self.identifier][prov['started']]=self.started
+        self.rdftriples[self.identifier][prov['starter']]=self.starter
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasStartedByActivity']
         return self.rdftriples
     
 
@@ -531,9 +539,9 @@ class wasInformedBy(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.informed]['prov:informed'] = self.informed
-        self.rdftriples[self.informant]['prov:informant'] = self.informant
-        self.rdftriples['wasInformedBy']=self.rdftriples
+        self.rdftriples[self.identifier][prov['informed']]=self.informed
+        self.rdftriples[self.identifier][prov['informant']]=self.informant
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasInformedBy']
         return self.rdftriples
 
 # Activity to Agent relation
@@ -562,9 +570,9 @@ class wasAssociatedWith(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.activity]['prov:activity']=self.activity
-        self.rdftriples[self.agent]['prov:agent']=self.agent
-        self.rdftriples['wasAssociatedWith']=self.rdftriples
+        self.rdftriples[self.identifier][prov['activity']]=self.activity
+        self.rdftriples[self.identifier][prov['agent']]=self.agent
+        self.rdftriples[self.identifier][rdf['type']]=prov['wasAssociatedWith']
         return self.rdftriples
 
 #Agent to Agent relation
@@ -593,9 +601,9 @@ class actedOnBehalfOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.surbordinate]['prov:subordinate']=self.subordinate
-        self.rdftriples[self.responsible]['prov:responsible']=self.responsible
-        self.rdftriples['actedOnBehalfof']=self.rdftriples
+        self.rdftriples[self.identifier][prov['subordinate']]=self.activity
+        self.rdftriples[self.identifier][prov['responsible']]=self.responsible
+        self.rdftriples[self.identifier][rdf['type']]=prov['actedOnBehalfOf']
         return self.rdftriples
 
 # Records to Note relation
@@ -618,9 +626,9 @@ class hasAnnotation(Relation):
 
    def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.record]['prov:record']=self.record
-        self.rdftriples[self.note]['prov:note']=self.note
-        self.rdftriples['hasAnnotation']=self.rdftriples
+        self.rdftriples[self.identifier][prov['record']]=self.record
+        self.rdftriples[self.identifier][prov['note']]=self.note
+        self.rdftriples[self.identifier][rdf['type']]=prov['hasAnnotation']
         return self.rdftriples
 
 '''
