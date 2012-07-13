@@ -142,6 +142,7 @@ OS_TASK(APP_taskSampleSensors)
 {
 	vSerial_Init();
 	uint8 *u8String;
+	uint8 testmsg;
 	static enum
     {
         E_SAMPLING_START,
@@ -184,7 +185,8 @@ OS_TASK(APP_taskSampleSensors)
                                          APDU_SENSORDATA_TEMP,
                                          "b",
                                          u8FindMin(u16Temp, 52));
-            *u8String = 1;
+            testmsg = 'a'
+            *u8String = &testmsg;
             vSerial_TxString(u8String);
 
 //            DBG_vPrintf(TRACE_APP_SAMPLE, "APP: Temp Read complete. Value = %d\r\n", u16Temp);
