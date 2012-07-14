@@ -65,6 +65,9 @@
 #include "app_log.h"
 #include "app_timer_driver.h"
 #include "app_led.h"
+#include "serialq.h"
+#include "uart.h"
+#include "serial.h"
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -541,7 +544,9 @@ PRIVATE void vHandleNetworkFormationEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent
 PRIVATE void vHandleNetworkScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sAppEvent)
 {
     /* respond to button presses when in "network" display mode */
-    if (APP_E_EVENT_BUTTON_DOWN == sAppEvent.eType)
+	vSerial_Init();
+	uint8 *u8String;
+	if (APP_E_EVENT_BUTTON_DOWN == sAppEvent.eType)
     {
         if (APP_E_BUTTONS_BUTTON_1 == sAppEvent.sButton.u8Button)
         {
@@ -584,18 +589,24 @@ PRIVATE void vHandleNetworkScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sA
              */
             APP_vDisplaySetSensor(APP_E_SENSOR_TEMP);
             APP_vDisplayUpdate();
+            u8String = 'a';
+            vSerial_TxChar(u8String);
         }
         else if (APP_E_BUTTONS_BUTTON_3 == sAppEvent.sButton.u8Button)
         {
             /* perform select humidity sensors action */
             APP_vDisplaySetSensor(APP_E_SENSOR_HTS);
             APP_vDisplayUpdate();
+            u8String = 'b';
+            vSerial_TxChar(u8String);
         }
         else if (APP_E_BUTTONS_BUTTON_4 == sAppEvent.sButton.u8Button)
         {
             /* perform select humidity sensors action */
             APP_vDisplaySetSensor(APP_E_SENSOR_ALS);
             APP_vDisplayUpdate();
+            u8String = 'c';
+            vSerial_TxChar(u8String);
         }
     }
     vCheckStackEvent(sStackEvent);
