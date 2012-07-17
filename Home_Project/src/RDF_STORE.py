@@ -13,57 +13,139 @@ from rdflib.term import URIRef
 from rdflib import plugin
 from rdflib.store import Store, NO_STORE, VALID_STORE
 from datetime import date, time, datetime
+import json
+import datetime
+from pyprov.model.type import *
+from pyprov.model.relation import *
+from pyprov.model.bundle import *
+
+
+
+
 
 class RDFSTORE:
     ''' Initialization method that creates indexes for triplestore, each index holds a permutation
     of the three triples stored in the graph for easy iteration '''
-    def __init__(self):
+    def __init__(self, configuration=None, identifier=None, createtime=None, person=None):
         self._spo = {}
         self._pos = {}
         self._osp = {}
         
+   
         
         
-    def add(self, (subject,predicate,obj)):
-        ''' Add method permutates subject,object and predicate to match ordering of each index '''
-        self._addToIndex(self._spo, (subject, predicate, obj))
-        self._addToIndex(self._pos, (predicate, obj, subject))
-        self._addToIndex(self._osp, (obj, subject, predicate))
+        
+    def add(self, (sub, pred, obj)):
+        ''' Add method permutates subject,object and predicate to match ordering of each index 
+        (Adds triple to the graph)'''
+        self._addToIndex(self._spo, sub, pred, obj)
+        self._addToIndex(self._pos, pred, obj, sub)
+        self._addToIndex(self._osp, obj, sub, pred)
         
     
-    def RDF_toStore(self,store,sub,pred,obj):
+    def _addToIndex(self,index,a,b,c):
         ''' Add terms to index creating, creating a dictionary and set if terms are not present in index '''
-        if sub not in store: 
-            store[sub] = {pred:set([obj])}
+        if a not in index: 
+            index[a] = {b:set([c])}
         else:
-            if pred not in store[sub]: 
-                store[sub][pred] = set([obj])
-            else: store[sub][pred].add(obj)
+            if b not in index[a]: 
+                index[a][b] = set([c])
+            else: index[a][b].add(c)
+            
+    
             
 
-#Load triples into graph
-    def load(self, filename, reader):
-        mystore = plugin.get('Sleepycat', Store)('mystore')
-        mystore.open("ay_folder", create=False)
-        mystore = open("ay_folder", "wb")
+
+    def triples(self, (sub, pred, obj)):
+        """
+        Generator over the triple store.
+        Returns triples that match the given triple pattern. 
+        """
+        # check which terms are present in order to use the correct index:
+        try:
+            if sub != None: 
+                if pred != None:
+                    # sub pred obj
+                    if obj != None:
+                        if obj in self._spo[sub][pred]: yield (sub, pred, obj)
+                    # sub pred None
+                    else:
+                        for retObj in self._spo[sub][pred]: yield (sub, pred, retObj)
+                else:
+                    # sub None obj
+                    if obj != None:
+                        for retPred in self._osp[obj][sub]: yield (sub, retPred, obj)
+                    # sub None None
+                    else:
+                        for retPred, objSet in self._spo[sub].items():
+                            for retObj in objSet:
+                                yield (sub, retPred, retObj)
+            else:
+                if pred != None:
+                    # None pred obj
+                    if obj != None:
+                        for retSub in self._pos[pred][obj]:
+                            yield (retSub, pred, obj)
+                    # None pred None
+                    else:
+                        for retObj, subSet in self._pos[pred].items():
+                            for retSub in subSet:
+                                yield (retSub, pred, retObj)
+                else:
+                    # None None obj
+                    if obj != None:
+                        for retSub, predSet in self._osp[obj].items():
+                            for retPred in predSet:
+                                yield (retSub, retPred, obj)
+                    # None None None
+                    else:
+                        for retSub, predSet in self._spo.items():
+                            for retPred, objSet in predSet.items():
+                                for retObj in objSet:
+                                    yield (retSub, retPred, retObj)
+        # KeyErrors occur if a query term wasn't in the index, so we yield nothing:
+        except KeyError:
+            pass
+            
+    def value(self, sub=None, pred=None, obj=None):
+        for retSub, retPred, retObj in self.triples((sub, pred, obj)):
+            if sub is None: return retSub
+            if pred is None: return retPred
+            if obj is None: return retObj
+            break
+        return None
+    
+    #Load triples into graph
+    def load(self, store, load):
+        store = plugin.get('Sleepycat', rdflib.store.Store)('rdfstore')
+        store.open("ay_folder", create=False)
+        store = open(store, "rb")
         for line in file:
             file.write(line + '\n')
-        reader = mystore.reader(file)
-        for sub, pred, obj in mystore:
+        load = store.load(store)
+        for sub, pred, obj in load:
             sub = unicode(sub, "UTF-8")
             pred = unicode(pred, "UTF-8")
             obj = unicode(obj, "UTF-8")
             self.add((sub, pred, obj))
-            mystore.close()
+            store.close()
             
 #Save triples in graph
-    def save(self, filename):
-        mystore = open(filename="ay_folder", "wb")
-        writer = mystore.writer(mystore)
-        for sub, pred, obj in self.triples((None, None, None)):
+    def save(self, store):
+        self.graph.serialize(store, format='n3')
+        store = open(store, "wb")
+        writer = store.writer(store)
+        for sub, pred, obj in self.rdftriples((None, None, None)):
             writer.writerow([sub.encode("UTF-8"), pred.encode("UTF-8"), \
             obj.encode("UTF-8")])
-            mystore.close()         
+            store.close()  
+ 
+#Convert provnamespace to rdflib uriref           
+def PROVQName_URIRef(provqname,PROVQname):
+    if isinstance(provqname,PROVQname):
+        return rdflib.URIRef(provqname.name)
+    else:
+        return provqname       
         
         
         
