@@ -23,6 +23,9 @@ from pyprov.model.bundle import *
 
 
 
+from pyprov.model.type import *
+
+
 class RDFSTORE:
     ''' Initialization method that creates indexes for triplestore, each index holds a permutation
     of the three triples stored in the graph for easy iteration '''
@@ -148,5 +151,9 @@ def PROVQName_URIRef(provqname,PROVQname):
         return provqname       
         
         
-        
+def PROVQName_URIRef(provqname):
+    if isinstance(provqname,PROVQname):
+        return rdflib.URIRef(provqname.name)
+    else:
+        return provqname
         
