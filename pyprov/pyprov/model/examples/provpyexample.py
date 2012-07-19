@@ -80,6 +80,17 @@ pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(examplegraph.to_provJSON())
 
 
+testdict = e1._toRDF()
+for sub in testdict.keys():
+    print str(sub)
+    for pred in testdict[sub].keys():
+        print str(pred)
+        if isinstance(testdict[sub][pred],list):
+            for obj in testdict[sub][pred]:
+                print 'object: ' + str(obj) + '     '
+        else:        
+            print str(testdict[sub][pred])
+        
 
 
 #f = open('C:/exampleresult.json', 'w')
