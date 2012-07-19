@@ -45,6 +45,7 @@ sensor_graph=RDFSTORE()
 sensor_graph.add((sensornetworkURI, RDF.type, S_Network))
 sensor_graph.add((sensornetworkURI, DC['create'], createtime))
 sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], person))
+sensor_graph.add((person, FOAF["name"], Literal("Agent")))
 
 
 #print(sensor_graph.triples(('sensornetworkURI', 'wasGeneratedBy',None)))
@@ -53,4 +54,7 @@ sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], person))
 
 #sensor_graph.value('sensornetworkURI','wasGeneratedBy',None)
 
-print sensor_graph.serialize(format='n3')
+print sensor_graph.serializess(format='n3')
+
+
+

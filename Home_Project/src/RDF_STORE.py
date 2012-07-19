@@ -21,9 +21,19 @@ from pyprov.model.bundle import *
 
 
 
+V, T = 0, 1
 
 
-from pyprov.model.type import *
+
+URI = 'uri:uuid:sensnetworkayodele001'
+DC = Namespace('http://purl.org/dc/elements/1.1/')
+FOAF = Namespace('http://xmlns.com/foaf/0.1/')
+HS = Namespace('http://homesensor.com/#')
+RDFS = Namespace('"http://www.w3.org/2000/01/rdf-schema#')
+prov = Namespace("http://www.w3.org/ns/prov-dm/")
+LIT = 'tag:infomesh.net,2001-08-07:Literal'
+
+
 
 
 class RDFSTORE:
@@ -142,18 +152,36 @@ class RDFSTORE:
             writer.writerow([sub.encode("UTF-8"), pred.encode("UTF-8"), \
             obj.encode("UTF-8")])
             store.close()  
+            
+            
+#This outputs the store as Notation3 (and N-Triples)       
+def n3(self,rdftriples):
+    n3 = ''
+    for triple in self.data:
+        for term in triple:
+            if term[T] == URI:
+                n3 += '<' + term[V] + '>'
+            elif term[T] == FOAF:
+                n3 += '_:' + term[V]
+            elif term[T] == LIT:
+                n3 += '"' + term[V] + '"'
+            elif term[T] == HS:
+                n3 += '<' + term[V] + '>'
+                n3 += ' '
+                n3 += '.\n'
+#return n3
+
+
+
+
+
+
  
-#Convert provnamespace to rdflib uriref           
+#Convert PROVnamespace to RDFlib URIREF           
 def PROVQName_URIRef(provqname,PROVQname):
     if isinstance(provqname,PROVQname):
         return rdflib.URIRef(provqname.name)
     else:
         return provqname       
         
-        
-def PROVQName_URIRef(provqname):
-    if isinstance(provqname,PROVQname):
-        return rdflib.URIRef(provqname.name)
-    else:
-        return provqname
-        
+
