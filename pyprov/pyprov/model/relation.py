@@ -621,7 +621,7 @@ class hasAnnotation(Relation):
         self._provcontainer['hasAnnotation']=self._json
         return self._provcontainer
 
-   def _toRDF(self):
+    def _toRDF(self):
         Relation._toRDF(self)
         self.rdftriples[self.identifier][prov['record']]=self.record.identifier
         self.rdftriples[self.identifier][prov['note']]=self.note.identifier

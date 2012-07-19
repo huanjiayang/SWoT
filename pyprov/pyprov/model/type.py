@@ -288,9 +288,9 @@ class Activity(PROVType):
     def to_RDF(self):
         PROVType.to_RDF(self)
         if self.starttime is not None:
-            self.rdftriples[self.identifier][prov['starttime'] = self.starttime
+            self.rdftriples[self.identifier][prov['starttime']] = self.starttime
         if self.endtime is not None:
-            self.rdftriples[self.identifier][prov['endtime'] = self.endtime
+            self.rdftriples[self.identifier][prov['endtime']] = self.endtime
         self.rdftriples[self.identifier][rdf['type']] = prov['activity']
         return self.rdftriples
 
