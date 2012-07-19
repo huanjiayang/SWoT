@@ -1,3 +1,9 @@
+v1.0.3, 19/07/2012 -- Bug fixes and Minor update release
+* Bug fixes.
+
+v1.0.2, 12/07/2012 -- Minor update release
+* Added RDF triples export function for PROV terms.
+
 v1.0.1, 10/06/2012 -- Minor update release
 * Changes to comply with 3rd work draft of PROV data model specification.
 

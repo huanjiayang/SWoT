@@ -415,6 +415,6 @@ class Account(Record,Bundle):
         Bundle._toRDF(self)
         self.rdftriples[self.identifier] = {}
         if attributes is not None:
-        for attr in self.attributes.keys():
-        self.rdftriples[self.identifier][attr] = self.attributes[attr]
+            for attr in self.attributes.keys():
+                self.rdftriples[self.identifier][attr] = self.attributes[attr]
         return self.rdftriples
