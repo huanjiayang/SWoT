@@ -17,8 +17,9 @@ import pyprov
 # Define Namespace
 hs = Namespace("http://homesensor.com#")
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
-dc = Namespace('http://purl.org/dc/elements/1.1/')
+DC = Namespace('http://purl.org/dc/elements/1.1/')
 FOAF = Namespace("foaf","http://xmlns.com/foaf/0.1/")
+RDF = rdflib.Namespace("http://www.w3.org/TR/rdf-schema/#")
 
 S_Network = hs['SensorNetwork']
 
@@ -56,6 +57,8 @@ Sensor = URIRef("http://homsensor.com/Sensor/")
 
 graph=Graph(store='Sleepycat',identifier='test')
 graph.open("provfolder", create=False)
+sensor_graph=Graph(store='Sleepycat',identifier='store')
+person = 'ayo001'
 
 
 
@@ -269,11 +272,17 @@ class WSNPROV:
             
      
 #Function to convert sub,pred,obj to URIRef data type     
-    def _toPROVRDF(self):
+    def _toURIRef(self,sensor_graph):
+        
+        sensor_graph.add((sensornetworkURI, RDF.type, S_Network))
+        sensor_graph.add((sensornetworkURI, DC['create'], createtime))
+        sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], S_Network))
+        sensor_graph.add((person, FOAF["name"], Literal("Agent")))
+
         
         
 #Convert PROVnamespace to RDFlib URIREF           
-     def PROVQName_URIRef(self,provqname,PROVQname):
+    def PROVQName_URIRef(self,provqname,PROVQname):
          if isinstance(provqname,PROVQname):
             return rdflib.URIRef(provqname.name)
          else:
@@ -287,6 +296,7 @@ class WSNPROV:
         store = open(store, "rb")
         for line in file:
             file.write(line + '\n')
+            file.write(sensor_graph.serialize(format="n3"))
         load = store.load(store)
         for sub, pred, obj in load:
             sub = unicode(sub, "UTF-8")
