@@ -272,12 +272,24 @@ class WSNPROV:
             
      
 #Function to convert sub,pred,obj to URIRef data type     
-    def _toURIRef(self,sensor_graph):
+    def _toURIRef(self,sensor_graph,e1,ag0,a0,g0,d0,f0,w0,s0,b0):
+        
+        sensor_graph = rdflib()
+        tripledict = b0._toRDF()
+        for obj in tripledict.keys():
+            tripledict = (URIRef(t) for t in tripledict)
+            sensor_graph.add(tripledict)
+            
+            
+        
+        
         
         sensor_graph.add((sensornetworkURI, RDF.type, S_Network))
         sensor_graph.add((sensornetworkURI, DC['create'], createtime))
         sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], S_Network))
         sensor_graph.add((person, FOAF["name"], Literal("Agent")))
+        
+          
 
         
         
