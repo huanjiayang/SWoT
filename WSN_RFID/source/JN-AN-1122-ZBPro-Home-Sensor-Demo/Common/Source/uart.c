@@ -3,10 +3,15 @@
 /****************************************************************************/
 #include <jendefs.h>
 #include <AppHardwareApi.h>
+#include <os.h>
+#include "os_gen.h"
+
 
 #include "serial.h"
 #include "serialq.h"
 #include "uart.h"
+#include "ledcontrol.h"
+#include "app_led.h"
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -162,16 +167,16 @@ PUBLIC void vUART_RxCharISR(uint8 u8RxChar)
 #if UART_JENOS
 OS_ISR(UART_vIsr0)
 {
-	/* Have we opened UART0 ? */
-	if (Uart_Opened[0])
-	{
+//	/* Have we opened UART0 ? */
+//	if (Uart_Opened[0])
+//	{
 		uint8 u8IntStatus;
 
 		u8IntStatus = u8AHI_UartReadInterruptStatus(E_AHI_UART_0);
 
 		/* Pass on to full interrupt routine */
 		UART_vInterrupt(E_AHI_DEVICE_UART0, ((u8IntStatus >> 1) & 0x7));
-	}
+//	}
 }
 #endif
 
@@ -184,17 +189,17 @@ OS_ISR(UART_vIsr0)
 OS_ISR(UART_vIsr1)
 {
 	/* Have we opened UART1 ? */
-	if (Uart_Opened[1])
-	{
+//	if (Uart_Opened[1])
+//	{
 		uint8 u8IntStatus;
 
 		u8IntStatus = u8AHI_UartReadInterruptStatus(E_AHI_UART_1);
 
 
 		/* Pass on to full interrupt routine */
-		UART_vInterrupt(E_AHI_DEVICE_UART1, ((u8IntStatus >> 1) & 0x7));
+		UART_vInterrupt(E_AHI_DEVICE_UART1, (u8IntStatus >> 1) & 0x7);
 
-	}
+//	}
 }
 #endif
 
@@ -216,18 +221,25 @@ OS_ISR(UART_vIsr1)
  ****************************************************************************/
 PRIVATE void UART_vInterrupt(uint32 u32Device, uint32 u32ItemBitmap)
 {
-	uint8 u8Uart = 0xFF;
-
+	uint8 u8Uart;
+	uint8 rxChar;
+	APP_vLedsInitialise();
 	if (u32Device == E_AHI_DEVICE_UART0) u8Uart = E_AHI_UART_0;
 	if (u32Device == E_AHI_DEVICE_UART1) u8Uart = E_AHI_UART_1;
 
         if ((u32ItemBitmap & 0x000000FF) == E_AHI_UART_INT_RXDATA)
         {
-            vUART_RxCharISR(u8AHI_UartReadData(u8Uart));
+//        	while (u8AHI_UartReadLineStatus(u8Uart) & E_AHI_UART_LS_DR)
+        	rxChar = u8AHI_UartReadData(u8Uart);
+        	vUART_RxCharISR(rxChar);
+        	vAHI_UartWriteData(u8Uart, rxChar);
+
         }
-        else if (u32ItemBitmap == E_AHI_UART_INT_TX)
+        else if ((u32ItemBitmap & 0xFF) == E_AHI_UART_INT_TX)
         {
+        	APP_vLedSet(1, TRUE);
             vUART_TxCharISR(u8Uart);
+
         }
 }
 

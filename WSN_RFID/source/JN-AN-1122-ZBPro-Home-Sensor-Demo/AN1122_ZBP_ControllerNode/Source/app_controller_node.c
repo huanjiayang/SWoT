@@ -69,6 +69,7 @@
 #include "uart.h"
 #include "serial.h"
 
+
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
@@ -167,6 +168,7 @@ PUBLIC void APP_vInitialiseControllerNode(void)
     /* Always initialise any peripherals used by the application */
     APP_vDisplayInitialise();
     APP_vLedsInitialise();
+
 
     /* If the device state has been restored from flash, re-start the stack
      * and set the app running again */
@@ -543,10 +545,11 @@ PRIVATE void vHandleNetworkFormationEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent
  ****************************************************************************/
 PRIVATE void vHandleNetworkScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sAppEvent)
 {
-    /* respond to button presses when in "network" display mode */
 	vSerial_Init();
-	uint8 *u8String;
-	if (APP_E_EVENT_BUTTON_DOWN == sAppEvent.eType)
+	uint8 *u8Char;
+//	uint8 *u8String;
+    /* respond to button presses when in "network" display mode */
+    if (APP_E_EVENT_BUTTON_DOWN == sAppEvent.eType)
     {
         if (APP_E_BUTTONS_BUTTON_1 == sAppEvent.sButton.u8Button)
         {
@@ -589,24 +592,24 @@ PRIVATE void vHandleNetworkScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sA
              */
             APP_vDisplaySetSensor(APP_E_SENSOR_TEMP);
             APP_vDisplayUpdate();
-            u8String = 'a';
-            vSerial_TxChar(u8String);
+            u8Char = 'a';
+            vSerial_TxChar(u8Char);
         }
         else if (APP_E_BUTTONS_BUTTON_3 == sAppEvent.sButton.u8Button)
         {
             /* perform select humidity sensors action */
             APP_vDisplaySetSensor(APP_E_SENSOR_HTS);
             APP_vDisplayUpdate();
-            u8String = 'b';
-            vSerial_TxChar(u8String);
+            u8Char = 'b';
+            vSerial_TxChar(u8Char);
         }
         else if (APP_E_BUTTONS_BUTTON_4 == sAppEvent.sButton.u8Button)
         {
             /* perform select humidity sensors action */
             APP_vDisplaySetSensor(APP_E_SENSOR_ALS);
             APP_vDisplayUpdate();
-            u8String = 'c';
-            vSerial_TxChar(u8String);
+            u8Char = 'c';
+            vSerial_TxChar(u8Char);
         }
     }
     vCheckStackEvent(sStackEvent);

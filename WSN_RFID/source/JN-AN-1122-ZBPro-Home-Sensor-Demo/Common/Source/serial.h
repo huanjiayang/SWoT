@@ -21,7 +21,7 @@ extern "C" {
 /***        Type Definitions                                              ***/
 /****************************************************************************/
 /** Serial configuration */
-#define Serial_UART 	E_AHI_UART_0			/**< Uart to use */
+#define Serial_UART 	E_AHI_UART_1			/**< Uart to use */
 #define Serial_BAUD		115200					/**< Baud rate */
 #define Serial_EVEN		FALSE					/**< Even parity */
 #define Serial_PARITY	FALSE					/**< Enable parity */

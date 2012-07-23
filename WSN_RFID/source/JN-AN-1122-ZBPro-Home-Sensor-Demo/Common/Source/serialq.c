@@ -5,6 +5,8 @@
 /****************************************************************************/
 #include <jendefs.h>
 #include <AppHardwareApi.h>
+#include <os.h>
+#include "os_gen.h"
 
 //#include "config.h"
 #include "serialq.h"

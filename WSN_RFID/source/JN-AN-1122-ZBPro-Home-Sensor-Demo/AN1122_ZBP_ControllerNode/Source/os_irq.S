@@ -6,7 +6,7 @@
 #
 # COMPONENT:      os_irq.s
 #
-# DATE:           Thu Jul 12 11:00:34 2012
+# DATE:           Tue Jul 17 12:38:40 2012
 #
 # AUTHOR:         Jennic RTOS Configuration Tool
 #
@@ -82,7 +82,7 @@ _os_PIC_ChannelPriorities:
     .byte 0
     .byte 7
     .byte 0
-    .byte 0
+    .byte 14
     .byte 0
     .byte 0
     .byte 0
@@ -133,7 +133,7 @@ _os_PIC_SwVectTable:
     .word _os_UnclaimedInterrupt_W
     .word _os_UnclaimedInterrupt_W
     .word _os_UnclaimedInterrupt_W
-    .word _os_UnclaimedInterrupt_W
+    .word _os_UART_vIsr1_W
     .word _os_APP_isrTickTimer_W
 
     .section .text,"ax"
@@ -161,6 +161,19 @@ _os_zps_isrMAC_W:
     b.sw   0(r1),r9
     b.sw   4(r1),r5
     b.ori  r4,r0,_os_vzps_isrMAC
+    b.ori  r5,r0,_os_vControlledInterrupt
+    b.jal  _os_CFunc_W
+    b.lwz  r9,0(r1)
+    b.lwz  r5,4(r1)
+    b.addi r1,r1,8
+    b.ja   _os_ExternalException_R
+
+    .extern _os_vUART_vIsr1
+_os_UART_vIsr1_W:
+    b.addi r1,r1,-8
+    b.sw   0(r1),r9
+    b.sw   4(r1),r5
+    b.ori  r4,r0,_os_vUART_vIsr1
     b.ori  r5,r0,_os_vControlledInterrupt
     b.jal  _os_CFunc_W
     b.lwz  r9,0(r1)
