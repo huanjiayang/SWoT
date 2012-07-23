@@ -178,7 +178,7 @@ def n3(self,rdftriples):
 
  
 #Convert PROVnamespace to RDFlib URIREF           
-def PROVQName_URIRef(provqname,PROVQname):
+def PROVQName_URIRef(provqname):
     if isinstance(provqname,PROVQname):
         return rdflib.URIRef(provqname.name)
     else:

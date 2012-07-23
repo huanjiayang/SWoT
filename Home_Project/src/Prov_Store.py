@@ -85,6 +85,8 @@ class WSNPROV:
         e1 = Entity(FOAF['Foo'],attributes=tripledict)
         
         self.provgraph.add(e0,w0,a0,d0,f0,s0,b0,g0,e1)
+        
+        
     
     def convertDataToPROV(self,rawdata):
         pass
@@ -169,106 +171,36 @@ class WSNPROV:
         
         return tripledict
  
-    def _ToTriples(self,attributes=None,identifier=None,e1,ag0,a0,g0,d0,f0,w0,s0,b0):
-           
-        tripledict = e1._toRDF()
+
+    def _ToTriples(self,p0):   
+        tripledict = p0._toRDF()
+        rdftriplesdict = {}
         for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
-        
-        tripledict = ag0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
+            sub_rdfuri = self.PROVQName_URIRef(sub)
+            rdftriplesdict[sub_rdfuri] = {}
             
-        tripledict = a0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
             for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
+                pred_rdfuri = self.PROVQName_URIRef(pred)
+                if isinstance(tripledict[sub][pred],list):
+                    rdftriplesdict[sub_rdfuri][pred_rdfuri] = []
+                    for obj in tripledict[sub][pred]:
+                        obj_rdfuri = self.PROVQName_URIRef(obj)
+                        rdftriplesdict[sub_rdfuri][pred_rdfuri].append(obj_rdfuri)
+                        self.storename.add((sub_rdfrui,pred_rdfuri,obj_rdfuri))
+                else:        
+                    obj_rdfuri = self.PROVQName_URIRef(tripledict[sub][pred])
+                    rdftriplesdict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
+                    self.storename.add((sub_rdfrui,pred_rdfuri,obj_rdfuri))
+                    
+                    
+        return rdftriplesdict
+
             
-        tripledict = g0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
-            
-        tripledict = d0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
-            
-        tripledict = f0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
-            
-        tripledict = w0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
-            
-        tripledict = s0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
-            
-        tripledict = b0._toRDF()
-        for sub in tripledict.keys():
-            print str(sub)
-            for pred in tripledict[sub].keys():
-                print str(pred)
-        if isinstance(tripledict[sub][pred],list):
-            for obj in tripledict[sub][pred]:
-                print 'object: ' + str(obj) + '     '
-        else:        
-            print str(tripledict[sub][pred])
+    def PROVQName_URIRef(provqname):
+        if isinstance(provqname,PROVQname):
+            return rdflib.URIRef(provqname.name)
+        else:
+            return provqname             
             
      
 #Function to convert sub,pred,obj to URIRef data type     
