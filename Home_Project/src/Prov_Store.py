@@ -103,18 +103,18 @@ class WSNPROV:
         
         self.provgraph.add(e0,w0,a0,d0,f0,s0,b0,g0,e1)
         
-
-
-
-
-
   
 # pyprov instances of prov relations to RDF triples
-class Store(WSNPROV):
-    def __init__(self,provgraph):
-        WSNPROV.__init__(self)
+class Store():
     
-
+    def __init__(self):
+        self.sensor_graph = Graph()
+    
+    def addPROVInstance(self,p0):
+        rdftriplesdict = self._ToTriples(p0)
+        
+    
+    
     def _ToTriples(self,p0):   
         tripledict = p0._toRDF()
         rdftriplesdict = {}
@@ -129,16 +129,15 @@ class Store(WSNPROV):
                     for obj in tripledict[sub][pred]:
                         obj_rdfuri = self.PROVQName_URIRef(obj)
                         rdftriplesdict[sub_rdfuri][pred_rdfuri].append(obj_rdfuri)
-                        self.storename.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
+                        #self.storename.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
+                        
                 else:        
                     obj_rdfuri = self.PROVQName_URIRef(tripledict[sub][pred])
                     rdftriplesdict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
-                    self.store.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
+                    #self.store.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))  
                     
-                    sensor_graph._ToTriples(a0)
-                    sensor_graph._ToTriples(b0)   
           
-                return rdftriplesdict
+        return rdftriplesdict
 
 #Convert PROV URIREF to RDFlib URIREF            
     def PROVQName_URIRef(self,provqname):
@@ -177,27 +176,32 @@ class Store(WSNPROV):
             store.close()  
             
             
-if __name__ == "__main__":
-    graph = Graph()
-    graph.add(("blade_runner", "name", "Blade Runner"))
-    graph.add(("blade_runner", "name", "Blade Runner"))
-    graph.add(("blade_runner", "release_date", "June 25, 1982"))
-    graph.add(("blade_runner", "directed_by", "Ridley Scott"))
-    
-    print list(graph.triples((None, None, None)))
-    print list(graph.triples(("blade_runner", None, None)))
-    print list(graph.triples(("blade_runner", "name", None)))
-    print list(graph.triples(("blade_runner", "name", "Blade Runner")))
-    print list(graph.triples(("blade_runner", None, "Blade Runner")))
-    print list(graph.triples((None, "name", "Blade Runner")))
-    print list(graph.triples((None, None, "Blade Runner")))
 
-    print list(graph.triples(("foo", "name", "Blade Runner")))
-    print list(graph.triples(("blade_runner", "foo", "Blade Runner")))
-    print list(graph.triples(("blade_runner", "name", "foo")))
+graph = Graph()
+graph.add(("blade_runner", "name", "Blade Runner"))
+graph.add(("blade_runner", "name", "Blade Runner"))
+graph.add(("blade_runner", "release_date", "June 25, 1982"))
+graph.add(("blade_runner", "directed_by", "Ridley Scott"))
+
+print list(graph.triples((None, None, None)))
+print list(graph.triples(("blade_runner", None, None)))
+print list(graph.triples(("blade_runner", "name", None)))
+print list(graph.triples(("blade_runner", "name", "Blade Runner")))
+print list(graph.triples(("blade_runner", None, "Blade Runner")))
+print list(graph.triples((None, "name", "Blade Runner")))
+print list(graph.triples((None, None, "Blade Runner")))
+
+print list(graph.triples(("foo", "name", "Blade Runner")))
+print list(graph.triples(("blade_runner", "foo", "Blade Runner")))
+print list(graph.triples(("blade_runner", "name", "foo")))
     
     
-            
+a = Store()
+
+a.addPROVInstance(e0)
+a.addPROVInstance(w0)
+
+# print out a.sensor_graph
 
         
         
