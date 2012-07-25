@@ -6,7 +6,7 @@
 #
 # COMPONENT:      os_irq_illegalinstruction.s
 #
-# DATE:           Thu Jul 12 11:00:34 2012
+# DATE:           Tue Jul 17 12:38:40 2012
 #
 # AUTHOR:         Jennic RTOS Configuration Tool
 #
