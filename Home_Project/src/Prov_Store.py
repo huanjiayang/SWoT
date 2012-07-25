@@ -5,13 +5,13 @@ from rdflib.namespace import Namespace
 from rdflib.term import Literal
 from rdflib.term import URIRef
 from rdflib import plugin
+from rdflib import RDF
 from rdflib.store import Store, NO_STORE, VALID_STORE
 from datetime import date, time, datetime
 from pyprov.model.type import *
 from pyprov.model.relation import *
 from pyprov.model.bundle import *
 import pyprov
-
 
 
 # Define Namespace
@@ -44,10 +44,7 @@ createtime = 'datetime...'
 S_Network = URIRef("http://homesensor.com/")
 Readings = hs['Reading']
 
-Communication = hs("Communication")
-Discovery = hs("discovery")
-S_Node = hs("S_Node")
-Sensor = hs("Sensor")
+
 
 Communication = URIRef("http://homesensor.com/Activity/")
 Discovery = URIRef("http://homesensor.com/Activity/")
@@ -55,10 +52,27 @@ S_Node = URIRef("http://homesensor.com/S_node/")
 Sensor = URIRef("http://homsensor.com/Sensor/")
 
 
-graph=Graph(store='Sleepycat',identifier='test')
-graph.open("provfolder", create=False)
-sensor_graph=Graph(store='Sleepycat',identifier='store')
+sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
+
+sensor_graph.open("provfolder", create=False)
 person = 'ayo001'
+
+tripledict = {}
+starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
+a1 = "starter"
+a2 =   "started"
+ag0 = Agent(sensornetworkURI)
+a0 = Activity("a0",starttime=starttime,attributes=tripledict)
+e0 = Entity(identifier="e0")
+e1 = Entity(FOAF['Foo'],attributes=tripledict)
+g0 = wasGeneratedBy(e0,a0,identifier="g0",time=None,attributes=tripledict)
+u0 = Used(a0,e1,identifier="u0",time=None,attributes=tripledict)
+d0 = wasDerivedFrom(e0, e1, activity=a0,generation=g0,usage=u0,attributes=None)
+f0 = wasGeneratedBy(e0,g0,time=None,attributes=None)
+w0 = wasAssociatedWith(ag0,a0,identifier="w0",attributes=tripledict)
+s0 = wasStartedByActivity(a0,a1,a2,attributes=None)
+b0 = wasStartedBy(e0,a0,identifier="b0",attributes=None)
+
 
 
 
@@ -67,7 +81,10 @@ class WSNPROV:
     def __init__(self):
         self.provgraph = PROVContainer()
         
-    def addNetwork(self,sensornetworkURI,createtime,person,wasDerivedFrom,wasGeneratedBy):
+        
+       
+        
+    def addNetwork(self,sensornetworkURI,createtime,person):
 #        graph.add((sensornetworkURI, RDF.type, S_Network))
 #        graph.add((sensornetworkURI, dcterms['create'], createtime))
 #        graph.add((sensornetworkURI, prov['wasGeneratedBy'], person))
@@ -86,91 +103,17 @@ class WSNPROV:
         
         self.provgraph.add(e0,w0,a0,d0,f0,s0,b0,g0,e1)
         
-        
+
+
+
+
+
+  
+# pyprov instances of prov relations to RDF triples
+class Store(WSNPROV):
+    def __init__(self,provgraph):
+        WSNPROV.__init__(self)
     
-    def convertDataToPROV(self,rawdata):
-        pass
-    
-    
-    def createWGB(self,Agent=None,Activity,Entity,identifier=None,time=None,attributes=None,wasGeneratedBy):
-        """Define WGB relation with self as context"""
-        wGB = wasGeneratedBy(Activity,Entity,identifier,time,attributes)
-        
-        attrdict = {}
-        return wGB
-   
-    def createWAW(self,identifier=None,Agent,Activity,attributes,wasAssociatedWith):
-        """Define WAW relation with self as context"""
-        wAW = wasAssociatedWith(Agent,Activity,Entity,identifier)
-        return wAW
-    
-    def createWSBA(self,identifier=None,started,starter,attributes,wasStartedByActivity):
-        """Define WSBA relation with self as context"""
-        wSBA = wasStartedByActivity(Activity,identifier,started,starter)
-        a1 = starter
-        a2 = started
-        return wSBA
-    
-    def createWSB(self,identifier=None,Activity=None,Entity=None,time=None,attributes=None,wasStartedBy):
-        """Define WSB relation with self as context"""
-        wSB = wasStartedBy(Agent,Activity,Entity,identifier,time,attributes)
-        return wSB
-    
-    def createdAOBO(self,Agent2,Agent1,Activity,identifier,attributes,actedOnBehalfOf,responsible):
-        """Define AOBO relation with self as context"""
-        aOBO = actedOnBehalfOf(Agent2,Agent1,Activity,identifier,attributes) 
-        ag1 = Agent1
-        ag2 = Agent2
-        URIRef = Activity
-        rdf.type = actedOnBehalfOf
-        Literal  = identifier
-        return aOBO
-    
-    def createdWAT(self,Entity,Agent,identifier=None,attributes,wasAttributedTo):
-        """Define WAT relation with self as context"""
-        wAT = wasAttributedTo(Agent,Entity,identifier=None,attributes)
-        return wAT
-    
-    def createdWDF(self,Activity,identifier=None,Entity1,Entity2,wasDerivedFrom):
-        """Define WDF relation with self as context"""
-        wDF = wasDerivedFrom(Agent,Activity,Entity1,Entity2,identifier)
-        e1 = Entity1
-        e2 = Entity2
-        return wDF
-    
-    
-    def createEntity(self,attributes=None,identifier=None):
-        
-        pass
-    
-    def createActivity(self, identifier=None, starttime, endtime, attributes=None):
-        
-        starttime = starttime
-        endtime = endtime
-        pass
-    
-    def createAgent(self,identifier=None,attributes=None):
-        pass
-    
-    def _toRDF(self):
-        
-        tripledict = {'subject01' : {'predicate01_01' : 'object01_01',},
-                       
-                      'subject02' : {'pred02_01' : 'obj02_01'}}
-        return tripledict
-    
-    def Prov_toRDF(self):
-        
-        tripledict = {'sensornetworkURI' : {'wasGeneratedBy' : 'S_Network',
-                                            'wasAssociatedWith' : 'S_Network',
-                                            'actedOnbehalfOf' : 'S_Network'},
-                                             
-                      'sensornode1URI' : {'pred02_01' : 'obj02_01'},
-                      'sensortemp1URI' : {'pred02_01' : 'obj02_01'},
-                      'sensorlight1URI' : {'pred02_01' : 'obj02_01'}}
-        
-        return tripledict
- 
 
     def _ToTriples(self,p0):   
         tripledict = p0._toRDF()
@@ -186,61 +129,35 @@ class WSNPROV:
                     for obj in tripledict[sub][pred]:
                         obj_rdfuri = self.PROVQName_URIRef(obj)
                         rdftriplesdict[sub_rdfuri][pred_rdfuri].append(obj_rdfuri)
-                        self.storename.add((sub_rdfrui,pred_rdfuri,obj_rdfuri))
+                        self.storename.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
                 else:        
                     obj_rdfuri = self.PROVQName_URIRef(tripledict[sub][pred])
                     rdftriplesdict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
-                    self.storename.add((sub_rdfrui,pred_rdfuri,obj_rdfuri))
+                    self.store.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
                     
-                    
-        return rdftriplesdict
+                    sensor_graph._ToTriples(a0)
+                    sensor_graph._ToTriples(b0)   
+          
+                return rdftriplesdict
 
-            
-    def PROVQName_URIRef(provqname):
+#Convert PROV URIREF to RDFlib URIREF            
+    def PROVQName_URIRef(self,provqname):
         if isinstance(provqname,PROVQname):
             return rdflib.URIRef(provqname.name)
         else:
             return provqname             
             
-     
-#Function to convert sub,pred,obj to URIRef data type     
-    def _toURIRef(self,sensor_graph,e1,ag0,a0,g0,d0,f0,w0,s0,b0):
-        
-        sensor_graph = rdflib()
-        tripledict = b0._toRDF()
-        for obj in tripledict.keys():
-            tripledict = (URIRef(t) for t in tripledict)
-            sensor_graph.add(tripledict)
-            
-            
-        
-        
-        
-        sensor_graph.add((sensornetworkURI, RDF.type, S_Network))
-        sensor_graph.add((sensornetworkURI, DC['create'], createtime))
-        sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], S_Network))
-        sensor_graph.add((person, FOAF["name"], Literal("Agent")))
-        
-          
 
-        
-        
-#Convert PROVnamespace to RDFlib URIREF           
-    def PROVQName_URIRef(self,provqname,PROVQname):
-         if isinstance(provqname,PROVQname):
-            return rdflib.URIRef(provqname.name)
-         else:
-          return provqname       
-    
-    
-    #Load triples into graph
-    def load(self, store, load):
+            
+               
+#Add triples into store
+    def load(self,store,(sub, pred, obj)):
         store = plugin.get('Sleepycat', rdflib.store.Store)('rdfstore')
         store.open("ay_folder", create=False)
         store = open(store, "rb")
-        for line in file:
-            file.write(line + '\n')
-            file.write(sensor_graph.serialize(format="n3"))
+        #for line in file:
+        #file.write(line + '\n')
+        file.write(graph.serialize(format="n3"))
         load = store.load(store)
         for sub, pred, obj in load:
             sub = unicode(sub, "UTF-8")
@@ -248,6 +165,40 @@ class WSNPROV:
             obj = unicode(obj, "UTF-8")
             self.add((sub, pred, obj))
             store.close()
+            
+            
+    def save(self, store):
+        self.graph.serialize(store, format='n3')
+        store = open(store, "wb")
+        writer = store.writer(store)
+        for sub, pred, obj in self.rdftriples((None, None, None)):
+            writer.writerow([sub.encode("UTF-8"), pred.encode("UTF-8"), \
+            obj.encode("UTF-8")])
+            store.close()  
+            
+            
+if __name__ == "__main__":
+    graph = Graph()
+    graph.add(("blade_runner", "name", "Blade Runner"))
+    graph.add(("blade_runner", "name", "Blade Runner"))
+    graph.add(("blade_runner", "release_date", "June 25, 1982"))
+    graph.add(("blade_runner", "directed_by", "Ridley Scott"))
+    
+    print list(graph.triples((None, None, None)))
+    print list(graph.triples(("blade_runner", None, None)))
+    print list(graph.triples(("blade_runner", "name", None)))
+    print list(graph.triples(("blade_runner", "name", "Blade Runner")))
+    print list(graph.triples(("blade_runner", None, "Blade Runner")))
+    print list(graph.triples((None, "name", "Blade Runner")))
+    print list(graph.triples((None, None, "Blade Runner")))
+
+    print list(graph.triples(("foo", "name", "Blade Runner")))
+    print list(graph.triples(("blade_runner", "foo", "Blade Runner")))
+    print list(graph.triples(("blade_runner", "name", "foo")))
+    
+    
+            
+
         
         
          

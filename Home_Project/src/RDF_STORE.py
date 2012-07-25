@@ -32,6 +32,21 @@ HS = Namespace('http://homesensor.com/#')
 RDFS = Namespace('"http://www.w3.org/2000/01/rdf-schema#')
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
 LIT = 'tag:infomesh.net,2001-08-07:Literal'
+sensornetworkURI = 'uri:uuid:sensnetworkayodele001'
+
+#tripledict = {}
+#starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
+#ag0 = Agent(sensornetworkURI)
+#a0 = Activity("a0",starttime=starttime,attributes=tripledict)
+#e0 = Entity()
+#g0 = wasGeneratedBy(e0,a0,identifier="g0",time=None,attributes=tripledict)
+#d0 = wasDerivedFrom(e0, activity=a0,generation=g0,attributes=None)
+#f0 = wasGeneratedBy(e0,g0,time=None,attributes=None)
+#w0 = wasAssociatedWith()
+#s0 = wasStartedByActivity(a0)
+#b0 = wasStartedBy(ag0,Activity=a0,Entity=e0,identifier="b0",time=None,attributes=tripledict)
+
+
 
 
 
@@ -43,6 +58,33 @@ class RDFSTORE:
         self._spo = {}
         self._pos = {}
         self._osp = {}
+        
+        
+        
+    def _ToTriples(self,p0):   
+        tripledict = p0._toRDF()
+        rdftriplesdict = {}
+        for sub in tripledict.keys():
+            sub_rdfuri = self.PROVQName_URIRef(sub)
+            rdftriplesdict[sub_rdfuri] = {}
+            
+            for pred in tripledict[sub].keys():
+                pred_rdfuri = self.PROVQName_URIRef(pred)
+                if isinstance(tripledict[sub][pred],list):
+                    rdftriplesdict[sub_rdfuri][pred_rdfuri] = []
+                    for obj in tripledict[sub][pred]:
+                        obj_rdfuri = self.PROVQName_URIRef(obj)
+                        rdftriplesdict[sub_rdfuri][pred_rdfuri].append(obj_rdfuri)
+                        self.storename.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
+                else:        
+                    obj_rdfuri = self.PROVQName_URIRef(tripledict[sub][pred])
+                    rdftriplesdict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
+                    self.store.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
+              
+                    t = RDFSTORE()      
+                    t._ToTriples()
+            return rdftriplesdict
+
         
    
         
@@ -182,6 +224,28 @@ def PROVQName_URIRef(provqname):
     if isinstance(provqname,PROVQname):
         return rdflib.URIRef(provqname.name)
     else:
-        return provqname       
+        return provqname    
+    
+    
+    
+    
+if __name__ == "__main__":
+    g = RDFSTORE()
+    g.add(("blade_runner", "name", "Blade Runner"))
+    g.add(("blade_runner", "name", "Blade Runner"))
+    g.add(("blade_runner", "release_date", "June 25, 1982"))
+    g.add(("blade_runner", "directed_by", "Ridley Scott"))
+    
+    print list(g.triples((None, None, None)))
+    print list(g.triples(("blade_runner", None, None)))
+    print list(g.triples(("blade_runner", "name", None)))
+    print list(g.triples(("blade_runner", "name", "Blade Runner")))
+    print list(g.triples(("blade_runner", None, "Blade Runner")))
+    print list(g.triples((None, "name", "Blade Runner")))
+    print list(g.triples((None, None, "Blade Runner")))
+
+    print list(g.triples(("foo", "name", "Blade Runner")))
+    print list(g.triples(("blade_runner", "foo", "Blade Runner")))
+    print list(g.triples(("blade_runner", "name", "foo")))   
         
 

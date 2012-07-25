@@ -5,7 +5,7 @@ Created on 12 Jul 2012
 '''
 import rdflib
 from rdflib import Namespace, BNode, Literal, RDF, URIRef
-from RDF_STORE import *
+from Prov_Store import *
 import rdfextras
 from rdflib.graph import Graph, ConjunctiveGraph
 from rdflib.namespace import Namespace
@@ -41,7 +41,7 @@ sensorHum1URI = 'uri:uuid:sensorHUM02'
 sensorHum1URI = 'uri:uuid:sensorHUM03'
 
 
-sensor_graph=RDFSTORE()
+sensor_graph=Graph()
 sensor_graph.add((sensornetworkURI, RDF.type, S_Network))
 sensor_graph.add((sensornetworkURI, DC['create'], createtime))
 sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], person))
