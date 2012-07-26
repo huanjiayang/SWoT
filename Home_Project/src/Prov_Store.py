@@ -109,10 +109,36 @@ class Store():
     
     def __init__(self):
         self.sensor_graph = Graph()
-    
-    def addPROVInstance(self,p0):
-        rdftriplesdict = self._ToTriples(p0)
+        sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
+        sensor_graph.open("provfolder", create=False)
         
+    
+    #match subject to predicates and objects
+    def addPROVInstance(self,p0,store):
+        rdftriplesdict = self._ToTriples(p0)
+        maindict = {}
+        
+        for sub_rdfuri in rdftriplesdict.keys():
+            temp_sub = rdftriplesdict.keys()
+            if temp_sub != sub_rdfuri:
+                maindict[sub_rdfuri] = {}
+                self.store.add((sub_rdfuri))
+        
+
+        for pred_rdfuri in rdftriplesdict:
+            temp_pred = rdftriplesdict[sub_rdfuri].keys()
+            if temp_pred != pred_rdfuri:
+                maindict[sub_rdfuri][pred_rdfuri]
+                self.store.add((pred_rdfuri))
+            
+                    
+        for obj_rdfuri in rdftriplesdict.keys():
+            temp_obj  = rdftriplesdict[sub_rdfuri][pred_rdfuri]
+            if temp_obj != obj_rdfuri:
+                maindict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
+                self.store.add((obj_rdfuri))
+
+
     
     
     def _ToTriples(self,p0):   
@@ -200,6 +226,16 @@ a = Store()
 
 a.addPROVInstance(e0)
 a.addPROVInstance(w0)
+a.addPROVInstance(a0)
+a.addPROVInstance(f0)
+a.addPROVInstance(ag0)
+a.addPROVInstance(s0)
+a.addPROVInstance(b0)
+a.addPROVInstance(d0)
+a.addPROVInstance(e1)
+a.addPROVInstance(g0)
+
+ 
 
 # print out a.sensor_graph
 
