@@ -68,8 +68,7 @@ class HS_Location:
         
     #Grab the most recent location from the database
         cur.execute('SELECT ts,latitude,longitude FROM location ORDER BY id DESC LIMIT 1')
-        #Return last known location to the browser as a JSON dump, this is processed by the
-        #Google Maps API javascript
+       
         return json.dumps(cur.fetchone())
 
 # Link classes to url on the server

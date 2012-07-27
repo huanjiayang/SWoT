@@ -55,6 +55,9 @@ Sensor = URIRef("http://homsensor.com/Sensor/")
 sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
 
 sensor_graph.open("provfolder", create=False)
+
+store = 'Sleepycat'
+
 person = 'ayo001'
 
 tripledict = {}
@@ -109,40 +112,47 @@ class Store():
     
     def __init__(self):
         self.sensor_graph = Graph()
+        self.store = store
+    
+    
+    
+    #match subject to predicates and objects
+    def addPROVInstance(self,e0):
+        rdftriplesdict = self._ToTriples(e0)
+        maindict = {}
+        
         sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
         sensor_graph.open("provfolder", create=False)
         
-    
-    #match subject to predicates and objects
-    def addPROVInstance(self,p0,store):
-        rdftriplesdict = self._ToTriples(p0)
-        maindict = {}
         
         for sub_rdfuri in rdftriplesdict.keys():
             temp_sub = rdftriplesdict.keys()
             if temp_sub != sub_rdfuri:
                 maindict[sub_rdfuri] = {}
-                self.store.add((sub_rdfuri))
+                #self.store.add((sub_rdfuri))
         
 
-        for pred_rdfuri in rdftriplesdict:
+        for pred_rdfuri in rdftriplesdict.keys():
             temp_pred = rdftriplesdict[sub_rdfuri].keys()
             if temp_pred != pred_rdfuri:
                 maindict[sub_rdfuri][pred_rdfuri]
-                self.store.add((pred_rdfuri))
+                #self.store.add((pred_rdfuri))
             
                     
         for obj_rdfuri in rdftriplesdict.keys():
             temp_obj  = rdftriplesdict[sub_rdfuri][pred_rdfuri]
             if temp_obj != obj_rdfuri:
                 maindict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
-                self.store.add((obj_rdfuri))
+                self.store.add((obj_rdfuri,sub_rdfuri,pred_rdfuri))
+                
+                
+            return maindict
 
 
     
     
-    def _ToTriples(self,p0):   
-        tripledict = p0._toRDF()
+    def _ToTriples(self,e0):   
+        tripledict = e0._toRDF()
         rdftriplesdict = {}
         for sub in tripledict.keys():
             sub_rdfuri = self.PROVQName_URIRef(sub)
@@ -222,18 +232,19 @@ print list(graph.triples(("blade_runner", "foo", "Blade Runner")))
 print list(graph.triples(("blade_runner", "name", "foo")))
     
     
-a = Store()
+sensor_graph = Store()
 
-a.addPROVInstance(e0)
-a.addPROVInstance(w0)
-a.addPROVInstance(a0)
-a.addPROVInstance(f0)
-a.addPROVInstance(ag0)
-a.addPROVInstance(s0)
-a.addPROVInstance(b0)
-a.addPROVInstance(d0)
-a.addPROVInstance(e1)
-a.addPROVInstance(g0)
+#sensor_graph.addPROVInstance(e0)
+sensor_graph.addPROVInstance(w0)
+sensor_graph.addPROVInstance(a0)
+sensor_graph.addPROVInstance(f0)
+sensor_graph.addPROVInstance(ag0)
+sensor_graph.addPROVInstance(s0)
+sensor_graph.addPROVInstance(b0)
+sensor_graph.addPROVInstance(d0)
+sensor_graph.addPROVInstance(e1)
+sensor_graph.addPROVInstance(g0)
+
 
  
 
