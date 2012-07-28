@@ -19,13 +19,15 @@ class Mystore(Graph):
     
     def __init__(self, configuration, id):
         Graph.__init__(self, configuration, id)
-        self.open(configuration, True)
+        self.open("myfolder", False)
         #sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
         #sensor_graph.open("provfolder", create=True)
         return      
         
     #match subject to predicates and objects
     def addPROVInstance(self, d0):
+        sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
+        sensor_graph.open("myfolder", create=True)
         rdftriplesdict = self._ToTriples(d0)
         maindict = {}
         for sub_rdfuri in rdftriplesdict.keys():
@@ -63,12 +65,12 @@ class Mystore(Graph):
                     for obj in tripledict[sub][pred]:
                         obj_rdfuri = self.PROVQName_URIRef(obj)
                         rdftriplesdict[sub_rdfuri][pred_rdfuri].append(obj_rdfuri)
-                        self.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
+                        #self.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))
                         
                 else:        
                     obj_rdfuri = self.PROVQName_URIRef(tripledict[sub][pred])
                     rdftriplesdict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
-                    self.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))  
+                    #self.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))  
                     
           
         return rdftriplesdict
@@ -182,17 +184,17 @@ b0 = wasStartedBy(e0,a0,identifier="b0",attributes=None)
 #print list(graph.triples(("blade_runner", "foo", "Blade Runner")))
 #print list(graph.triples(("blade_runner", "name", "foo")))
     
-sensor_graph = Mystore('Sleepycat', 'mystore')   
+#sensor_graph = Mystore('Sleepycat', 'mystore')   
 
-sensor_graph.addPROVInstance(e0)
-sensor_graph.addPROVInstance(w0)
-sensor_graph.addPROVInstance(a0)
-sensor_graph.addPROVInstance(f0)
-sensor_graph.addPROVInstance(ag0)
-#sensor_graph.addPROVInstance(s0)
-sensor_graph.addPROVInstance(b0)
-sensor_graph.addPROVInstance(d0)
-sensor_graph.addPROVInstance(e1)
-sensor_graph.addPROVInstance(g0)
+#sensor_graph.addPROVInstance(e0)
+#sensor_graph.addPROVInstance(w0)
+#sensor_graph.addPROVInstance(a0)
+#sensor_graph.addPROVInstance(f0)
+#sensor_graph.addPROVInstance(ag0)
+##sensor_graph.addPROVInstance(s0)
+#sensor_graph.addPROVInstance(b0)
+#sensor_graph.addPROVInstance(d0)
+#sensor_graph.addPROVInstance(e1)
+#sensor_graph.addPROVInstance(g0)
 
 ## print out a.sensor_graph

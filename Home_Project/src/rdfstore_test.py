@@ -11,6 +11,7 @@ from rdflib.graph import Graph, ConjunctiveGraph
 from rdflib.namespace import Namespace
 from rdflib.term import Literal
 from rdflib.term import URIRef
+from rdflib import Graph, term, namespace
 from rdflib import plugin
 from rdflib.store import Store, NO_STORE, VALID_STORE
 from datetime import date, time, datetime
@@ -56,26 +57,7 @@ sensorHum1URI = 'uri:uuid:sensorHUM02'
 sensorHum1URI = 'uri:uuid:sensorHUM03'
 
 sensor_graph=Mystore('Sleepycat', 'mystore')
-sensor_graph.add_namespace("dcterms","http://purl.org/dc/terms/")
-sensor_graph.add_namespace("foaf","http://xmlns.com/foaf/0.1/")
-
-
-
-sensor_graph=Mystore('Sleepycat', 'mystore')
-sensor_graph.addPROVInstance((sensornetworkURI, wasGeneratedBy, Literal("communication")))
-sensor_graph.addPROVInstance((sensornetworkURI, DC['create'], createtime))
-sensor_graph.addPROVInstance((sensornetworkURI, prov['wasGeneratedBy'], person))
-sensor_graph.addPROVInstance((person, FOAF["name"], Literal("Agent")))
-
-
-#print(sensor_graph.triples(('sensornetworkURI', 'wasGeneratedBy',None)))
-
-#print(sensor_graph.triples((None,'RDF.type',None)))
-
-#sensor_graph.value('sensornetworkURI','wasGeneratedBy',None)
-
-
-
+sensor_graph.open("provfolder",create=True)
 sensor_graph.addPROVInstance(e0)
 sensor_graph.addPROVInstance(w0)
 sensor_graph.addPROVInstance(a0)
@@ -86,6 +68,24 @@ sensor_graph.addPROVInstance(b0)
 sensor_graph.addPROVInstance(d0)
 sensor_graph.addPROVInstance(e1)
 sensor_graph.addPROVInstance(g0)
+
+
+
+
+sensor_graph.add((term.URIRef('http://www.homesensor.com/'),namespace.RDFS.label, term.Literal('Google home page')))
+sensor_graph.add((term.URIRef('http://wikipedia.org/'), namespace.RDFS.label, term.Literal('Wikipedia home page')))
+sensor_graph.add((sensornetworkURI, DC['create'], createtime))
+sensor_graph.add((sensornetworkURI, prov['wasGeneratedBy'], person))
+sensor_graph.add((person, FOAF["name"], Literal("Agent")))
+sensor_graph.close()
+
+
+
+
+
+
+
+
 
 print sensor_graph.serialize()
 
