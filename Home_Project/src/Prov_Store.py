@@ -27,7 +27,7 @@ class Mystore(Graph):
     #match subject to predicates and objects
     def addPROVInstance(self, d0):
         sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
-        sensor_graph.open("myfolder", create=True)
+        sensor_graph.open("myfolder", create=False)
         rdftriplesdict = self._ToTriples(d0)
         maindict = {}
         for sub_rdfuri in rdftriplesdict.keys():
@@ -100,15 +100,15 @@ class Mystore(Graph):
 #            store.close()
 #            
             
-    def save(self, store):
-        self.graph.serialize(store, format='n3')
-        store = open(store, "wb")
-        writer = store.writer(store)
-        for sub, pred, obj in self.rdftriples((None, None, None)):
-            writer.writerow([sub.encode("UTF-8"), pred.encode("UTF-8"), \
-            obj.encode("UTF-8")])
-            store.close()  
-        return
+#    def save(self, store):
+#        self.graph.serialize(store, format='n3')
+#        store = open(store, "wb")
+#        writer = store.writer(store)
+#        for sub, pred, obj in self.rdftriples((None, None, None)):
+#            writer.writerow([sub.encode("UTF-8"), pred.encode("UTF-8"), \
+#            obj.encode("UTF-8")])
+#            store.close()  
+#        return
 # -------------------- class ends -----------------------------------------------
 # -------------------- execution begins -----------------------------------------
 
@@ -151,21 +151,21 @@ Sensor = URIRef("http://homsensor.com/Sensor/")
 
 #person = 'ayo001'
 #
-tripledict = {}
-starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
-a1 = "starter"
-a2 =   "started"
-ag0 = Agent(sensornetworkURI)
-a0 = Activity("a0",starttime=starttime,attributes=tripledict)
-e0 = Entity(identifier="e0")
-e1 = Entity(FOAF['Foo'],attributes=tripledict)
-g0 = wasGeneratedBy(e0,a0,identifier="g0",time=None,attributes=tripledict)
-u0 = Used(a0,e1,identifier="u0",time=None,attributes=tripledict)
-d0 = wasDerivedFrom(e0, e1, activity=a0,generation=g0,usage=u0,attributes=None)
-f0 = wasGeneratedBy(e0,g0,time=None,attributes=None)
-w0 = wasAssociatedWith(ag0,a0,identifier="w0",attributes=tripledict)
-s0 = wasStartedByActivity(a0,a1,a2,attributes=None)
-b0 = wasStartedBy(e0,a0,identifier="b0",attributes=None)
+#tripledict = {}
+#starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
+#a1 = "starter"
+#a2 =   "started"
+#ag0 = Agent(sensornetworkURI)
+#a0 = Activity("a0",starttime=starttime,attributes=tripledict)
+#e0 = Entity(identifier="e0")
+#e1 = Entity(FOAF['Foo'],attributes=tripledict)
+#g0 = wasGeneratedBy(e0,a0,identifier="g0",time=None,attributes=tripledict)
+#u0 = Used(a0,e1,identifier="u0",time=None,attributes=tripledict)
+#d0 = wasDerivedFrom(e0, e1, activity=a0,generation=g0,usage=u0,attributes=None)
+#f0 = wasGeneratedBy(e0,g0,time=None,attributes=None)
+#w0 = wasAssociatedWith(ag0,a0,identifier="w0",attributes=tripledict)
+#s0 = wasStartedByActivity(a0,a1,a2,attributes=None)
+#b0 = wasStartedBy(e0,a0,identifier="b0",attributes=None)
 #        
 #graph = Graph()
 #graph.add(("blade_runner", "name", "Blade Runner"))

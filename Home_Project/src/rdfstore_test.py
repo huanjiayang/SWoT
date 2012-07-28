@@ -57,7 +57,7 @@ sensorHum1URI = 'uri:uuid:sensorHUM02'
 sensorHum1URI = 'uri:uuid:sensorHUM03'
 
 sensor_graph=Mystore('Sleepycat', 'mystore')
-sensor_graph.open("provfolder",create=True)
+sensor_graph.open("provfolder",create=False)
 sensor_graph.addPROVInstance(e0)
 sensor_graph.addPROVInstance(w0)
 sensor_graph.addPROVInstance(a0)
