@@ -15,44 +15,26 @@ import pyprov
 
 # --------------------- class begins ------------------------------------------- 
 # pyprov instances of prov relations to RDF triples
-class Mystore(Graph):
+class Mystore():
     
     def __init__(self, configuration, id):
-        Graph.__init__(self, configuration, id)
-        self.open("myfolder", False)
+        self.store = rdflib.Graph(store='Sleepycat',identifier=id)
+        self.store.open(configuration, create=True) 
+        self.store.bind('prov','http://www.w3.org/ns/prov-dm/')
         #sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
-        #sensor_graph.open("provfolder", create=True)
-        return      
-        
-    #match subject to predicates and objects
-    def addPROVInstance(self, d0):
-        sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
-        sensor_graph.open("myfolder", create=False)
-        rdftriplesdict = self._ToTriples(d0)
-        maindict = {}
-        for sub_rdfuri in rdftriplesdict.keys():
-            temp_sub = rdftriplesdict.keys()
-            if temp_sub != sub_rdfuri:
-                maindict[sub_rdfuri] = {}
-                #self.store.add((sub_rdfuri))        
+        #sensor_graph.open("provfolder", create=True)     
 
-            for pred_rdfuri in rdftriplesdict[sub_rdfuri].keys():
-                temp_pred = rdftriplesdict[sub_rdfuri].keys()
-                if temp_pred != pred_rdfuri:
-                    maindict[sub_rdfuri][pred_rdfuri] = []
-                    #self.store.add((pred_rdfuri))            
-                    
-                for obj_rdfuri in rdftriplesdict.keys():
-                    temp_obj  = rdftriplesdict[sub_rdfuri][pred_rdfuri]
-                    if temp_obj != obj_rdfuri:
-                        maindict[sub_rdfuri][pred_rdfuri].append(obj_rdfuri)
-                        self.add((obj_rdfuri,sub_rdfuri,pred_rdfuri))
-                
-                
-            return maindict
-   
     def _ToTriples(self, d0):   
         tripledict = d0._toRDF()
+        print d0.identifier
+        for s in tripledict.keys():
+            print 'subject:  '
+            print str(s)
+            for p in tripledict[s].keys():
+                print 'predicate:    '
+                print str(p)
+                print 'object:     '
+                print tripledict[s][p]
         rdftriplesdict = {}
         for sub in tripledict.keys():
             sub_rdfuri = self.PROVQName_URIRef(sub)
@@ -72,7 +54,7 @@ class Mystore(Graph):
                     rdftriplesdict[sub_rdfuri][pred_rdfuri] = obj_rdfuri
                     #self.add((sub_rdfuri,pred_rdfuri,obj_rdfuri))  
                     
-          
+        #print rdftriplesdict
         return rdftriplesdict
 
 #Convert PROV URIREF to RDFlib URIREF            
@@ -81,6 +63,24 @@ class Mystore(Graph):
             return rdflib.URIRef(provqname.name)
         else:
             return provqname             
+        
+    #match subject to predicates and objects
+    def addPROVInstance(self, d0):
+        #self=rdflib.Graph(store='Sleepycat',identifier='store')
+        #self.open("myfolder", create=False)
+        rdftriplesdict = self._ToTriples(d0)
+        maindict = {}
+        for sub in rdftriplesdict.keys():
+            for pred in rdftriplesdict[sub].keys():
+                if isinstance(rdftriplesdict[sub][pred],list):
+                    for obj in rdftriplesdict[sub][pred]:
+                        self.store.add((sub,pred,obj))
+                else:
+                    self.store.add((sub,pred,rdftriplesdict[sub][pred]))
+                
+            return maindict
+   
+
               
                
 ##Add triples into store
