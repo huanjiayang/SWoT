@@ -1,3 +1,6 @@
+v1.0.4, 30/07/2012  --  Bug fixes to rdf triple export
+* Bug fixes
+
 v1.0.3, 19/07/2012 -- Bug fixes and Minor update release
 * Bug fixes.
 

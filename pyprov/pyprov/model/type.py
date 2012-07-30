@@ -254,7 +254,7 @@ class Entity(PROVType):
     
     def _toRDF(self):
         PROVType._toRDF(self)
-        
+        self.rdftriples[self.identifier][rdf['type']] = prov['Entity']
         return self.rdftriples
     
 
@@ -287,11 +287,12 @@ class Activity(PROVType):
     
     def to_RDF(self):
         PROVType.to_RDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = prov['Activity']
         if self.starttime is not None:
             self.rdftriples[self.identifier][prov['starttime']] = self.starttime
         if self.endtime is not None:
             self.rdftriples[self.identifier][prov['endtime']] = self.endtime
-        self.rdftriples[self.identifier][rdf['type']] = prov['activity']
+        #self.rdftriples[self.identifier][rdf['type']] = prov['Activity']
         return self.rdftriples
 
 class Agent(Entity):
@@ -308,7 +309,7 @@ class Agent(Entity):
     
     def to_RDF(self):
         Entity.to_RDF(self)
-        
+        self.rdftriples[self.identifier][rdf['type']] = prov['Agent']
         return self.rdftriples
         
         
@@ -327,7 +328,7 @@ class Note(PROVType):
     
     def _toRDF(self):
         PROVType._toRDF(self)
-        
+        self.rdftriples[self.identifier][rdf['type']] = prov['Note']
         return self.rdftriples
 
 
