@@ -93,8 +93,8 @@ class HS_Location:
 
 # Link classes to url on the server
 urls = ('/homesensor.com/(.*)', 'Sensor'
-        '/sensor/', Sensor, #Links Sensor class to /sensor
-        '/location', HS_Location # Links HS_Location class to /location
+        '/Sensor/', "Sensor", #Links Sensor class to /sensor
+        '/HS_location', "HS_Location" # Links HS_Location class to /location
         )
 
 #Main Method, calls appropriate classes
