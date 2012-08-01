@@ -24,6 +24,7 @@ import sys
 
 
 labels = file('sensor_labels.txt', 'r').readlines() #Load graph labels from a file
+render = web.template.render('templates/')
 
 
 def get_type(self,sensorid,node_id):
@@ -62,8 +63,8 @@ class HS_Network:
 if __name__ == "__main__":
 #Links specific classes to URLs on the web server
     urls = (
-    '/', 'HS_Network' #Links Sensor class to /sensor
-    
+    '/homesensor.com/', 'HS_Network', #Links URL homesensor.com to HS_Network Class
+    '/sensor','sensor'
         )
     app = web.application(urls, globals()) #Run the web server.
     app.run()
