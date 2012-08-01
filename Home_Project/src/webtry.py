@@ -63,7 +63,7 @@ if __name__ == "__main__":
 #Links specific classes to URLs on the web server
     urls = (
     '/', 'HS_Network' #Links Sensor class to /sensor
-     # Links GPSLocation class to /location
+    
         )
     app = web.application(urls, globals()) #Run the web server.
     app.run()
