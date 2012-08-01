@@ -7,10 +7,11 @@ Created on 19 Jun 2012
 # Import packages
 import web #Generate content creation and for web server implementation
 import re
+import doctest
 from rdflib.store import Store, NO_STORE, VALID_STORE
 from rdflib import Namespace, BNode, Literal, RDF, URIRef
-from urllib import quote_plus
-import rdflib as db
+import urllib
+#import rdflib as db
 from rdflib import plugin
 from Prov_Store import *
 from math import log #Logarithims function for performing conversions
@@ -61,17 +62,18 @@ def get_type(sensorid,node_id):
         
 
 class Sensor(object):
-    def GET(self, sensorid, convert_temp):
+    def GET(self, sensorid):
         args = web.input()
-        start = int(args.get('start', time() - 86400))
+        start = int(args.get('start', time() - 10000))
         db = rdflib.store('mystore')
+        db = web.database('mystore')
         cur = db.cursor()
         cur.execute('select ?')
         
         results = []
         for node_id, sensorid, ts, reading in cur.fetchall(): 
             if get_type(sensorid) == 'TEMP':
-                reading = round(convert_temp(reading), 2) #Convert Data
+                reading = round((reading), 2) #Convert Data
             results.append((int(ts * 1000), reading)) #Write results to array
             
         
