@@ -26,8 +26,11 @@ import sys
 DC = Namespace('http://purl.org/dc/elements/1.1/')
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 HS = PROVNamespace('hs','http://homesensor.com/#')
+SN = Namespace('sn',"http://homesensor.com/schemas/sensor_network#")
+SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
+
 
 
 webgraph = PROVContainer()
@@ -78,13 +81,36 @@ b0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
 webgraph.add(b0)
 
 
-
-
-
-
-
-
 sensor_graph=Mystore('mystore', 'mystore')
+
+
+
+sensor_graph.addPROVInstance(e0)
+sensor_graph.addPROVInstance(w0)
+sensor_graph.addPROVInstance(a0)
+sensor_graph.addPROVInstance(a1)
+sensor_graph.addPROVInstance(f0)
+sensor_graph.addPROVInstance(ag0)
+sensor_graph.addPROVInstance(s0)
+sensor_graph.addPROVInstance(b0)
+sensor_graph.addPROVInstance(d0)
+sensor_graph.addPROVInstance(e1)
+sensor_graph.addPROVInstance(g0)
+
+snURI = 'uri:uuid:sensnetworkayodele001'
+sn_node1URI = 'uri:uuid:sensornode01'
+SENSOR_NETWORK=SN[snURI]
+sensor_node = sn_node1URI
+
+
+sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
+sensor_graph.store.add((SENSOR_NETWORK,RDF.type,SENSORS['sensor_node']))
+sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
+sensor_graph.store.add((SENSOR_NETWORK,DC['title'],Literal(sensor_node)))
+sensor_graph.store.add((sensornetworkURI, prov['wasGeneratedBy'], Literal('Ayo')))
+    
+    
+
 
 
 #labels = file('sensor_labels.txt', 'r').readlines() #Load graph labels from a file
