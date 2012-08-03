@@ -22,6 +22,68 @@ import commands
 import logging
 import sys
 
+
+DC = Namespace('http://purl.org/dc/elements/1.1/')
+FOAF = Namespace('http://xmlns.com/foaf/0.1/')
+HS = PROVNamespace('hs','http://homesensor.com/#')
+RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
+prov = Namespace("http://www.w3.org/ns/prov-dm/")
+
+
+webgraph = PROVContainer()
+
+
+tripledict = {}
+starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
+a1 = "starter"
+webgraph.add(a1)
+
+a2 =   "started"
+webgraph.add(a2)
+
+ag0 = Agent(sensornetworkURI)
+webgraph.add(ag0)
+
+a0 = Activity(HS["a0"],starttime=starttime,attributes=tripledict)
+webgraph.add(a0)
+
+a1 = Activity(HS["a1"],starttime=starttime,attributes=tripledict)
+webgraph.add(a1)
+
+e0 = Entity(identifier=HS["e0"])
+webgraph.add(e0)
+
+e1 = Entity(FOAF['Foo'],attributes=tripledict)
+webgraph.add(e1)
+
+g0 = wasGeneratedBy(e0,a0,identifier=HS["g0"],time=None,attributes=tripledict)
+webgraph.add(g0)
+
+u0 = Used(a0,e1,identifier=HS["u0"],time=None,attributes=tripledict)
+webgraph.add(u0)
+
+d0 = wasDerivedFrom(e0, e1, identifier=HS["wDF0"],activity=a0,generation=g0,usage=u0,attributes=None)
+webgraph.add(d0)
+
+f0 = wasGeneratedBy(e0,g0,identifier=HS["wGB0"],time=None,attributes=None)
+webgraph.add(f0)
+
+w0 = wasAssociatedWith(ag0,a0,identifier=HS["w0"],attributes=tripledict)
+webgraph.add(w0)
+
+s0 = wasStartedByActivity(a1,a0,identifier=HS["wSB0"],attributes=None)
+webgraph.add(s0)
+
+b0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
+webgraph.add(b0)
+
+
+
+
+
+
+
+
 sensor_graph=Mystore('mystore', 'mystore')
 
 
