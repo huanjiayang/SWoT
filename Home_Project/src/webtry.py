@@ -81,6 +81,12 @@ b0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
 webgraph.add(b0)
 
 
+
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(webgraph.to_provJSON())
+
+
 sensor_graph=Mystore('mystore', 'mystore')
 
 
@@ -138,10 +144,8 @@ render = web.template.render('templates/')
         
 class HS_Network:
     def GET(self):
-        
         #cur = store.cursor() 
-        
-    #query triples in store
+        #query triples in store
         #cur.execute('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
         returndict = {'whats_in_the_store' : '',
                       'subject' : '',
@@ -160,7 +164,21 @@ class HS_Network:
         return json.dumps(returndict)
     
     
-
+    def VIEW(self):
+        returndict = {'whats_in_the_store' : '',
+                      'subject' : '',
+                      'predicate' : '',
+                      'object:)' : ''}
+        returnlist = []
+        for s in sensor_graph.store:
+           
+    
+    
+    
+    
+    
+    
+    
 if __name__ == "__main__":
 #Links specific classes to URLs on the web server
     urls = (
