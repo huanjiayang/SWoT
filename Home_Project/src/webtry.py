@@ -139,11 +139,45 @@ render = web.template.render('templates/')
 #        if int(id) == int(sensorid):
 #            return labels
         
-
-
+def VIEW(self,id):
+        fq = sensor_graph.store.query('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
+        sq = sensor_graph.store.query('select ?pred ?sub where {?sub ?pred <%s> .}' % id)
+        name = id
+        
+        returndict = {'whats_in_the_store' : '',
+                      'subject' : '',
+                      'predicate' : '',
+                      'object:)' : ''}
+        returnlist = []
+        for s in fq:
+            print s
+            if s['predicate']['value'] in returnlist:
+                name = s['object']['value']
+            t = web.template('graph1.html')
+            return t.render(name=name, id=id, fq=fq, sq=sq, qp=quote_plus)
+            returnlist.append(returndict)
+            web.header('Content-Type', 'application/json')
+            return json.dumps(returndict)
+        
+def createEntity(self,attributes=None,identifier='e0',entityType=None,entityType1,entityType2):
+    entity = entityType(entityType1,entityType2)
+    e0= entityType1
+    e1 = entityType2
+    return entity
+        
+        
+        
+def func(self,provcontainer):
+    self.container = provcontainer()
+    for sub,pred,obj in sensor_graph.store:
+        if pred == RDF.type:
+            webgraph.add(pred)  
+        elif sub = 
         
 class HS_Network:
     def GET(self):
+#        args = web.input()
+#        start = int(args.get('start', time() - 86400))
         #cur = store.cursor() 
         #query triples in store
         #cur.execute('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
@@ -164,13 +198,8 @@ class HS_Network:
         return json.dumps(returndict)
     
     
-    def VIEW(self):
-        returndict = {'whats_in_the_store' : '',
-                      'subject' : '',
-                      'predicate' : '',
-                      'object:)' : ''}
-        returnlist = []
-        for s in sensor_graph.store:
+    
+            
            
     
     
@@ -183,7 +212,7 @@ if __name__ == "__main__":
 #Links specific classes to URLs on the web server
     urls = (
     '/homesensorcom/', 'HS_Network', #Links URL homesensor.com to HS_Network Class
-    '/sensor','sensor'
+    '/homesensorcom/view/','view'
         )
     app = web.application(urls, globals()) #Run the web server.
     app.run()
