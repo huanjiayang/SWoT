@@ -171,7 +171,7 @@ def func(self,provcontainer):
     self.container = provcontainer()
     for sub,pred,obj in sensor_graph.store:
         if pred == RDF.type:
-            webgraph.add(pred)  
+            container =  provcontainer(sub=None,pred=RDF.type,obj=None)
         elif sub = 
         
 class HS_Network:
