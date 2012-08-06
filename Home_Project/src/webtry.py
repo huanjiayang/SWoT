@@ -167,12 +167,17 @@ def createEntity(self,attributes=None,identifier='e0',entityType=None,entityType
         
         
         
-def func(self,provcontainer):
-    self.container = provcontainer()
+def func(self,provcontainer,(sub,pred,obj)):
+    container = provcontainer()
     for sub,pred,obj in sensor_graph.store:
         if pred == RDF.type:
-            container =  provcontainer(sub=None,pred=RDF.type,obj=None)
-        elif sub = 
+            container.add(sub=None,pred=RDF.type,obj=None)
+        elif sub == URIRef('prov:Entity'):
+            container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
+        else: 
+            sub == URIRef('prov:Activity')
+            container.add(sub=URIRef('prov:Activity'),pred=None,obj=None)
+        
         
 class HS_Network:
     def GET(self):
