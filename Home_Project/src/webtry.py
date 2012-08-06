@@ -173,7 +173,11 @@ def func(self,provcontainer,(sub,pred,obj)):
         if pred == RDF.type:
             container.add(sub=None,pred=RDF.type,obj=None)
         elif sub == URIRef('prov:Entity'):
-            container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
+                prov[Entity:e0]
+                prov[Activity:a0]
+                prov[Agent:ag0]
+                prov[wasGeneratedBy:f0]
+                container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
         else: 
             sub == URIRef('prov:Activity')
             container.add(sub=URIRef('prov:Activity'),pred=None,obj=None)
