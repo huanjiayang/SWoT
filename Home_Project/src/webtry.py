@@ -173,14 +173,20 @@ def func(self,provcontainer,(sub,pred,obj)):
         if pred == RDF.type:
             container.add(sub=None,pred=RDF.type,obj=None)
         elif sub == URIRef('prov:Entity'):
-                prov[Entity:e0]
+                prov[Entity:e0.createEntity]
+                prov[Entity:e1.createEntity]
                 prov[Activity:a0]
                 prov[Agent:ag0]
                 prov[wasGeneratedBy:f0]
+                prov[wasStartedBy:b0]
+                prov[wasStartedByActivity:s0]
+                prov[wasAssociatedWith:w0]
+                prov[Used:u0]
                 container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
-        else: 
-            sub == URIRef('prov:Activity')
-            container.add(sub=URIRef('prov:Activity'),pred=None,obj=None)
+        elif obj == Literal(''):
+                container.add(sub=None,pred=None,obj=Literal)
+        return container
+        self.createEntity
         
         
 class HS_Network:
