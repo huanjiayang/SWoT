@@ -159,7 +159,7 @@ def VIEW(self,id):
             web.header('Content-Type', 'application/json')
             return json.dumps(returndict)
         
-def createEntity(self,attributes=None,identifier='e0',entityType=None,entityType1,entityType2):
+def createEntity(self,entityType1,entityType2,entityType,identifier='e0'):
     entity = entityType(entityType1,entityType2)
     e0= entityType1
     e1 = entityType2
@@ -173,7 +173,8 @@ def func(self,provcontainer,(sub,pred,obj)):
         if pred == RDF.type:
             container.add(sub=None,pred=RDF.type,obj=None)
         elif sub == URIRef('prov:Entity'):
-                prov[Entity:e0.createEntity]
+                prov[Entity:e0]
+                container.add(e0)
                 prov[Entity:e1.createEntity]
                 prov[Activity:a0]
                 prov[Agent:ag0]
