@@ -171,6 +171,7 @@ def func(self,provcontainer,(sub,pred,obj)):
     container = provcontainer()
     for sub,pred,obj in sensor_graph.store:
         if pred == RDF.type:
+            yield pred
             container.add(sub=None,pred=RDF.type,obj=None)
         elif sub == URIRef('prov:Entity'):
                 prov[Entity:e0]
@@ -195,6 +196,7 @@ def func(self,provcontainer,(sub,pred,obj)):
         elif obj == Literal(''):
                 container.add(sub=None,pred=None,obj=Literal)
         return container
+        return json.dumps(container)
         self.createEntity
         
         
