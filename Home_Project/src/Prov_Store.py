@@ -27,14 +27,14 @@ class Mystore():
     def _ToTriples(self, d0):   
         tripledict = d0._toRDF()
         print d0.identifier
-        for s in tripledict.keys():
-            print 'subject:  '
-            print str(s)
-            for p in tripledict[s].keys():
-                print 'predicate:    '
-                print str(p)
-                print 'object:     '
-                print tripledict[s][p]
+        #for s in tripledict.keys():
+        #    print 'subject:  '
+        #    print str(s)
+        #    for p in tripledict[s].keys():
+        #        print 'predicate:    '
+        #        print str(p)
+        #        print 'object:     '
+        #        print tripledict[s][p]
         rdftriplesdict = {}
         for sub in tripledict.keys():
             sub_rdfuri = self.PROVQName_URIRef(sub)
@@ -118,7 +118,6 @@ prov = Namespace("http://www.w3.org/ns/prov-dm/")
 DC = Namespace('http://purl.org/dc/elements/1.1/')
 FOAF = Namespace("foaf","http://xmlns.com/foaf/0.1/")
 RDF = rdflib.Namespace("http://www.w3.org/TR/rdf-schema/#")
-
 S_Network = hs['SensorNetwork']
 
 sensornetworkURI = 'uri:uuid:sensnetworkayodele001'

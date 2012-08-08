@@ -203,8 +203,8 @@ def func(self,provcontainer,(sub,pred,obj)):
                 container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
             elif obj == Literal(''):
                 yield(sub,pred,obj)
-        return container
-        return json.dumps(container)
+        #return container
+        #return json.dumps(container)
         
         
         
@@ -233,12 +233,45 @@ class HS_Network:
     
     
     
-            
-           
+class PROVBuilder:
     
+    def __init__(self):
+        self.container = PROVContainer()
+        
+        
+    def traverseStore(self,RDFstore):
+        print "let's see what we have in store:"
+        print str(RDF.type)
+        for s,p,o in RDFstore:
+            print s,p,o
+        for RDFtype_triple in RDFstore.triples((None, RDF.type, None)):
+            sub = RDFtype_triple[0]
+            print 'sub = '
+            print sub
+            type = RDFtype_triple[2]
+            print 'type'
+            print type
+            attrdict = {}
+            for attr in RDFstore.triples((sub, None, None)):
+                if not attr[1] == RDF.type:
+                    attrdict[attr[1]] = attr[2]
+            if type == prov['Entity']:
+                print 'Entity found'
+                e = Entity(str(sub),attributes=attrdict)
+                self.container.add(e)
+            elif type == prov['Activity']:
+                print 'Activity found'
+                for Activity_triple in RDFstore.triples((sub, prov['starttime'], None)):
+                    starttime = Activity_triple[2]
+                a = Activty(str(sub),attributes=attrdict,starttime=starttime)
+                self.container.add(a)
+
     
-    
-    
+class test:
+    def GET(self):
+        builder = PROVBuilder()
+        builder.traverseStore(sensor_graph.store)
+        return json.dumps(builder.container.to_provJSON())
     
     
     
@@ -246,7 +279,11 @@ if __name__ == "__main__":
 #Links specific classes to URLs on the web server
     urls = (
     '/homesensorcom/', 'HS_Network', #Links URL homesensor.com to HS_Network Class
-    '/homesensorcom/view/','view'
+    '/homesensorcom/view/','view',
+    '/test/','test'
         )
     app = web.application(urls, globals()) #Run the web server.
     app.run()
+    
+
+
