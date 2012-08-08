@@ -176,13 +176,21 @@ def func(self,provcontainer,(sub,pred,obj)):
                 prov[Entity:e0]
                 container.add(e0)
                 prov[Entity:e1.createEntity]
+                container.add(e1)
                 prov[Activity:a0]
+                container.add(a0)
                 prov[Agent:ag0]
+                container.add(a0)
                 prov[wasGeneratedBy:f0]
+                container.add(f0)
                 prov[wasStartedBy:b0]
+                container.add(b0)
                 prov[wasStartedByActivity:s0]
+                container.add(s0)
                 prov[wasAssociatedWith:w0]
+                container.add(w0)
                 prov[Used:u0]
+                container.add(u0)
                 container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
         elif obj == Literal(''):
                 container.add(sub=None,pred=None,obj=Literal)
