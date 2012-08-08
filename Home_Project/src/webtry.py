@@ -173,7 +173,10 @@ def func(self,provcontainer,(sub,pred,obj)):
         if pred == RDF.type:
             yield pred
             container.add(sub=None,pred=RDF.type,obj=None)
-        elif sub == URIRef('prov:Entity'):
+        else:
+            if pred != RDF.type:
+                yield (sub,pred,None)
+            elif sub == URIRef('prov:Entity'):
                 prov[Entity:e0]
                 container.add(e0)
                 prov[Entity:e1.createEntity]
