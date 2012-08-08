@@ -175,7 +175,12 @@ def func(self,provcontainer,(sub,pred,obj)):
             container.add(sub=None,pred=RDF.type,obj=None)
         else:
             if pred != RDF.type:
-                yield (sub,pred,None)
+                yield (None,None,None)
+        if sub == URIRef:
+            yield sub
+        else:
+            if sub != URIRef:
+                yield(None,pred,None)
             elif sub == URIRef('prov:Entity'):
                 prov[Entity:e0]
                 container.add(e0)
@@ -196,11 +201,11 @@ def func(self,provcontainer,(sub,pred,obj)):
                 prov[Used:u0]
                 container.add(u0)
                 container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
-        elif obj == Literal(''):
-                container.add(sub=None,pred=None,obj=Literal)
+            elif obj == Literal(''):
+                yield(sub,pred,obj)
         return container
         return json.dumps(container)
-        self.createEntity
+        
         
         
 class HS_Network:
