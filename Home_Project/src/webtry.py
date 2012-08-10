@@ -263,10 +263,27 @@ class PROVBuilder:
                 print 'Activity found'
                 for Activity_triple in RDFstore.triples((sub, prov['starttime'], None)):
                     starttime = Activity_triple[2]
-                a = Activty(str(sub),attributes=attrdict,starttime=starttime)
+                a = Activity(str(sub),attributes=attrdict,starttime=starttime)
                 self.container.add(a)
-
-    
+            elif type == prov['Activity']:
+                print 'Activity found'
+                for Activity_triple in RDFstore.triples((sub, prov['wasGeneratedBy'], None)):
+                    wasGeneratedBy = Activity_triple[2]
+                g = wasGeneratedBy(str(sub))
+                self.container.add(g)
+            elif type == prov['Agent']:
+                print 'Activity found'
+                for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
+                    wasStartedBy = Activity_triple[2]
+                s = wasStartedBy(str(sub))
+                self.container.add(s)
+            elif type == prov['Agent']:
+                print 'Agent found'
+                for Agent_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
+                    wasAssociatedWith = Agent_triple[2]
+                ag = wasAssociatedWith(str(sub)) 
+                self.container.add(ag)
+            
 class test:
     def GET(self):
         builder = PROVBuilder()
