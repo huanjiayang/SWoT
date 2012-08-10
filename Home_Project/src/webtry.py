@@ -167,45 +167,45 @@ def createEntity(self,entityType1,entityType2,entityType,identifier='e0'):
         
         
         
-def func(self,provcontainer,(sub,pred,obj)):
-    container = provcontainer()
-    for sub,pred,obj in sensor_graph.store:
-        if pred == RDF.type:
-            yield pred
-            container.add(sub=None,pred=RDF.type,obj=None)
-        else:
-            if pred != RDF.type:
-                yield (None,None,None)
-        if sub == URIRef:
-            yield sub
-        else:
-            if sub != URIRef:
-                yield(None,pred,None)
-            elif sub == URIRef('prov:Entity'):
-                prov[Entity:e0]
-                container.add(e0)
-                prov[Entity:e1.createEntity]
-                container.add(e1)
-                prov[Activity:a0]
-                container.add(a0)
-                prov[Agent:ag0]
-                container.add(a0)
-                prov[wasGeneratedBy:f0]
-                container.add(f0)
-                prov[wasStartedBy:b0]
-                container.add(b0)
-                prov[wasStartedByActivity:s0]
-                container.add(s0)
-                prov[wasAssociatedWith:w0]
-                container.add(w0)
-                prov[Used:u0]
-                container.add(u0)
-                container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
-            elif obj == Literal(''):
-                yield(sub,pred,obj)
-        #return container
-        #return json.dumps(container)
-        
+#def func(self,provcontainer,(sub,pred,obj)):
+#    container = provcontainer()
+#    for sub,pred,obj in sensor_graph.store:
+#        if pred == RDF.type:
+#            yield pred
+#            container.add(sub=None,pred=RDF.type,obj=None)
+#        else:
+#            if pred != RDF.type:
+#                yield (None,None,None)
+#        if sub == URIRef:
+#            yield sub
+#        else:
+#            if sub != URIRef:
+#                yield(None,pred,None)
+#            elif sub == URIRef('prov:Entity'):
+#                prov[Entity:e0]
+#                container.add(e0)
+#                prov[Entity:e1.createEntity]
+#                container.add(e1)
+#                prov[Activity:a0]
+#                container.add(a0)
+#                prov[Agent:ag0]
+#                container.add(a0)
+#                prov[wasGeneratedBy:f0]
+#                container.add(f0)
+#                prov[wasStartedBy:b0]
+#                container.add(b0)
+#                prov[wasStartedByActivity:s0]
+#                container.add(s0)
+#                prov[wasAssociatedWith:w0]
+#                container.add(w0)
+#                prov[Used:u0]
+#                container.add(u0)
+#                container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
+#            elif obj == Literal(''):
+#                yield(sub,pred,obj)
+#        #return container
+#        #return json.dumps(container)
+#        
         
         
 class HS_Network:
@@ -271,18 +271,27 @@ class PROVBuilder:
                     wasGeneratedBy = Activity_triple[2]
                 g = wasGeneratedBy(str(sub))
                 self.container.add(g)
+            elif type == prov['Activity']:
+                print 'Activity found'
+                for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
+                    wasStartedByActivity = Activity_triple[2]
+                sba = wasStartedByActivity(str(sub))
+                self.container.add(sba)
             elif type == prov['Agent']:
                 print 'Activity found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
                     wasStartedBy = Activity_triple[2]
-                s = wasStartedBy(str(sub))
-                self.container.add(s)
+                sb = wasStartedBy(str(sub))
+                self.container.add(sb)
             elif type == prov['Agent']:
                 print 'Agent found'
                 for Agent_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
                     wasAssociatedWith = Agent_triple[2]
                 ag = wasAssociatedWith(str(sub)) 
                 self.container.add(ag)
+            
+
+            
             
 class test:
     def GET(self):
