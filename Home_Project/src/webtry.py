@@ -77,6 +77,8 @@ webgraph.add(w0)
 s0 = wasStartedByActivity(a1,a0,identifier=HS["wSB0"],attributes=None)
 webgraph.add(s0)
 
+t0 = wasAttributedTo(a1,a0,identifier=HS["wAT"],attributes=None)
+
 b0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
 webgraph.add(b0)
 
@@ -255,6 +257,7 @@ class PROVBuilder:
             for attr in RDFstore.triples((sub, None, None)):
                 if not attr[1] == RDF.type:
                     attrdict[attr[1]] = attr[2]
+            #if entity matches add to container
             if type == prov['Entity']:
                 print 'Entity found'
                 e = Entity(str(sub),attributes=attrdict)
@@ -271,28 +274,53 @@ class PROVBuilder:
                     wasGeneratedBy = Activity_triple[2]
                 g = wasGeneratedBy(str(sub))
                 self.container.add(g)
-            elif type == prov['Activity']:
-                print 'Activity found'
+            elif type == prov['wSBA']:
+                print 'wSBA found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
                     wasStartedByActivity = Activity_triple[2]
                 sba = wasStartedByActivity(str(sub))
                 self.container.add(sba)
-            elif type == prov['Agent']:
-                print 'Activity found'
+            elif type == prov['wSB']:
+                print 'wSB found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
                     wasStartedBy = Activity_triple[2]
                 sb = wasStartedBy(str(sub))
                 self.container.add(sb)
-            elif type == prov['Agent']:
-                print 'Agent found'
-                for Agent_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
-                    wasAssociatedWith = Agent_triple[2]
-                ag = wasAssociatedWith(str(sub)) 
-                self.container.add(ag)
-            
-
-            
-            
+            elif type == prov['wAW']:
+                print 'wAW found'
+                for Relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
+                    wasAssociatedWith = Relation_triple[2]
+                aw = wasAssociatedWith(str(sub))
+                self.container.add(aw)
+            elif type == prov['wDF']:
+                print 'wDF found'
+                for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
+                    wasDerivedFrom = Relation_triple[2]
+                df = wasDerivedFrom(str(sub))
+                self.container.add(df)  
+            elif type == prov['aOBO']:
+                print 'aOBO'
+                for Relation_triple in RDFstore.triples((sub,prov['actedOnBehalfOf'], None)):
+                    actedOnBehalfOf = Relation_triple[2]
+                ob = actedOnBehalfOf(str(sub))
+                self.container.add(ob)
+            elif type == prov['wAT']:
+                print 'wAT'
+                for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
+                    wasAttributedTo = Relation_triple[2]
+                at = wasAttributedTo(str) 
+                self.container.add(at)
+            elif type == URIRef['wAT']:
+                print 'wAT'
+                for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
+                    wasAttributedTo = Relation_triple[0]
+                at = wasAttributedTo(str(sub))
+                self.container.add(at)
+            else:
+                for Relation_triple in RDFstore.triples((URIRef['wAT'],RDF.type,prov['wasAttributedTo'])):
+                    wasAttributedTo = Relation_triple[1]
+                at = wasAttributedTo(str)
+                self.container.add(at)
 class test:
     def GET(self):
         builder = PROVBuilder()
