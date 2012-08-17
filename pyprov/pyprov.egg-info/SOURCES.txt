@@ -22,6 +22,7 @@ pyprov/model/examples/provpyexample_Elements.py
 pyprov/model/examples/provpyexample_Literal.py
 pyprov/model/examples/provpyexample_Qname_Namespace.py
 pyprov/model/examples/provpyexample_Relations.py
+pyprov/model/examples/provtest.py
 pyprov/model/test/__init__.py
 pyprov/model/test/testexample.py
 pyprov/model/test/testtest.py

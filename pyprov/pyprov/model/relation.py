@@ -598,7 +598,7 @@ class actedOnBehalfOf(Relation):
     
     def _toRDF(self):
         Relation._toRDF(self)
-        self.rdftriples[self.identifier][prov['subordinate']]=self.activity.identifier
+        self.rdftriples[self.identifier][prov['subordinate']]=self.subordinate.identifier
         self.rdftriples[self.identifier][prov['responsible']]=self.responsible.identifier
         self.rdftriples[self.identifier][rdf['type']]=prov['actedOnBehalfOf']
         return self.rdftriples
