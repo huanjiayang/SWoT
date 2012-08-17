@@ -329,9 +329,9 @@ class PROVBuilder:
             sub = RDFtype_triple[0]
             print 'sub = '
             print sub
-            ttype = RDFtype_triple[2]
+            rdftype = RDFtype_triple[2]
             print 'type'
-            print ttype
+            print rdftype
             attrdict = {}
             for attr in RDFstore.triples((sub, None, None)):
                 if not attr[1] == RDF.type:
@@ -367,10 +367,25 @@ class PROVBuilder:
                 self.container.add(sb)
             elif type == prov['wasAssociatedWith']:
                 print 'wAW found'
-                for Relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
-                    wasAssociatedWith = Relation_triple[2]
-                aw = wasAssociatedWith(str(sub))
-                self.container.add(aw)
+                for relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
+                    wasAssociatedWith = relation_triple[2]
+                    entity = None
+                    agent = None
+                    
+                    for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
+                        entity = relation_triple[2]
+                    for relation_triple in RDFstore.triples((sub, prov['agent'], None)):
+                        agent = relation_triple[2]
+                    for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
+                        activity = relation_triple[2]
+                                     
+                    if not entity == None:
+                        print activity, "was associated with", entity
+                    else:
+                        print activity, "was associated with", agent
+                    aw = wasAssociatedWith(str(sub))
+                    self.container.add(aw)
+                
             elif type == prov['wasDerivedFrom']:
                 print 'wDF found'
                 for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
