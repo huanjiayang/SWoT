@@ -380,9 +380,9 @@ class PROVBuilder:
                         activity = relation_triple[2]
                                      
                     if not entity == None:
-                        print activity, "was associated with", entity
+                        print activity, "wasAssociatedWith", entity
                     else:
-                        print activity, "was associated with", agent
+                        print activity, "wasAssociatedWith", agent
                     aw = wasAssociatedWith(str(sub))
                     self.container.add(aw)
                 
@@ -394,27 +394,29 @@ class PROVBuilder:
                 self.container.add(df)  
             elif type == prov['actedOnBehalfOf']:
                 print 'aOBO'
-                for Relation_triple in RDFstore.triples((sub,prov['actedOnBehalfOf'], None)):
-                    actedOnBehalfOf = Relation_triple[2]
+                for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
+                    responsible = Relation_triple[2]
+                for Relation_triple in RDFstore.triples((sub,prov['subordinate'], None)):
+                    subordinate = Relation_triple[2]
+                print subordinate, "actedOnBehalfOf", responsible
                 ob = actedOnBehalfOf(str(sub))
                 self.container.add(ob)
+                
+                
             elif type == prov['wasAttributedTo']:
                 print 'wAT'
                 for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
                     wasAttributedTo = Relation_triple[2]
                 at = wasAttributedTo(str) 
                 self.container.add(at)
-            elif type == URIRef['wasAttributedTo']:
-                print 'wAT'
-                for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
-                    wasAttributedTo = Relation_triple[0]
+                 
+                for Relation_triple in RDFstore.triples((sub, prov['entity'], None)):
+                    entity = Relation_triple[2]
+                for Relation_triple in RDFstore.triples((sub, prov['agent'], None)):
+                    agent = Relation_triple[2]
                 at = wasAttributedTo(str(sub))
                 self.container.add(at)
-            else:
-                for Relation_triple in RDFstore.triples((URIRef['wAT'],RDF.type,prov['wasAttributedTo'])):
-                    wasAttributedTo = Relation_triple[1]
-                at = wasAttributedTo(str)
-                self.container.add(at)
+           
                 
 class test:
     def GET(self):
