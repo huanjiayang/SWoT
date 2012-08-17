@@ -1,0 +1,3766 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+s_sDevicePDDesc     0x44              temp.elf
+s_u16ActivityCounter
+                    0x2               temp.elf
+sBbcIdleBugTimer    0x10              temp.elf
+bCheckChild         0x4               temp.elf
+prHigherMlmeCallback
+                    0x4               temp.elf
+ba_redzone_size     0x4               temp.elf
+pwrm_CPUContext     0x3c              temp.elf
+zps_psNwk           0x4               temp.elf
+ba_abi_level        0x4               temp.elf
+sWake               0x10              temp.elf
+psActiveMsgListHead
+                    0x4               temp.elf
+psFreeMsgListHead   0x4               temp.elf
+eState              0x4               temp.elf
+
+Discarded input sections
+
+ .rom_workspace.os.o.s_u32SuspendIRQNesting
+                0x00000000        0x0 temp.elf
+ .rom_workspace.os.o.s_u8SuspendedIPL
+                0x00000000        0x0 temp.elf
+ .rom.OS_eGetCurrentTask
+                0x00000000        0x0 temp.elf
+ .rom.OS_eGetMessageStatus
+                0x00000000        0x0 temp.elf
+ .rom.OS_eSuspendOSInterrupts
+                0x00000000        0x0 temp.elf
+ .rom.OS_eResumeOSInterrupts
+                0x00000000        0x0 temp.elf
+ .rom.OS_eDisableAllInterrupts
+                0x00000000        0x0 temp.elf
+ .rom.OS_eEnableAllInterrupts
+                0x00000000        0x0 temp.elf
+ .rom.OS_eGetSWTimerStatus
+                0x00000000        0x0 temp.elf
+ .rom.PDUM_eNPduAppendFooterNBO
+                0x00000000        0x0 temp.elf
+ .rom.PDUM_eNPduWriteToBuffer
+                0x00000000        0x0 temp.elf
+ .rom.PWRM_vSetupDozeMonitor
+                0x00000000        0x0 temp.elf
+ .rom.PWRM_vResetDozeTimers
+                0x00000000        0x0 temp.elf
+ .rom.PWRM_u32GetDozeTime
+                0x00000000        0x0 temp.elf
+ .rom.PWRM_u32GetDozeElapsedTime
+                0x00000000        0x0 temp.elf
+ .rom.dbg_vAssertImpl
+                0x00000000        0x0 temp.elf
+ .bss           0x00000000        0x0 temp.elf
+ .bss.3         0x00000000        0x0 temp.elf
+ .bss.6         0x00000000        0x0 temp.elf
+ .bss.9         0x00000000        0x0 temp.elf
+ .bss.12        0x00000000        0x0 temp.elf
+ .bss.15        0x00000000        0x0 temp.elf
+ .bss.18        0x00000000        0x0 temp.elf
+ .bss.21        0x00000000        0x0 temp.elf
+ .bss.25        0x00000000        0x0 temp.elf
+ .bss.29        0x00000000        0x0 temp.elf
+ .bss.33        0x00000000        0x0 temp.elf
+ .bss.37        0x00000000        0x0 temp.elf
+ .bss.42        0x00000000        0x0 temp.elf
+ .bss.47        0x00000000        0x0 temp.elf
+ .bss.52        0x00000000        0x0 temp.elf
+ .bss.57        0x00000000        0x0 temp.elf
+ .bss.62        0x00000000        0x0 temp.elf
+ .bss.66        0x00000000        0x0 temp.elf
+ .bss.70        0x00000000        0x0 temp.elf
+ .bss.74        0x00000000        0x0 temp.elf
+ .bss.78        0x00000000        0x0 temp.elf
+ .bss.81        0x00000000        0x0 temp.elf
+ .bss.84        0x00000000        0x0 temp.elf
+ .bss.88        0x00000000        0x0 temp.elf
+ .bss.91        0x00000000        0x0 temp.elf
+ .bss.95        0x00000000        0x0 temp.elf
+ .bss.99        0x00000000        0x0 temp.elf
+ .bss.103       0x00000000        0x0 temp.elf
+ .bss.107       0x00000000        0x0 temp.elf
+ .bss.110       0x00000000        0x0 temp.elf
+ .bss.114       0x00000000        0x0 temp.elf
+ .bss.119       0x00000000        0x0 temp.elf
+ .bss.123       0x00000000        0x0 temp.elf
+ .bss.127       0x00000000        0x0 temp.elf
+ .bss.132       0x00000000        0x0 temp.elf
+ .bss.137       0x00000000        0x0 temp.elf
+ .bss.142       0x00000000        0x0 temp.elf
+ .bss.147       0x00000000        0x0 temp.elf
+ .bss.151       0x00000000        0x0 temp.elf
+ .bss.156       0x00000000        0x0 temp.elf
+ .bss.160       0x00000000        0x0 temp.elf
+ .bss.164       0x00000000        0x0 temp.elf
+ .bss.169       0x00000000        0x0 temp.elf
+ .bss.174       0x00000000        0x0 temp.elf
+ .bss.179       0x00000000        0x0 temp.elf
+ .bss.184       0x00000000        0x0 temp.elf
+ .bss.189       0x00000000        0x0 temp.elf
+ .bss.194       0x00000000        0x0 temp.elf
+ .bss.199       0x00000000        0x0 temp.elf
+ .bss.204       0x00000000        0x0 temp.elf
+ .bss.209       0x00000000        0x0 temp.elf
+ .bss.214       0x00000000        0x0 temp.elf
+ .bss.219       0x00000000        0x0 temp.elf
+ .bss.224       0x00000000        0x0 temp.elf
+ .bss.229       0x00000000        0x0 temp.elf
+ .bss.233       0x00000000        0x0 temp.elf
+ .bss.238       0x00000000        0x0 temp.elf
+ .bss.243       0x00000000        0x0 temp.elf
+ .bss.248       0x00000000        0x0 temp.elf
+ .bss.253       0x00000000        0x0 temp.elf
+ .bss.258       0x00000000        0x0 temp.elf
+ .bss.263       0x00000000        0x0 temp.elf
+ .bss.268       0x00000000        0x0 temp.elf
+ .bss.273       0x00000000        0x0 temp.elf
+ .bss.278       0x00000000        0x0 temp.elf
+ .bss.283       0x00000000        0x0 temp.elf
+ .bss.288       0x00000000        0x0 temp.elf
+ .bss.292       0x00000000        0x0 temp.elf
+ .bss.297       0x00000000        0x0 temp.elf
+ .bss.301       0x00000000        0x0 temp.elf
+ .bss.305       0x00000000        0x0 temp.elf
+ .bss.309       0x00000000        0x0 temp.elf
+ .bss.313       0x00000000        0x0 temp.elf
+ .bss.317       0x00000000        0x0 temp.elf
+ .bss.321       0x00000000        0x0 temp.elf
+ .bss.325       0x00000000        0x0 temp.elf
+ .bss.328       0x00000000        0x0 temp.elf
+ .bss.333       0x00000000        0x0 temp.elf
+ .bss.337       0x00000000        0x0 temp.elf
+ .bss.342       0x00000000        0x0 temp.elf
+ .bss.346       0x00000000        0x0 temp.elf
+ .bss.351       0x00000000        0x0 temp.elf
+ .bss.355       0x00000000        0x0 temp.elf
+ .bss.359       0x00000000        0x0 temp.elf
+ .bss.363       0x00000000        0x0 temp.elf
+ .bss.368       0x00000000        0x0 temp.elf
+ .bss.372       0x00000000        0x0 temp.elf
+ .bss.376       0x00000000        0x0 temp.elf
+ .bss.381       0x00000000        0x0 temp.elf
+ .bss.385       0x00000000        0x0 temp.elf
+ .bss.388       0x00000000        0x0 temp.elf
+ .bss.392       0x00000000        0x0 temp.elf
+ .bss.396       0x00000000        0x0 temp.elf
+ .bss.401       0x00000000        0x0 temp.elf
+ .bss.405       0x00000000        0x0 temp.elf
+ .bss.410       0x00000000        0x0 temp.elf
+ .bss.414       0x00000000        0x0 temp.elf
+ .bss.418       0x00000000        0x0 temp.elf
+ .bss.422       0x00000000        0x0 temp.elf
+ .bss.427       0x00000000        0x0 temp.elf
+ .bss.431       0x00000000        0x0 temp.elf
+ .bss.435       0x00000000        0x0 temp.elf
+ .bss.439       0x00000000        0x0 temp.elf
+ .bss.443       0x00000000        0x0 temp.elf
+ .bss.447       0x00000000        0x0 temp.elf
+ .bss.452       0x00000000        0x0 temp.elf
+ .bss.456       0x00000000        0x0 temp.elf
+ .bss.461       0x00000000        0x0 temp.elf
+ .bss.465       0x00000000        0x0 temp.elf
+ .bss.470       0x00000000        0x0 temp.elf
+ .bss.474       0x00000000        0x0 temp.elf
+ .bss.478       0x00000000        0x0 temp.elf
+ .bss.482       0x00000000        0x0 temp.elf
+ .bss.487       0x00000000        0x0 temp.elf
+ .bss.491       0x00000000        0x0 temp.elf
+ .bss.495       0x00000000        0x0 temp.elf
+ .bss.499       0x00000000        0x0 temp.elf
+ .bss.503       0x00000000        0x0 temp.elf
+ .bss.506       0x00000000        0x0 temp.elf
+ .bss.509       0x00000000        0x0 temp.elf
+ .bss.512       0x00000000        0x0 temp.elf
+ .bss.515       0x00000000        0x0 temp.elf
+ .bss.519       0x00000000        0x0 temp.elf
+ .bss.524       0x00000000        0x0 temp.elf
+ .bss.527       0x00000000        0x0 temp.elf
+ .bss.533       0x00000000        0x0 temp.elf
+ .bss.538       0x00000000        0x0 temp.elf
+ .bss.543       0x00000000        0x0 temp.elf
+ .bss.548       0x00000000        0x0 temp.elf
+ .bss.553       0x00000000        0x0 temp.elf
+ .data          0x00000000        0x0 temp.elf
+ .data.os_SWTimer_APP_cntrTickTimer_APP_tmrRestart
+                0x00000000        0x0 temp.elf
+ .data.2        0x00000000        0x0 temp.elf
+ .data.5        0x00000000        0x0 temp.elf
+ .data.8        0x00000000        0x0 temp.elf
+ .data.11       0x00000000        0x0 temp.elf
+ .data.14       0x00000000        0x0 temp.elf
+ .data.17       0x00000000        0x0 temp.elf
+ .data.20       0x00000000        0x0 temp.elf
+ .data.24       0x00000000        0x0 temp.elf
+ .data.28       0x00000000        0x0 temp.elf
+ .data.32       0x00000000        0x0 temp.elf
+ .data.36       0x00000000        0x0 temp.elf
+ .data.41       0x00000000        0x0 temp.elf
+ .data.46       0x00000000        0x0 temp.elf
+ .data.51       0x00000000        0x0 temp.elf
+ .data.56       0x00000000        0x0 temp.elf
+ .data.61       0x00000000        0x0 temp.elf
+ .data.65       0x00000000        0x0 temp.elf
+ .data.69       0x00000000        0x0 temp.elf
+ .data.73       0x00000000        0x0 temp.elf
+ .data.77       0x00000000        0x0 temp.elf
+ .data.80       0x00000000        0x0 temp.elf
+ .data.83       0x00000000        0x0 temp.elf
+ .data.87       0x00000000        0x0 temp.elf
+ .data.90       0x00000000        0x0 temp.elf
+ .data.94       0x00000000        0x0 temp.elf
+ .data.98       0x00000000        0x0 temp.elf
+ .data.102      0x00000000        0x0 temp.elf
+ .data.106      0x00000000        0x0 temp.elf
+ .data.109      0x00000000        0x0 temp.elf
+ .data.113      0x00000000        0x0 temp.elf
+ .data.118      0x00000000        0x0 temp.elf
+ .data.122      0x00000000        0x0 temp.elf
+ .data.126      0x00000000        0x0 temp.elf
+ .data.131      0x00000000        0x0 temp.elf
+ .data.136      0x00000000        0x0 temp.elf
+ .data.141      0x00000000        0x0 temp.elf
+ .data.146      0x00000000        0x0 temp.elf
+ .data.150      0x00000000        0x0 temp.elf
+ .data.155      0x00000000        0x0 temp.elf
+ .data.159      0x00000000        0x0 temp.elf
+ .data.163      0x00000000        0x0 temp.elf
+ .data.168      0x00000000        0x0 temp.elf
+ .data.173      0x00000000        0x0 temp.elf
+ .data.178      0x00000000        0x0 temp.elf
+ .data.183      0x00000000        0x0 temp.elf
+ .data.188      0x00000000        0x0 temp.elf
+ .data.193      0x00000000        0x0 temp.elf
+ .data.198      0x00000000        0x0 temp.elf
+ .data.203      0x00000000        0x0 temp.elf
+ .data.208      0x00000000        0x0 temp.elf
+ .data.213      0x00000000        0x0 temp.elf
+ .data.218      0x00000000        0x0 temp.elf
+ .data.223      0x00000000        0x0 temp.elf
+ .data.228      0x00000000        0x0 temp.elf
+ .data.232      0x00000000        0x0 temp.elf
+ .data.237      0x00000000        0x0 temp.elf
+ .data.242      0x00000000        0x0 temp.elf
+ .data.247      0x00000000        0x0 temp.elf
+ .data.252      0x00000000        0x0 temp.elf
+ .data.257      0x00000000        0x0 temp.elf
+ .data.262      0x00000000        0x0 temp.elf
+ .data.267      0x00000000        0x0 temp.elf
+ .data.272      0x00000000        0x0 temp.elf
+ .data.277      0x00000000        0x0 temp.elf
+ .data.282      0x00000000        0x0 temp.elf
+ .data.287      0x00000000        0x0 temp.elf
+ .data.291      0x00000000        0x0 temp.elf
+ .data.296      0x00000000        0x0 temp.elf
+ .data.300      0x00000000        0x0 temp.elf
+ .data.304      0x00000000        0x0 temp.elf
+ .data.308      0x00000000        0x0 temp.elf
+ .data.312      0x00000000        0x0 temp.elf
+ .data.316      0x00000000        0x0 temp.elf
+ .data.320      0x00000000        0x0 temp.elf
+ .data.324      0x00000000        0x0 temp.elf
+ .data.327      0x00000000        0x0 temp.elf
+ .data.332      0x00000000        0x0 temp.elf
+ .data.336      0x00000000        0x0 temp.elf
+ .data.341      0x00000000        0x0 temp.elf
+ .data.345      0x00000000        0x0 temp.elf
+ .data.350      0x00000000        0x0 temp.elf
+ .data.354      0x00000000        0x0 temp.elf
+ .data.358      0x00000000        0x0 temp.elf
+ .data.362      0x00000000        0x0 temp.elf
+ .data.367      0x00000000        0x0 temp.elf
+ .data.371      0x00000000        0x0 temp.elf
+ .data.375      0x00000000        0x0 temp.elf
+ .data.380      0x00000000        0x0 temp.elf
+ .data.384      0x00000000        0x0 temp.elf
+ .data.387      0x00000000        0x0 temp.elf
+ .data.391      0x00000000        0x0 temp.elf
+ .data.395      0x00000000        0x0 temp.elf
+ .data.400      0x00000000        0x0 temp.elf
+ .data.404      0x00000000        0x0 temp.elf
+ .data.409      0x00000000        0x0 temp.elf
+ .data.413      0x00000000        0x0 temp.elf
+ .data.417      0x00000000        0x0 temp.elf
+ .data.421      0x00000000        0x0 temp.elf
+ .data.426      0x00000000        0x0 temp.elf
+ .data.430      0x00000000        0x0 temp.elf
+ .data.434      0x00000000        0x0 temp.elf
+ .data.438      0x00000000        0x0 temp.elf
+ .data.442      0x00000000        0x0 temp.elf
+ .data.446      0x00000000        0x0 temp.elf
+ .data.451      0x00000000        0x0 temp.elf
+ .data.455      0x00000000        0x0 temp.elf
+ .data.460      0x00000000        0x0 temp.elf
+ .data.464      0x00000000        0x0 temp.elf
+ .data.469      0x00000000        0x0 temp.elf
+ .data.473      0x00000000        0x0 temp.elf
+ .data.477      0x00000000        0x0 temp.elf
+ .data.481      0x00000000        0x0 temp.elf
+ .data.486      0x00000000        0x0 temp.elf
+ .data.490      0x00000000        0x0 temp.elf
+ .data.494      0x00000000        0x0 temp.elf
+ .data.498      0x00000000        0x0 temp.elf
+ .data.502      0x00000000        0x0 temp.elf
+ .data.505      0x00000000        0x0 temp.elf
+ .data.508      0x00000000        0x0 temp.elf
+ .data.511      0x00000000        0x0 temp.elf
+ .data.514      0x00000000        0x0 temp.elf
+ .data.518      0x00000000        0x0 temp.elf
+ .data.523      0x00000000        0x0 temp.elf
+ .data.526      0x00000000        0x0 temp.elf
+ .data.532      0x00000000        0x0 temp.elf
+ .data.537      0x00000000        0x0 temp.elf
+ .data.542      0x00000000        0x0 temp.elf
+ .data.547      0x00000000        0x0 temp.elf
+ .data.552      0x00000000        0x0 temp.elf
+ .rom.zps_u32NwkLibFromPayload
+                0x00000000        0x0 temp.elf
+ .rom.zps_vNwkSlistAddToHead
+                0x00000000        0x0 temp.elf
+ .rom.zps_vNwkSlistInsertAfter
+                0x00000000        0x0 temp.elf
+ .text          0x00000000        0x0 temp.elf
+ .text.19       0x00000000        0x0 temp.elf
+ .text.23       0x00000000        0x0 temp.elf
+ .text.27       0x00000000        0x0 temp.elf
+ .text.31       0x00000000        0x0 temp.elf
+ .text.35       0x00000000        0x0 temp.elf
+ .text.40       0x00000000        0x0 temp.elf
+ .text.45       0x00000000        0x0 temp.elf
+ .text.50       0x00000000        0x0 temp.elf
+ .text.55       0x00000000        0x0 temp.elf
+ .text.60       0x00000000        0x0 temp.elf
+ .text.i16Serial_RxChar
+                0x00000000        0x0 temp.elf
+ .text.vSerialRxString
+                0x00000000        0x0 temp.elf
+ .text.vSerial_TxChar
+                0x00000000        0x0 temp.elf
+ .text.64       0x00000000        0x0 temp.elf
+ .text.68       0x00000000        0x0 temp.elf
+ .text.72       0x00000000        0x0 temp.elf
+ .text.OS_eStopSWTimer
+                0x00000000        0x0 temp.elf
+ .text.82       0x00000000        0x0 temp.elf
+ .text.89       0x00000000        0x0 temp.elf
+ .text.93       0x00000000        0x0 temp.elf
+ .text.97       0x00000000        0x0 temp.elf
+ .text.PDM_vSPIFlashConfig
+                0x00000000        0x0 temp.elf
+ .text.vUnmarkAllBuffersFromChangeset
+                0x00000000        0x0 temp.elf
+ .text.PDM_vSave
+                0x00000000        0x0 temp.elf
+ .text.101      0x00000000        0x0 temp.elf
+ .text.108      0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".270
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".284
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".336
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".349
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".314
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".297
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".229
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".182
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".163
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".145
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".716
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".675
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".624
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".580
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".537
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".493
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".439
+                0x00000000        0x0 temp.elf
+ .text.112      0x00000000        0x0 temp.elf
+ .text.eCopyFragmentToApdu
+                0x00000000        0x0 temp.elf
+ .text.zps_vSendExtendedAckDataFrame
+                0x00000000        0x0 temp.elf
+ .text.zps_vHandleApsdeDataFragInd
+                0x00000000        0x0 temp.elf
+ .text.zps_vFragmentWindowTimeout
+                0x00000000        0x0 temp.elf
+ .text.117      0x00000000        0x0 temp.elf
+ .text.121      0x00000000        0x0 temp.elf
+ .text.125      0x00000000        0x0 temp.elf
+ .text.u8BlocksToSendInWindow
+                0x00000000        0x0 temp.elf
+ .text.zps_psAplApsFragTransmitGetRecord
+                0x00000000        0x0 temp.elf
+ .text.zps_vAplApsFragTransmitFree
+                0x00000000        0x0 temp.elf
+ .text.zps_vAplApsFragTransmitNotifyApp
+                0x00000000        0x0 temp.elf
+ .text.zps_vSendNextFragment
+                0x00000000        0x0 temp.elf
+ .text.zps_eStartFragmentedTransmission
+                0x00000000        0x0 temp.elf
+ .text.zps_vFragmentTimerHandler
+                0x00000000        0x0 temp.elf
+ .text.zps_vFragmentAckHandler
+                0x00000000        0x0 temp.elf
+ .text.130      0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".366
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".396
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1539
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1629
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1826
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1869
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1975
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".2003
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".2034
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".2074
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".2109
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1897
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".549
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".492
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".436
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".208
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1696
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1783
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".292
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1039
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".972
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".912
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".610
+                0x00000000        0x0 temp.elf
+ .text.135      0x00000000        0x0 temp.elf
+ .text.zps_vHandleExtendedDataAckFrame
+                0x00000000        0x0 temp.elf
+ .text.140      0x00000000        0x0 temp.elf
+ .text.zps_vAplSecSetInitialSecurityState
+                0x00000000        0x0 temp.elf
+ .text.145      0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_aib.c".121
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_aib.c".132
+                0x00000000        0x0 temp.elf
+ .text.149      0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".401
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".549
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".582
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1291
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1257
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1213
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1060
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".938
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".877
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".825
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".673
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".649
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".406
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".993
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1105
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".504
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".748
+                0x00000000        0x0 temp.elf
+ .text.154      0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_TC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_trust_center.c".458
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_TC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_trust_center.c".83
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_TC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_trust_center.c".296
+                0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_TC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_trust_center.c".163
+                0x00000000        0x0 temp.elf
+ .text.158      0x00000000        0x0 temp.elf
+ .text.162      0x00000000        0x0 temp.elf
+ .text.167      0x00000000        0x0 temp.elf
+ .text.172      0x00000000        0x0 temp.elf
+ .text.177      0x00000000        0x0 temp.elf
+ .text.182      0x00000000        0x0 temp.elf
+ .text.187      0x00000000        0x0 temp.elf
+ .text.192      0x00000000        0x0 temp.elf
+ .text.197      0x00000000        0x0 temp.elf
+ .text.202      0x00000000        0x0 temp.elf
+ .text.207      0x00000000        0x0 temp.elf
+ .text.212      0x00000000        0x0 temp.elf
+ .text.217      0x00000000        0x0 temp.elf
+ .text.222      0x00000000        0x0 temp.elf
+ .text.227      0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_CMN."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_common.c".147
+                0x00000000        0x0 temp.elf
+ .text.231      0x00000000        0x0 temp.elf
+ .text.ovly.ZDO_NMC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager_client.c".97
+                0x00000000        0x0 temp.elf
+ .text.236      0x00000000        0x0 temp.elf
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_apsde_req.c".101
+                0x00000000        0x0 temp.elf
+ .text.241      0x00000000        0x0 temp.elf
+ .text.246      0x00000000        0x0 temp.elf
+ .text.251      0x00000000        0x0 temp.elf
+ .text.256      0x00000000        0x0 temp.elf
+ .text.261      0x00000000        0x0 temp.elf
+ .text.266      0x00000000        0x0 temp.elf
+ .text.271      0x00000000        0x0 temp.elf
+ .text.276      0x00000000        0x0 temp.elf
+ .text.281      0x00000000        0x0 temp.elf
+ .text.286      0x00000000        0x0 temp.elf
+ .text.290      0x00000000        0x0 temp.elf
+ .text.295      0x00000000        0x0 temp.elf
+ .text.299      0x00000000        0x0 temp.elf
+ .text.303      0x00000000        0x0 temp.elf
+ .text.307      0x00000000        0x0 temp.elf
+ .text.311      0x00000000        0x0 temp.elf
+ .text.315      0x00000000        0x0 temp.elf
+ .text.319      0x00000000        0x0 temp.elf
+ .text.326      0x00000000        0x0 temp.elf
+ .text.331      0x00000000        0x0 temp.elf
+ .text.335      0x00000000        0x0 temp.elf
+ .text.340      0x00000000        0x0 temp.elf
+ .text.MAC_vHandleTOFMlmeReqRsp
+                0x00000000        0x0 temp.elf
+ .text.vAppApiMlmeRequest
+                0x00000000        0x0 temp.elf
+ .text.vAppApiMcpsRequest
+                0x00000000        0x0 temp.elf
+ .text.eAppApiPlmeSet
+                0x00000000        0x0 temp.elf
+ .text.eAppApiPlmeGet
+                0x00000000        0x0 temp.elf
+ .text.vAppApiRegisterTxStartCallback
+                0x00000000        0x0 temp.elf
+ .text.psTSV_GetHead
+                0x00000000        0x0 temp.elf
+ .text.vAppApiRestoreMacSettings
+                0x00000000        0x0 temp.elf
+ .text.344      0x00000000        0x0 temp.elf
+ .text.vAHI_ClearSystemEventStatus
+                0x00000000        0x0 temp.elf
+ .text.u16AHI_WatchdogReadValue
+                0x00000000        0x0 temp.elf
+ .text.bAHI_GetClkSource
+                0x00000000        0x0 temp.elf
+ .text.vTimerCallback
+                0x00000000        0x0 temp.elf
+ .text.vAHI_ETSIHighPowerModuleEnable
+                0x00000000        0x0 temp.elf
+ .text.vAHI_HighPowerModuleEnable
+                0x00000000        0x0 temp.elf
+ .text.vAHI_EnableFastStartUp
+                0x00000000        0x0 temp.elf
+ .text.bPollClkSource
+                0x00000000        0x0 temp.elf
+ .text.vAHI_SelectClockSource
+                0x00000000        0x0 temp.elf
+ .text.bAHI_SetClockRate
+                0x00000000        0x0 temp.elf
+ .text.Delay    0x00000000        0x0 temp.elf
+ .text.bAHI_Set32KhzClockMode
+                0x00000000        0x0 temp.elf
+ .text.349      0x00000000        0x0 temp.elf
+ .text.vAHI_IntHandlerTimer0
+                0x00000000        0x0 temp.elf
+ .text.vAHI_Timer0RegisterCallback
+                0x00000000        0x0 temp.elf
+ .text.vAHI_IntHandlerTimer1
+                0x00000000        0x0 temp.elf
+ .text.vAHI_Timer1RegisterCallback
+                0x00000000        0x0 temp.elf
+ .text.vAHI_IntHandlerTimer2
+                0x00000000        0x0 temp.elf
+ .text.vAHI_Timer2RegisterCallback
+                0x00000000        0x0 temp.elf
+ .text.353      0x00000000        0x0 temp.elf
+ .text.357      0x00000000        0x0 temp.elf
+ .text.vAHI_WakeTimerStartLarge
+                0x00000000        0x0 temp.elf
+ .text.u64AHI_WakeTimerReadLarge
+                0x00000000        0x0 temp.elf
+ .text.u32AHI_WakeTimerCalibrateEnhanced
+                0x00000000        0x0 temp.elf
+ .text.361      0x00000000        0x0 temp.elf
+ .text.vAHI_UartSetClocksPerBit
+                0x00000000        0x0 temp.elf
+ .text.u8AHI_UartReadRxFifoLevel
+                0x00000000        0x0 temp.elf
+ .text.u8AHI_UartReadTxFifoLevel
+                0x00000000        0x0 temp.elf
+ .text.vAHI_UartSetRTS
+                0x00000000        0x0 temp.elf
+ .text.vAHI_UartSetBreak
+                0x00000000        0x0 temp.elf
+ .text.366      0x00000000        0x0 temp.elf
+ .text.386      0x00000000        0x0 temp.elf
+ .text.390      0x00000000        0x0 temp.elf
+ .text.ZPS_pvNwkGetHandle
+                0x00000000        0x0 temp.elf
+ .text.394      0x00000000        0x0 temp.elf
+ .text.zps_vNwkFreeMcpsHandle
+                0x00000000        0x0 temp.elf
+ .text.zps_psNwkMcpsMgrFindPendingByNwkDstAddr
+                0x00000000        0x0 temp.elf
+ .text.399      0x00000000        0x0 temp.elf
+ .text.403      0x00000000        0x0 temp.elf
+ .text.ZPS_vNwkNibNtDiscSetPParent
+                0x00000000        0x0 temp.elf
+ .text.ZPS_vNwkNibClearDiscoveryNT
+                0x00000000        0x0 temp.elf
+ .text.408      0x00000000        0x0 temp.elf
+ .text.412      0x00000000        0x0 temp.elf
+ .text.416      0x00000000        0x0 temp.elf
+ .text.420      0x00000000        0x0 temp.elf
+ .text.425      0x00000000        0x0 temp.elf
+ .text.429      0x00000000        0x0 temp.elf
+ .text.433      0x00000000        0x0 temp.elf
+ .text.437      0x00000000        0x0 temp.elf
+ .text.441      0x00000000        0x0 temp.elf
+ .text.445      0x00000000        0x0 temp.elf
+ .text.450      0x00000000        0x0 temp.elf
+ .text.454      0x00000000        0x0 temp.elf
+ .text.zps_eNwkHandleSceRejnRequest
+                0x00000000        0x0 temp.elf
+ .text.459      0x00000000        0x0 temp.elf
+ .text.463      0x00000000        0x0 temp.elf
+ .text.468      0x00000000        0x0 temp.elf
+ .text.zps_sNwkStart
+                0x00000000        0x0 temp.elf
+ .text.zps_eSdeGenlIllegal
+                0x00000000        0x0 temp.elf
+ .text.472      0x00000000        0x0 temp.elf
+ .text.476      0x00000000        0x0 temp.elf
+ .text.480      0x00000000        0x0 temp.elf
+ .text.485      0x00000000        0x0 temp.elf
+ .text.489      0x00000000        0x0 temp.elf
+ .text.493      0x00000000        0x0 temp.elf
+ .text.PWRM_eStartActivity
+                0x00000000        0x0 temp.elf
+ .text.497      0x00000000        0x0 temp.elf
+ .text.501      0x00000000        0x0 temp.elf
+ .text.504      0x00000000        0x0 temp.elf
+ .text.507      0x00000000        0x0 temp.elf
+ .text.510      0x00000000        0x0 temp.elf
+ .text.513      0x00000000        0x0 temp.elf
+ .text.517      0x00000000        0x0 temp.elf
+ .text.522      0x00000000        0x0 temp.elf
+ .text.525      0x00000000        0x0 temp.elf
+ .text.531      0x00000000        0x0 temp.elf
+ .text.536      0x00000000        0x0 temp.elf
+ .text.541      0x00000000        0x0 temp.elf
+ .rodata.OS_g_u32Version
+                0x00000000        0x0 temp.elf
+ .rodata.PWRM_g_u32Version
+                0x00000000        0x0 temp.elf
+ .rodata.PDM_g_u32Version
+                0x00000000        0x0 temp.elf
+ .rodata.ZPS_g_u32AplVersion
+                0x00000000        0x0 temp.elf
+ .rodata.str1.1.115
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoDefaultServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoNwkAddrServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoIeeeAddrServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoMatchDescServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoNodeDescServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoSimpleDescServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoPowerDescServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoActiveEpServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoDeviceAnnceServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoSystemServerDiscoveryServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoMgmtLqiServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoMgmtLeaveServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoMgmtNWKUpdateServerContextSize
+                0x00000000        0x0 temp.elf
+ .zps_apl_ZdoZdoClientContextSize
+                0x00000000        0x0 temp.elf
+ .rodata.ZPS_g_u32MacVersion
+                0x00000000        0x0 temp.elf
+ .rodata.ZPS_g_u32TsvVersion
+                0x00000000        0x0 temp.elf
+ .rodata.PDUM_g_u32Version
+                0x00000000        0x0 temp.elf
+ .rodata.str1.1.329
+                0x00000000        0x0 temp.elf
+ .rodata.DBG_g_u32Version
+                0x00000000        0x0 temp.elf
+ .rodata        0x00000000        0x0 temp.elf
+ .rodata.364    0x00000000        0x0 temp.elf
+ .libobjsize    0x00000000        0x0 temp.elf
+ .rodata.AESSW_g_u32Version
+                0x00000000        0x0 temp.elf
+ .rodata.529    0x00000000        0x0 temp.elf
+ .stabstr       0x00000000        0x0 temp.elf
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x04000000         0x00020000
+flash            0x04000000         0x00080000
+rom              0x00000000         0x00020000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD temp.elf
+LOAD /cygdrive/c/Jennic/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/ba2/libgcc.a
+LOAD /cygdrive/c/Jennic/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/../../../../ba-elf/lib/ba2/libc.a
+LOAD /cygdrive/c/Jennic/Tools/ba-elf-ba2/bin/../lib/gcc/ba-elf/4.1.2/ba2/libgcc.a
+                0x00001400                _stack_size = 0x1400
+                0x000000c0                __exception_bus_error = 0xc0
+                0x00000124                __exception_tick_timer = 0x124
+                0x00000188                __exception_unaligned_access = 0x188
+                0x000001ec                __exception_illegal_instruction = 0x1ec
+                0x00000250                __exception_external_interrupt = 0x250
+                0x000002b4                __exception_syscall = 0x2b4
+                0x00000318                __exception_trap = 0x318
+                0x0000037c                __exception_generic = 0x37c
+                0x000003e0                __exception_stack_overflow = 0x3e0
+                0x00000444                __exception_reset = 0x444
+                0x00000a9c                _sJennicLogo = 0xa9c
+                0x0000a1cc                __stext = 0xa1cc
+                0x0000a20e                ___errno = 0xa20e
+                0x0000a25e                ___udivsi3 = 0xa25e
+                0x0000a25e                ___udivsi3 = 0xa25e
+                0x0000a266                ___umodsi3 = 0xa266
+                0x0000a266                ___umodsi3 = 0xa266
+                0x0000a26e                ___divsi3 = 0xa26e
+                0x0000a29a                ___modsi3 = 0xa29a
+                0x0000a434                _vAHI_ApConfigure = 0xa434
+                0x0000a49f                _bAHI_APRegulatorEnabled = 0xa49f
+                0x0000a4ac                _vAHI_AdcEnable = 0xa4ac
+                0x0000a5ac                _bAHI_AdcPoll = 0xa5ac
+                0x0000a604                _vAHI_DacEnable = 0xa604
+                0x0000a686                _vAHI_DacDisable = 0xa686
+                0x0000a6a3                _vAHI_DacOutput = 0xa6a3
+                0x0000a6c7                _bAHI_DacPoll = 0xa6c7
+                0x0000a89a                _vAHI_ComparatorEnable = 0xa89a
+                0x0000a8d5                _vAHI_ComparatorDisable = 0xa8d5
+                0x0000a945                _vAHI_ComparatorWakeEnable = 0xa945
+                0x0000a94b                _u8AHI_ComparatorStatus = 0xa94b
+                0x0000a95b                _u8AHI_ComparatorWakeStatus = 0xa95b
+                0x0000a96f                _bAHI_DaiPollBusy = 0xa96f
+                0x0000a97e                _vAHI_DaiReadAudioData = 0xa97e
+                0x0000a993                _vAHI_DaiWriteAudioData = 0xa993
+                0x0000a9a0                _vAHI_IntHandlerDai = 0xa9a0
+                0x0000a9be                _vAHI_DaiRegisterCallback = 0xa9be
+                0x0000a9eb                _vAHI_DaiStartTransaction = 0xa9eb
+                0x0000aa0e                _vAHI_DaiConnectToFIFO = 0xaa0e
+                0x0000aac4                _vAHI_DaiSetBitClock = 0xaac4
+                0x0000aaed                _vAHI_DaiInterruptEnable = 0xaaed
+                0x0000ab05                _vAHI_DaiEnable = 0xab05
+                0x0000ab28                _vAHI_DioSetDirection = 0xab28
+                0x0000ab3c                _vAHI_DioSetOutput = 0xab3c
+                0x0000ab64                _u32AHI_DioReadInput = 0xab64
+                0x0000aba9                _vAHI_DioSetByte = 0xaba9
+                0x0000abc3                _u8AHI_DioReadByte = 0xabc3
+                0x0000ad82                _bAHI_FifoRead = 0xad82
+                0x0000ad9f                _vAHI_FifoWrite = 0xad9f
+                0x0000adc4                _u8AHI_FifoReadTxLevel = 0xadc4
+                0x0000ae8c                _vAHI_FifoEnable = 0xae8c
+                0x0000aedf                _vAHI_FlashPowerUp = 0xaedf
+                0x0000af14                _vAHI_FlashPowerDown = 0xaf14
+                0x0000afa3                _bAHI_FullFlashRead = 0xafa3
+                0x0000aff0                _bAHI_FullFlashProgram = 0xaff0
+                0x0000b08d                _bAHI_FlashEraseSector = 0xb08d
+                0x0000b281                _vAHI_IpDisable = 0xb281
+                0x0000b3a6                _bAHI_IpTxDone = 0xb3a6
+                0x0000b3c2                _bAHI_IpRxDataAvailable = 0xb3c2
+                0x0000b3cf                _vAHI_IntHandlerSpiIp = 0xb3cf
+                0x0000b3f1                _vAHI_IpRegisterCallback = 0xb3f1
+                0x0000b44e                _bAHI_StartPulseCounter = 0xb44e
+                0x0000b475                _bAHI_Clear32BitPulseCounter = 0xb475
+                0x0000b579                _bAHI_Clear16BitPulseCounter = 0xb579
+                0x0000b5e5                _bAHI_StopPulseCounter = 0xb5e5
+                0x0000b630                _vAHI_SwReset = 0xb630
+                0x0000b648                _vAHI_SiMasterConfigure = 0xb648
+                0x0000b6bf                _vAHI_SiMasterWriteData8 = 0xb6bf
+                0x0000b6c6                _vAHI_SiSlaveWriteData8 = 0xb6c6
+                0x0000b6cd                _u8AHI_SiMasterReadData8 = 0xb6cd
+                0x0000b6d7                _u8AHI_SiSlaveReadData8 = 0xb6d7
+                0x0000b6e1                _vAHI_SiMasterWriteSlaveAddr = 0xb6e1
+                0x0000b6fa                _bAHI_SiMasterPollBusy = 0xb6fa
+                0x0000b707                _bAHI_SiMasterPollTransferInProgress = 0xb707
+                0x0000b714                _bAHI_SiMasterCheckRxNack = 0xb714
+                0x0000b721                _bAHI_SiMasterPollArbitrationLost = 0xb721
+                0x0000b816                _vAHI_SiSlaveConfigure = 0xb816
+                0x0000b714                _bAHI_SiMasterCheckRxNack = 0xb714
+                0x0000b714                _bAHI_SiCheckRxNack = 0xb714
+                0x0000b714                _bAHI_SiPollRxNack = 0xb714
+                0x0000b648                _vAHI_SiConfigure = 0xb648
+                0x0000b67d                _vAHI_SiSetCmdReg = 0xb67d
+                0x0000b6bf                _vAHI_SiWriteData8 = 0xb6bf
+                0x0000b6cd                _u8AHI_SiReadData8 = 0xb6cd
+                0x0000b6e1                _vAHI_SiWriteSlaveAddr = 0xb6e1
+                0x0000b6fa                _bAHI_SiPollBusy = 0xb6fa
+                0x0000b707                _bAHI_SiPollTransferInProgress = 0xb707
+                0x0000b721                _bAHI_SiPollArbitrationLost = 0xb721
+                0x0000b871                _vAHI_SpiConfigure = 0xb871
+                0x0000b8f7                _vAHI_SpiSetDelayReadEdge = 0xb8f7
+                0x0000b97d                _vAHI_SpiSelect = 0xb97d
+                0x0000b984                _vAHI_SpiStop = 0xb984
+                0x0000b98d                _vAHI_SpiStartTransfer32 = 0xb98d
+                0x0000b9a5                _u32AHI_SpiReadTransfer32 = 0xb9a5
+                0x0000b9ac                _vAHI_SpiStartTransfer16 = 0xb9ac
+                0x0000b9c4                _u16AHI_SpiReadTransfer16 = 0xb9c4
+                0x0000b9ce                _vAHI_SpiStartTransfer8 = 0xb9ce
+                0x0000b9e6                _u8AHI_SpiReadTransfer8 = 0xb9e6
+                0x0000b9f0                _bAHI_SpiPollBusy = 0xb9f0
+                0x0000b9fa                _vAHI_SpiWaitBusy = 0xb9fa
+                0x0000ba07                _vAHI_IntHandlerSpiMaster = 0xba07
+                0x0000ba2d                _vAHI_SpiRegisterCallback = 0xba2d
+                0x0000ba45                _vAHI_SpiSetContinuousMode = 0xba45
+                0x0000ba63                _u8AHI_PowerStatus = 0xba63
+                0x0000ba6d                _vAHI_MemoryHold = 0xba6d
+                0x0000baa9                _vAHI_ProtocolPower = 0xbaa9
+                0x0000bac0                _vAHI_CpuDoze = 0xbac0
+                0x0000bad3                _vAHI_IntHandlerSysCtrl = 0xbad3
+                0x0000bb08                _vAHI_SysCtrlRegisterCallback = 0xbb08
+                0x0000bb5d                _vAHI_AntennaDiversityOutputEnable = 0xbb5d
+                0x0000bb9a                _vAHI_WatchdogStart = 0xbb9a
+                0x0000bbad                _vAHI_WatchdogStop = 0xbbad
+                0x0000bbc4                _vAHI_WatchdogRestart = 0xbbc4
+                0x0000bc14                _u8AHI_GetSystemClkSpeed = 0xbc14
+                0x0000bc23                _bAHI_Calibrate24MhzClock = 0xbc23
+                0x0000bd85                _vAHI_PowerXTAL = 0xbd85
+                0x0000beb6                _vAHI_StopRandomNumberGenerator = 0xbeb6
+                0x0000bebf                _u16AHI_ReadRandomNumber = 0xbebf
+                0x0000bf6d                _vAHI_PowerDown = 0xbf6d
+                0x0000bfcd                _vAHI_TickTimerInit = 0xbfcd
+                0x0000bff4                _vAHI_TickTimerWrite = 0xbff4
+                0x0000bffd                _vAHI_TickTimerIntPendClr = 0xbffd
+                0x0000c012                _bAHI_TickTimerIntStatus = 0xc012
+                0x0000c021                _vAHI_TickTimerConfigure = 0xc021
+                0x0000c03c                _vAHI_TickTimerIntEnable = 0xc03c
+                0x0000c05d                _u32AHI_TickTimerRead = 0xc05d
+                0x0000c066                _vAHI_TickTimerInterval = 0xc066
+                0x0000c084                _vAHI_TickTimerISR = 0xc084
+                0x0000c0c1                _vAHI_TimerEnable = 0xc0c1
+                0x0000c168                _vAHI_TimerDisable = 0xc168
+                0x0000c18e                _vAHI_TimerClockSelect = 0xc18e
+                0x0000c1bb                _vAHI_TimerReadCaptureFreeRunning = 0xc1bb
+                0x0000c1f4                _vAHI_TimerStop = 0xc1f4
+                0x0000c216                _vAHI_TimerReadCapture = 0xc216
+                0x0000c25e                _u8AHI_TimerFired = 0xc25e
+                0x0000c30c                _vAHI_TimerStartDeltaSigma = 0xc30c
+                0x0000c343                _vAHI_TimerStartRepeat = 0xc343
+                0x0000c351                _vAHI_TimerStartSingleShot = 0xc351
+                0x0000c362                _u16AHI_TimerReadCount = 0xc362
+                0x0000c46f                _vAHI_UartEnable = 0xc46f
+                0x0000c4c6                _vAHI_UartDisable = 0xc4c6
+                0x0000c520                _vAHI_UartSetBaudDivisor = 0xc520
+                0x0000c579                _vAHI_UartSetClockDivisor = 0xc579
+                0x0000c588                _vAHI_UartSetControl = 0xc588
+                0x0000c5e2                _vAHI_UartSetInterrupt = 0xc5e2
+                0x0000c64c                _vAHI_UartReset = 0xc64c
+                0x0000c67c                _u8AHI_UartReadLineStatus = 0xc67c
+                0x0000c6a2                _u8AHI_UartReadModemStatus = 0xc6a2
+                0x0000c6c8                _u8AHI_UartReadInterruptStatus = 0xc6c8
+                0x0000c6ee                _vAHI_UartWriteData = 0xc6ee
+                0x0000c70d                _u8AHI_UartReadData = 0xc70d
+                0x0000c756                _vAHI_IntHandlerUart0 = 0xc756
+                0x0000c77f                _vAHI_IntHandlerUart1 = 0xc77f
+                0x0000c7a8                _vAHI_Uart0RegisterCallback = 0xc7a8
+                0x0000c7c0                _vAHI_Uart1RegisterCallback = 0xc7c0
+                0x0000c82f                _vAHI_WakeTimerEnable = 0xc82f
+                0x0000c88b                _vAHI_WakeTimerStart = 0xc88b
+                0x0000c944                _vAHI_WakeTimerStop = 0xc944
+                0x0000c96b                _u8AHI_WakeTimerStatus = 0xc96b
+                0x0000c975                _u8AHI_WakeTimerFiredStatus = 0xc975
+                0x0000ca2c                _bACI_isBusy = 0xca2c
+                0x0000ca44                _bACI_commandAccepted = 0xca44
+                0x0000ca5e                _vACI_CmdWaitBusy = 0xca5e
+                0x0000cb2d                _bACI_WriteKey = 0xcb2d
+                0x0000cb43                _bACI_issueReset = 0xcb43
+                0x0000cb61                _bACI_setMode = 0xcb61
+                0x0000cb8f                _bACI_ReadOutputData = 0xcb8f
+                0x0000cbc4                _bACI_WriteInputData = 0xcbc4
+                0x0000cbe7                _vACI_IntHandlerAes = 0xcbe7
+                0x0000cc0c                _vACI_SetInterruptCallback = 0xcc0c
+                0x0000cc65                _vACI_ClearInterruptStatus = 0xcc65
+                0x0000cc7f                _vACI_ClearInterruptEnable = 0xcc7f
+                0x0000cc96                _vACI_SetInterruptEnable = 0xcc96
+                0x0000ccea                _vACI_ReadInterruptEnable = 0xccea
+                0x0000ccfb                _vACI_ReadInterruptStatus = 0xccfb
+                0x0000cd0c                _bACI_ReadChecksumValidationResult = 0xcd0c
+                0x0000cd2b                _bACI_ReadChecksumData = 0xcd2b
+                0x0000cd86                _bACI_CCMstar = 0xcd86
+                0x0000d06f                _bACI_CCMstarAuthenticateData = 0xd06f
+                0x0000d0a9                _bACI_CCMstarEncodeData = 0xd0a9
+                0x0000d0ce                _bACI_ECBencodeBuffer = 0xd0ce
+                0x0000d153                _bACI_ECBencodeStripe = 0xd153
+                0x0000d16a                _bACI_IEEECTRencodeData = 0xd16a
+                0x0000d192                _pvAppApiDefGetMacHandle = 0xd192
+                0x0000d192                _pvAppApiDefGetMacHandle = 0xd192
+                0x0000d19b                _vAppApiDefMlmeRequest = 0xd19b
+                0x0000d1ce                _vAppApiDefMcpsRequest = 0xd1ce
+                0x0000d201                _vAppApiDefPowerUp = 0xd201
+                0x0000d21f                _vAppApiDefSetPrbsSeed = 0xd21f
+                0x0000d243                _vAppApiDefSetInterrupts = 0xd243
+                0x0000d28e                _pvAppApiDefGetMacAddrLocation = 0xd28e
+                0x0000d28e                _pvAppApiDefGetMacAddrLocation = 0xd28e
+                0x0000d297                _vAppApiSetMacEntryPoints = 0xd297
+                0x0000d2a6                _vAppApiGetMacEntryPoints = 0xd2a6
+                0x0000d2bb                _vAppApiEnableBeaconResponse = 0xd2bb
+                0x0000d327                _vAppApiDefSetVectors = 0xd327
+                0x0000d394                _vAppApiDefStartStack = 0xd394
+                0x0000d3e8                _u32AppApiDefInit = 0xd3e8
+                0x0000d427                _vAppApiDefSaveMacSettings = 0xd427
+                0x0000d470                _vAppApiDefRestoreMacSettings = 0xd470
+                0x0000d53d                _vAppHousekeepingTimerExpiry = 0xd53d
+                0x0000d564                _vAppHousekeepingInit = 0xd564
+                0x0000db95                _MAC_pvCtor = 0xdb95
+                0x0000de9d                _MAC_psPibGetHandle = 0xde9d
+                0x0000dea4                _MAC_vPibSetShortAddr = 0xdea4
+                0x0000deaf                _MAC_vPibSetPanId = 0xdeaf
+                0x0000dee2                _MAC_vPibSetMaxCsmaBackoffs = 0xdee2
+                0x0000df1f                _MAC_vPibSetRxOnWhenIdle = 0xdf1f
+                0x0000df2f                _MAC_vPibSetPromiscuousMode = 0xdf2f
+                0x0000e6b6                _MAC_vRegisterMlmeDcfmIndCallbacks = 0xe6b6
+                0x0000e6c2                _MAC_vRegisterMcpsDcfmIndCallbacks = 0xe6c2
+                0x0000eeb1                _MAC_vLPBRegisterCallback = 0xeeb1
+                0x0000ef0c                _MAC_vLPBSetBeaconMultiplier = 0xef0c
+                0x0000efa2                _MAC_vLPBSleep = 0xefa2
+                0x0000f04b                _MAC_vLPBAdjustWakeForNextBeacon = 0xf04b
+                0x0000f105                _MAC_bLPBProcessWake = 0xf105
+                0x0000f1b6                _MAC_vLPBCalibrateTimer = 0xf1b6
+                0x00011cfe                _u8AppApiReadMsq = 0x11cfe
+                0x000136d0                _memcpy = 0x136d0
+                0x00013748                _memcmp = 0x13748
+                0x0001376c                _memset = 0x1376c
+                0x0001377e                _vUTIL_NumToString = 0x1377e
+                0x000137a6                _vUTIL_UartText = 0x137a6
+                0x000137e6                _vUTIL_UartTextToNewLine = 0x137e6
+                0x00013802                _vUTIL_UartInit = 0x13802
+                0x0001dc21                ___muldi3 = 0x1dc21
+                0x0001dcf4                ___udivdi3 = 0x1dcf4
+                0x0001e1e8                ___mulsi3 = 0x1e1e8
+                0x040003a8                _g_pvMac = 0x40003a8
+                0x040003ac                _g_sXcv = 0x40003ac
+                0x04000b20                _g_sLP = 0x4000b20
+                0x04000b64                _aprMacVectorRamTable = 0x4000b64
+                0x0400006c                _aprLPBMacVectorRamTable = 0x400006c
+                0x04000d00                __app_ram_start = 0x4000d00
+                0x0400006c                _aprLPBMacVectorRamTable = 0x400006c
+                0x0000df00                _MAC_vSetExtAddr = 0xdf00
+                0x0000f4a4                _phy_ePibGet = 0xf4a4
+                0x0000f3fc                _phy_ePibSet = 0xf3fc
+                0x0001362e                _TSV_eStop = 0x1362e
+                0x00013498                _TSV_eOpen = 0x13498
+                0x00013562                _TSV_eStart = 0x13562
+                0x000136a4                _TSV_eClose = 0x136a4
+                0x000133c5                _vXCV_IntHandlerPhy = 0x133c5
+                0x00013346                _vXCV_IntHandlerBbc = 0x13346
+                0x0000de04                _MAC_vHandleMlmeReqRsp = 0xde04
+                0x0000dde2                _MAC_vHandleMcpsReqRsp = 0xdde2
+                0x0000a2cb                _pvHeap_Alloc = 0xa2cb
+                0x00011f29                _bTACframeInProgress = 0x11f29
+                0x0000ef5c                _MAC_u32ConvertTo16uS = 0xef5c
+                0x00013323                _XCV_vDevWriteIER = 0x13323
+                0x0001332d                _XCV_vDevRMW_IER = 0x1332d
+                0x0000e6ce                _mac_psDcfmIndGetBuf = 0xe6ce
+                0x0000e6f1                _mac_eDcfmIndPost = 0xe6f1
+                0x00012bbe                _vTSCsetUpwardSecurity = 0x12bbe
+                0x040002b0                _au16TimerSettings = 0x40002b0
+                0x04000044                _pSPIflashFncTable = 0x4000044
+                0x00009867                _u8SelectFlashChipType = 0x9867
+                0x0000981c                _u16ZSPIflashRDID = 0x981c
+                0x0001341f                _RND_u32GetRand = 0x1341f
+                0x00013454                _RND_u32GetRand256 = 0x13454
+                0x00013416                _RND_vInit = 0x13416
+                0x00000800                _minimum_heap_size = 0x800
+
+.rom_workspace.os.o.s_u32CurrentPriorityMask
+                0x040002f8        0x4
+ *os.o(.bss.s_u32CurrentPriorityMask)
+ .rom_workspace.os.o.s_u32CurrentPriorityMask
+                0x040002f8        0x4 temp.elf
+
+.rom_workspace.os.o.s_psCurrentTask
+                0x040002fc        0x4
+ *os.o(.bss.s_psCurrentTask)
+ .rom_workspace.os.o.s_psCurrentTask
+                0x040002fc        0x4 temp.elf
+
+.rom_workspace.os.o.s_prvUnclaimedISR
+                0x04000300        0x4
+ *os.o(.bss.s_prvUnclaimedISR)
+ .rom_workspace.os.o.s_prvUnclaimedISR
+                0x04000300        0x4 temp.elf
+
+.rom_workspace.os.o.s_u32SuspendIRQNesting
+ *os.o(.bss.s_u32SuspendIRQNesting)
+
+.rom_workspace.os.o.s_u8SuspendedIPL
+ *os.o(.bss.s_u8SuspendedIPL)
+
+.rom_workspace.os.o.s_u32PendingQueue
+                0x0400030c        0x4
+ *os.o(.bss.s_u32PendingQueue)
+ .rom_workspace.os.o.s_u32PendingQueue
+                0x0400030c        0x4 temp.elf
+
+.rom_workspace.os.o.s_asTasks
+                0x04000310        0x4
+ *os.o(.bss.s_asTasks)
+ .rom_workspace.os.o.s_asTasks
+                0x04000310        0x4 temp.elf
+
+.rom_workspace.os.o.s_u8OSLevelIPL
+                0x04000314        0x1
+ *os.o(.bss.s_u8OSLevelIPL)
+ .rom_workspace.os.o.s_u8OSLevelIPL
+                0x04000314        0x1 temp.elf
+
+.rom.OS_eGetCurrentTask
+ *(.text.OS_eGetCurrentTask)
+
+.rom.OS_eGetMessageStatus
+ *(.text.OS_eGetMessageStatus)
+
+.rom.OS_eSuspendOSInterrupts
+ *(.text.OS_eSuspendOSInterrupts)
+
+.rom.OS_eResumeOSInterrupts
+ *(.text.OS_eResumeOSInterrupts)
+
+.rom.OS_eDisableAllInterrupts
+ *(.text.OS_eDisableAllInterrupts)
+
+.rom.OS_eEnableAllInterrupts
+ *(.text.OS_eEnableAllInterrupts)
+
+.rom.OS_eGetSWTimerStatus
+ *(.text.OS_eGetSWTimerStatus)
+
+.rom.os_vUnclaimedInterrupt
+                0x00013949       0x12
+ *(.text.os_vUnclaimedInterrupt)
+ .rom.os_vUnclaimedInterrupt
+                0x00013949       0x12 temp.elf
+                0x00013949                _os_vUnclaimedInterrupt
+
+.rom.eExpireSWTimer
+                0x00013a25       0x6b
+ *(.text.eExpireSWTimer)
+ .rom.eExpireSWTimer
+                0x00013a25       0x6b temp.elf
+
+.rom.OS_eEnterCriticalSection
+                0x0001421e       0x97
+ *(.text.OS_eEnterCriticalSection)
+ .rom.OS_eEnterCriticalSection
+                0x0001421e       0x97 temp.elf
+                0x0001421e                _OS_eEnterCriticalSection
+                0x04000130                _os_g_aprPatchTable = 0x4000130
+
+.rom_workspace.pdum_nwk.o.s_psFreeListHead
+                0x040002dc        0x4
+ *pdum_nwk.o(.bss.s_psFreeListHead)
+ .rom_workspace.pdum_nwk.o.s_psFreeListHead
+                0x040002dc        0x4 temp.elf
+
+.rom_workspace.pdum_nwk.o.s_psNPduPoolStart
+                0x040002e0        0x4
+ *pdum_nwk.o(.bss.s_psNPduPoolStart)
+ .rom_workspace.pdum_nwk.o.s_psNPduPoolStart
+                0x040002e0        0x4 temp.elf
+
+.rom_workspace.pdum_nwk.o.s_psNPduPoolEnd
+                0x040002e4        0x4
+ *pdum_nwk.o(.bss.s_psNPduPoolEnd)
+ .rom_workspace.pdum_nwk.o.s_psNPduPoolEnd
+                0x040002e4        0x4 temp.elf
+
+.rom_workspace.pdum_nwk.o.s_hMutex
+                0x040002e8        0x4
+ *pdum_nwk.o(.bss.s_hMutex)
+ .rom_workspace.pdum_nwk.o.s_hMutex
+                0x040002e8        0x4 temp.elf
+
+.rom_workspace.pdum_apl.o.s_hMutex
+                0x040002ec        0x4
+ *pdum_apl.o(.bss.s_hMutex)
+ .rom_workspace.pdum_apl.o.s_hMutex
+                0x040002ec        0x4 temp.elf
+
+.rom_workspace.pdum_apl.o.s_u16NumAPdus
+                0x040002f0        0x2
+ *pdum_apl.o(.bss.s_u16NumAPdus)
+ .rom_workspace.pdum_apl.o.s_u16NumAPdus
+                0x040002f0        0x2 temp.elf
+
+.rom_workspace.pdum_apl.o.s_asAPduPool
+                0x040002f4        0x4
+ *pdum_apl.o(.bss.s_asAPduPool)
+ .rom_workspace.pdum_apl.o.s_asAPduPool
+                0x040002f4        0x4 temp.elf
+
+.rom.PDUM_eNPduReadFooterNBO
+                0x00001034       0x4c
+ *(.text.PDUM_eNPduReadFooterNBO)
+ .rom.PDUM_eNPduReadFooterNBO
+                0x00001034       0x4c temp.elf
+                0x00001034                _PDUM_eNPduReadFooterNBO
+
+.rom.PDUM_eNPduReadHeaderNBO
+                0x00001080       0x4e
+ *(.text.PDUM_eNPduReadHeaderNBO)
+ .rom.PDUM_eNPduReadHeaderNBO
+                0x00001080       0x4e temp.elf
+                0x00001080                _PDUM_eNPduReadHeaderNBO
+
+.rom.PDUM_eNPduAppendDataNBO
+                0x000010ce       0x5c
+ *(.text.PDUM_eNPduAppendDataNBO)
+ .rom.PDUM_eNPduAppendDataNBO
+                0x000010ce       0x5c temp.elf
+                0x000010ce                _PDUM_eNPduAppendDataNBO
+
+.rom.PDUM_eNPduAppendFooterNBO
+ *(.text.PDUM_eNPduAppendFooterNBO)
+
+.rom.PDUM_eNPduPrependHeaderNBO
+                0x00001186       0x5a
+ *(.text.PDUM_eNPduPrependHeaderNBO)
+ .rom.PDUM_eNPduPrependHeaderNBO
+                0x00001186       0x5a temp.elf
+                0x00001186                _PDUM_eNPduPrependHeaderNBO
+
+.rom.PDUM_eNPduAllocate
+                0x000011e0       0x4e
+ *(.text.PDUM_eNPduAllocate)
+ .rom.PDUM_eNPduAllocate
+                0x000011e0       0x4e temp.elf
+                0x000011e0                _PDUM_eNPduAllocate
+
+.rom.PDUM_eNPduInitDescending
+                0x0000122e       0x1b
+ *(.text.PDUM_eNPduInitDescending)
+ .rom.PDUM_eNPduInitDescending
+                0x0000122e       0x1b temp.elf
+                0x0000122e                _PDUM_eNPduInitDescending
+
+.rom.PDUM_eNPduInitAscending
+                0x00001249       0x20
+ *(.text.PDUM_eNPduInitAscending)
+ .rom.PDUM_eNPduInitAscending
+                0x00001249       0x20 temp.elf
+                0x00001249                _PDUM_eNPduInitAscending
+
+.rom.PDUM_eNPduFree
+                0x00001269       0x67
+ *(.text.PDUM_eNPduFree)
+ .rom.PDUM_eNPduFree
+                0x00001269       0x67 temp.elf
+                0x00001269                _PDUM_eNPduFree
+
+.rom.PDUM_eNPduClaimHeader
+                0x000012d0       0x29
+ *(.text.PDUM_eNPduClaimHeader)
+ .rom.PDUM_eNPduClaimHeader
+                0x000012d0       0x29 temp.elf
+                0x000012d0                _PDUM_eNPduClaimHeader
+
+.rom.PDUM_eNPduClaimFooter
+                0x000012f9       0x26
+ *(.text.PDUM_eNPduClaimFooter)
+ .rom.PDUM_eNPduClaimFooter
+                0x000012f9       0x26 temp.elf
+                0x000012f9                _PDUM_eNPduClaimFooter
+
+.rom.PDUM_eNPduClaimData
+                0x0000131f       0x61
+ *(.text.PDUM_eNPduClaimData)
+ .rom.PDUM_eNPduClaimData
+                0x0000131f       0x61 temp.elf
+                0x0000131f                _PDUM_eNPduClaimData
+
+.rom.PDUM_eNPduAscend
+                0x00001380       0x24
+ *(.text.PDUM_eNPduAscend)
+ .rom.PDUM_eNPduAscend
+                0x00001380       0x24 temp.elf
+                0x00001380                _PDUM_eNPduAscend
+
+.rom.PDUM_eNPduDescend
+                0x000013a4       0x24
+ *(.text.PDUM_eNPduDescend)
+ .rom.PDUM_eNPduDescend
+                0x000013a4       0x24 temp.elf
+                0x000013a4                _PDUM_eNPduDescend
+
+.rom.PDUM_eNPduWriteToBuffer
+ *(.text.PDUM_eNPduWriteToBuffer)
+
+.rom.PDUM_eNPduWriteFromBuffer
+                0x00001413       0x29
+ *(.text.PDUM_eNPduWriteFromBuffer)
+ .rom.PDUM_eNPduWriteFromBuffer
+                0x00001413       0x29 temp.elf
+                0x00001413                _PDUM_eNPduWriteFromBuffer
+
+.rom.PDUM_eNPduWriteDataToBuffer
+                0x0000143c       0x61
+ *(.text.PDUM_eNPduWriteDataToBuffer)
+ .rom.PDUM_eNPduWriteDataToBuffer
+                0x0000143c       0x61 temp.elf
+                0x0000143c                _PDUM_eNPduWriteDataToBuffer
+
+.rom.PDUM_eNPduWriteDataFromBuffer
+                0x0000149d       0x5d
+ *(.text.PDUM_eNPduWriteDataFromBuffer)
+ .rom.PDUM_eNPduWriteDataFromBuffer
+                0x0000149d       0x5d temp.elf
+                0x0000149d                _PDUM_eNPduWriteDataFromBuffer
+
+.rom.pdum_vNPduInit
+                0x000014fa       0x3d
+ *(.text.pdum_vNPduInit)
+ .rom.pdum_vNPduInit
+                0x000014fa       0x3d temp.elf
+                0x000014fa                _pdum_vNPduInit
+
+.rom.PDUM_pvAPduInstanceGetPayload
+                0x00001537        0xd
+ *(.text.PDUM_pvAPduInstanceGetPayload)
+ .rom.PDUM_pvAPduInstanceGetPayload
+                0x00001537        0xd temp.elf
+                0x00001537                _PDUM_pvAPduInstanceGetPayload
+
+.rom.PDUM_u16APduInstanceGetPayloadSize
+                0x00001567        0xd
+ *(.text.PDUM_u16APduInstanceGetPayloadSize)
+ .rom.PDUM_u16APduInstanceGetPayloadSize
+                0x00001567        0xd temp.elf
+                0x00001567                _PDUM_u16APduInstanceGetPayloadSize
+
+.rom.PDUM_eAPduInstanceSetPayloadSize
+                0x00001574       0x28
+ *(.text.PDUM_eAPduInstanceSetPayloadSize)
+ .rom.PDUM_eAPduInstanceSetPayloadSize
+                0x00001574       0x28 temp.elf
+                0x00001574                _PDUM_eAPduInstanceSetPayloadSize
+
+.rom.PDUM_u16APduGetSize
+                0x0000159c        0xd
+ *(.text.PDUM_u16APduGetSize)
+ .rom.PDUM_u16APduGetSize
+                0x0000159c        0xd temp.elf
+                0x0000159c                _PDUM_u16APduGetSize
+
+.rom.PDUM_u16APduInstanceWriteStrNBO
+                0x000015a9       0x4e
+ *(.text.PDUM_u16APduInstanceWriteStrNBO)
+ .rom.PDUM_u16APduInstanceWriteStrNBO
+                0x000015a9       0x4e temp.elf
+                0x000015a9                _PDUM_u16APduInstanceWriteStrNBO
+
+.rom.PDUM_u16APduInstanceWriteNBO
+                0x000015f7       0x5c
+ *(.text.PDUM_u16APduInstanceWriteNBO)
+ .rom.PDUM_u16APduInstanceWriteNBO
+                0x000015f7       0x5c temp.elf
+                0x000015f7                _PDUM_u16APduInstanceWriteNBO
+
+.rom.PDUM_u16APduInstanceReadNBO
+                0x00001653       0x45
+ *(.text.PDUM_u16APduInstanceReadNBO)
+ .rom.PDUM_u16APduInstanceReadNBO
+                0x00001653       0x45 temp.elf
+                0x00001653                _PDUM_u16APduInstanceReadNBO
+
+.rom.PDUM_hAPduAllocateAPduInstance
+                0x00001698       0x54
+ *(.text.PDUM_hAPduAllocateAPduInstance)
+ .rom.PDUM_hAPduAllocateAPduInstance
+                0x00001698       0x54 temp.elf
+                0x00001698                _PDUM_hAPduAllocateAPduInstance
+
+.rom.PDUM_eAPduFreeAPduInstance
+                0x000016ec       0x78
+ *(.text.PDUM_eAPduFreeAPduInstance)
+ .rom.PDUM_eAPduFreeAPduInstance
+                0x000016ec       0x78 temp.elf
+                0x000016ec                _PDUM_eAPduFreeAPduInstance
+
+.rom.pdum_vAPduInit
+                0x00001764       0x63
+ *(.text.pdum_vAPduInit)
+ .rom.pdum_vAPduInit
+                0x00001764       0x63 temp.elf
+                0x00001764                _pdum_vAPduInit
+
+.rom.PDUM_u16SizeNBO
+                0x000017c7       0x5f
+ *(.text.PDUM_u16SizeNBO)
+ .rom.PDUM_u16SizeNBO
+                0x000017c7       0x5f temp.elf
+                0x000017c7                _PDUM_u16SizeNBO
+
+.rom.pdum_u16WriteNBO
+                0x00001826      0x120
+ *(.text.pdum_u16WriteNBO)
+ .rom.pdum_u16WriteNBO
+                0x00001826      0x120 temp.elf
+                0x00001826                _pdum_u16WriteNBO
+
+.rom.pdum_u16WriteStrNBO
+                0x00001946      0x128
+ *(.text.pdum_u16WriteStrNBO)
+ .rom.pdum_u16WriteStrNBO
+                0x00001946      0x128 temp.elf
+                0x00001946                _pdum_u16WriteStrNBO
+
+.rom.pdum_u16ReadNBO
+                0x00001a6e      0x157
+ *(.text.pdum_u16ReadNBO)
+ .rom.pdum_u16ReadNBO
+                0x00001a6e      0x157 temp.elf
+                0x00001a6e                _pdum_u16ReadNBO
+
+.rom.vDumpPayload
+ *(.text.vDumpPayload)
+
+.rom.PDUM_vDBGPrintNPdu
+ *(.text.PDUM_vDBGPrintNPdu)
+                0x04000084                _pdum_g_aprPatchTable = 0x4000084
+
+.rom_workspace.pwrm.o.s_bWakeTimerActive
+                0x04000340        0x1
+ *pwrm.o(.bss.s_bWakeTimerActive)
+ .rom_workspace.pwrm.o.s_bWakeTimerActive
+                0x04000340        0x1 temp.elf
+
+.rom_workspace.pwrm.o.s_ePowerMode
+                0x04000344        0x4
+ *pwrm.o(.bss.s_ePowerMode)
+ .rom_workspace.pwrm.o.s_ePowerMode
+                0x04000344        0x4 temp.elf
+
+.rom_workspace.pwrm.o.s_psPreSleepCallbacks
+                0x04000348        0x4
+ *pwrm.o(.bss.s_psPreSleepCallbacks)
+ .rom_workspace.pwrm.o.s_psPreSleepCallbacks
+                0x04000348        0x4 temp.elf
+
+.rom_workspace.pwrm.o.u32CalibrationValue
+                0x04000374        0x4
+ *pwrm.o(.bss.u32CalibrationValue)
+ .rom_workspace.pwrm.o.u32CalibrationValue
+                0x04000374        0x4 temp.elf
+
+.rom_workspace.pwrm.o.psNextWake
+                0x04000384        0x4
+ *pwrm.o(.bss.psNextWake)
+ .rom_workspace.pwrm.o.psNextWake
+                0x04000384        0x4 temp.elf
+
+.rom.pwrm_vRegisterPreSleepCallback
+                0x0001d887       0x1f
+ *(.text.pwrm_vRegisterPreSleepCallback)
+ .rom.pwrm_vRegisterPreSleepCallback
+                0x0001d887       0x1f temp.elf
+                0x0001d887                _pwrm_vRegisterPreSleepCallback
+
+.rom.PWRM_vSetupDozeMonitor
+ *(.text.PWRM_vSetupDozeMonitor)
+
+.rom.PWRM_vResetDozeTimers
+ *(.text.PWRM_vResetDozeTimers)
+
+.rom.PWRM_u32GetDozeTime
+ *(.text.PWRM_u32GetDozeTime)
+
+.rom.PWRM_u32GetDozeElapsedTime
+ *(.text.PWRM_u32GetDozeElapsedTime)
+
+.rom.PWRM_vWakeInterruptCallback
+                0x0001d8e5       0x52
+ *(.text.PWRM_vWakeInterruptCallback)
+ .rom.PWRM_vWakeInterruptCallback
+                0x0001d8e5       0x52 temp.elf
+                0x0001d8e5                _PWRM_vWakeInterruptCallback
+
+.rom.PWRM_eScheduleActivity
+                0x0001d937       0xed
+ *(.text.PWRM_eScheduleActivity)
+ .rom.PWRM_eScheduleActivity
+                0x0001d937       0xed temp.elf
+                0x0001d937                _PWRM_eScheduleActivity
+                0x04000380                pwrm_psWakeupCallbacks = 0x4000380
+
+.rom_workspace.dbg.o.vResetFn
+                0x04000354        0x4
+ *dbg.o(.bss.vResetFn)
+ .rom_workspace.dbg.o.vResetFn
+                0x04000354        0x4 temp.elf
+
+.rom_workspace.dbg.o.vPutchFn
+                0x04000358        0x4
+ *dbg.o(.bss.vPutchFn)
+ .rom_workspace.dbg.o.vPutchFn
+                0x04000358        0x4 temp.elf
+
+.rom_workspace.dbg.o.vFlushFn
+                0x0400035c        0x4
+ *dbg.o(.bss.vFlushFn)
+ .rom_workspace.dbg.o.vFlushFn
+                0x0400035c        0x4 temp.elf
+
+.rom_workspace.dbg.o.vStopFn
+                0x04000360        0x4
+ *dbg.o(.bss.vStopFn)
+ .rom_workspace.dbg.o.vStopFn
+                0x04000360        0x4 temp.elf
+
+.rom_workspace.dbg_uart.o.u8AhiUart
+                0x04000364        0x1
+ *dbg_uart.o(.bss.u8AhiUart)
+ .rom_workspace.dbg_uart.o.u8AhiUart
+                0x04000364        0x1 temp.elf
+
+.rom_workspace.dbg.o.bIsNewline
+                0x0400010c        0x1
+ *dbg.o(.data.bIsNewline)
+ .rom_workspace.dbg.o.bIsNewline
+                0x0400010c        0x1 temp.elf
+
+.rom_workspace.dbg_uart.o.u8AhiBaudRate
+                0x0400010d        0x1
+ *dbg_uart.o(.data.u8AhiBaudRate)
+ .rom_workspace.dbg_uart.o.u8AhiBaudRate
+                0x0400010d        0x1 temp.elf
+
+.rom.DBG_vReset
+                0x00006eb4       0x12
+ *(.text.DBG_vReset)
+ .rom.DBG_vReset
+                0x00006eb4       0x12 temp.elf
+                0x00006eb4                _DBG_vReset
+
+.rom.vWriteUIntToBuffer
+                0x00006ef3       0xd8
+ *(.text.vWriteUIntToBuffer)
+ .rom.vWriteUIntToBuffer
+                0x00006ef3       0xd8 temp.elf
+
+.rom.vNewLine   0x00006fcb       0x8a
+ *(.text.vNewLine)
+ .rom.vNewLine  0x00006fcb       0x8a temp.elf
+
+.rom.dbg_vAssertImpl
+ *(.text.dbg_vAssertImpl)
+
+.rom.DBG_vUartFlush
+                0x00007538       0x18
+ *(.text.DBG_vUartFlush)
+ .rom.DBG_vUartFlush
+                0x00007538       0x18 temp.elf
+                0x00007538                _DBG_vUartFlush
+
+.rom.DBG_vUartPutch
+                0x00007550       0x29
+ *(.text.DBG_vUartPutch)
+ .rom.DBG_vUartPutch
+                0x00007550       0x29 temp.elf
+                0x00007550                _DBG_vUartPutch
+
+.rom.DBG_vUartInitHardware
+                0x00007579       0x44
+ *(.text.DBG_vUartInitHardware)
+ .rom.DBG_vUartInitHardware
+                0x00007579       0x44 temp.elf
+                0x00007579                _DBG_vUartInitHardware
+                0x04000110                _dbg_g_aprPatchTable = 0x4000110
+
+.rom_workspace.zps_mac.o.s_hMacMutex
+                0x04000330        0x4
+ *zps_mac.o(.bss.s_hMacMutex)
+ .rom_workspace.zps_mac.o.s_hMacMutex
+                0x04000330        0x4 temp.elf
+
+.rom_workspace.zps_mac.o.s_sDcfmIndMgr
+                0x04000334        0xc
+ *zps_mac.o(.bss.s_sDcfmIndMgr)
+ .rom_workspace.zps_mac.o.s_sDcfmIndMgr
+                0x04000334        0xc temp.elf
+
+.rom_workspace.zps_mac.o.prHandleMlmeReqRsp
+                0x040001ac        0x4
+ *zps_mac.o(.data.prHandleMlmeReqRsp)
+ .rom_workspace.zps_mac.o.prHandleMlmeReqRsp
+                0x040001ac        0x4 temp.elf
+
+.rom_workspace.zps_mac.o.prHandleMcpsReqRsp
+                0x040001b0        0x4
+ *zps_mac.o(.data.prHandleMcpsReqRsp)
+ .rom_workspace.zps_mac.o.prHandleMcpsReqRsp
+                0x040001b0        0x4 temp.elf
+
+.rom.MAC_vRegisterMcpsVsDcfmIndCallbacks
+                0x00001f5c       0x15
+ *(.text.MAC_vRegisterMcpsVsDcfmIndCallbacks)
+ .rom.MAC_vRegisterMcpsVsDcfmIndCallbacks
+                0x00001f5c       0x15 temp.elf
+                0x00001f5c                _MAC_vRegisterMcpsVsDcfmIndCallbacks
+
+.rom.MAC_vHandleMlmeVsReqRsp
+                0x0000202f       0x3c
+ *(.text.MAC_vHandleMlmeVsReqRsp)
+ .rom.MAC_vHandleMlmeVsReqRsp
+                0x0000202f       0x3c temp.elf
+                0x0000202f                _MAC_vHandleMlmeVsReqRsp
+
+.rom.MAC_vHandleMcpsVsReqRsp
+                0x0000206b       0xfa
+ *(.text.MAC_vHandleMcpsVsReqRsp)
+ .rom.MAC_vHandleMcpsVsReqRsp
+                0x0000206b       0xfa temp.elf
+                0x0000206b                _MAC_vHandleMcpsVsReqRsp
+
+.rom.MAC_vSetMutex
+                0x00002165       0x18
+ *(.text.MAC_vSetMutex)
+ .rom.MAC_vSetMutex
+                0x00002165       0x18 temp.elf
+                0x00002165                _MAC_vSetMutex
+                0x040001b4                _zpsmac_g_aprPatchTable = 0x40001b4
+
+.rom.u32NumberOfEmptyMasksInGroupTable
+ *(.text.u32NumberOfEmptyMasksInGroupTable)
+
+.rom.vSetAllEndpointBitmasksForGroup
+ *(.text.vSetAllEndpointBitmasksForGroup)
+
+.rom.eHandleAddEntryToGroupTable
+ *(.text.eHandleAddEntryToGroupTable)
+
+.rom.zps_vNwkLibU16ToPayload
+                0x00003c0e        0xc
+ *(.text.zps_vNwkLibU16ToPayload)
+ .rom.zps_vNwkLibU16ToPayload
+                0x00003c0e        0xc temp.elf
+                0x00003c0e                _zps_vNwkLibU16ToPayload
+
+.rom.zps_vNwkLibU32ToPayload
+                0x00003c1a       0x18
+ *(.text.zps_vNwkLibU32ToPayload)
+ .rom.zps_vNwkLibU32ToPayload
+                0x00003c1a       0x18 temp.elf
+                0x00003c1a                _zps_vNwkLibU32ToPayload
+
+.rom.zps_vNwkLibU64ToPayload
+                0x00003c32       0x3f
+ *(.text.zps_vNwkLibU64ToPayload)
+ .rom.zps_vNwkLibU64ToPayload
+                0x00003c32       0x3f temp.elf
+                0x00003c32                _zps_vNwkLibU64ToPayload
+
+.rom.zps_u16NwkLibFromPayload
+                0x00003cf1        0xf
+ *(.text.zps_u16NwkLibFromPayload)
+ .rom.zps_u16NwkLibFromPayload
+                0x00003cf1        0xf temp.elf
+                0x00003cf1                _zps_u16NwkLibFromPayload
+
+.rom.zps_u32NwkLibFromPayload
+ *(.text.zps_u32NwkLibFromPayload)
+
+.rom.zps_u64NwkLibFromPayload
+                0x00003d23       0x7d
+ *(.text.zps_u64NwkLibFromPayload)
+ .rom.zps_u64NwkLibFromPayload
+                0x00003d23       0x7d temp.elf
+                0x00003d23                _zps_u64NwkLibFromPayload
+
+.rom.zps_vNwkSlistInit
+                0x000068f6        0x9
+ *(.text.zps_vNwkSlistInit)
+ .rom.zps_vNwkSlistInit
+                0x000068f6        0x9 temp.elf
+                0x000068f6                _zps_vNwkSlistInit
+
+.rom.zps_vNwkSlistAddToHead
+ *(.text.zps_vNwkSlistAddToHead)
+
+.rom.zps_vNwkSlistAddToTail
+                0x00006916       0x1a
+ *(.text.zps_vNwkSlistAddToTail)
+ .rom.zps_vNwkSlistAddToTail
+                0x00006916       0x1a temp.elf
+                0x00006916                _zps_vNwkSlistAddToTail
+
+.rom.zps_vNwkSlistInsertAfter
+ *(.text.zps_vNwkSlistInsertAfter)
+
+.rom.zps_psNwkSlistRemoveFromHead
+                0x00006949       0x17
+ *(.text.zps_psNwkSlistRemoveFromHead)
+ .rom.zps_psNwkSlistRemoveFromHead
+                0x00006949       0x17 temp.elf
+                0x00006949                _zps_psNwkSlistRemoveFromHead
+
+.rom.zps_psNwkSlistRemove
+                0x00006960       0x3c
+ *(.text.zps_psNwkSlistRemove)
+ .rom.zps_psNwkSlistRemove
+                0x00006960       0x3c temp.elf
+                0x00006960                _zps_psNwkSlistRemove
+
+.rom.zps_vNwkSlistMakeLimboNode
+                0x0000699c        0x8
+ *(.text.zps_vNwkSlistMakeLimboNode)
+ .rom.zps_vNwkSlistMakeLimboNode
+                0x0000699c        0x8 temp.elf
+                0x0000699c                _zps_vNwkSlistMakeLimboNode
+
+.rom.zps_bNwkSlistIsLimboNode
+                0x000069a4       0x11
+ *(.text.zps_bNwkSlistIsLimboNode)
+ .rom.zps_bNwkSlistIsLimboNode
+                0x000069a4       0x11 temp.elf
+                0x000069a4                _zps_bNwkSlistIsLimboNode
+
+.flashheader    0x04000cd0       0x24
+                0x04000cd0                _flash_beg = <code 342> (.)
+                0x04000cd0        0x4 LONG 0xe0e0
+                0x04000cd4        0x4 LONG 0x4000d00 <code 342> (_data_beg)
+                0x04000cd8        0x4 LONG 0x11348 _data_len
+                0x04000cdc        0x4 LONG 0x1060035
+                0x04000ce0        0x4 LONG 0x0
+                0x04000ce4        0x4 LONG 0x4012048 <code 342> (_bss_beg)
+                0x04000ce8        0x4 LONG 0x32a8 _bss_len
+                0x04000cec        0x4 LONG 0x4004304 <code 342> (_AppWarmStart)
+                0x04000cf0        0x4 LONG 0x40042c0 <code 342> (_AppColdStart)
+
+.oad            0x04000cf4        0xc
+                0x04000cf4        0x4 LONG 0xffffffff
+                0x04000cf8        0x4 LONG 0xffffffff
+                0x04000cfc        0x4 LONG 0xf0f0f0f0
+
+.mac            0x04000d00       0x20
+                0x04000d00                _enc_start = <code 342> (.)
+                0x04000d00                _data_beg = <code 342> (.)
+                0x04000d00        0x4 LONG 0xffffffff
+                0x04000d04        0x4 LONG 0xffffffff
+                0x04000d08        0x4 LONG 0xffffffff
+                0x04000d0c        0x4 LONG 0xffffffff
+                0x04000d10                _FlsLinkKey = <code 342> (.)
+                0x04000d10        0x4 LONG 0xffffffff
+                0x04000d14        0x4 LONG 0xffffffff
+                0x04000d18        0x4 LONG 0xffffffff
+                0x04000d1c        0x4 LONG 0xffffffff
+                0x00000000                _enc_offset = (_enc_start & 0xf)
+                [0x00000030]                _enc_start = (_enc_start - _flash_beg)
+
+.heap_location  0x04000d20        0x8
+                0x04000d20                _heap_location = .
+                0x04000d20        0x4 LONG 0x40152f0 <code 342> (_heap_start)
+                0x04000d24        0x4 LONG 0x401ec00 <code 342> (_heap_end)
+
+.rtc_clt        0x04000d28       0x28
+                0x04000d28        0x4 LONG 0x0
+                0x04000d2c        0x4 LONG 0x0
+                0x04000d30        0x4 LONG 0x0
+                0x04000d34        0x4 LONG 0x0
+                0x04000d38        0x4 LONG 0x0
+                0x04000d3c        0x4 LONG 0x0
+                0x04000d40        0x4 LONG 0x0
+                0x04000d44        0x4 LONG 0x0
+                0x04000d48        0x4 LONG 0x0
+                0x04000d4c        0x4 LONG 0x0
+
+.ro_se_cert     0x04000d50        0x0
+                0x04000d50                _FlsZcCert = <code 342> (.)
+ *(.ro_se_cert)
+
+.ro_se_pvKey    0x04000d50        0x0
+                0x04000d50                _FlsPrivateKey = <code 342> (.)
+ *(.ro_se_pvKey)
+
+.rodata         0x04000d50      0xb41
+ *(.rodata*)
+ .rodata.s_sNibInitialValues
+                0x04000d50       0x1c temp.elf
+ .rodata.str1.1
+                0x04000d6c      0x150 temp.elf
+                                0x151 (size before relaxing)
+ .rodata.g_sKey
+                0x04000ebc       0x10 temp.elf
+ .rodata.str1.1.38
+                0x00000000      0x150 temp.elf
+                                  0x5 (size before relaxing)
+ .rodata.str1.1.43
+                0x04000ecc       0x5b temp.elf
+                                 0x5c (size before relaxing)
+ .rodata.str1.1.48
+                0x00000000        0x5 temp.elf
+ .rodata.s_u8ButtonDIOLine
+                0x04000f27        0x2 temp.elf
+ .rodata.str1.1.53
+                0x00000000        0x2 temp.elf
+ .rodata.str1.1.58
+                0x04000f29      0x639 temp.elf
+                                0x63a (size before relaxing)
+ *fill*         0x04001562        0x2 00
+ .rodata.apsQueueList
+                0x04001564        0x8 temp.elf
+ .rodata.str1.1.128
+                0x0400156c       0x17 temp.elf
+ .rodata.str1.1.133
+                0x04001583       0x19 temp.elf
+                                 0x21 (size before relaxing)
+ .rodata.str1.1.138
+                0x00000000       0x19 temp.elf
+                                 0x2c (size before relaxing)
+ .rodata.str1.1.143
+                0x0400159c        0x3 temp.elf
+                                  0x5 (size before relaxing)
+ .rodata.str1.1.152
+                0x0400159f       0x5c temp.elf
+ .rodata.str1.1.165
+                0x040015fb       0x24 temp.elf
+                                 0x2f (size before relaxing)
+ .rodata.str1.1.170
+                0x00000000       0x24 temp.elf
+                                  0x6 (size before relaxing)
+ .rodata.str1.1.175
+                0x00000000       0x24 temp.elf
+                                  0x6 (size before relaxing)
+ .rodata.str1.1.180
+                0x00000000       0x24 temp.elf
+                                  0x8 (size before relaxing)
+ .rodata.str1.1.185
+                0x00000000        0x4 temp.elf
+ .rodata.str1.1.190
+                0x00000000       0x24 temp.elf
+                                  0x5 (size before relaxing)
+ .rodata.str1.1.195
+                0x00000000        0x4 temp.elf
+ .rodata.str1.1.200
+                0x00000000        0x4 temp.elf
+ .rodata.str1.1.205
+                0x00000000       0x24 temp.elf
+                                  0x4 (size before relaxing)
+ .rodata.str1.1.210
+                0x00000000        0x4 temp.elf
+ .rodata.str1.1.215
+                0x00000000        0x2 temp.elf
+ .rodata.str1.1.220
+                0x00000000       0x24 temp.elf
+                                  0x5 (size before relaxing)
+ .rodata.str1.1.225
+                0x0400161f        0xd temp.elf
+                                 0x11 (size before relaxing)
+ .rodata.str1.1.234
+                0x0400162c        0xa temp.elf
+                                 0x10 (size before relaxing)
+ .rodata.str1.1.239
+                0x00000000        0x3 temp.elf
+ .rodata.str1.1.244
+                0x04001636        0x5 temp.elf
+                                 0x10 (size before relaxing)
+ .rodata.str1.1.249
+                0x00000000       0x10 temp.elf
+ .rodata.str1.1.254
+                0x0400163b        0x9 temp.elf
+                                  0xd (size before relaxing)
+ .rodata.str1.1.259
+                0x00000000        0x9 temp.elf
+                                  0x8 (size before relaxing)
+ .rodata.str1.1.264
+                0x00000000        0xf temp.elf
+ .rodata.str1.1.269
+                0x00000000        0x7 temp.elf
+ .rodata.str1.1.274
+                0x00000000        0x7 temp.elf
+ .rodata.str1.1.279
+                0x00000000        0x4 temp.elf
+ .rodata.str1.1.284
+                0x04001644        0xe temp.elf
+ .rodata.str1.1.293
+                0x00000000        0xe temp.elf
+                                  0xf (size before relaxing)
+ .rodata.str1.1.338
+                0x04001652       0x31 temp.elf
+                                 0x32 (size before relaxing)
+ *fill*         0x04001683        0x1 00
+ .rodata.377    0x04001684       0x10 temp.elf
+ .rodata.str1.1.397
+                0x00000000       0x31 temp.elf
+                                  0x8 (size before relaxing)
+ .rodata.s_apsStSceTbl
+                0x04001694       0x14 temp.elf
+ .rodata.s_apsStSmeTbl
+                0x040016a8       0x14 temp.elf
+ .rodata.str1.1.406
+                0x040016bc       0x41 temp.elf
+ *fill*         0x040016fd        0x3 00
+ .rodata.atCfmSize
+                0x04001700       0x34 temp.elf
+ .rodata.str1.1.423
+                0x04001734        0x8 temp.elf
+ .rodata.zps_sActvSmeTbl
+                0x0400173c        0xc temp.elf
+                0x0400173c                _zps_sActvSmeTbl
+ .rodata.zps_sActvSceTbl
+                0x04001748        0xc temp.elf
+                0x04001748                _zps_sActvSceTbl
+ .rodata.s_aeNlmeReqRspToActvStCme
+                0x04001754        0xa temp.elf
+ *fill*         0x0400175e        0x2 00
+ .rodata.s_aprActvStHandleCme
+                0x04001760       0x14 temp.elf
+ .rodata.s_aeMlmeDcfmIndToActvStSme
+                0x04001774        0xd temp.elf
+ *fill*         0x04001781        0x3 00
+ .rodata.s_aprActvStHandleSme
+                0x04001784       0x18 temp.elf
+ .rodata.s_atActvStSmeStt
+                0x0400179c        0x5 temp.elf
+ .rodata.s_aeNwkCmdToActvStSce
+                0x040017a1        0xa temp.elf
+ *fill*         0x040017ab        0x1 00
+ .rodata.s_aprActvStHandleSce
+                0x040017ac       0x14 temp.elf
+ .rodata.s_atActvStSceStt
+                0x040017c0        0x4 temp.elf
+ .rodata.zps_sDiscSmeTbl
+                0x040017c4        0xc temp.elf
+                0x040017c4                _zps_sDiscSmeTbl
+ .rodata.s_aeMlmeDcfmIndToDiscStSme
+                0x040017d0        0xd temp.elf
+ *fill*         0x040017dd        0x3 00
+ .rodata.s_aprDiscStHandleSme
+                0x040017e0       0x1c temp.elf
+ .rodata.s_atDiscStSmeStt
+                0x040017fc        0x8 temp.elf
+ .rodata.str1.1.448
+                0x00000000        0xf temp.elf
+ .rodata.au8JitterLUT.4921
+                0x04001804        0x5 temp.elf
+ .rodata.s_aeNlmeReqRspToIdleStCme
+                0x04001809        0xa temp.elf
+ *fill*         0x04001813        0x1 00
+ .rodata.s_aprIdleStHandleCme
+                0x04001814       0x10 temp.elf
+ .rodata.str1.1.457
+                0x00000000        0x8 temp.elf
+                                  0x7 (size before relaxing)
+ .rodata.C.5.5007
+                0x04001824        0x5 temp.elf
+ *fill*         0x04001829        0x3 00
+ .rodata.zps_sJoinSmeTbl
+                0x0400182c        0xc temp.elf
+                0x0400182c                _zps_sJoinSmeTbl
+ .rodata.zps_sJoinSceTbl
+                0x04001838        0xc temp.elf
+                0x04001838                _zps_sJoinSceTbl
+ .rodata.s_aeMlmeDcfmIndToJoinStSme
+                0x04001844        0xd temp.elf
+ *fill*         0x04001851        0x3 00
+ .rodata.s_aprJoinStHandleSme
+                0x04001854       0x10 temp.elf
+ .rodata.s_atJoinStSmeStt
+                0x04001864       0x14 temp.elf
+ .rodata.s_aeNwkCmdToJoinStSce
+                0x04001878        0xa temp.elf
+ *fill*         0x04001882        0x2 00
+ .rodata.s_aprJoinStHandleSce
+                0x04001884        0x8 temp.elf
+ .rodata.s_atJoinStSceStt
+                0x0400188c        0x5 temp.elf
+ .rodata.str1.1.466
+                0x00000000        0x3 temp.elf
+ .rodata.str1.1.483
+                0x00000000        0x4 temp.elf
+
+.data           0x04001898      0x994
+ *(.data*)
+ .data.os_Task_zps_taskZPS
+                0x04001898        0xc temp.elf
+                0x04001898                _os_Task_zps_taskZPS
+ .data.os_Task_APP_taskSampleSensors
+                0x040018a4        0xc temp.elf
+                0x040018a4                _os_Task_APP_taskSampleSensors
+ .data.os_Task_APP_taskSensorNode
+                0x040018b0        0xc temp.elf
+                0x040018b0                _os_Task_APP_taskSensorNode
+ .data.os_Task_APP_taskScanButtons
+                0x040018bc        0xc temp.elf
+                0x040018bc                _os_Task_APP_taskScanButtons
+ .data.os_Task_APP_taskLedControl
+                0x040018c8        0xc temp.elf
+                0x040018c8                _os_Task_APP_taskLedControl
+ .data.os_Mutex_mutexZPS
+                0x040018d4        0x8 temp.elf
+                0x040018d4                _os_Mutex_mutexZPS
+ .data.os_Mutex_mutexPDUM
+                0x040018dc        0x8 temp.elf
+                0x040018dc                _os_Mutex_mutexPDUM
+ .data.os_Mutex_mutexMAC
+                0x040018e4        0x8 temp.elf
+                0x040018e4                _os_Mutex_mutexMAC
+ .data.os_Mutex_mutexMEDIA
+                0x040018ec        0x8 temp.elf
+                0x040018ec                _os_Mutex_mutexMEDIA
+ .data.os_Message_zps_msgMlmeDcfmInd
+                0x040018f4       0x24 temp.elf
+                0x040018f4                _os_Message_zps_msgMlmeDcfmInd
+ .data.os_Message_zps_msgTimeEvents
+                0x04001918       0x24 temp.elf
+                0x04001918                _os_Message_zps_msgTimeEvents
+ .data.os_Message_zps_msgMcpsDcfmInd
+                0x0400193c       0x24 temp.elf
+                0x0400193c                _os_Message_zps_msgMcpsDcfmInd
+ .data.os_Message_APP_msgZpsEvents
+                0x04001960       0x24 temp.elf
+                0x04001960                _os_Message_APP_msgZpsEvents
+ .data.os_Message_APP_msgLedEvent
+                0x04001984       0x24 temp.elf
+                0x04001984                _os_Message_APP_msgLedEvent
+ .data.os_HWCounter_APP_cntrTickTimer
+                0x040019a8       0x18 temp.elf
+                0x040019a8                _os_HWCounter_APP_cntrTickTimer
+ .data.os_SWTimer_APP_cntrTickTimer_APP_tmrButtonsScan
+                0x040019c0       0x1c temp.elf
+                0x040019c0                _os_SWTimer_APP_cntrTickTimer_APP_tmrButtonsScan
+ .data.s_asTasks
+                0x040019dc       0x14 temp.elf
+ .data.s_asAPduPool
+                0x040019f0       0x24 temp.elf
+                0x040019fc                _pdum_apduSensorData
+                0x040019f0                _pdum_apduZDP
+                0x04001a08                _pdum_apduLedControl
+ .data.s_asapduZDPInstances
+                0x04001a14       0x24 temp.elf
+ .data.s_asapduSensorDataInstances
+                0x04001a38        0xc temp.elf
+ .data.s_asapduLedControlInstances
+                0x04001a44       0x18 temp.elf
+ .data.zps_g_pvApl
+                0x04001a5c        0x4 temp.elf
+                0x04001a5c                _zps_g_pvApl
+ .data.s_sApl   0x04001a60      0x2b8 temp.elf
+ .data.s_sNwkTblSize
+                0x04001d18        0xc temp.elf
+ .data.s_sNwkTbl
+                0x04001d24       0x28 temp.elf
+ *fill*         0x04001d4c        0x4 00
+ .data.s_sAplAib
+                0x04001d50       0x30 temp.elf
+ .data.s_asAplZdoServers
+                0x04001d80       0x78 temp.elf
+ .data.s_sNodeDescriptor
+                0x04001df8       0x10 temp.elf
+ .data.s_sNodePowerDescriptor
+                0x04001e08        0x4 temp.elf
+ .data.s_asSimpleDescConts
+                0x04001e0c       0x6c temp.elf
+ .data.s_sApsDuplicateTable
+                0x04001e78       0x10 temp.elf
+ .data.s_sApsmeCmdContainer_1
+                0x04001e88       0x38 temp.elf
+ .data.s_au16Endpoint0InputClusterList
+                0x04001ec0       0xa6 temp.elf
+ .data.s_au16Endpoint0OutputClusterList
+                0x04001f66       0xa6 temp.elf
+ .data.s_ahEndpoint0InputClusterAPdus
+                0x0400200c      0x14c temp.elf
+ .data.s_au16Endpoint1OutputClusterList
+                0x04002158        0x2 temp.elf
+ .data.s_au8Endpoint1OutputClusterDiscFlags
+                0x0400215a        0x1 temp.elf
+ *fill*         0x0400215b        0x1 00
+ .data.s_au16Endpoint2InputClusterList
+                0x0400215c        0x4 temp.elf
+ .data.s_au16Endpoint2OutputClusterList
+                0x04002160        0x2 temp.elf
+ .data.s_au8Endpoint2InputClusterDiscFlags
+                0x04002162        0x1 temp.elf
+ .data.s_au8Endpoint2OutputClusterDiscFlags
+                0x04002163        0x1 temp.elf
+ .data.s_ahEndpoint2InputClusterAPdus
+                0x04002164        0x8 temp.elf
+ .data.s_sApsmeCmdContainer_2
+                0x0400216c       0x38 temp.elf
+ .data.s_sApsmeCmdContainer_3
+                0x040021a4       0x38 temp.elf
+ .data.pwrm_PreSleep_desc
+                0x040021dc        0x8 temp.elf
+                0x040021dc                _pwrm_PreSleep_desc
+ .data.pwrm_Wakeup_desc
+                0x040021e4        0x8 temp.elf
+                0x040021e4                _pwrm_Wakeup_desc
+ .data.s_u8ButtonDebounce
+                0x040021ec        0x2 temp.elf
+ .data.u8Channel.7838
+                0x040021ee        0x1 temp.elf
+ *fill*         0x040021ef        0x1 00
+ .data.prvNvmWrite
+                0x040021f0        0x4 temp.elf
+ .data.gu8NvmSector
+                0x040021f4        0x1 temp.elf
+ *fill*         0x040021f5        0x3 00
+ .data.gu32NvmSectorSize
+                0x040021f8        0x4 temp.elf
+ .data.gu32NvmSize
+                0x040021fc        0x4 temp.elf
+ .data.prvNvmErase
+                0x04002200        0x4 temp.elf
+ .data.prvNvmRead
+                0x04002204        0x4 temp.elf
+ .data.gu32MinimumFlashSize
+                0x04002208        0x4 temp.elf
+ .data.prvNvmInitHw
+                0x0400220c        0x4 temp.elf
+ .data.geNvmFlashType
+                0x04002210        0x4 temp.elf
+ .data.psTimerList
+                0x04002214        0x4 temp.elf
+                0x04002214                _psTimerList
+ .data.aprCCMStarVector
+                0x04002218        0x4 temp.elf
+                0x04002218                _aprCCMStarVector
+ .data.zps_pacNwkFrmStdHdrFmt
+                0x0400221c        0x4 temp.elf
+                0x0400221c                _zps_pacNwkFrmStdHdrFmt
+ .data.zps_pacNwkFrmStdByteFmt
+                0x04002220        0x4 temp.elf
+                0x04002220                _zps_pacNwkFrmStdByteFmt
+ .data.zps_pacNwkFrmStdHalfFmt
+                0x04002224        0x4 temp.elf
+                0x04002224                _zps_pacNwkFrmStdHalfFmt
+ .data.zps_pacNwkFrmStdLongFmt
+                0x04002228        0x4 temp.elf
+                0x04002228                _zps_pacNwkFrmStdLongFmt
+
+.gdb
+ libSWDebug_JN5148.a(.text)
+ *(.dbgtxt*)
+
+.text           0x04002230     0xfe18
+                0x04002230                _text_start = <code 342> (.)
+ *(.text*)
+ .text.OS_vRestart
+                0x04002230       0x12 temp.elf
+                0x04002230                _OS_vRestart
+ .text.OS_vStart
+                0x04002242       0x3e temp.elf
+                0x04002242                _OS_vStart
+ .text.1        0x04002280      0x150 temp.elf
+                0x04002310                _os_PIC_SwVectTable
+                0x040022c4                _os_PIC_ChannelPriorities
+                0x04002280                _os_ExternalException_W
+                0x040022d4                _os_OSMIUM_HwVectTable
+ .text.4        0x040023d0       0x20 temp.elf
+                0x040023d0                _IRQ_Alignment
+ .text.7        0x040023f0       0x20 temp.elf
+                0x040023f0                _IRQ_BusError
+ .text.10       0x04002410       0x20 temp.elf
+                0x04002410                _IRQ_IllegalInstruction
+ .text.13       0x04002430       0x20 temp.elf
+                0x04002430                _IRQ_StackOverflowException
+ .text.16       0x04002450       0x20 temp.elf
+                0x04002450                _IRQ_UnimplementedModule
+ .text.PDUM_vInit
+                0x04002470       0x35 temp.elf
+                0x04002470                _PDUM_vInit
+ .text.vZdoServersInit
+                0x040024a5      0x10e temp.elf
+ .text.os_u32APP_cbGetTickTimer
+                0x040025b3        0x6 temp.elf
+                0x040025b3                _os_u32APP_cbGetTickTimer
+ .text.os_vAPP_isrTickTimer
+                0x040025b9       0x39 temp.elf
+                0x040025b9                _os_vAPP_isrTickTimer
+ .text.os_bAPP_cbSetTickTimerCompare
+                0x040025f2       0x3b temp.elf
+                0x040025f2                _os_bAPP_cbSetTickTimerCompare
+ .text.os_vAPP_cbDisableTickTimer
+                0x0400262d       0x30 temp.elf
+                0x0400262d                _os_vAPP_cbDisableTickTimer
+ .text.os_vAPP_cbEnableTickTimer
+                0x0400265d       0x45 temp.elf
+                0x0400265d                _os_vAPP_cbEnableTickTimer
+ .text.os_vAPP_isrUnimplementedModuleException
+                0x040026a2       0x19 temp.elf
+                0x040026a2                _os_vAPP_isrUnimplementedModuleException
+ .text.vUnclaimedInterrupt
+                0x040026bb       0x19 temp.elf
+ .text.pwrm_Wakeup
+                0x040026d4       0xa4 temp.elf
+ .text.pwrm_PreSleep
+                0x04002778       0x30 temp.elf
+ .text.os_vAPP_isrStackOverflowException
+                0x040027a8       0x1f temp.elf
+                0x040027a8                _os_vAPP_isrStackOverflowException
+ .text.os_vAPP_isrIllegalInstructionException
+                0x040027c7       0x1f temp.elf
+                0x040027c7                _os_vAPP_isrIllegalInstructionException
+ .text.os_vAPP_isrAlignmentException
+                0x040027e6       0x1f temp.elf
+                0x040027e6                _os_vAPP_isrAlignmentException
+ .text.os_vAPP_isrBusErrorException
+                0x04002805       0x1f temp.elf
+                0x04002805                _os_vAPP_isrBusErrorException
+ .text.vAppRegisterPWRMCallbacks
+                0x04002824       0x1e temp.elf
+                0x04002824                _vAppRegisterPWRMCallbacks
+ .text.vAppMain
+                0x04002842       0x79 temp.elf
+                0x04002842                _vAppMain
+ .text.vInitialiseApp
+                0x040028bb       0x47 temp.elf
+ .text.os_vAPP_taskSampleSensors
+                0x04002902      0x194 temp.elf
+                0x04002902                _os_vAPP_taskSampleSensors
+ .text.APP_vInitialiseSample
+                0x04002a96       0x32 temp.elf
+                0x04002a96                _APP_vInitialiseSample
+ .text.os_vAPP_isrSysCon
+                0x04002ac8       0xc1 temp.elf
+                0x04002ac8                _os_vAPP_isrSysCon
+ .text.APP_bButtonInitialise
+                0x04002b89       0x4d temp.elf
+                0x04002b89                _APP_bButtonInitialise
+ .text.os_vAPP_taskScanButtons
+                0x04002bd6      0x162 temp.elf
+                0x04002bd6                _os_vAPP_taskScanButtons
+ .text.APP_vLedSet
+                0x04002d38       0x1a temp.elf
+                0x04002d38                _APP_vLedSet
+ .text.os_vAPP_taskLedControl
+                0x04002d52       0x61 temp.elf
+                0x04002d52                _os_vAPP_taskLedControl
+ .text.APP_vLedsInitialise
+                0x04002db3       0x44 temp.elf
+                0x04002db3                _APP_vLedsInitialise
+ .text.APP_u8GetSequenceNumber
+                0x04002df7       0x17 temp.elf
+                0x04002df7                _APP_u8GetSequenceNumber
+ .text.vClearDiscNT
+                0x04002e0e       0x2e temp.elf
+                0x04002e0e                _vClearDiscNT
+ .text.os_vAPP_taskSensorNode
+                0x04002e3c      0x5a4 temp.elf
+                0x04002e3c                _os_vAPP_taskSensorNode
+ .text.vWakeCallBack
+                0x040033e0       0x32 temp.elf
+ .text.APP_vInitialiseSensorNode
+                0x04003412       0xe1 temp.elf
+                0x04003412                _APP_vInitialiseSensorNode
+ .text.vSerial_TxString
+                0x040034f3       0x2b temp.elf
+                0x040034f3                _vSerial_TxString
+ .text.vSerial_Init
+                0x0400351e       0x22 temp.elf
+                0x0400351e                _vSerial_Init
+ .text.vSerialQ_AddItem
+                0x04003540       0x2b temp.elf
+                0x04003540                _vSerialQ_AddItem
+ .text.u8SerialQ_RemoveItem
+                0x0400356b       0x2f temp.elf
+                0x0400356b                _u8SerialQ_RemoveItem
+ .text.bSerialQ_Empty
+                0x0400359a       0x20 temp.elf
+                0x0400359a                _bSerialQ_Empty
+ .text.bSerialQ_Full
+                0x040035ba       0x28 temp.elf
+                0x040035ba                _bSerialQ_Full
+ .text.vSerialQ_Init
+                0x040035e2       0x1b temp.elf
+                0x040035e2                _vSerialQ_Init
+ .text.vUART_RxCharISR
+                0x040035fd        0xa temp.elf
+                0x040035fd                _vUART_RxCharISR
+ .text.vUART_TxCharISR
+                0x04003607       0x28 temp.elf
+                0x04003607                _vUART_TxCharISR
+ .text.vUART_StartTx
+                0x0400362f       0x34 temp.elf
+                0x0400362f                _vUART_StartTx
+ .text.vUART_Init
+                0x04003663       0xcf temp.elf
+                0x04003663                _vUART_Init
+ .text.UART_vInterrupt
+                0x04003732       0x3c temp.elf
+ .text.os_vRestart
+                0x0400376e       0xf6 temp.elf
+                0x0400376e                _os_vRestart
+ .text.os_vPatchInit
+                0x04003864       0x33 temp.elf
+                0x04003864                _os_vPatchInit
+ .text.vDispatch
+                0x04003897       0xcd temp.elf
+ .text.os_vControlledInterrupt
+                0x04003964       0x37 temp.elf
+                0x04003964                _os_vControlledInterrupt
+ .text.OS_eExpireSWTimers
+                0x0400399b       0xb9 temp.elf
+                0x0400399b                _OS_eExpireSWTimers
+ .text.OS_eContinueSWTimer
+                0x04003a54       0xdb temp.elf
+                0x04003a54                _OS_eContinueSWTimer
+ .text.OS_eStartSWTimer
+                0x04003b2f       0xe3 temp.elf
+                0x04003b2f                _OS_eStartSWTimer
+ .text.OS_eCollectMessage
+                0x04003c12       0x99 temp.elf
+                0x04003c12                _OS_eCollectMessage
+ .text.OS_ePostMessage
+                0x04003cab      0x129 temp.elf
+                0x04003cab                _OS_ePostMessage
+ .text.os_vStart
+                0x04003dd4      0x148 temp.elf
+                0x04003dd4                _os_vStart
+ .text.OS_eActivateTask
+                0x04003f1c       0x91 temp.elf
+                0x04003f1c                _OS_eActivateTask
+ .text.OS_eExitCriticalSection
+                0x04003fad       0xa1 temp.elf
+                0x04003fad                _OS_eExitCriticalSection
+ *fill*         0x0400404e        0x2 00
+ .text.76       0x04004050       0xb0 temp.elf
+                0x04004050                _os_ExternalException_R
+                0x04004078                _os_CFunc_W
+                0x040040d8                _os_UnclaimedInterrupt_W
+                0x040040b8                _os_UnclaimedException_W
+ .text.79       0x04004100        0x0 temp.elf
+                0x04004100                OS_Version_1v1
+ .text.pwrm_vRegisterWakeupCallback
+                0x04004100       0x1f temp.elf
+                0x04004100                _pwrm_vRegisterWakeupCallback
+ .text.PWRM_vInit
+                0x0400411f       0x44 temp.elf
+                0x0400411f                _PWRM_vInit
+ .text.PWRM_vManagePower
+                0x04004163      0x114 temp.elf
+                0x04004163                _PWRM_vManagePower
+ *fill*         0x04004277        0x1 00
+ .text.86       0x04004278       0x48 temp.elf
+                0x0400429c                _PWRM_longjmp
+                0x04004278                _setjmp
+ .text.AppColdStart
+                0x040042c0       0x44 temp.elf
+                0x040042c0                _AppColdStart
+ .text.AppWarmStart
+                0x04004304        0xe temp.elf
+                0x04004304                _AppWarmStart
+ .text.bGetBit  0x04004312       0x3f temp.elf
+ .text.vSetBit  0x04004351       0x3b temp.elf
+ .text.bIsEnoughSpaceInNvm
+                0x0400438c       0x2a temp.elf
+ .text.vMark    0x040043b6       0x23 temp.elf
+ .text.vMarkAllBuffers
+                0x040043d9       0x1f temp.elf
+ .text.u32GetSizeRequiredForChangeset
+                0x040043f8       0x6d temp.elf
+ .text.vNvmNop  0x04004465        0x9 temp.elf
+ .text.PDM_vDeleteRecord
+                0x0400446e       0xbd temp.elf
+                0x0400446e                _PDM_vDeleteRecord
+ .text.PDM_vDelete
+                0x0400452b       0x7e temp.elf
+                0x0400452b                _PDM_vDelete
+ .text.vSPIErase
+                0x040045a9       0x34 temp.elf
+ .text.bWriteChangeset
+                0x040045dd      0x325 temp.elf
+ .text.vPurge   0x04004902       0xd4 temp.elf
+ .text.PDM_vSaveRecord
+                0x040049d6       0x81 temp.elf
+                0x040049d6                _PDM_vSaveRecord
+ .text.vLoad    0x04004a57      0x2c5 temp.elf
+ .text.vSPIInitHw
+                0x04004d1c       0x3c temp.elf
+ .text.PDM_vInit
+                0x04004d58      0x1a9 temp.elf
+                0x04004d58                _PDM_vInit
+ .text.PDM_eLoadRecord
+                0x04004f01      0x129 temp.elf
+                0x04004f01                _PDM_eLoadRecord
+ .text.vSPIWrite
+                0x0400502a       0x47 temp.elf
+ .text.vSPIRead
+                0x04005071       0x47 temp.elf
+ .text.105      0x040050b8        0x0 temp.elf
+                0x040050b8                ZPS_APL_Version_1v3
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".752
+                0x040050b8       0x21 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".745
+                0x040050d9       0x15 temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".98
+                0x040050ee       0x84 temp.elf
+                0x040050ee                _ZPS_eAplAfInit
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".767
+                0x04005172       0xad temp.elf
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/AF/zps_apl_af.c".382
+                0x0400521f       0x3a temp.elf
+                0x0400521f                _zps_eAplAfUnicastDataReq
+ .text.vFillApduErrorEvent
+                0x04005259       0x30 temp.elf
+ .text.vFillDataIndStruct
+                0x04005289       0x58 temp.elf
+ .text.zps_vAplApsInitFragReceivePool
+                0x040052e1       0x26 temp.elf
+                0x040052e1                _zps_vAplApsInitFragReceivePool
+ .text.vHandleApsdeApsDataAck
+                0x04005307       0xb6 temp.elf
+                0x04005307                _vHandleApsdeApsDataAck
+ .text.zps_vHandleApsdeDataFragIndNotSupported
+                0x040053bd       0x86 temp.elf
+                0x040053bd                _zps_vHandleApsdeDataFragIndNotSupported
+ .text.vPostToEndpoint
+                0x04005443      0x1a8 temp.elf
+ .text.zps_vAplAfHandleApsdeDcfmInd
+                0x040055eb      0x183 temp.elf
+                0x040055eb                _zps_vAplAfHandleApsdeDcfmInd
+ .text.zps_vAplAfPostEvent
+                0x0400576e       0x42 temp.elf
+                0x0400576e                _zps_vAplAfPostEvent
+ .text.zps_vAplAfTaskInit
+                0x040057b0       0x62 temp.elf
+                0x040057b0                _zps_vAplAfTaskInit
+ .text.vPostNlmeDcfmInd
+                0x04005812        0x6 temp.elf
+ .text.os_vzps_taskZPS
+                0x04005818       0xd8 temp.elf
+                0x04005818                _os_vzps_taskZPS
+ .text.psGetApsdeBuf
+                0x040058f0        0x6 temp.elf
+ .text.vPostApsdeDcfmInd
+                0x040058f6        0x6 temp.elf
+ .text.psGetApsmeBuf
+                0x040058fc        0x9 temp.elf
+ .text.vPostApsmeDcfmInd
+                0x04005905        0x6 temp.elf
+ .text.psGetNldeBuf
+                0x0400590b        0xa temp.elf
+ .text.vPostNldeDcfmInd
+                0x04005915        0x6 temp.elf
+ .text.psGetNlmeBuf
+                0x0400591b        0xa temp.elf
+ .text.zps_vAplAfIsrInit
+                0x04005925       0x57 temp.elf
+                0x04005925                _zps_vAplAfIsrInit
+ .text.os_vzps_isrMAC
+                0x0400597c       0x39 temp.elf
+                0x0400597c                _os_vzps_isrMAC
+ .text.zps_vAplAfPostTimerEvent
+                0x040059b5       0x35 temp.elf
+                0x040059b5                _zps_vAplAfPostTimerEvent
+ .text.psGetMcpsBuf
+                0x040059ea        0x9 temp.elf
+ .text.vPostMcpsDcfmInd
+                0x040059f3        0x6 temp.elf
+ .text.psGetMlmeBuf
+                0x040059f9        0x9 temp.elf
+ .text.vPostMlmeDcfmInd
+                0x04005a02       0x2f temp.elf
+ .text.psGetVsMcpsBuf
+                0x04005a31        0x9 temp.elf
+ .text.vPostVsMcpsDcfmInd
+                0x04005a3a       0x44 temp.elf
+ .text.zps_vAplApsInitSyncMsgPool
+                0x04005a7e       0x2e temp.elf
+                0x04005a7e                _zps_vAplApsInitSyncMsgPool
+ .text.zps_u8AplApsFreeMsgHandle
+                0x04005aac       0x56 temp.elf
+                0x04005aac                _zps_u8AplApsFreeMsgHandle
+ .text.zps_u8AplApsGetMsgHandle
+                0x04005b02       0x21 temp.elf
+                0x04005b02                _zps_u8AplApsGetMsgHandle
+ .text.u8AllocateMsgHandle
+                0x04005b23       0x40 temp.elf
+ .text.zps_vAplApsIncrementAndReturnSeqNum
+                0x04005b63       0x14 temp.elf
+ .text.ZPS_vAplRegisterApsdeDcfmIndCallbacks
+                0x04005b77        0x9 temp.elf
+                0x04005b77                _ZPS_vAplRegisterApsdeDcfmIndCallbacks
+ .text.zps_vAplApsFillAndPostApsAck
+                0x04005b80       0x60 temp.elf
+                0x04005b80                _zps_vAplApsFillAndPostApsAck
+ .text.zps_vAplApsInitDcfmPool
+                0x04005be0       0x20 temp.elf
+                0x04005be0                _zps_vAplApsInitDcfmPool
+ .text.zps_psApsApsAllocateDcfmRecord
+                0x04005c00       0x23 temp.elf
+                0x04005c00                _zps_psApsApsAllocateDcfmRecord
+ .text.zps_vApsApsFreeDcfmRecord
+                0x04005c23        0x6 temp.elf
+                0x04005c23                _zps_vApsApsFreeDcfmRecord
+ .text.zps_u8AplApsGetNextDcfmHandle
+                0x04005c29       0x19 temp.elf
+                0x04005c29                _zps_u8AplApsGetNextDcfmHandle
+ .text.zps_u8AplApsTryFragmentation
+                0x04005c42       0x3f temp.elf
+ .text.zps_vAplApsInitFragTransmitPool
+                0x04005c81       0x24 temp.elf
+                0x04005c81                _zps_vAplApsInitFragTransmitPool
+ .text.zps_vAplApsCheckAndStartPollTimer
+                0x04005ca5       0x62 temp.elf
+                0x04005ca5                _zps_vAplApsCheckAndStartPollTimer
+ .text.zps_vAplApsStopPollTimer
+                0x04005d07       0x82 temp.elf
+                0x04005d07                _zps_vAplApsStopPollTimer
+ .text.zps_vAplApsFillNldeAndDescend
+                0x04005d89       0x37 temp.elf
+                0x04005d89                _zps_vAplApsFillNldeAndDescend
+ .text.eUnfragmentedUnicastTransmission
+                0x04005dc0      0x221 temp.elf
+ .text.zps_u8AplApsConstructAndPostLoopBackDataInd
+                0x04005fe1       0xf4 temp.elf
+ .text.u8PostUnicastMsgToNHLE
+                0x040060d5       0x6e temp.elf
+ .text.eGroupAddressTransmission
+                0x04006143      0x146 temp.elf
+ .text.vAckTimeOutHandler
+                0x04006289       0xbe temp.elf
+                0x04006289                _vAckTimeOutHandler
+ .text.zps_psApsApsGetDcfmRecord
+                0x04006347       0x27 temp.elf
+                0x04006347                _zps_psApsApsGetDcfmRecord
+ .text.zps_vAplApsPollTimer
+                0x0400636e       0x67 temp.elf
+                0x0400636e                _zps_vAplApsPollTimer
+ .text.ZPS_vAplHandleApsdeReqRsp
+                0x040063d5      0x594 temp.elf
+                0x040063d5                _ZPS_vAplHandleApsdeReqRsp
+ .text.ZPS_vAplRegisterApsmeDcfmIndCallbacks
+                0x04006969        0x9 temp.elf
+                0x04006969                _ZPS_vAplRegisterApsmeDcfmIndCallbacks
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1300
+                0x04006972       0x11 temp.elf
+                0x04006972                _zps_psAplApsmeCmdMgrAllocate
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1327
+                0x04006983        0xf temp.elf
+                0x04006983                _zps_vAplApsmeCmdMgrFree
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1256
+                0x04006992       0x36 temp.elf
+                0x04006992                _zps_vInitAPSMECmdHdr
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1351
+                0x040069c8       0x9b temp.elf
+                0x040069c8                _zps_eAplApsmeCmdMgrSendCommand
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1105
+                0x04006a63      0x10d temp.elf
+                0x04006a63                _zps_eAplSendApsmeCmdFrame
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".841
+                0x04006b70       0x7a temp.elf
+                0x04006b70                _zps_eAplApsmeUpdateDeviceReqRsp
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1428
+                0x04006bea       0x28 temp.elf
+                0x04006bea                _zps_vAplApsmeCmdMgrRetryTimeout
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_apsme.c".1458
+                0x04006c12       0x8c temp.elf
+                0x04006c12                _zps_bAplApsmeCmdMgrHandleNldeCfm
+ .text.bDuplicateCheck
+                0x04006c9e       0xfd temp.elf
+ .text.vHandleTransportKeyFrame
+                0x04006d9b      0x204 temp.elf
+ *fill*         0x04006f9f        0x1 00
+ .text.zps_vAplApsHandleNldeDcfmInd
+                0x04006fa0      0x79c temp.elf
+                0x04006fa0                _zps_vAplApsHandleNldeDcfmInd
+ .text.zps_vAplApsInitDuplicateTable
+                0x0400773c       0x23 temp.elf
+                0x0400773c                _zps_vAplApsInitDuplicateTable
+ .text.vTransformKey
+                0x0400775f       0x36 temp.elf
+ .text.zps_psFindKeyDescr
+                0x04007795       0xca temp.elf
+                0x04007795                _zps_psFindKeyDescr
+ .text.ZPS_u8AplGetJoinStatus
+                0x0400785f       0x43 temp.elf
+                0x0400785f                _ZPS_u8AplGetJoinStatus
+ .text.zps_eAplSecEncryptPacket
+                0x040078a2       0xf7 temp.elf
+                0x040078a2                _zps_eAplSecEncryptPacket
+ .text.zps_eAplSecDecryptPacket
+                0x04007999       0xe5 temp.elf
+                0x04007999                _zps_eAplSecDecryptPacket
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_aib.c".96
+                0x04007a7e        0x6 temp.elf
+                0x04007a7e                _zps_psAplAibGetAib
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_aib.c".143
+                0x04007a84       0x18 temp.elf
+                0x04007a84                _zps_eAplAibSetApsTrustCenterAddress
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_aib.c".101
+                0x04007a9c       0x18 temp.elf
+                0x04007a9c                _zps_eAplAibSetApsUseExtendedPanId
+ .text.ovly.ZBAPL."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/APS/zps_apl_aib.c".111
+                0x04007ab4       0x18 temp.elf
+                0x04007ab4                _zps_eAplAibSetApsChannelMask
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".565
+                0x04007acc        0x6 temp.elf
+                0x04007acc                _zps_pvAplZdoGetNwkHandle
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1475
+                0x04007ad2       0x2a temp.elf
+ .text.vHandleUpdateDeviceIndication
+                0x04007afc       0x19 temp.elf
+ .text.vHandleRemoveDeviceIndication
+                0x04007b15       0xa5 temp.elf
+ .text.vHandleSwitchKeyIndication
+                0x04007bba       0x3b temp.elf
+ .text.vAplSecRemoveLinkKey
+                0x04007bf5       0x7b temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1146
+                0x04007c70       0xa5 temp.elf
+                0x04007c70                _zps_eAplZdoAddReplaceLinkKey
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".166
+                0x04007d15      0x2d1 temp.elf
+                0x04007d15                _zps_eAplZdoInit
+ .text.zps_eAplZdoPoll
+                0x04007fe6       0x70 temp.elf
+                0x04007fe6                _zps_eAplZdoPoll
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1510
+                0x04008056       0x60 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".623
+                0x040080b6       0x2a temp.elf
+                0x040080b6                _zps_eAplZdoDiscoverNetworks
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1551
+                0x040080e0       0xa5 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".598
+                0x04008185       0x2a temp.elf
+                0x04008185                _zps_eAplZdoJoinNetwork
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1625
+                0x040081af       0x9c temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1685
+                0x0400824b       0x84 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1745
+                0x040082cf       0x71 temp.elf
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".424
+                0x04008340       0xa6 temp.elf
+                0x04008340                _zps_eAplZdoStartStack
+ .text.ovly.ZDO_NM."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager.c".1791
+                0x040083e6       0xcf temp.elf
+ .text.vHandleTransportKeyIndication
+                0x040084b5      0x21e temp.elf
+ *fill*         0x040086d3        0x1 00
+ .text.zps_vAplZdoHandleApsmeDcfmInd
+                0x040086d4       0x94 temp.elf
+                0x040086d4                _zps_vAplZdoHandleApsmeDcfmInd
+ .text.zps_vAplZdoHandleNlmeDcfmInd
+                0x04008768      0x740 temp.elf
+                0x04008768                _zps_vAplZdoHandleNlmeDcfmInd
+ .text.vAplSecAuthTimerExpiry
+                0x04008ea8       0xc9 temp.elf
+ .text.vAplSecAuthPollTimerExpiry
+                0x04008f71       0x5d temp.elf
+ .text.ovly.ZDO_TC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_trust_center.c".431
+                0x04008fce       0x3e temp.elf
+                0x04008fce                _zps_eAplTrustCenterFindDevice
+ .text.zps_bAplZdoHandleZdpEvent
+                0x0400900c       0x50 temp.elf
+                0x0400900c                _zps_bAplZdoHandleZdpEvent
+ .text.ovly.ZDO_DFLT."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_default_server.c".105
+                0x0400905c        0x9 temp.elf
+                0x0400905c                _zps_vAplZdoDefaultServerInit
+ .text.ovly.ZDO_DFLT."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_default_server.c".130
+                0x04009065      0x2d8 temp.elf
+                0x04009065                _zps_bAplZdoDefaultServer
+ .text.ovly.ZDO_NAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwk_addr_server.c".275
+                0x0400933d       0x68 temp.elf
+                0x0400933d                _vZdoNwkAddrServerSendExtendResponse
+ .text.ovly.ZDO_NAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwk_addr_server.c".146
+                0x040093a5      0x16e temp.elf
+                0x040093a5                _zps_bAplZdoNwkAddrServer
+ .text.ovly.ZDO_NAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwk_addr_server.c".123
+                0x04009513        0x9 temp.elf
+                0x04009513                _zps_vAplZdoNwkAddrServerInit
+ .text.ovly.ZDO_IAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_ieee_addr_server.c".276
+                0x0400951c       0x68 temp.elf
+                0x0400951c                _vZdoIeeeAddrServerSendExtendResponse
+ .text.ovly.ZDO_IAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_ieee_addr_server.c".147
+                0x04009584      0x160 temp.elf
+                0x04009584                _zps_bAplZdoIeeeAddrServer
+ .text.ovly.ZDO_IAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_ieee_addr_server.c".122
+                0x040096e4        0x9 temp.elf
+                0x040096e4                _zps_vAplZdoIeeeAddrServerInit
+ .text.ovly.ZDO_MDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_match_desc_server.c".121
+                0x040096ed        0x9 temp.elf
+                0x040096ed                _zps_vAplZdoMatchDescServerInit
+ .text.ovly.ZDO_MDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_match_desc_server.c".358
+                0x040096f6       0x1c temp.elf
+ .text.ovly.ZDO_MDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_match_desc_server.c".385
+                0x04009712       0x98 temp.elf
+ .text.ovly.ZDO_MDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_match_desc_server.c".148
+                0x040097aa      0x230 temp.elf
+                0x040097aa                _zps_bAplZdoMatchDescServer
+ .text.ovly.ZDO_NDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_node_desc_server.c".137
+                0x040099da      0x1e9 temp.elf
+                0x040099da                _zps_bAplZdoNodeDescServer
+ .text.ovly.ZDO_NDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_node_desc_server.c".108
+                0x04009bc3        0x9 temp.elf
+                0x04009bc3                _zps_vAplZdoNodeDescServerInit
+ .text.ovly.ZDO_SDS."../Source/ZDO/zps_apl_zdo_simple_desc_server.c".109
+                0x04009bcc        0xf temp.elf
+                0x04009bcc                _zps_vAplZdoSimpleDescServerInit
+ .text.ovly.ZDO_SDS."../Source/ZDO/zps_apl_zdo_simple_desc_server.c".134
+                0x04009bdb      0x220 temp.elf
+                0x04009bdb                _zps_bAplZdoSimpleDescServer
+ .text.ovly.ZDO_PDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_power_desc_server.c".137
+                0x04009dfb      0x18c temp.elf
+                0x04009dfb                _zps_bAplZdoPowerDescServer
+ .text.ovly.ZDO_PDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_power_desc_server.c".112
+                0x04009f87        0x9 temp.elf
+                0x04009f87                _zps_vAplZdoPowerDescServerInit
+ .text.ovly.ZDO_AEPS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_active_ep_server.c".138
+                0x04009f90      0x136 temp.elf
+                0x04009f90                _zps_bAplZdoActiveEpServer
+ .text.ovly.ZDO_AEPS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_active_ep_server.c".113
+                0x0400a0c6        0x9 temp.elf
+                0x0400a0c6                _zps_vAplZdoActiveEpServerInit
+ .text.ovly.ZDO_DAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_device_annce_server.c".85
+                0x0400a0cf        0x3 temp.elf
+                0x0400a0cf                _zps_vAplZdoDeviceAnnceServerInit
+ .text.ovly.ZDO_DAS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_device_annce_server.c".108
+                0x0400a0d2       0x7f temp.elf
+                0x0400a0d2                _zps_bAplZdoDeviceAnnceServer
+ .text.ovly.ZDO_SSDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_system_server_discovery_server.c".139
+                0x0400a151       0xd6 temp.elf
+                0x0400a151                _zps_bAplZdoSystemServerDiscoveryServer
+ .text.ovly.ZDO_SSDS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_system_server_discovery_server.c".109
+                0x0400a227        0x9 temp.elf
+                0x0400a227                _zps_vAplZdoSystemServerDiscoveryServerInit
+ .text.ovly.ZDO_MLQS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_lqi_server.c".134
+                0x0400a230      0x1f6 temp.elf
+                0x0400a230                _zps_bAplZdoMgmtLqiServer
+ .text.ovly.ZDO_MLQS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_lqi_server.c".109
+                0x0400a426        0x9 temp.elf
+                0x0400a426                _zps_vAplZdoMgmtLqiServerInit
+ .text.ovly.ZDO_MLS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_leave_server.c".111
+                0x0400a42f        0x9 temp.elf
+                0x0400a42f                _zps_vAplZdoMgmtLeaveServerInit
+ .text.ovly.ZDO_MLS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_leave_server.c".265
+                0x0400a438       0x44 temp.elf
+ .text.ovly.ZDO_MLS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_leave_server.c".138
+                0x0400a47c      0x150 temp.elf
+                0x0400a47c                _zps_bAplZdoMgmtLeaveServer
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".129
+                0x0400a5cc        0x9 temp.elf
+                0x0400a5cc                _zps_vAplZdoMgmtNWKUpdateServerInit
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".439
+                0x0400a5d5       0x2a temp.elf
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".458
+                0x0400a5ff       0x21 temp.elf
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".418
+                0x0400a620       0x33 temp.elf
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".506
+                0x0400a653       0x1c temp.elf
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".151
+                0x0400a66f      0x300 temp.elf
+                0x0400a66f                _zps_bAplZdoMgmtNWKUpdateServer
+ .text.ovly.ZDO_MNUS."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_mgmt_nwk_update_server.c".474
+                0x0400a96f       0x52 temp.elf
+ .text.ovly.ZDO_CMN."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_common.c".102
+                0x0400a9c1       0x70 temp.elf
+                0x0400a9c1                _zps_eAplZdoNlmeleaveWrapper
+ .text.ovly.ZDO_CMN."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_common.c".183
+                0x0400aa31       0x3c temp.elf
+                0x0400aa31                _zps_eAplZdoSendZdpResponse
+ .text.ovly.ZDO_CMN."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_common.c".234
+                0x0400aa6d       0x49 temp.elf
+                0x0400aa6d                _zps_bAplZdoServerHandleConfirmAcks
+ .text.ovly.ZDO_NMC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager_client.c".172
+                0x0400aab6        0xc temp.elf
+                0x0400aab6                _zps_vAplZdoZdoClientInit
+ .text.ovly.ZDO_NMC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager_client.c".312
+                0x0400aac2      0x129 temp.elf
+ .text.ovly.ZDO_NMC."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDO/zps_apl_zdo_nwkmanager_client.c".201
+                0x0400abeb      0x126 temp.elf
+                0x0400abeb                _zps_bAplZdoZdoClient
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_apsde_req.c".241
+                0x0400ad11       0x75 temp.elf
+                0x0400ad11                _zps_eAplZdpApsdeReqInternal
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_apsde_req.c".159
+                0x0400ad86       0x12 temp.elf
+                0x0400ad86                _zps_eAplZdpResponseApsdeReq
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_apsde_req.c".185
+                0x0400ad98       0x66 temp.elf
+                0x0400ad98                _zps_eAplZdpGenStatusOnlyResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_nwk_addr_rsp.c".94
+                0x0400adfe       0xee temp.elf
+                0x0400adfe                _zps_eZdpNwkAddrResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_ieee_addr_rsp.c".95
+                0x0400aeec       0xee temp.elf
+                0x0400aeec                _zps_eZdpIeeeAddrResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_node_desc_rsp.c".94
+                0x0400afda       0xb6 temp.elf
+                0x0400afda                _zps_eZdpNodeDescResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_power_desc_rsp.c".94
+                0x0400b090       0xad temp.elf
+                0x0400b090                _zps_eZdpPowerDescResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_simple_desc_rsp.c".94
+                0x0400b13d      0x123 temp.elf
+                0x0400b13d                _zps_eZdpSimpleDescResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_active_ep_rsp.c".94
+                0x0400b260       0xae temp.elf
+                0x0400b260                _zps_eZdpActiveEpResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_match_desc_rsp.c".93
+                0x0400b30e       0xae temp.elf
+                0x0400b30e                _zps_eZdpMatchDescResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_system_server_discovery_rsp.c".94
+                0x0400b3bc       0x74 temp.elf
+                0x0400b3bc                _zps_eZdpSystemServerDiscoveryResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_mgmt_lqi_rsp.c".94
+                0x0400b430       0xec temp.elf
+                0x0400b430                _zps_eAplZdpMgmtLqiResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_mgmt_leave_rsp.c".94
+                0x0400b51c       0x24 temp.elf
+                0x0400b51c                _zps_eZdpMgmtLeaveResponse
+ .text.ovly.ZDP."/cygdrive/c/ATLAS_SANDBOX/Components/ZPSAPL_ATLAS_ZPS_APL_1v3_RC3/Source/ZDP/zps_apl_zdp_mgmt_nwk_update_notify_rsp.c".94
+                0x0400b540       0xb6 temp.elf
+                0x0400b540                _zps_eZdpMgmtNwkUpdateNotifyResponse
+ .text.ZPS_vNwkHandleMcpsDcfmInd
+                0x0400b5f6       0xbe temp.elf
+                0x0400b5f6                _ZPS_vNwkHandleMcpsDcfmInd
+ .text.ZPS_eTsvClose
+                0x0400b6b4        0x6 temp.elf
+                0x0400b6b4                _ZPS_eTsvClose
+ .text.ZPS_vTsvInit
+                0x0400b6ba        0xf temp.elf
+                0x0400b6ba                _ZPS_vTsvInit
+ .text.ZPS_eTsvOpen
+                0x0400b6c9       0x12 temp.elf
+                0x0400b6c9                _ZPS_eTsvOpen
+ .text.ZPS_eTsvStop
+                0x0400b6db       0x55 temp.elf
+                0x0400b6db                _ZPS_eTsvStop
+ .text.ZPS_eTsvStart
+                0x0400b730       0x60 temp.elf
+                0x0400b730                _ZPS_eTsvStart
+ .text.AESSW_vHMAC_MMO
+                0x0400b790       0xb0 temp.elf
+                0x0400b790                _AESSW_vHMAC_MMO
+ .text.AESSW_vMMOBlockUpdate
+                0x0400b840       0x46 temp.elf
+                0x0400b840                _AESSW_vMMOBlockUpdate
+ .text.AESSW_vMMOFinalUpdate
+                0x0400b886       0xcf temp.elf
+                0x0400b886                _AESSW_vMMOFinalUpdate
+ .text.PDUM_eNPduClone
+                0x0400b955       0x4d temp.elf
+                0x0400b955                _PDUM_eNPduClone
+ .text.PDUM_thAPduInstanceGetApdu
+                0x0400b9a2       0x1b temp.elf
+                0x0400b9a2                _PDUM_thAPduInstanceGetApdu
+ .text.323      0x0400b9bd        0x0 temp.elf
+                0x0400b9bd                PDUM_Version_1v1
+ .text.DBG_vInit
+                0x0400b9bd       0x39 temp.elf
+                0x0400b9bd                _DBG_vInit
+ .text.dbg_vPrintfImpl
+                0x0400b9f6      0x47a temp.elf
+                0x0400b9f6                _dbg_vPrintfImpl
+ .text.DBG_vUartFailedAssert
+                0x0400be70       0x14 temp.elf
+                0x0400be70                _DBG_vUartFailedAssert
+ .text.DBG_vUartInit
+                0x0400be84       0x94 temp.elf
+                0x0400be84                _DBG_vUartInit
+ .text.DBG_vDumpStack
+                0x0400bf18       0x63 temp.elf
+                0x0400bf18                _DBG_vDumpStack
+ .text.eWBRTTxDonePatch
+                0x0400bf7b       0x24 temp.elf
+ .text.eScanHandleEvtPatched
+                0x0400bf9f       0x51 temp.elf
+                0x0400bf9f                _eScanHandleEvtPatched
+ .text.bTACprocessUnexpectedBeaconPatched
+                0x0400bff0       0x11 temp.elf
+                0x0400bff0                _bTACprocessUnexpectedBeaconPatched
+ .text.pvAppApiGetMacHandle
+                0x0400c001       0x16 temp.elf
+                0x0400c001                _pvAppApiGetMacHandle
+ .text.u32AppApiInit
+                0x0400c017      0x120 temp.elf
+                0x0400c017                _u32AppApiInit
+ .text.bTACprocessFrameRXcompletePatch
+                0x0400c137       0x71 temp.elf
+ .text.pvAppApiGetMacAddrLocation
+                0x0400c1a8       0x16 temp.elf
+                0x0400c1a8                _pvAppApiGetMacAddrLocation
+ .text.vAppApiSaveMacSettings
+                0x0400c1be       0x19 temp.elf
+                0x0400c1be                _vAppApiSaveMacSettings
+ .text.vTAMDEint1FiredTrackingBeaconPatch
+                0x0400c1d7       0xcf temp.elf
+ .text.MAC_vPibSetMinBe
+                0x0400c2a6       0x48 temp.elf
+                0x0400c2a6                _MAC_vPibSetMinBe
+ .text.vTSCsetOutgoingInfo_Patched
+                0x0400c2ee       0xca temp.elf
+                0x0400c2ee                _vTSCsetOutgoingInfo_Patched
+ .text.vXCV_IntHandlerPhyPatch
+                0x0400c3b8       0xca temp.elf
+                0x0400c3b8                _vXCV_IntHandlerPhyPatch
+ .text.vMlmeCallbackPatch
+                0x0400c482       0x45 temp.elf
+ .text.vBbcIdleBugWorkaround
+                0x0400c4c7       0x22 temp.elf
+ .text.vTAMDEint1FiredTrackingPatch
+                0x0400c4e9       0x95 temp.elf
+                0x0400c4e9                _vTAMDEint1FiredTrackingPatch
+ .text.vPhySetChannelPatch
+                0x0400c57e       0x34 temp.elf
+                0x0400c57e                _vPhySetChannelPatch
+ .text.vExpireHead
+                0x0400c5b2       0x37 temp.elf
+ .text.TSV_eExpireProcPatch
+                0x0400c5e9       0x2f temp.elf
+                0x0400c5e9                _TSV_eExpireProcPatch
+ .text.vMAC_RestoreSettings
+                0x0400c618       0xd8 temp.elf
+                0x0400c618                _vMAC_RestoreSettings
+ .text.XCV_vCtorPatch
+                0x0400c6f0      0x14b temp.elf
+                0x0400c6f0                _XCV_vCtorPatch
+ .text.eWBcnRxDonePatch
+                0x0400c83b       0x7c temp.elf
+ .text.vScan2006PostDcfm
+                0x0400c8b7       0x9e temp.elf
+ .text.eGenTmrExpiryPatch
+                0x0400c955       0x6b temp.elf
+ .text.vXCV_IntHandlerBbcPatch
+                0x0400c9c0      0x173 temp.elf
+ .text.bAHI_WatchdogResetEvent
+                0x0400cb33       0x1b temp.elf
+                0x0400cb33                _bAHI_WatchdogResetEvent
+ .text.bAHI_RndNumPoll
+                0x0400cb4e       0x2a temp.elf
+                0x0400cb4e                _bAHI_RndNumPoll
+ .text.vSetBit.347
+                0x0400cb78       0x15 temp.elf
+ .text.vAHI_SetStackOverflow
+                0x0400cb8d       0x1f temp.elf
+                0x0400cb8d                _vAHI_SetStackOverflow
+ .text.vAHI_StartRandomNumberGenerator
+                0x0400cbac       0x50 temp.elf
+                0x0400cbac                _vAHI_StartRandomNumberGenerator
+ .text.vAHI_Sleep
+                0x0400cbfc       0xf9 temp.elf
+                0x0400cbfc                _vAHI_Sleep
+ .text.bAHI_FlashInit
+                0x0400ccf5       0xd1 temp.elf
+                0x0400ccf5                _bAHI_FlashInit
+ .text.u32AHI_WakeTimerRead
+                0x0400cdc6       0x22 temp.elf
+                0x0400cdc6                _u32AHI_WakeTimerRead
+ .text.u32AHI_WakeTimerCalibrate
+                0x0400cde8       0x3a temp.elf
+                0x0400cde8                _u32AHI_WakeTimerCalibrate
+ .text.vAHI_UartSetRTSCTS
+                0x0400ce22       0x2b temp.elf
+                0x0400ce22                _vAHI_UartSetRTSCTS
+ .text.vAHI_DioWakeEnable
+                0x0400ce4d       0x20 temp.elf
+                0x0400ce4d                _vAHI_DioWakeEnable
+ .text.vAHI_DioSetPullup
+                0x0400ce6d       0x20 temp.elf
+                0x0400ce6d                _vAHI_DioSetPullup
+ .text.vAHI_DioWakeEdge
+                0x0400ce8d       0x20 temp.elf
+                0x0400ce8d                _vAHI_DioWakeEdge
+ .text.u32AHI_DioWakeStatus
+                0x0400cead       0x16 temp.elf
+                0x0400cead                _u32AHI_DioWakeStatus
+ .text.370      0x0400cec3      0x326 temp.elf
+                0x0400d1b4                _u16HTSreadHumidityResult
+                0x0400d0bd                _vHTSstartReadTemp
+                0x0400d0c1                _vHTSreset
+                0x0400d1ce                _u16HTSreadTempResult
+                0x0400d0b9                _vHTSstartReadHumidity
+ .text.374      0x0400d1e9       0xd4 temp.elf
+                0x0400d249                _bTSL2550_StartRead
+                0x0400d26d                _bTSL2550_PowerDown
+                0x0400d1e9                _u16TSL2550_ReadResult
+                0x0400d285                _bTSL2550_Init
+ .text.379      0x0400d2bd      0x1bc temp.elf
+                0x0400d2f6                _bSMBusSequentialRead
+                0x0400d3f8                _bSMBusWrite
+                0x0400d366                _bSMBusRandomRead
+                0x0400d46c                _vSMBusInit
+ .text.383      0x0400d479        0x0 temp.elf
+                0x0400d479                ZPS_NWK_Version_1v3
+ .text.ZPS_vNwkRegisterNlmeDcfmIndCallbacks
+                0x0400d479        0xe temp.elf
+                0x0400d479                _ZPS_vNwkRegisterNlmeDcfmIndCallbacks
+ .text.ZPS_vNwkRegisterNldeDcfmIndCallbacks
+                0x0400d487        0xe temp.elf
+                0x0400d487                _ZPS_vNwkRegisterNldeDcfmIndCallbacks
+ .text.zps_psNwkDcfmIndGetBuf
+                0x0400d495       0x24 temp.elf
+                0x0400d495                _zps_psNwkDcfmIndGetBuf
+ .text.zps_eNwkDcfmIndPost
+                0x0400d4b9       0x22 temp.elf
+                0x0400d4b9                _zps_eNwkDcfmIndPost
+ .text.ZPS_pvNwkCtor
+                0x0400d4db       0x85 temp.elf
+                0x0400d4db                _ZPS_pvNwkCtor
+ .text.zps_psNwkMcpsMgrFindByBtr
+                0x0400d560       0x26 temp.elf
+                0x0400d560                _zps_psNwkMcpsMgrFindByBtr
+ .text.zps_u8NwkAllocateMcpsHandle
+                0x0400d586       0x2e temp.elf
+                0x0400d586                _zps_u8NwkAllocateMcpsHandle
+ .text.vNwkMcpsTimerCallback
+                0x0400d5b4       0x1a temp.elf
+                0x0400d5b4                _vNwkMcpsTimerCallback
+ .text.vNwkMcpsSendTimedDfcm
+                0x0400d5ce       0x4b temp.elf
+                0x0400d5ce                _vNwkMcpsSendTimedDfcm
+ .text.zps_psNwkMcpsMgrAllocateReqDescr
+                0x0400d619        0xa temp.elf
+                0x0400d619                _zps_psNwkMcpsMgrAllocateReqDescr
+ .text.zps_vNwkMcpsMgrFreeReqDescr
+                0x0400d623       0x30 temp.elf
+                0x0400d623                _zps_vNwkMcpsMgrFreeReqDescr
+ .text.vProcessListsForSubmission
+                0x0400d653      0x199 temp.elf
+ .text.zps_psNwkMcpsMgrFindByHandleAndRemove
+                0x0400d7ec       0x45 temp.elf
+                0x0400d7ec                _zps_psNwkMcpsMgrFindByHandleAndRemove
+ .text.zps_vNwkMcpsMgrPost
+                0x0400d831       0x2a temp.elf
+                0x0400d831                _zps_vNwkMcpsMgrPost
+ .text.zps_bNwkMcpsMgrRemoveDescrFromLists
+                0x0400d85b       0x48 temp.elf
+                0x0400d85b                _zps_bNwkMcpsMgrRemoveDescrFromLists
+ .text.zps_vNwkMcpsMgrTidyBtrReqDescr
+                0x0400d8a3       0x2d temp.elf
+                0x0400d8a3                _zps_vNwkMcpsMgrTidyBtrReqDescr
+ .text.vProcessTimedList
+                0x0400d8d0       0x47 temp.elf
+ .text.zps_vNwkMcpsMgrPostTimed
+                0x0400d917       0x1a temp.elf
+                0x0400d917                _zps_vNwkMcpsMgrPostTimed
+ .text.vMcpsMgrExpiry
+                0x0400d931       0x34 temp.elf
+ .text.zps_vNwkMcpsMgrInit
+                0x0400d965       0x8e temp.elf
+                0x0400d965                _zps_vNwkMcpsMgrInit
+ .text.zps_eNwkHandleSdeActvDcfmData
+                0x0400d9f3       0xaf temp.elf
+                0x0400d9f3                _zps_eNwkHandleSdeActvDcfmData
+ .text.vMcpsMgrTimeoutExpiry
+                0x0400daa2       0x7a temp.elf
+                0x0400daa2                _vMcpsMgrTimeoutExpiry
+ .text.ZPS_vNwkHandleMcpsVsDcfmInd
+                0x0400db1c      0x4d4 temp.elf
+                0x0400db1c                _ZPS_vNwkHandleMcpsVsDcfmInd
+ .text.ZPS_vNwkHandleMlmeDcfmInd
+                0x0400dff0       0x71 temp.elf
+                0x0400dff0                _ZPS_vNwkHandleMlmeDcfmInd
+ .text.ZPS_psNwkNibGetHandle
+                0x0400e061        0x7 temp.elf
+                0x0400e061                _ZPS_psNwkNibGetHandle
+ .text.ZPS_vNwkNibSetTables
+                0x0400e068       0x4e temp.elf
+                0x0400e068                _ZPS_vNwkNibSetTables
+ .text.ZPS_u16NwkNibGetNwkAddr
+                0x0400e0b6        0x9 temp.elf
+                0x0400e0b6                _ZPS_u16NwkNibGetNwkAddr
+ .text.ZPS_u64NwkNibGetEpid
+                0x0400e0bf        0xb temp.elf
+                0x0400e0bf                _ZPS_u64NwkNibGetEpid
+ .text.ZPS_bNwkNibNtActvMatch
+                0x0400e0ca       0x93 temp.elf
+                0x0400e0ca                _ZPS_bNwkNibNtActvMatch
+ .text.ZPS_bNwkNibAddrMapAddEntry
+                0x0400e15d       0xae temp.elf
+                0x0400e15d                _ZPS_bNwkNibAddrMapAddEntry
+ .text.ZPS_vNwkSaveSecMat
+                0x0400e20b        0xa temp.elf
+                0x0400e20b                _ZPS_vNwkSaveSecMat
+ .text.ZPS_vNwkIncOutFC
+                0x0400e215       0x2a temp.elf
+                0x0400e215                _ZPS_vNwkIncOutFC
+ .text.ZPS_vNwkSaveNt
+                0x0400e23f        0xa temp.elf
+                0x0400e23f                _ZPS_vNwkSaveNt
+ .text.ZPS_vNtSetUsedStatus
+                0x0400e249       0x65 temp.elf
+                0x0400e249                _ZPS_vNtSetUsedStatus
+ .text.ZPS_u64NwkNibGetExtAddr
+                0x0400e2ae        0x6 temp.elf
+                0x0400e2ae                _ZPS_u64NwkNibGetExtAddr
+ .text.ZPS_u64NwkNibFindExtAddr
+                0x0400e2b4       0x6b temp.elf
+                0x0400e2b4                _ZPS_u64NwkNibFindExtAddr
+ .text.ZPS_vNwkNibCheckAndUpdateAddresses
+                0x0400e31f       0x78 temp.elf
+                0x0400e31f                _ZPS_vNwkNibCheckAndUpdateAddresses
+ .text.zps_vNibSetDefaults
+                0x0400e397      0x1e7 temp.elf
+                0x0400e397                _zps_vNibSetDefaults
+ .text.zps_sNwkNibNtCheckJoin
+                0x0400e57e      0x1cf temp.elf
+                0x0400e57e                _zps_sNwkNibNtCheckJoin
+ .text.ZPS_vNwkNibSetNwkAddr
+                0x0400e74d       0x21 temp.elf
+                0x0400e74d                _ZPS_vNwkNibSetNwkAddr
+ .text.ZPS_vNwkNibSetNwkAddrNibOnly
+                0x0400e76e        0xe temp.elf
+                0x0400e76e                _ZPS_vNwkNibSetNwkAddrNibOnly
+ .text.ZPS_vNwkNibSetExtPanId
+                0x0400e77c       0x2e temp.elf
+                0x0400e77c                _ZPS_vNwkNibSetExtPanId
+ .text.ZPS_vNwkNibSetKeySeqNum
+                0x0400e7aa       0x19 temp.elf
+                0x0400e7aa                _ZPS_vNwkNibSetKeySeqNum
+ .text.ZPS_vNwkNibSetDepth
+                0x0400e7c3        0xe temp.elf
+                0x0400e7c3                _ZPS_vNwkNibSetDepth
+ .text.ZPS_vNwkNibSetUpdateId
+                0x0400e7d1        0xe temp.elf
+                0x0400e7d1                _ZPS_vNwkNibSetUpdateId
+ .text.ZPS_vNwkNibIncSeqNum
+                0x0400e7df        0xd temp.elf
+                0x0400e7df                _ZPS_vNwkNibIncSeqNum
+ .text.ZPS_vNwkNibSetPanId
+                0x0400e7ec       0x21 temp.elf
+                0x0400e7ec                _ZPS_vNwkNibSetPanId
+ .text.ZPS_vNwkNibSetCapabilityInfo
+                0x0400e80d       0x30 temp.elf
+                0x0400e80d                _ZPS_vNwkNibSetCapabilityInfo
+ .text.ZPS_vNwkNibSetChannel
+                0x0400e83d       0x23 temp.elf
+                0x0400e83d                _ZPS_vNwkNibSetChannel
+ .text.ZPS_vNwkNibSetParentAddr
+                0x0400e860       0x14 temp.elf
+                0x0400e860                _ZPS_vNwkNibSetParentAddr
+ .text.ZPS_vNtSetAuthStatus
+                0x0400e874       0x28 temp.elf
+                0x0400e874                _ZPS_vNtSetAuthStatus
+ .text.ZPS_vNwkNibClearTables
+                0x0400e89c       0xae temp.elf
+                0x0400e89c                _ZPS_vNwkNibClearTables
+ .text.ZPS_u8NwkNibNtDiscMatch
+                0x0400e94a       0xdf temp.elf
+                0x0400e94a                _ZPS_u8NwkNibNtDiscMatch
+ .text.ZPS_vNwkNibCheckAndUpdateChildren
+                0x0400ea29       0x72 temp.elf
+                0x0400ea29                _ZPS_vNwkNibCheckAndUpdateChildren
+ .text.ZPS_u16NwkNibFindNwkAddr
+                0x0400ea9b       0x7e temp.elf
+                0x0400ea9b                _ZPS_u16NwkNibFindNwkAddr
+ .text.ZPS_u8NwkCalcNldeReqOverhead
+                0x0400eb19       0x13 temp.elf
+                0x0400eb19                _ZPS_u8NwkCalcNldeReqOverhead
+ .text.ZPS_vNwkHandleNldeReqRsp
+                0x0400eb2c      0x16a temp.elf
+                0x0400eb2c                _ZPS_vNwkHandleNldeReqRsp
+ .text.eNldeDataDcfm
+                0x0400ec96       0x30 temp.elf
+ .text.ZPS_vNwkHandleNlmeReqRsp
+                0x0400ecc6      0x1ce temp.elf
+                0x0400ecc6                _ZPS_vNwkHandleNlmeReqRsp
+ .text.zps_vRemoveRoute
+                0x0400ee94        0x3 temp.elf
+                0x0400ee94                _zps_vRemoveRoute
+ .text.zps_psProcessRoutedFrm
+                0x0400ee97       0x1c temp.elf
+                0x0400ee97                _zps_psProcessRoutedFrm
+ .text.ZPS_bNwkSecCheckFC
+                0x0400eeb3       0x50 temp.elf
+                0x0400eeb3                _ZPS_bNwkSecCheckFC
+ .text.ZPS_bNwkSecFindMatSet
+                0x0400ef03       0x38 temp.elf
+                0x0400ef03                _ZPS_bNwkSecFindMatSet
+ .text.ZPS_bNwkSecCheckMatSet
+                0x0400ef3b       0x35 temp.elf
+                0x0400ef3b                _ZPS_bNwkSecCheckMatSet
+ .text.ZPS_bNwkSecHaveNetworkKey
+                0x0400ef70       0x36 temp.elf
+                0x0400ef70                _ZPS_bNwkSecHaveNetworkKey
+ .text.ZPS_vNwkSecResetDevice
+                0x0400efa6       0x51 temp.elf
+                0x0400efa6                _ZPS_vNwkSecResetDevice
+ .text.zps_vNwkSecClearMatSet
+                0x0400eff7       0x39 temp.elf
+                0x0400eff7                _zps_vNwkSecClearMatSet
+ .text.ZPS_bSecDecrypt
+                0x0400f030       0xe5 temp.elf
+                0x0400f030                _ZPS_bSecDecrypt
+ .text.ZPS_bSecEncrypt
+                0x0400f115      0x1d4 temp.elf
+                0x0400f115                _ZPS_bSecEncrypt
+ .text.zps_eNwkSecEncryptPacket
+                0x0400f2e9       0xb2 temp.elf
+                0x0400f2e9                _zps_eNwkSecEncryptPacket
+ .text.zps_eNwkSecDecryptPacket
+                0x0400f39b      0x196 temp.elf
+                0x0400f39b                _zps_eNwkSecDecryptPacket
+ .text.zps_eNwkActvStInit
+                0x0400f531        0xa temp.elf
+                0x0400f531                _zps_eNwkActvStInit
+ .text.zps_vNwkActvStHandleCme
+                0x0400f53b       0x30 temp.elf
+                0x0400f53b                _zps_vNwkActvStHandleCme
+ .text.zps_eNwkBtrMatch
+                0x0400f56b       0x8f temp.elf
+                0x0400f56b                _zps_eNwkBtrMatch
+ .text.zps_vNwkBttMgrInit
+                0x0400f5fa       0x33 temp.elf
+                0x0400f5fa                _zps_vNwkBttMgrInit
+ .text.vNwkBttTimerExpiry
+                0x0400f62d       0x90 temp.elf
+ .text.zps_vNwkDiscUpdateNT
+                0x0400f6bd       0x56 temp.elf
+                0x0400f6bd                _zps_vNwkDiscUpdateNT
+ .text.zps_vNwkHandleCmeNwkDiscReq
+                0x0400f713       0x7f temp.elf
+                0x0400f713                _zps_vNwkHandleCmeNwkDiscReq
+ .text.eSmeASFlBeaconInd
+                0x0400f792       0x25 temp.elf
+ .text.eSmeUDNTScanDcfm
+                0x0400f7b7       0x1c temp.elf
+ .text.zps_eNwkDiscStInit
+                0x0400f7d3        0xa temp.elf
+                0x0400f7d3                _zps_eNwkDiscStInit
+ .text.psAddToDiscNt
+                0x0400f7dd      0x14c temp.elf
+ .text.eSmeUDNTBeaconInd
+                0x0400f929       0x31 temp.elf
+ .text.eSmeAcScBeaconInd
+                0x0400f95a       0xe7 temp.elf
+ .text.eSmeEdScScanDcfm
+                0x0400fa41       0x51 temp.elf
+ .text.eSmeGenlScanDcfm
+                0x0400fa92       0x5e temp.elf
+ .text.zps_psFormatCmdFrameGeneral
+                0x0400faf0       0x7d temp.elf
+                0x0400faf0                _zps_psFormatCmdFrameGeneral
+ .text.zps_psAllocateAndFormatMacHdr
+                0x0400fb6d      0x19d temp.elf
+                0x0400fb6d                _zps_psAllocateAndFormatMacHdr
+ .text.zps_psNwkInitCmdFrame
+                0x0400fd0a       0x7a temp.elf
+                0x0400fd0a                _zps_psNwkInitCmdFrame
+ .text.zps_psSendFrm
+                0x0400fd84      0x21e temp.elf
+                0x0400fd84                _zps_psSendFrm
+ .text.zps_psSendBroadcastFrm
+                0x0400ffa2       0x97 temp.elf
+                0x0400ffa2                _zps_psSendBroadcastFrm
+ .text.zps_eDefaultDataDcfm
+                0x04010039      0x16e temp.elf
+                0x04010039                _zps_eDefaultDataDcfm
+ .text.zps_vNwkIdleStHandleCme
+                0x040101a7       0x30 temp.elf
+                0x040101a7                _zps_vNwkIdleStHandleCme
+ .text.bSetJoinCfmParams
+                0x040101d7       0x20 temp.elf
+ .text.zps_eNwkHandleSmeOrphanInd
+                0x040101f7        0x7 temp.elf
+                0x040101f7                _zps_eNwkHandleSmeOrphanInd
+ .text.zps_psNwkSendRejoinRspCmd
+                0x040101fe       0x9b temp.elf
+                0x040101fe                _zps_psNwkSendRejoinRspCmd
+ .text.zps_psNwkSendRejoinReqCmd
+                0x04010299       0x6a temp.elf
+                0x04010299                _zps_psNwkSendRejoinReqCmd
+ .text.zps_eNwkHandleSceRejnResponse
+                0x04010303       0x66 temp.elf
+                0x04010303                _zps_eNwkHandleSceRejnResponse
+ .text.zps_vJoinInitNtParent
+                0x04010369       0x94 temp.elf
+                0x04010369                _zps_vJoinInitNtParent
+ .text.zps_vTidyActvNtAfterJoin
+                0x040103fd       0x7d temp.elf
+                0x040103fd                _zps_vTidyActvNtAfterJoin
+ .text.zps_eNwkSendJoinResponse
+                0x0401047a       0xe0 temp.elf
+                0x0401047a                _zps_eNwkSendJoinResponse
+ .text.zps_eNwkProcessJoinInd
+                0x0401055a       0xfa temp.elf
+                0x0401055a                _zps_eNwkProcessJoinInd
+ .text.zps_eNwkHandleSmeAssocInd
+                0x04010654       0x2d temp.elf
+                0x04010654                _zps_eNwkHandleSmeAssocInd
+ .text.zps_vNwkHandleCmeNwkJoinReq
+                0x04010681      0x1cf temp.elf
+                0x04010681                _zps_vNwkHandleCmeNwkJoinReq
+ .text.zps_vNwkHandleCmeNwkActvJoinReq
+                0x04010850        0xf temp.elf
+                0x04010850                _zps_vNwkHandleCmeNwkActvJoinReq
+ .text.zps_u8NwkHandleRejoinReq
+                0x0401085f       0xc1 temp.elf
+                0x0401085f                _zps_u8NwkHandleRejoinReq
+ .text.zps_vSendJoinInd
+                0x04010920       0x65 temp.elf
+                0x04010920                _zps_vSendJoinInd
+ .text.zps_eNwkHandleSmeCommStatusInd
+                0x04010985       0xa8 temp.elf
+                0x04010985                _zps_eNwkHandleSmeCommStatusInd
+ .text.eRejoinRspDataDcfm
+                0x04010a2d       0x7b temp.elf
+ .text.zps_vSendJoinDcfm
+                0x04010aa8       0x4e temp.elf
+                0x04010aa8                _zps_vSendJoinDcfm
+ .text.vContinueRejoin
+                0x04010af6       0xb0 temp.elf
+ .text.zps_eNwkJoinStInit
+                0x04010ba6        0xa temp.elf
+                0x04010ba6                _zps_eNwkJoinStInit
+ .text.vGiveUp  0x04010bb0       0x31 temp.elf
+ .text.vFinish  0x04010be1       0x51 temp.elf
+ .text.vCheckSleepingSendPoll
+                0x04010c32       0x7c temp.elf
+ .text.zps_vNwkJoinStStartResponseTimer
+                0x04010cae       0x36 temp.elf
+                0x04010cae                _zps_vNwkJoinStStartResponseTimer
+ .text.eTryNextParent
+                0x04010ce4      0x150 temp.elf
+                0x04010ce4                _eTryNextParent
+ .text.vHandleRejoinExpiry
+                0x04010e34       0x52 temp.elf
+ .text.eSmeOrphScanDcfm
+                0x04010e86       0x5b temp.elf
+ .text.eSmeAsocAssocDcfm
+                0x04010ee1       0x74 temp.elf
+ .text.eSmeRjPCPollDcfm
+                0x04010f55       0x68 temp.elf
+ .text.eSceRjRsRejoinRsp
+                0x04010fbd       0xbc temp.elf
+ .text.zps_eRejoinDataDcfm
+                0x04011079       0x3f temp.elf
+                0x04011079                _zps_eRejoinDataDcfm
+ .text.zps_psNwkSendLeaveCmd
+                0x040110b8       0x66 temp.elf
+                0x040110b8                _zps_psNwkSendLeaveCmd
+ .text.zps_psNwkPropagateLocalLeave
+                0x0401111e       0x36 temp.elf
+                0x0401111e                _zps_psNwkPropagateLocalLeave
+ .text.zps_vNwkHandleCmeLeaveReq
+                0x04011154       0x69 temp.elf
+                0x04011154                _zps_vNwkHandleCmeLeaveReq
+ .text.vSendLeaveInd
+                0x040111bd       0x39 temp.elf
+ .text.zps_eNwkHandleSceLeave
+                0x040111f6       0xe8 temp.elf
+                0x040111f6                _zps_eNwkHandleSceLeave
+ .text.eLeaveReset
+                0x040112de       0x49 temp.elf
+ .text.eLeaveDataDcfm
+                0x04011327       0x86 temp.elf
+ .text.zps_eSceGenlIllegal
+                0x040113ad        0x7 temp.elf
+                0x040113ad                _zps_eSceGenlIllegal
+ .text.zps_vInitBeaconPayload
+                0x040113b4       0x80 temp.elf
+                0x040113b4                _zps_vInitBeaconPayload
+ .text.zps_eSmeGenlIllegal
+                0x04011434        0x7 temp.elf
+                0x04011434                _zps_eSmeGenlIllegal
+ .text.zps_u8CalcLinkCost
+                0x0401143b       0x55 temp.elf
+                0x0401143b                _zps_u8CalcLinkCost
+ .text.MAC_u64GetExtAddr
+                0x04011490       0x1b temp.elf
+                0x04011490                _MAC_u64GetExtAddr
+ .text.eCheckAddrConflict
+                0x040114ab       0x68 temp.elf
+ .text.zps_psSendNetworkReportCmd
+                0x04011513       0xde temp.elf
+                0x04011513                _zps_psSendNetworkReportCmd
+ .text.vSendNetworkReport
+                0x040115f1        0x6 temp.elf
+ .text.zps_psSendNetworkStatusCmd
+                0x040115f7       0x82 temp.elf
+                0x040115f7                _zps_psSendNetworkStatusCmd
+ .text.zps_eNwkHandleSceNwkUpdate
+                0x04011679       0x2a temp.elf
+                0x04011679                _zps_eNwkHandleSceNwkUpdate
+ .text.zps_vNwkRemoveConflictedBroadcast
+                0x040116a3       0x54 temp.elf
+                0x040116a3                _zps_vNwkRemoveConflictedBroadcast
+ .text.zps_vProcessLocalAddrConflict
+                0x040116f7       0x73 temp.elf
+                0x040116f7                _zps_vProcessLocalAddrConflict
+ .text.zps_vProcessChildAddrConflict
+                0x0401176a       0xc8 temp.elf
+                0x0401176a                _zps_vProcessChildAddrConflict
+ .text.eUnsolicitedRejoinRspDataDcfm
+                0x04011832       0x2c temp.elf
+ .text.zps_vSendNwkStatusInd
+                0x0401185e       0x31 temp.elf
+                0x0401185e                _zps_vSendNwkStatusInd
+ .text.vHandleNwkRemoteUpdateAfterBcast
+                0x0401188f       0x8b temp.elf
+ .text.zps_eProcessAddrConflict
+                0x0401191a      0x162 temp.elf
+                0x0401191a                _zps_eProcessAddrConflict
+ .text.zps_eNwkHandleSmeBeaconNotifyInd
+                0x04011a7c       0x7f temp.elf
+                0x04011a7c                _zps_eNwkHandleSmeBeaconNotifyInd
+ .text.zps_eNwkHandleSceNwkStatus
+                0x04011afb       0xf0 temp.elf
+                0x04011afb                _zps_eNwkHandleSceNwkStatus
+ .text.zps_sNwkLibSubmitScan
+                0x04011beb       0x45 temp.elf
+                0x04011beb                _zps_sNwkLibSubmitScan
+ .text.zps_vNwkHandleCmeEdScanReq
+                0x04011c30       0x45 temp.elf
+                0x04011c30                _zps_vNwkHandleCmeEdScanReq
+ .text.zps_eNwkHandleSmePollDcfm
+                0x04011c75       0x30 temp.elf
+                0x04011c75                _zps_eNwkHandleSmePollDcfm
+ .text.zps_vNwkHandleCmeSyncReq
+                0x04011ca5       0x4b temp.elf
+                0x04011ca5                _zps_vNwkHandleCmeSyncReq
+ .text.PWRM_eFinishActivity
+                0x04011cf0       0x21 temp.elf
+                0x04011cf0                _PWRM_eFinishActivity
+ .text.PWRM_u16GetActivityCount
+                0x04011d11        0xc temp.elf
+                0x04011d11                _PWRM_u16GetActivityCount
+ .text.AESSW_bCCMstar
+                0x04011d1d      0x2c1 temp.elf
+                0x04011d1d                _AESSW_bCCMstar
+ .text.546      0x04011fde       0x3b temp.elf
+                0x04011fde                _strncmp
+ .text.551      0x04012019       0x2f temp.elf
+                0x04012019                _strncpy
+                0x04012048                _text_end = <code 342> (.)
+                0x04012048                _data_end = <code 342> (.)
+                0x00011348                _data_len = (((_data_end - _data_beg) + 0x3) & 0xfffffffc)
+                0x04012048                _overlay_start = <code 342> (ALIGN (0x4))
+                0x04012048                _overlay_end = <code 342> (ALIGN (0x4))
+                0x00000000                _overlays = 0x0
+
+.overlay_location
+                0x04012050        0x0
+                0x00000000                _overlay_len = 0x0
+                0x04012050                _overlay_lma = ((((ADDR (.overlay_location) + SIZEOF (.overlay_location)) - _enc_offset) ALIGN 0x10) + _enc_offset)
+                0x02001000                _apvReg = 0x2001000
+                0x02001000                _apvSysReg = 0x2001000
+                0x02001c00                _apvAesReg = 0x2001c00
+                0x02001f00                _apvAnaReg = 0x2001f00
+                0x02002000                _apvGpioReg = 0x2002000
+                0x02003000                _apvUart0Reg = 0x2003000
+                0x02004000                _apvUart1Reg = 0x2004000
+                0x02005000                _apvTimer0Reg = 0x2005000
+                0x02006000                _apvTimer1Reg = 0x2006000
+                0x0200a000                _apvTimer2Reg = 0x200a000
+                0x02007000                _apvSiReg = 0x2007000
+                0x02008000                _apvSpiReg = 0x2008000
+                0x02009000                _apvSpiIpReg = 0x2009000
+                0x02009800                _apvSpiIpMem = 0x2009800
+                0x0200b000                _apvDaiReg = 0x200b000
+                0x0200c000                _apvSfifoReg = 0x200c000
+                0x00011380                _overlay_location = (ADDR (.overlay_location) - _flash_beg)
+                0x04012048                _overlay_end = (_overlay_start + _overlay_len)
+                0x04012048                . = _overlay_end
+                0x00000001                ASSERT ((_overlays < 0x800), Too many overlays)
+
+.bss            0x04012048     0x32a8
+                0x04012048                _bss_beg = <code 342> (.)
+                0x04012048                _bss_start = <code 342> (.)
+ *(.bss*)
+ .bss.s_aMessageData_zps_msgMlmeDcfmInd
+                0x04012048      0x750 temp.elf
+ .bss.s_aMessageData_zps_msgTimeEvents
+                0x04012798       0x60 temp.elf
+ .bss.s_aMessageData_zps_msgMcpsDcfmInd
+                0x040127f8      0x120 temp.elf
+ .bss.s_aMessageData_APP_msgZpsEvents
+                0x04012918       0xd0 temp.elf
+ .bss.s_aMessageData_APP_msgLedEvent
+                0x040129e8       0xd0 temp.elf
+ .bss.s_asNPduPool
+                0x04012ab8      0x880 temp.elf
+ .bss.s_au8apduZDPInstance0Storage
+                0x04013338       0x64 temp.elf
+ .bss.s_au8apduZDPInstance1Storage
+                0x0401339c       0x64 temp.elf
+ .bss.s_au8apduZDPInstance2Storage
+                0x04013400       0x64 temp.elf
+ .bss.s_au8apduSensorDataInstance0Storage
+                0x04013464        0xd temp.elf
+ .bss.s_au8apduLedControlInstance0Storage
+                0x04013471        0xa temp.elf
+ .bss.s_au8apduLedControlInstance1Storage
+                0x0401347b        0xa temp.elf
+ *fill*         0x04013485        0x3 00
+ .bss.s_sDefaultServerContext
+                0x04013488        0x8 temp.elf
+ .bss.s_sZdoClientContext
+                0x04013490        0x8 temp.elf
+ .bss.s_sDeviceAnnceServerContext
+                0x04013498        0x0 temp.elf
+ .bss.s_sActiveEpServerContext
+                0x04013498        0x8 temp.elf
+ .bss.s_sNwkAddrServerContext
+                0x040134a0        0x8 temp.elf
+ .bss.s_sIeeeAddrServerContext
+                0x040134a8        0x8 temp.elf
+ .bss.s_sSystemServerDiscoveryServerContext
+                0x040134b0        0x8 temp.elf
+ .bss.s_sNodeDescServerContext
+                0x040134b8        0x8 temp.elf
+ .bss.s_sPowerDescServerContext
+                0x040134c0        0x8 temp.elf
+ .bss.s_sMatchDescServerContext
+                0x040134c8        0x8 temp.elf
+ .bss.s_sSimpleDescServerContext
+                0x040134d0        0x8 temp.elf
+ .bss.s_sMgmtLqiServerContext
+                0x040134d8        0x8 temp.elf
+ .bss.s_sMgmtLeaveServerContext
+                0x040134e0       0x28 temp.elf
+ .bss.s_sMgmtNWKUpdateServerContext
+                0x04013508       0x40 temp.elf
+ .bss.s_sNwkContext
+                0x04013548      0x6e0 temp.elf
+ .bss.s_asNwkInFCSet
+                0x04013c28      0x2a0 temp.elf
+ .bss.s_asApsSyncMsgPool
+                0x04013ec8       0xf0 temp.elf
+ .bss.s_asApsDcfmRecordPool
+                0x04013fb8       0x50 temp.elf
+ .bss.s_asNwkNtDisc
+                0x04014008      0x180 temp.elf
+ .bss.s_asNwkNtActv
+                0x04014188      0x2a0 temp.elf
+ .bss.s_asNwkRtDisc
+                0x04014428      0x240 temp.elf
+ .bss.s_asNwkRt
+                0x04014668       0x80 temp.elf
+ .bss.s_asNwkBtt
+                0x040146e8       0x48 temp.elf
+ .bss.s_asNwkRct
+                0x04014730      0x100 temp.elf
+ .bss.s_asNwkSecMatSet
+                0x04014830       0x40 temp.elf
+ .bss.s_au16NwkAddrMapNwk
+                0x04014870       0x20 temp.elf
+ .bss.s_au64NwkAddrMapExt
+                0x04014890       0x80 temp.elf
+ .bss.s_au8Endpoint0InputClusterDiscFlags
+                0x04014910        0xb temp.elf
+ .bss.s_au8Endpoint0OutputClusterDiscFlags
+                0x0401491b        0xb temp.elf
+ .bss.s_au16ApsDuplicateTableAddrs
+                0x04014926        0x2 temp.elf
+ .bss.s_au32ApsDuplicateTableHash
+                0x04014928        0x4 temp.elf
+ .bss.s_au8ApsDuplicateTableSeqCnts
+                0x0401492c        0x1 temp.elf
+ *fill*         0x0401492d        0x3 00
+ .bss.s_sApsmeCmdContainer_4
+                0x04014930       0x38 temp.elf
+ .bss.s_u32CompareTime
+                0x04014968        0x4 temp.elf
+ .bss.s_u32LastExpiredTime
+                0x0401496c        0x4 temp.elf
+ .bss.APP_bAppHealthy
+                0x04014970        0x1 temp.elf
+                0x04014970                _APP_bAppHealthy
+ *fill*         0x04014971        0x3 00
+ .bss.s_hAPduInst.6083
+                0x04014974        0x4 temp.elf
+ .bss.eSampleState.6082
+                0x04014978        0x4 temp.elf
+ .bss.s_u8ButtonState
+                0x0401497c        0x2 temp.elf
+ *fill*         0x0401497e        0x2 00
+ .bss.s_hAPduInst.5823
+                0x04014980        0x4 temp.elf
+ .bss.s_u8SeqNum.7831
+                0x04014984        0x1 temp.elf
+ .bss.u8ChannelRetries.7870
+                0x04014985        0x1 temp.elf
+ *fill*         0x04014986        0x2 00
+ .bss.s_sDevice
+                0x04014988        0x4 temp.elf
+ .bss.sRxQueue  0x0401498c      0x404 temp.elf
+ .bss.sTxQueue  0x04014d90      0x404 temp.elf
+ .bss.Uart_Opened
+                0x04015194        0x2 temp.elf
+ *fill*         0x04015196        0x2 00
+ .bss.pwrm_psWakeupCallbacks
+                0x04015198        0x4 temp.elf
+                0x04015198                _pwrm_psWakeupCallbacks
+ .bss.s_pu8Stack
+                0x0401519c        0x4 temp.elf
+ .bss.s_pu8StackDst
+                0x040151a0        0x4 temp.elf
+ .bss.s_hPdmMutex
+                0x040151a4        0x4 temp.elf
+ .bss.gpsListHead
+                0x040151a8        0x4 temp.elf
+ .bss.gu16NumRecordsInNvm
+                0x040151ac        0x2 temp.elf
+ .bss.gu16FirstChangesetOffset
+                0x040151ae        0x2 temp.elf
+ .bss.gu16LastChangesetOffset
+                0x040151b0        0x2 temp.elf
+ .bss.gu16NextChangesetOffset
+                0x040151b2        0x2 temp.elf
+ .bss.gu16NumChangesets
+                0x040151b4        0x2 temp.elf
+ .bss.gu16NumRecordsInRam
+                0x040151b6        0x2 temp.elf
+ .bss.gbNeedsPurge
+                0x040151b8        0x1 temp.elf
+ *fill*         0x040151b9        0x3 00
+ .bss.s_hPdmMediaMutex
+                0x040151bc        0x4 temp.elf
+ .bss.gu32MaxBlockSize
+                0x040151c0        0x4 temp.elf
+ .bss.s_bIsInit
+                0x040151c4        0x1 temp.elf
+ *fill*         0x040151c5        0x3 00
+ .bss.gpsNvmFlashFuncTable
+                0x040151c8        0x4 temp.elf
+ .bss.gsLastChangesetHeader
+                0x040151cc        0x8 temp.elf
+ *fill*         0x040151d4        0x4 00
+ .bss.g_u64NoncePart1
+                0x040151d8        0x8 temp.elf
+ .bss.g_u32WaterMark
+                0x040151e0        0x4 temp.elf
+ .bss.g_psKey   0x040151e4        0x4 temp.elf
+ .bss.s_psMacDcfmInd
+                0x040151e8        0x4 temp.elf
+ .bss.s_psVsMcpsDcfmInd
+                0x040151ec        0x4 temp.elf
+ .bss.bLocked.9145
+                0x040151f0        0x4 temp.elf
+ .bss.s_hMutex  0x040151f4        0x4 temp.elf
+ .bss.s_prExpireFn
+                0x040151f8        0x4 temp.elf
+ .bss.aprTofVectorRamTable
+                0x040151fc       0x24 temp.elf
+                0x040151fc                _aprTofVectorRamTable
+ .bss.b2003SecurityCompatibility
+                0x04015220        0x1 temp.elf
+                0x04015220                _b2003SecurityCompatibility
+ *fill*         0x04015221        0x3 00
+ .bss.prvUserTxStartedCallback
+                0x04015224        0x4 temp.elf
+                0x04015224                _prvUserTxStartedCallback
+ .bss.u32StoreBbcPttt
+                0x04015228        0x4 temp.elf
+ *(.scommon*)
+ COMMON         0x0401522c       0xc4 temp.elf
+                0x0401522c                _s_sDevicePDDesc
+                0x04015270                _s_u16ActivityCounter
+                0x04015274                _sBbcIdleBugTimer
+                0x04015284                _bCheckChild
+                0x04015288                _prHigherMlmeCallback
+                0x0401528c                _ba_redzone_size
+                0x04015290                _pwrm_CPUContext
+                0x040152cc                _zps_psNwk
+                0x040152d0                _ba_abi_level
+                0x040152d4                _sWake
+                0x040152e4                _psActiveMsgListHead
+                0x040152e8                _psFreeMsgListHead
+                0x040152ec                _eState
+                0x040152f0                _bss_end = <code 342> (.)
+
+.heap           0x040152f0      0x800
+                0x040152f0                _heap_start = <code 342> (.)
+                0x04015af0                . = (. + _minimum_heap_size)
+ *fill*         0x040152f0      0x800 00
+
+.stack          0x0401ec00     0x1400
+                0x0401ec00                _heap_end = <code 342> (.)
+                0x0401ec00                _stack_low_water_mark = <code 342> (.)
+                0x04020000                . = (. + _stack_size)
+ *fill*         0x0401ec00     0x1400 00
+                0x00000001                ASSERT (((((_heap_start - 0x4000000) + _minimum_heap_size) + _stack_size) <= 0x20000), RAM Exhausted)
+
+.stab           0x00000000     0x15d8
+ *(.stab)
+ .stab          0x00000000      0x2d0 temp.elf
+                                0x3e4 (size before relaxing)
+ *(.stab.*)
+ .stab.520      0x000002d0      0x6d8 temp.elf
+ .stab.528      0x000009a8      0x150 temp.elf
+ .stab.534      0x00000af8      0x360 temp.elf
+ .stab.539      0x00000e58      0x1b0 temp.elf
+ .stab.544      0x00001008      0x1e0 temp.elf
+ .stab.549      0x000011e8      0x1e0 temp.elf
+ .stab.554      0x000013c8      0x210 temp.elf
+
+.comment        0x00000000      0x7f2
+ *(.comment*)
+ .comment       0x00000000       0x12 temp.elf
+ .comment.22    0x00000012       0x12 temp.elf
+ .comment.26    0x00000024       0x12 temp.elf
+ .comment.30    0x00000036       0x12 temp.elf
+ .comment.34    0x00000048       0x12 temp.elf
+ .comment.39    0x0000005a       0x12 temp.elf
+ .comment.44    0x0000006c       0x12 temp.elf
+ .comment.49    0x0000007e       0x12 temp.elf
+ .comment.54    0x00000090       0x12 temp.elf
+ .comment.59    0x000000a2       0x12 temp.elf
+ .comment.63    0x000000b4       0x12 temp.elf
+ .comment.67    0x000000c6       0x12 temp.elf
+ .comment.71    0x000000d8       0x12 temp.elf
+ .comment.75    0x000000ea       0x12 temp.elf
+ .comment.85    0x000000fc       0x12 temp.elf
+ .comment.92    0x0000010e       0x12 temp.elf
+ .comment.96    0x00000120       0x12 temp.elf
+ .comment.100   0x00000132       0x12 temp.elf
+ .comment.104   0x00000144       0x12 temp.elf
+ .comment.111   0x00000156       0x12 temp.elf
+ .comment.116   0x00000168       0x12 temp.elf
+ .comment.120   0x0000017a       0x12 temp.elf
+ .comment.124   0x0000018c       0x12 temp.elf
+ .comment.129   0x0000019e       0x12 temp.elf
+ .comment.134   0x000001b0       0x12 temp.elf
+ .comment.139   0x000001c2       0x12 temp.elf
+ .comment.144   0x000001d4       0x12 temp.elf
+ .comment.148   0x000001e6       0x12 temp.elf
+ .comment.153   0x000001f8       0x12 temp.elf
+ .comment.157   0x0000020a       0x12 temp.elf
+ .comment.161   0x0000021c       0x12 temp.elf
+ .comment.166   0x0000022e       0x12 temp.elf
+ .comment.171   0x00000240       0x12 temp.elf
+ .comment.176   0x00000252       0x12 temp.elf
+ .comment.181   0x00000264       0x12 temp.elf
+ .comment.186   0x00000276       0x12 temp.elf
+ .comment.191   0x00000288       0x12 temp.elf
+ .comment.196   0x0000029a       0x12 temp.elf
+ .comment.201   0x000002ac       0x12 temp.elf
+ .comment.206   0x000002be       0x12 temp.elf
+ .comment.211   0x000002d0       0x12 temp.elf
+ .comment.216   0x000002e2       0x12 temp.elf
+ .comment.221   0x000002f4       0x12 temp.elf
+ .comment.226   0x00000306       0x12 temp.elf
+ .comment.230   0x00000318       0x12 temp.elf
+ .comment.235   0x0000032a       0x12 temp.elf
+ .comment.240   0x0000033c       0x12 temp.elf
+ .comment.245   0x0000034e       0x12 temp.elf
+ .comment.250   0x00000360       0x12 temp.elf
+ .comment.255   0x00000372       0x12 temp.elf
+ .comment.260   0x00000384       0x12 temp.elf
+ .comment.265   0x00000396       0x12 temp.elf
+ .comment.270   0x000003a8       0x12 temp.elf
+ .comment.275   0x000003ba       0x12 temp.elf
+ .comment.280   0x000003cc       0x12 temp.elf
+ .comment.285   0x000003de       0x12 temp.elf
+ .comment.289   0x000003f0       0x12 temp.elf
+ .comment.294   0x00000402       0x12 temp.elf
+ .comment.298   0x00000414       0x12 temp.elf
+ .comment.302   0x00000426       0x12 temp.elf
+ .comment.306   0x00000438       0x12 temp.elf
+ .comment.310   0x0000044a       0x12 temp.elf
+ .comment.314   0x0000045c       0x12 temp.elf
+ .comment.318   0x0000046e       0x12 temp.elf
+ .comment.322   0x00000480       0x12 temp.elf
+ .comment.330   0x00000492       0x12 temp.elf
+ .comment.334   0x000004a4       0x12 temp.elf
+ .comment.339   0x000004b6       0x12 temp.elf
+ .comment.343   0x000004c8       0x12 temp.elf
+ .comment.348   0x000004da       0x12 temp.elf
+ .comment.352   0x000004ec       0x12 temp.elf
+ .comment.356   0x000004fe       0x12 temp.elf
+ .comment.360   0x00000510       0x12 temp.elf
+ .comment.365   0x00000522       0x12 temp.elf
+ .comment.369   0x00000534       0x12 temp.elf
+ .comment.373   0x00000546       0x12 temp.elf
+ .comment.378   0x00000558       0x12 temp.elf
+ .comment.382   0x0000056a       0x12 temp.elf
+ .comment.389   0x0000057c       0x12 temp.elf
+ .comment.393   0x0000058e       0x12 temp.elf
+ .comment.398   0x000005a0       0x12 temp.elf
+ .comment.402   0x000005b2       0x12 temp.elf
+ .comment.407   0x000005c4       0x12 temp.elf
+ .comment.411   0x000005d6       0x12 temp.elf
+ .comment.415   0x000005e8       0x12 temp.elf
+ .comment.419   0x000005fa       0x12 temp.elf
+ .comment.424   0x0000060c       0x12 temp.elf
+ .comment.428   0x0000061e       0x12 temp.elf
+ .comment.432   0x00000630       0x12 temp.elf
+ .comment.436   0x00000642       0x12 temp.elf
+ .comment.440   0x00000654       0x12 temp.elf
+ .comment.444   0x00000666       0x12 temp.elf
+ .comment.449   0x00000678       0x12 temp.elf
+ .comment.453   0x0000068a       0x12 temp.elf
+ .comment.458   0x0000069c       0x12 temp.elf
+ .comment.462   0x000006ae       0x12 temp.elf
+ .comment.467   0x000006c0       0x12 temp.elf
+ .comment.471   0x000006d2       0x12 temp.elf
+ .comment.475   0x000006e4       0x12 temp.elf
+ .comment.479   0x000006f6       0x12 temp.elf
+ .comment.484   0x00000708       0x12 temp.elf
+ .comment.488   0x0000071a       0x12 temp.elf
+ .comment.492   0x0000072c       0x12 temp.elf
+ .comment.496   0x0000073e       0x12 temp.elf
+ .comment.500   0x00000750       0x12 temp.elf
+ .comment.516   0x00000762       0x12 temp.elf
+ .comment.521   0x00000774       0x12 temp.elf
+ .comment.530   0x00000786       0x12 temp.elf
+ .comment.535   0x00000798       0x12 temp.elf
+ .comment.540   0x000007aa       0x12 temp.elf
+ .comment.545   0x000007bc       0x12 temp.elf
+ .comment.550   0x000007ce       0x12 temp.elf
+ .comment.555   0x000007e0       0x12 temp.elf
+                0x000032a8                _bss_len = (((_bss_end - _bss_beg) + 0x3) & 0xfffffffc)
+OUTPUT(AN1122_ZBP_SensorNode_SED_JN5148.elf elf32-ba)
+
+.stabstr        0x00000000     0x4336
+ .stabstr       0x00000000     0x4336 temp.elf

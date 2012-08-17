@@ -33,11 +33,17 @@ extern "C" {
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 PUBLIC void vSerial_Init(void);
-PUBLIC void vSerial_TxChar(uint8 u8Chr);
+int vStrlen(char *s);
+int vStrArrlen(uint8 s[]);
+PUBLIC void vSerial_TxChar(string u8Chr);
 PUBLIC void vSerial_TxString(const uint8 *ps);
 PUBLIC int16 i16Serial_RxChar(void);
 PUBLIC void vSerialRxString(uint8 *ps);
-
+PUBLIC void Rfid_Rawread(void);
+PUBLIC void Rfid_Getprotocol(void);
+PUBLIC void vSerial_SensorData(void);
+PUBLIC void vSerial_TxOutput(uint8 u8Char[]);
+PUBLIC void vSerial_QData(void);
 /****************************************************************************/
 /***        Exported Variables                                            ***/
 /****************************************************************************/

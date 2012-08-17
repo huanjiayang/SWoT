@@ -75,6 +75,7 @@ PUBLIC APP_tsLogNodeHistory *APP_psLogGetSensorNodeHistory(uint8 u8SensorNode);
 PUBLIC uint8 APP_u8LogGetDataStartPos(void);
 PUBLIC uint8 APP_u8GetSensorNodeId(uint16 u16ShortAddr, uint64 u64IeeeAddress);
 PUBLIC uint16 APP_u16GetSensorNodeAddr(uint8 u8Node);
+PUBLIC uint8 APP_u8ControllerNodeNumDataSensors(void);
 
 /****************************************************************************/
 /***        External Variables                                            ***/

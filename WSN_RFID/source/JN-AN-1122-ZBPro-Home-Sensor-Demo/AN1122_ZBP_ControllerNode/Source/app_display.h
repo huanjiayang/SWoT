@@ -65,6 +65,8 @@ PUBLIC void APP_vDisplayInitialise(void);
 PUBLIC void APP_vDisplayCycleNode(void);
 PUBLIC void APP_vDisplayUpdate(void);
 PUBLIC uint8 APP_u8GetCurrentNode(void);
+PUBLIC void vValToDec(char *pcOutString, uint8 u8Value, char *pcLabel);
+PUBLIC void vStringCopy(char *pcFrom, char *pcTo);
 
 /****************************************************************************/
 /***        External Variables                                            ***/
