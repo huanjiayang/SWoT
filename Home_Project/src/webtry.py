@@ -30,92 +30,171 @@ SN = Namespace('sn',"http://homesensor.com/schemas/sensor_network#")
 SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
+TIME_1 = Namespace('sensors',"http://www.homesensor.com/TIME#")
 
 
 
-webgraph = PROVContainer()
+#webgraph = PROVContainer()
 
 
 tripledict = {}
 starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
-a1 = "starter"
-webgraph.add(a1)
+starter = "starter"
 
-a2 =   "started"
-webgraph.add(a2)
+
+started =   "started"
+
 
 ag0 = Agent(sensornetworkURI)
-webgraph.add(ag0)
+
+ag1 = Agent(sensornode1URI)
+ag2 = Agent(sensornode2URI) 
+ag3 = Agent(sensornode3URI)
+
+agT1 = Agent(sensortemp1URI)
+agT2 = Agent(sensortemp2URI)
+agT3 = Agent(sensortemp3URI)
+agL1 = Agent(sensorlight1URI)
+agL2 = Agent(sensorlight2URI)
+agL3 = Agent(sensorlight3URI)
+agH1 = Agent(sensorhum1URI)
+agH2 = Agent(sensorhum2URI)
+agH3 = Agent(sensorhum3URI)
+
 
 a0 = Activity(HS["a0"],starttime=starttime,attributes=tripledict)
-webgraph.add(a0)
 
 a1 = Activity(HS["a1"],starttime=starttime,attributes=tripledict)
-webgraph.add(a1)
 
-e0 = Entity(identifier=HS["e0"])
-webgraph.add(e0)
+a2 = Activity(HS["a2"],starttime=starttime,attributes=tripledict)
 
-e1 = Entity(FOAF['Foo'],attributes=tripledict)
-webgraph.add(e1)
 
-g0 = wasGeneratedBy(e0,a0,identifier=HS["g0"],time=None,attributes=tripledict)
-webgraph.add(g0)
+e0 = Entity(identifier=HS["e0"]) #40 degree
+
+e1 = Entity(identifier=HS["e1"])
+
+e2 = Entity(identifier=HS["e2"])
+
+e3 = Entity(identifier=HS["e3"])
+
+e4 = Entity(identifier=HS["e4"])
+
+e5 = Entity(identifier=HS["e5"])
+
+e6 = Entity(identifier=HS["e6"])
+
+
+
+aOB0 = actedOnBehalfOf(ag1, ag0, identifier=HS["aOB0"], attributes=None)
+aOB1 = actedOnBehalfOf(ag2, ag0, identifier=HS["aOB1"], attributes=None)
+aOB2 = actedOnBehalfOf(ag3, ag0, identifier=HS["aOB2"], attributes=None)
+aOB3 = actedOnBehalfOf(agT1, ag1, identifier=HS["aOB3"], attributes=None)
+aOB4 = actedOnBehalfOf(agL1, ag1, identifier=HS["aOB4"], attributes=None)
+aOB5 = actedOnBehalfOf(agH1, ag1, identifier=HS["aOB5"], attributes=None)
+aOB6 = actedOnBehalfOf(agT2, ag2, identifier=HS["aOB6"], attributes=None)
+aOB7 = actedOnBehalfOf(agL2, ag2, identifier=HS["aOB7"], attributes=None)
+aOB8 = actedOnBehalfOf(agH2, ag2, identifier=HS["aOB8"], attributes=None)
+aOB9 = actedOnBehalfOf(agT3, ag3, identifier=HS["aOB9"], attributes=None)
+aOB10 = actedOnBehalfOf(agL3, ag3, identifier=HS["aOB10"], attributes=None)
+aOB11 = actedOnBehalfOf(agH3, ag3, identifier=HS["aOB11"], attributes=None)
+
+wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+wAW1 = wasAssociatedWith(a1, ag2, identifier=HS["wAW1"], attributes=tripledict)
+wAW2 = wasAssociatedWith(a2, ag3, identifier=HS["wAW2"], attributes=tripledict)
+
+wAT0 = wasAttributedTo(e0, agT1, identifier=HS["wAT0"], attributes=None)
+wAT1 = wasAttributedTo(e1, agT2, identifier=HS["wAT1"], attributes=None)
+wAT2 = wasAttributedTo(e2, agT3, identifier=HS["wAT2"], attributes=None)
+wAT3 = wasAttributedTo(e3, agL1, identifier=HS["wAT3"], attributes=None)
+wAT4 = wasAttributedTo(e4, agL2, identifier=HS["wAT4"], attributes=None)
+wAT5 = wasAttributedTo(e5, agL3, identifier=HS["wAT5"], attributes=None)
+wAT6 = wasAttributedTo(e6, agH1, identifier=HS["wAT6"], attributes=None)
+wAT7 = wasAttributedTo(e0, agH2, identifier=HS["wAT7"], attributes=None)
+wAT8 = wasAttributedTo(e1, agH3, identifier=HS["wAT8"], attributes=None)
+
 
 u0 = Used(a0,e1,identifier=HS["u0"],time=None,attributes=tripledict)
-webgraph.add(u0)
 
-d0 = wasDerivedFrom(e0, e1, identifier=HS["wDF0"],activity=a0,generation=g0,usage=u0,attributes=None)
-webgraph.add(d0)
-
-f0 = wasGeneratedBy(e0,g0,identifier=HS["wGB0"],time=None,attributes=None)
-webgraph.add(f0)
-
-w0 = wasAssociatedWith(ag0,a0,identifier=HS["w0"],attributes=tripledict)
-webgraph.add(w0)
-
-s0 = wasStartedByActivity(a1,a0,identifier=HS["wSB0"],attributes=None)
-webgraph.add(s0)
-
-t0 = wasAttributedTo(a1,a0,identifier=HS["wAT"],attributes=None)
-
-b0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
-webgraph.add(b0)
+wGB0 = wasGeneratedBy(e0,a0,identifier=HS["wGB0"],time=None,attributes=tripledict)
+wDF0 = wasDerivedFrom(e0, e1, identifier=HS["wDF0"],activity=a0,generation=wGB0,usage=u0,attributes=None)
+wSBA0 = wasStartedByActivity(a1,a0,identifier=HS["wSB0"],attributes=None)
+wSB0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
 
 
 
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(webgraph.to_provJSON())
+
+
+
+
+#import pprint
+#pp = pprint.PrettyPrinter(indent=4)
+#pp.pprint(webgraph.to_provJSON())
 
 
 sensor_graph=Mystore('mystore', 'mystore')
 
 
-
-sensor_graph.addPROVInstance(e0)
-sensor_graph.addPROVInstance(w0)
+sensor_graph.addPROVInstance(ag0)
+sensor_graph.addPROVInstance(ag1)
+sensor_graph.addPROVInstance(ag2)
+sensor_graph.addPROVInstance(ag3)
+sensor_graph.addPROVInstance(agT1)
+sensor_graph.addPROVInstance(agT2)
+sensor_graph.addPROVInstance(agT3)
+sensor_graph.addPROVInstance(agL1)
+sensor_graph.addPROVInstance(agL2)
+sensor_graph.addPROVInstance(agL3)
+sensor_graph.addPROVInstance(agH1)
+sensor_graph.addPROVInstance(agH2)
+sensor_graph.addPROVInstance(agH3)
 sensor_graph.addPROVInstance(a0)
 sensor_graph.addPROVInstance(a1)
-sensor_graph.addPROVInstance(f0)
-sensor_graph.addPROVInstance(ag0)
-sensor_graph.addPROVInstance(s0)
-sensor_graph.addPROVInstance(b0)
-sensor_graph.addPROVInstance(d0)
+sensor_graph.addPROVInstance(a2)
+sensor_graph.addPROVInstance(e0)
 sensor_graph.addPROVInstance(e1)
-sensor_graph.addPROVInstance(g0)
+sensor_graph.addPROVInstance(e2)
+sensor_graph.addPROVInstance(e3)
+sensor_graph.addPROVInstance(e4)
+sensor_graph.addPROVInstance(e5)
+sensor_graph.addPROVInstance(e6)
+sensor_graph.addPROVInstance(aOB0)
+sensor_graph.addPROVInstance(aOB1)
+sensor_graph.addPROVInstance(aOB2)
+sensor_graph.addPROVInstance(aOB3)
+sensor_graph.addPROVInstance(aOB4)
+sensor_graph.addPROVInstance(aOB5)
+sensor_graph.addPROVInstance(aOB6)
+sensor_graph.addPROVInstance(aOB7)
+sensor_graph.addPROVInstance(aOB8)
+sensor_graph.addPROVInstance(aOB9)
+sensor_graph.addPROVInstance(aOB10)
+sensor_graph.addPROVInstance(aOB11)
+sensor_graph.addPROVInstance(wAW0)
+sensor_graph.addPROVInstance(wAW1)
+sensor_graph.addPROVInstance(wAW2)
+sensor_graph.addPROVInstance(wAT0)
+sensor_graph.addPROVInstance(wAT1)
+sensor_graph.addPROVInstance(wAT2)
+sensor_graph.addPROVInstance(wAT3)
+sensor_graph.addPROVInstance(wAT4)
+sensor_graph.addPROVInstance(wAT5)
+sensor_graph.addPROVInstance(wAT6)
+sensor_graph.addPROVInstance(wAT7)
+sensor_graph.addPROVInstance(wAT8)
 
-snURI = 'uri:uuid:sensnetworkayodele001'
-sn_node1URI = 'uri:uuid:sensornode01'
-SENSOR_NETWORK=SN[snURI]
-sensor_node = sn_node1URI
+#
+#snURI = 'uri:uuid:sensnetworkayodele001'
+#sn_node1URI = 'uri:uuid:sensornode01'
+#SENSOR_NETWORK=SN[snURI]
+#sensor_node = sn_node1URI
 
 
-sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
-sensor_graph.store.add((SENSOR_NETWORK,RDF.type,SENSORS['sensor_node']))
-sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
-sensor_graph.store.add((SENSOR_NETWORK,DC['title'],Literal(sensor_node)))
-sensor_graph.store.add((sensornetworkURI, prov['wasGeneratedBy'], Literal('Ayo')))
+#sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
+#sensor_graph.store.add((SENSOR_NETWORK,RDF.type,SENSORS['sensor_node']))
+#sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
+#sensor_graph.store.add((SENSOR_NETWORK,DC['title'],Literal(sensor_node)))
+#sensor_graph.store.add((sensornetworkURI, prov['wasGeneratedBy'], Literal('Ayo')))
+
     
     
 
@@ -141,32 +220,32 @@ render = web.template.render('templates/')
 #        if int(id) == int(sensorid):
 #            return labels
         
-def VIEW(self,id):
-        fq = sensor_graph.store.query('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
-        sq = sensor_graph.store.query('select ?pred ?sub where {?sub ?pred <%s> .}' % id)
-        name = id
-        
-        returndict = {'whats_in_the_store' : '',
-                      'subject' : '',
-                      'predicate' : '',
-                      'object:)' : ''}
-        returnlist = []
-        for s in fq:
-            print s
-            if s['predicate']['value'] in returnlist:
-                name = s['object']['value']
-            t = web.template('graph1.html')
-            return t.render(name=name, id=id, fq=fq, sq=sq, qp=quote_plus)
-            returnlist.append(returndict)
-            web.header('Content-Type', 'application/json')
-            return json.dumps(returndict)
-        
-def createEntity(self,entityType1,entityType2,entityType,identifier='e0'):
-    entity = entityType(entityType1,entityType2)
-    e0= entityType1
-    e1 = entityType2
-    return entity
-        
+#def VIEW(self,id):
+#        fq = sensor_graph.store.query('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
+#        sq = sensor_graph.store.query('select ?pred ?sub where {?sub ?pred <%s> .}' % id)
+#        name = id
+#        
+#        returndict = {'whats_in_the_store' : '',
+#                      'subject' : '',
+#                      'predicate' : '',
+#                      'object:)' : ''}
+#        returnlist = []
+#        for s in fq:
+#            print s
+#            if s['predicate']['value'] in returnlist:
+#                name = s['object']['value']
+#            t = web.template('graph1.html')
+#            return t.render(name=name, id=id, fq=fq, sq=sq, qp=quote_plus)
+#            returnlist.append(returndict)
+#            web.header('Content-Type', 'application/json')
+#            return json.dumps(returndict)
+#        
+#def createEntity(self,entityType1,entityType2,entityType,identifier='e0'):
+#    entity = entityType(entityType1,entityType2)
+#    e0= entityType1
+#    e1 = entityType2
+#    return entity
+#        
         
         
 #def func(self,provcontainer,(sub,pred,obj)):
@@ -250,9 +329,9 @@ class PROVBuilder:
             sub = RDFtype_triple[0]
             print 'sub = '
             print sub
-            type = RDFtype_triple[2]
+            ttype = RDFtype_triple[2]
             print 'type'
-            print type
+            print ttype
             attrdict = {}
             for attr in RDFstore.triples((sub, None, None)):
                 if not attr[1] == RDF.type:
@@ -274,43 +353,43 @@ class PROVBuilder:
                     wasGeneratedBy = Activity_triple[2]
                 g = wasGeneratedBy(str(sub))
                 self.container.add(g)
-            elif type == prov['wSBA']:
+            elif type == prov['wasStartedByActivity']:
                 print 'wSBA found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
                     wasStartedByActivity = Activity_triple[2]
                 sba = wasStartedByActivity(str(sub))
                 self.container.add(sba)
-            elif type == prov['wSB']:
+            elif type == prov['wasStartedBy']:
                 print 'wSB found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
                     wasStartedBy = Activity_triple[2]
                 sb = wasStartedBy(str(sub))
                 self.container.add(sb)
-            elif type == prov['wAW']:
+            elif type == prov['wasAssociatedWith']:
                 print 'wAW found'
                 for Relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
                     wasAssociatedWith = Relation_triple[2]
                 aw = wasAssociatedWith(str(sub))
                 self.container.add(aw)
-            elif type == prov['wDF']:
+            elif type == prov['wasDerivedFrom']:
                 print 'wDF found'
                 for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
                     wasDerivedFrom = Relation_triple[2]
                 df = wasDerivedFrom(str(sub))
                 self.container.add(df)  
-            elif type == prov['aOBO']:
+            elif type == prov['actedOnBehalfOf']:
                 print 'aOBO'
                 for Relation_triple in RDFstore.triples((sub,prov['actedOnBehalfOf'], None)):
                     actedOnBehalfOf = Relation_triple[2]
                 ob = actedOnBehalfOf(str(sub))
                 self.container.add(ob)
-            elif type == prov['wAT']:
+            elif type == prov['wasAttributedTo']:
                 print 'wAT'
                 for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
                     wasAttributedTo = Relation_triple[2]
                 at = wasAttributedTo(str) 
                 self.container.add(at)
-            elif type == URIRef['wAT']:
+            elif type == URIRef['wasAttributedTo']:
                 print 'wAT'
                 for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
                     wasAttributedTo = Relation_triple[0]
@@ -321,6 +400,7 @@ class PROVBuilder:
                     wasAttributedTo = Relation_triple[1]
                 at = wasAttributedTo(str)
                 self.container.add(at)
+                
 class test:
     def GET(self):
         builder = PROVBuilder()

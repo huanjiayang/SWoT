@@ -30,6 +30,7 @@ import sys
 labels = file('sensor_labels.txt', 'r').readlines() #Load graph labels from a file
 #store = plugin.get('mystore', Store)('mystore') 
 render = web.template.render('templates/')
+dbname = 'mystore' if sys.argv[-1] == '--mystore' else 'default'
 
 
 

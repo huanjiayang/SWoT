@@ -14,6 +14,7 @@ from rdflib.term import URIRef
 from rdflib import Graph, term, namespace
 from rdflib import plugin
 from rdflib.store import Store, NO_STORE, VALID_STORE
+import uuid
 from datetime import date, time, datetime
 import datetime
 

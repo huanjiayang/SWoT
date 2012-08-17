@@ -130,9 +130,9 @@ sensortemp3URI = 'uri:uuid:sensorTEMP03'
 sensorlight1URI = 'uri:uuid:sensorLIGHT01'
 sensorlight2URI = 'uri:uuid:sensorLIGHT02'
 sensorlight3URI = 'uri:uuid:sensorLIGHT03'
-sensorHum1URI = 'uri:uuid:sensorHUM01'
-sensorHum1URI = 'uri:uuid:sensorHUM02'
-sensorHum1URI = 'uri:uuid:sensorHUM03'
+sensorhum1URI = 'uri:uuid:sensorHUM01'
+sensorhum2URI = 'uri:uuid:sensorHUM02'
+sensorhum3URI = 'uri:uuid:sensorHUM03'
 
 createtime = 'datetime...'
 
