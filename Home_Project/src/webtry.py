@@ -31,7 +31,7 @@ SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
 TIME_1 = Namespace('sensors',"http://www.homesensor.com/TIME#")
-
+rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
 
 
 #webgraph = PROVContainer()
@@ -337,35 +337,35 @@ class PROVBuilder:
                 if not attr[1] == RDF.type:
                     attrdict[attr[1]] = attr[2]
             #if entity matches add to container
-            if type == prov['Entity']:
+            if rdftype == prov['Entity']:
                 print 'Entity found'
                 e = Entity(str(sub),attributes=attrdict)
                 self.container.add(e)
-            elif type == prov['Activity']:
+            elif rdftype == prov['Activity']:
                 print 'Activity found'
                 for Activity_triple in RDFstore.triples((sub, prov['starttime'], None)):
                     starttime = Activity_triple[2]
                 a = Activity(str(sub),attributes=attrdict,starttime=starttime)
                 self.container.add(a)
-            elif type == prov['Activity']:
+            elif rdftype == prov['Activity']:
                 print 'Activity found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasGeneratedBy'], None)):
                     wasGeneratedBy = Activity_triple[2]
                 g = wasGeneratedBy(str(sub))
                 self.container.add(g)
-            elif type == prov['wasStartedByActivity']:
+            elif rdftype == prov['wasStartedByActivity']:
                 print 'wSBA found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
                     wasStartedByActivity = Activity_triple[2]
                 sba = wasStartedByActivity(str(sub))
                 self.container.add(sba)
-            elif type == prov['wasStartedBy']:
+            elif rdftype == prov['wasStartedBy']:
                 print 'wSB found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
                     wasStartedBy = Activity_triple[2]
                 sb = wasStartedBy(str(sub))
                 self.container.add(sb)
-            elif type == prov['wasAssociatedWith']:
+            elif rdftype == prov['wasAssociatedWith']:
                 print 'wAW found'
                 for relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
                     wasAssociatedWith = relation_triple[2]
@@ -386,24 +386,24 @@ class PROVBuilder:
                     aw = wasAssociatedWith(str(sub))
                     self.container.add(aw)
                 
-            elif type == prov['wasDerivedFrom']:
+            elif rdftype == prov['wasDerivedFrom']:
                 print 'wDF found'
                 for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
                     wasDerivedFrom = Relation_triple[2]
                 df = wasDerivedFrom(str(sub))
                 self.container.add(df)  
-            elif type == prov['actedOnBehalfOf']:
+            elif rdftype == prov['actedOnBehalfOf']:
                 print 'aOBO'
                 for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
                     responsible = Relation_triple[2]
                 for Relation_triple in RDFstore.triples((sub,prov['subordinate'], None)):
                     subordinate = Relation_triple[2]
                 print subordinate, "actedOnBehalfOf", responsible
-                ob = actedOnBehalfOf(str(sub))
+                ob = actedOnBehalfOf(subordinate,responsible,identifier=str(sub))
                 self.container.add(ob)
                 
                 
-            elif type == prov['wasAttributedTo']:
+            elif rdftype == prov['wasAttributedTo']:
                 print 'wAT'
                 for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
                     wasAttributedTo = Relation_triple[2]
@@ -422,9 +422,20 @@ class test:
     def GET(self):
         builder = PROVBuilder()
         builder.traverseStore(sensor_graph.store)
+        print builder.container._elementlist
         return json.dumps(builder.container.to_provJSON())
     
+
+class Sensor(Entity):
     
+    def __init__(self,identifier,attributes=None,account=None):
+        Entity.__init__(self,identifier=identifier, attributes=attributes, account=account)
+        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
+        return self.rdftriples
+
     
 if __name__ == "__main__":
 #Links specific classes to URLs on the web server
