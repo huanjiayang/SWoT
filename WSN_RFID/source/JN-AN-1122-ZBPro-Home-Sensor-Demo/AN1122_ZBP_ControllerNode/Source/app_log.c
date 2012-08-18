@@ -349,10 +349,10 @@ OS_TASK(APP_taskLogData)
     else
     {
         /* must be a timer expiry causing activation */
-        PRIVATE uint32 s_u32Count = 0;
+//        PRIVATE uint32 s_u32Count = 0;
 
         OS_eContinueSWTimer(APP_tmrLogData, LOG_TIME, NULL);
-        DBG_vPrintf(TRACE_APP_LOG, "Logging data %d\n", s_u32Count++);
+//        DBG_vPrintf(TRACE_APP_LOG, "Logging data %d\n", s_u32Count++);
 
         /* if there are no sensor nodes connected then app is healthy if no data
          * is being received, so ensure the watchdog is kicked */

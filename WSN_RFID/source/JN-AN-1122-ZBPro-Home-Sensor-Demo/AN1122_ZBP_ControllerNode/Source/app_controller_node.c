@@ -68,6 +68,8 @@
 #include "serialq.h"
 #include "uart.h"
 #include "serial.h"
+#include "serialq.h"
+
 
 
 /****************************************************************************/
@@ -107,6 +109,7 @@ PRIVATE void vHandleNodeScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sAppE
 PRIVATE void vCheckStackEvent(ZPS_tsAfEvent sStackEvent);
 PRIVATE void vHandleLedControlEvent(bool_t bLedState);
 PRIVATE void vSendLedData(PDUM_thAPduInstance hAPduInst);
+//int vStrlen(char *s);
 
 /****************************************************************************/
 /***        Exported Variables                                            ***/
@@ -148,6 +151,7 @@ PUBLIC void APP_vInitialiseControllerNode(void)
         DBG_vPrintf(TRACE_APP, "APP: Deleting all records from flash\n");
         PDM_vDelete();
     }
+	vSerial_Init();
 
     /* Restore any application data previously saved to flash */
     s_sDevice.eState = E_STARTUP;
@@ -545,8 +549,8 @@ PRIVATE void vHandleNetworkFormationEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent
  ****************************************************************************/
 PRIVATE void vHandleNetworkScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sAppEvent)
 {
-	vSerial_Init();
-	uint8 *u8Char;
+//	uint8 *u8Char;
+//	string u8Char1;
 //	uint8 *u8String;
     /* respond to button presses when in "network" display mode */
     if (APP_E_EVENT_BUTTON_DOWN == sAppEvent.eType)
@@ -592,24 +596,21 @@ PRIVATE void vHandleNetworkScreenEvent(ZPS_tsAfEvent sStackEvent, APP_tsEvent sA
              */
             APP_vDisplaySetSensor(APP_E_SENSOR_TEMP);
             APP_vDisplayUpdate();
-            u8Char = 'a';
-            vSerial_TxChar(u8Char);
+            vSerial_QData();
         }
         else if (APP_E_BUTTONS_BUTTON_3 == sAppEvent.sButton.u8Button)
         {
             /* perform select humidity sensors action */
             APP_vDisplaySetSensor(APP_E_SENSOR_HTS);
             APP_vDisplayUpdate();
-            u8Char = 'b';
-            vSerial_TxChar(u8Char);
+            vSerial_SensorData();
         }
         else if (APP_E_BUTTONS_BUTTON_4 == sAppEvent.sButton.u8Button)
         {
             /* perform select humidity sensors action */
             APP_vDisplaySetSensor(APP_E_SENSOR_ALS);
             APP_vDisplayUpdate();
-            u8Char = 'c';
-            vSerial_TxChar(u8Char);
+            Rfid_Getprotocol();
         }
     }
     vCheckStackEvent(sStackEvent);
@@ -822,6 +823,17 @@ PRIVATE void vSendLedData(PDUM_thAPduInstance hAPduInst)
     u8SeqNum++;
     DBG_vPrintf(TRACE_APP, "APP: Sent LED data\n");
 }
+
+//
+//int vStrlen(char *s)
+//{
+//   int c = 0;
+//
+//   while(*(s+c))
+//      c++;
+//
+//   return c;
+//}
 
 /****************************************************************************/
 /***        END OF FILE                                                   ***/

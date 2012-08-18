@@ -12,6 +12,8 @@
 #include "uart.h"
 #include "ledcontrol.h"
 #include "app_led.h"
+#include "dbg.h"
+
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -221,22 +223,31 @@ OS_ISR(UART_vIsr1)
  ****************************************************************************/
 PRIVATE void UART_vInterrupt(uint32 u32Device, uint32 u32ItemBitmap)
 {
-	uint8 u8Uart;
+	uint8 u8Uart = 0xFF;
 	uint8 rxChar;
 	APP_vLedsInitialise();
+	/* Which uart ? */
+
 	if (u32Device == E_AHI_DEVICE_UART0) u8Uart = E_AHI_UART_0;
 	if (u32Device == E_AHI_DEVICE_UART1) u8Uart = E_AHI_UART_1;
 
-        if ((u32ItemBitmap & 0x000000FF) == E_AHI_UART_INT_RXDATA)
-        {
-//        	while (u8AHI_UartReadLineStatus(u8Uart) & E_AHI_UART_LS_DR)
-        	rxChar = u8AHI_UartReadData(u8Uart);
-        	vUART_RxCharISR(rxChar);
-        	vAHI_UartWriteData(u8Uart, rxChar);
+		if ((u32ItemBitmap & 0xFF) == E_AHI_UART_INT_RXDATA ||
+			(u32ItemBitmap & 0xFF) == E_AHI_UART_INT_TIMEOUT)
+	{
+		while (u8AHI_UartReadLineStatus(u8Uart) & E_AHI_UART_LS_DR)
+			{
+//				APP_vLedSet(1, TRUE);
+			rxChar= u8AHI_UartReadData(u8Uart);
+			vUART_RxCharISR(rxChar);
+			DBG_vPrintf(TRACE_APP, "%x",  rxChar);
 
-        }
+
+			}
+//		vAHI_UartWriteData(u8Uart, rxChar);
+//		DBG_vPrintf(TRACE_APP, "%x",  rxChar);
+	}
         else if ((u32ItemBitmap & 0xFF) == E_AHI_UART_INT_TX)
-        {
+      {
         	APP_vLedSet(1, TRUE);
             vUART_TxCharISR(u8Uart);
 

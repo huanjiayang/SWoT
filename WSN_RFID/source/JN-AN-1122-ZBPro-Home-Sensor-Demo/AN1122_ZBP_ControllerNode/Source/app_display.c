@@ -85,8 +85,8 @@ PRIVATE void vUpdateSensor(APP_tsLogNodeHistory *psNodeHistory,
                            uint8 u8Col,
                            bool bShowInfo);
 PRIVATE void vDrawGraph(uint8 *pu8GraphData, uint8 u8StartCol, uint8 u8StartRow);
-PRIVATE void vValToDec(char *pcOutString, uint8 u8Value, char *pcLabel);
-PRIVATE void vStringCopy(char *pcFrom, char *pcTo);
+//PRIVATE void vValToDec(char *pcOutString, uint8 u8Value, char *pcLabel);
+//PRIVATE void vStringCopy(char *pcFrom, char *pcTo);
 
 /****************************************************************************/
 /***        Exported Variables                                            ***/
@@ -758,7 +758,7 @@ PRIVATE void vDrawGraph(uint8 *pu8GraphData, uint8 u8StartCol, uint8 u8StartRow)
  * void
  *
  ****************************************************************************/
-PRIVATE void vValToDec(char *pcOutString, uint8 u8Value, char *pcLabel)
+PUBLIC void vValToDec(char *pcOutString, uint8 u8Value, char *pcLabel)
 {
     static const uint8 au8Digits[3] =
     { 100, 10, 1 };
@@ -804,7 +804,7 @@ PRIVATE void vValToDec(char *pcOutString, uint8 u8Value, char *pcLabel)
  * void
  *
  ****************************************************************************/
-PRIVATE void vStringCopy(char *pcFrom, char *pcTo)
+PUBLIC void vStringCopy(char *pcFrom, char *pcTo)
 {
     while (*pcFrom != '\0')
     {
