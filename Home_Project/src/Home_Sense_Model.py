@@ -34,3 +34,19 @@ class Sensor(Entity):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
         return self.rdftriples
+    
+class Temperature(Sensor):    
+    def get_temperature(self):
+        
+        
+class Humidity(Sensor):        
+     def get_humidity(self):
+        
+
+class Light(Sensor):        
+      def get_Light(self):
+          
+          
+          
+          
+        

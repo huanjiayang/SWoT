@@ -9,7 +9,7 @@ import sys
 import threading 
 import time 
 from time import sleep
-import socket as sock
+import socket
 import serial
 import struct
 import matplotlib
@@ -27,6 +27,7 @@ AM_TYPE = 147
 #ser = serial.Serial(0)  # open first serial port
 try:
         ser = serial.Serial('com4',9600,timeout=1)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         ser = serial.Serial(
               port='/dev/ttyUSB1',
               baudrate=9600,
@@ -42,9 +43,12 @@ print ser.portstr       # check which port was really used
 #ser.write("hello")      # write a string
 
 while True:
-    data = ser.read(9999)
+    data = str(ser.read())
+    data = data.replace("\n","").replace("\r","")
+    data = data.split(",")
     if len(data) > 0:
         print 'Got:', data
+    
 
     time.sleep(0.5)
     print ser.readline()
