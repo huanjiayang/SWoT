@@ -347,23 +347,35 @@ class PROVBuilder:
                     starttime = Activity_triple[2]
                 a = Activity(str(sub),attributes=attrdict,starttime=starttime)
                 self.container.add(a)
-            elif rdftype == prov['Activity']:
-                print 'Activity found'
+            elif rdftype == prov['wasGeneratedBy']:
+                print 'wGB found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasGeneratedBy'], None)):
                     wasGeneratedBy = Activity_triple[2]
-                g = wasGeneratedBy(str(sub))
-                self.container.add(g)
+                for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
+                        entity = relation_triple[2]
+                for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
+                        activity = relation_triple[2]
+                gb = wasGeneratedBy(entity, activity, identifier=str(sub))
+                self.container.add(gb)
             elif rdftype == prov['wasStartedByActivity']:
                 print 'wSBA found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
                     wasStartedByActivity = Activity_triple[2]
-                sba = wasStartedByActivity(str(sub))
+                for relation_triple in RDFstore.triples((sub, prov['started'], None)):
+                        started = relation_triple[2]
+                for relation_triple in RDFstore.triples((sub, prov['starter'], None)):
+                        starter = relation_triple[2]
+                sba = wasStartedByActivity(started, starter, identifier=str(sub))
                 self.container.add(sba)
             elif rdftype == prov['wasStartedBy']:
                 print 'wSB found'
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
                     wasStartedBy = Activity_triple[2]
-                sb = wasStartedBy(str(sub))
+                for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
+                        entity = relation_triple[2]
+                for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
+                        activity = relation_triple[2]
+                sb = wasStartedBy(activity,entity,identifier=str(sub))
                 self.container.add(sb)
             elif rdftype == prov['wasAssociatedWith']:
                 print 'wAW found'
@@ -383,14 +395,18 @@ class PROVBuilder:
                         print activity, "wasAssociatedWith", entity
                     else:
                         print activity, "wasAssociatedWith", agent
-                    aw = wasAssociatedWith(str(sub))
+                    aw = wasAssociatedWith(activity, agent, identifier=str(sub))
                     self.container.add(aw)
                 
             elif rdftype == prov['wasDerivedFrom']:
                 print 'wDF found'
                 for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
                     wasDerivedFrom = Relation_triple[2]
-                df = wasDerivedFrom(str(sub))
+                for Relation_triple in RDFstore.triples((sub, prov['generatedentity'], None)):
+                    generatedentity = Relation_triple[2]
+                for Relation_triple in RDFstore.triples((sub, prov['usedentity'], None)):
+                    usedentity = Relation_triple[2]  
+                df = wasDerivedFrom(generatedentity, usedentity, identifier=str(sub))
                 self.container.add(df)  
             elif rdftype == prov['actedOnBehalfOf']:
                 print 'aOBO'
@@ -414,7 +430,7 @@ class PROVBuilder:
                     entity = Relation_triple[2]
                 for Relation_triple in RDFstore.triples((sub, prov['agent'], None)):
                     agent = Relation_triple[2]
-                at = wasAttributedTo(str(sub))
+                at = wasAttributedTo(entity, agent, identifier=str(sub))
                 self.container.add(at)
            
                 
