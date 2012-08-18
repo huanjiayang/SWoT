@@ -14,6 +14,8 @@ import serial
 import struct
 import matplotlib
 import re
+import requests
+import json
 
 ## The default size of this message type in bytes.
 #DEFAULT_MESSAGE_SIZE = 28
@@ -24,6 +26,29 @@ import re
 PORT = '/dev/ttyUSB1'
 BAUD_RATE = 115200
 
+URL_HOME_SENSOR = 'http://localhost:8080/homesensorcom/'
+MY_MSG_FORMAT_KEY = 'link from message format API'
+
+
+
+        
+
+
+
+class Message():
+
+    def __init__(self, msg, data="", addr=None, gid=None, base_offset=0, data_length=28):
+        pass
+
+    def convert_temperature(self,adc, adc_fs=1023,value):
+        self.value = float(10000 * (adc_fs - adc) / adc)
+        self.value = float(raw_input(""))
+        
+  
+        temperature = self.value
+        #temperature = (value - 32) * (5.0 / 9.0)
+        
+    
 
 
 #ser = serial.Serial(0)  # open first serial port
@@ -50,30 +75,24 @@ while True:
         data = data.split(",")
         if len(data) > 0:
             print 'Got:', data
-    
-
+        
+        raw_value = int(data[2])
+        ADC_value = raw_value / 10
+        temperature = (ADC_value - 500) / 10
         time.sleep(0.5)
         print ser.readline()
         print 'not blocked'
 
-        ser.close()
 
  
 
 
+    except KeyboardInterrupt:
+        break
 
 
-def convert_temperature():
+ser.close()
 
-    f = float(raw_input("Enter temperature to be converted to degrees Celsius."))
-
-    temp = (f - 32) * (5.0 / 9.0)
-
-    return "temperature in degree Celsius is %d." % temp
-
-#class Message():
-#
-#    def __init__(self, msg, data="", addr=None, gid=None, base_offset=0, data_length=28):
-#        
-#        
+requests.post(URL_HOME_SENSOR+"/api/post?apikey=" + MY_MSG_FORMAT_KEY +"&json={temperature:"+str(temperature)+"}")
+return "temperature in degree Celsius is %d." % temperature       
         
