@@ -25,27 +25,60 @@ PROV = Namespace("http://www.w3.org/ns/prov-dm/")
 rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Sensor(Entity):
     
     def __init__(self,identifier,attributes=None,account=None):
         Entity.__init__(self,identifier=identifier, attributes=attributes, account=account)
+        self.identifier
+        self.attributelist.extend
         
     def _toRDF(self):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
         return self.rdftriples
     
-class Temperature(Sensor):    
+class Temperature(Sensor):  
+    def __init__(self,Temperature_Sensor,identifier,attributes,account): 
+        Sensor.__init__(self,identifier,attributes,account) 
+    
     def get_temperature(self):
         
+        return self.read_value('humidity')[0]
+#get_sample = self.get_temperature
         
-class Humidity(Sensor):        
-     def get_humidity(self):
         
+class Humidity(Sensor): 
+    def __init__(self,Humidity_Sensor,identifier,attributes,account): 
+        Sensor.__init__(self,identifier,attributes,account)      
+     
+    def get_humidity(self):
+         
+        return self.read_value('humidity')[0]
 
-class Light(Sensor):        
-      def get_Light(self):
+
+        
+         
+        
+class Light(Sensor):    
+    def __init__(self,Humidity_Sensor,identifier,attributes,account): 
+        Sensor.__init__(self,identifier,attributes,account)      
+    
+    def get_Light(self):
           
+        return self.read_value('humidity')[0]
           
           
           
