@@ -56,7 +56,7 @@ class Temperature(Sensor):
     
     def get_temperature(self):
         
-        return self.read_value('humidity')[0]
+        return self.read_value('temperature')[0]
 #get_sample = self.get_temperature
         
         
@@ -78,7 +78,7 @@ class Light(Sensor):
     
     def get_Light(self):
           
-        return self.read_value('humidity')[0]
+        return self.read_value('Light')[0]
           
           
           

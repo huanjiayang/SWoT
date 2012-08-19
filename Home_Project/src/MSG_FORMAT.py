@@ -96,3 +96,34 @@ ser.close()
 requests.post(URL_HOME_SENSOR+"/api/post?apikey=" + MY_MSG_FORMAT_KEY +"&json={temperature:"+str(temperature)+"}")
 return "temperature in degree Celsius is %d." % temperature       
         
+        
+        
+def receive(self, src, msg):
+    print "Message Received: "+ str(msg) + "\n"      
+        
+        
+        
+#        read_adc0 = readadc(adcnum, SPICLK, SPIMOSI, SPIMISO, SPICS)
+#
+#        # convert analog reading to millivolts = ADC * ( 3300 / 1024 )
+#        millivolts = read_adc0 * ( 3300.0 / 1024.0)
+#
+#        # 10 mv per degree 
+#        temp_C = ((millivolts - 100.0) / 10.0) - 40.0
+#
+#        # convert celsius to fahrenheit 
+#        temp_F = ( temp_C * 9.0 / 5.0 ) + 32
+#
+#        # remove decimal point from millivolts
+#        millivolts = "%d" % millivolts
+#
+#        # show only one decimal place for temprature and voltage readings
+#        temp_C = "%.1f" % temp_C
+#        temp_F = "%.1f" % temp_F
+#
+#        if DEBUG:
+#                print "read_adc0:\t", read_adc0
+#                print "millivolts:\t", millivolts
+#                print "temp_C:\t\t", temp_C
+#                print "temp_F:\t\t", temp_F
+#                print        
