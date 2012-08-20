@@ -43,6 +43,15 @@ def sensor_Update(self, timestamp, temperature,Light,Humidity, sensor_type, sens
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
         return self.rdftriples
+
+def sensor_value(self):
+    """Return reading value."""
+    try:
+        return int(self._sensor_value)
+    except ValueError:
+        return float(self._sensor_value)
+    
+
     
 class Temperature(Sensor):  
     def __init__(self,Temperature_Sensor,activity,identifier,attributes,account): 

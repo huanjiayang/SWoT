@@ -69,6 +69,7 @@ while True:
     try:
         
         if len(data) > 0:
+            data.append(('timestamp:', time.asctime()))
             print 'Got:', data
   
         
