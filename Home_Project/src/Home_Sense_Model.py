@@ -26,24 +26,16 @@ rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+# --------------------- class begins -------------------------------------------
 
 class Sensor(Entity):
     
-    def __init__(self,identifier,attributes=None,account=None):
+    def __init__(self,identifier,sensor_id,timestamp, sensor_name, attributes=None,account=None):
         Entity.__init__(self,identifier=identifier, attributes=attributes, account=account)
-        self.identifier
+        self.identifier 
         self.attributelist.extend
+        self.sensor_id
+        self.timestamp = timestamp
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -51,22 +43,37 @@ class Sensor(Entity):
         return self.rdftriples
     
 class Temperature(Sensor):  
-    def __init__(self,Temperature_Sensor,identifier,attributes,account): 
+    def __init__(self,Temperature_Sensor,activity,identifier,attributes,account): 
         Sensor.__init__(self,identifier,attributes,account) 
+        self.activity
+        self.identifier
+        self._attributelist.extend
+        
     
     def get_temperature(self):
         
         return self.read_value('temperature')[0]
 #get_sample = self.get_temperature
-        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Temp']
+        return self.rdftriples
         
 class Humidity(Sensor): 
     def __init__(self,Humidity_Sensor,identifier,attributes,account): 
-        Sensor.__init__(self,identifier,attributes,account)      
+        Sensor.__init__(self,identifier,attributes,account)
+        self.activity
+        self.identifier
+        self._attributelist.extend      
      
     def get_humidity(self):
          
         return self.read_value('humidity')[0]
+    
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Humidity']
+        return self.rdftriples
 
 
         
@@ -79,6 +86,11 @@ class Light(Sensor):
     def get_Light(self):
           
         return self.read_value('Light')[0]
+    
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Light']
+        return self.rdftriples
           
           
           
