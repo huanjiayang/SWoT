@@ -37,7 +37,7 @@ class Sensor(Entity):
         self.sensor_id
         self.timestamp = timestamp
         
-def sensor_Update(self, timestamp, temperature, sensor_type, sensor_instance, sensor_data):
+def sensor_Update(self, timestamp, temperature,Light,Humidity, sensor_type, sensor_instance, sensor_data):
         
     def _toRDF(self):
         Entity._toRDF(self)
