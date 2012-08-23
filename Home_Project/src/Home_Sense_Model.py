@@ -39,23 +39,26 @@ SN = SN(v)
 
 class Sensor_Network(Entity):
     
-    def __init__(self, identifier, sensor_id, timestamp=None, sensor_name, attributes=None, account=None):
+    def __init__(self, identifier, uuid, attributes=None, account=None):
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier 
         self.attributelist.extend
-        self.sensor_id
-        self.timestamp = timestamp
         self.uuid = uuid
+        
+    def to_RDF(self):
+        Entity.to_RDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = prov['Sensor_Network']
+        return self.rdftriples
 
 
 
 class Sensor_Node(Sensor_Network):
     
-    def __init__(self, identifier, sensor_id, timestamp=None, sensor_name, attributes=None, account=None):
+    def __init__(self, identifier, sensor_id, timestamp, sensor_name, attributes=None, account=None):
         Sensor_Network.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier 
         self.attributelist.extend
-        self.sensor_id
+        self.sensor_id = sensor_id
         self.timestamp = timestamp
         
     def __repr__(self):
@@ -67,13 +70,6 @@ class Sensor_Node(Sensor_Network):
         if (self._sensor_condition):
             r_str += " (" + self._sensor_condition + ")"
         return r_str
-    
-    def key(self):
-        """Return key name (_sensor_key)."""
-    ## This is a gratuitous accessor method, but is present for consistency with value()
-        return self._sensor_key
-    
-    
     
     def get_node(self, node_id, data):
         self.Temp
@@ -98,18 +94,21 @@ class Sensor_Node(Sensor_Network):
       
         
     def sensor_Update(self, timestamp, temperature, Light, Humidity, sensor_type, sensor_instance, sensor_data):
+        pass
+    
+    def sensor_value(self):
+        """Return reading value."""
+        try:
+            return int(self._sensor_value)
+        except ValueError:
+            return float(self._sensor_value)
         
-        def _toRDF(self):
-            Entity._toRDF(self)
-        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Node']
         return self.rdftriples
 
-def sensor_value(self):
-    """Return reading value."""
-    try:
-        return int(self._sensor_value)
-    except ValueError:
-        return float(self._sensor_value)
+
     
     
 Node = Sensor_Node()
@@ -118,13 +117,20 @@ Node.sensor_value()
 
 
 class Sensor(Sensor_Node):
-    def __init__(self, identifier, sensor_id, timestamp=None, sensor_name, attributes=None, account=None, data):
+    def __init__(self, identifier, sensor_id, timestamp,sensor_name, data, attributes, account):
         Sensor_Node.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier 
         self.attributelist.extend
         self.sensor_id
         self.timestamp = timestamp
-        values = sensor_value()
+        
+    def sensor_value(self,data):
+        """Return reading value."""
+        try:
+            return int(self._sensor_value)
+        except ValueError:
+            return float(self._sensor_value)
+        values = self.sensor_value
         data.append(values)
         if len(data) > 0:
             data.pop(0)
@@ -135,6 +141,13 @@ class Sensor(Sensor_Node):
             for sensor_id in range(len(sample)):
                 value = sample[sensor_id]
         result[sensor_id].append(value)
+        
+    
+        
+    def to_RDF(self):
+        Entity.to_RDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = prov['Sensor']
+        return self.rdftriples
 
     
 class Temperature_Sensor(Sensor_Node):  
@@ -193,6 +206,11 @@ class Network_Organization(Activity):
         Entity.__init__(self, identifier, attributes, account)
         self.type = Network_Organization
         
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Network_Organization']
+        return self.rdftriples
+        
     
     
 class Discovery(Activity):
@@ -200,33 +218,64 @@ class Discovery(Activity):
         Entity.__init__(self, identifier, attributes, account)
         self.type = Discovery
         
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Discovery']
+        return self.rdftriples
+        
     
 class Query(Activity):
     def __init__(self, identifier=None, attributes=None, account=None):
         Entity.__init__(self, identifier, attributes, account)
         self.type = Query
+        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Query']
+        return self.rdftriples
     
 class Sensor_Node_Activity(Network_Organization): 
     def __init__(self, identifier=None, attributes=None, account=None):
         Network_Organization.__init__(self, identifier, attributes, account)
-        self.type = Query
+        self.type = Sensor_Node_Activity
+        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Node_Activity']
+        return self.rdftriples
     
     
 class Sensor_Reading_Activity(Activity): 
-    def __init__(self, identifier=None, attributes=None, account=None, Sensor_Reading):
+    def __init__(self, identifier=None, attributes=None, account=None, Sensor_Reading=None):
         Activity.__init__(self, identifier, attributes, account)
-        self.type = Sensor_Reading
+        self.type = Sensor_Reading_Activity
+        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Reading_Activity']
+        return self.rdftriples
         
     
 class Sensor_Readings(Entity):
     def __init__(self, identifier=None, attributes=None, account=None):
         Entity.__init__(self, identifier, attributes, account)
-        self.type = Query   
+        self.type = Sensor_Readings
+        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Readings']
+        return self.rdftriples   
     
 class observation(Entity):
     def __init__(self, identifier=None, attributes=None, account=None, Observation):
         Entity.__init__(self, identifier, attributes, account)
         self.type = Observation
+        self.attributes
+        
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Observation']
+        return self.rdftriples
         
           
           
