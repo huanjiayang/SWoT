@@ -28,11 +28,11 @@ PROV = Namespace("http://www.w3.org/ns/prov-dm/")
 rdf = PROVNamespace("rdf", "http://www.w3.org/TR/rdf-schema/#")
 
 
-u = uuid.uuid1()
-SENSORS = SENSORS(u)
-
-v = uuid.uuid5()
-SN = SN(v)
+#u = uuid.uuid1()
+#SENSORS = SENSORS(u)
+#
+#v = uuid.uuid1()
+#SN = SN(v)
 
 
 # --------------------- class begins -------------------------------------------
@@ -111,8 +111,8 @@ class Sensor_Node(Sensor_Network):
 
     
     
-Node = Sensor_Node()
-Node.sensor_value()    
+#Node = Sensor_Node()
+#Node.sensor_value()    
 
 
 
@@ -267,7 +267,7 @@ class Sensor_Readings(Entity):
         return self.rdftriples   
     
 class observation(Entity):
-    def __init__(self, identifier=None, attributes=None, account=None, Observation):
+    def __init__(self, identifier=None, attributes=None, account=None, Observation=None):
         Entity.__init__(self, identifier, attributes, account)
         self.type = Observation
         self.attributes
