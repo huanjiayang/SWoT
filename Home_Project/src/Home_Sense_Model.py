@@ -39,12 +39,11 @@ rdf = PROVNamespace("rdf", "http://www.w3.org/TR/rdf-schema/#")
 
 class Sensor_Network(Entity):
     
-    def __init__(self, identifier, uuid, attributes=None, account=None):
+    def __init__(self, identifier=None, attributes=None, account=None):
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1())
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
-        self.identifier 
-        self.attributelist.extend
-        self.uuid = uuid
-        
+
     def to_RDF(self):
         Entity.to_RDF(self)
         self.rdftriples[self.identifier][rdf['type']] = prov['Sensor_Network']
@@ -52,14 +51,14 @@ class Sensor_Network(Entity):
 
 
 
-class Sensor_Node(Sensor_Network):
+class Sensor_Node(Agent):
     
-    def __init__(self, identifier, sensor_id, timestamp, sensor_name, attributes=None, account=None):
-        Sensor_Network.__init__(self, identifier=identifier, attributes=attributes, account=account)
-        self.identifier 
-        self.attributelist.extend
-        self.sensor_id = sensor_id
-        self.timestamp = timestamp
+    def __init__(self, identifier, sensor_id, sensor_name, attributes=None, account=None):
+        attributes.update({HS["sensor_id"]:sensor_id,
+                           HS["sensor_name"]:sensor_name})
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1())
+        Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
         
     def __repr__(self):
         return "SensorReading _sensor_key:%s _sensor_value:%s _sensor_condition:%s" % \

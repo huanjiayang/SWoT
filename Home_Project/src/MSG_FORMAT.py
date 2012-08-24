@@ -26,6 +26,7 @@ from pyprov.model.type import *
 from pyprov.model.relation import *
 from pyprov.model.bundle import *
 
+from Home_Sensor_Model import *
 
 
 

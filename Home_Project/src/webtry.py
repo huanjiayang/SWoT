@@ -421,10 +421,10 @@ class PROVBuilder:
                 
             elif rdftype == prov['wasAttributedTo']:
                 print 'wAT'
-                for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
-                    wasAttributedTo = Relation_triple[2]
-                at = wasAttributedTo(str) 
-                self.container.add(at)
+                #for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
+                 #   wasAttributedTo = Relation_triple[2]
+                #at = wasAttributedTo(str) 
+                #self.container.add(at)
                  
                 for Relation_triple in RDFstore.triples((sub, prov['entity'], None)):
                     entity = Relation_triple[2]
