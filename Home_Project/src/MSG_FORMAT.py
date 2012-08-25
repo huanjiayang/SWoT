@@ -18,6 +18,7 @@ import requests
 import json
 import numpy
 import matplotlib
+import twitter
 import wx
 import uuid
 from matplotlib.pyplot import *
@@ -27,11 +28,33 @@ from pyprov.model.relation import *
 from pyprov.model.bundle import *
 
 from Home_Sensor_Model import *
+from Home_Sense_Model import *
+
+
+
+api = twitter.Api(consumer_key='your key here', consumer_secret='your key here', access_token_key='your key here', access_token_secret='your key here')
+
+# Twitter username & password
+twitterusername = "sense_AY"
+twitterpassword = "sensorbizy_007"
+
+
+def TwitterIt(u, p, message):
+    api = twitter.Api(username=u, password=p)
+    print u, p
+    try:
+        status = api.PostUpdate(message)
+        print "%s just posted: %s" % (status.user.name, status.text)
+    except UnicodeDecodeError:
+        print "Your message could not be encoded.  Perhaps it contains non-ASCII characters? "
+        print "Try explicitly specifying the encoding with the  it with the --encoding flag"
+    except:
+        print "Couldn't connect, check network, username and password!"
 
 
 
 
-Node = Node
+
 #ser = serial.Serial('COM12',baudrate=115200,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_TWO,bytesize=serial.SEVENBITS)  # open first serial port
 #print ser.portstr       # check which port was really used
 ##data = ser.read(10)
@@ -64,6 +87,10 @@ try:
               bytesize=serial.EIGHTBITS,
               )
         print ser.portstr 
+        status = ser.read()
+        #Post status to twitter
+        api.PostUpdate(status.text)
+        time.sleep(3600)  ##sleep for 3600 seconds
 #        ser.open()
 except:
         print "Could not open serial port: ", sys.exc_info()[0]
@@ -132,9 +159,25 @@ def sensor_detail(self,get_sample,sensor,Node):
             
 #---------------------Home Sensor Model Instance based on serial message received-------------------------------
 
+Agt0 = Sensor_Network(identifier=None, attributes=None, account=None)
+Agt1 = Sensor_Node(identifier=None, attributes=None, account=None)
+Agt2 = Sensor(identifier=None, sensor_id=None, sensor_name=None, attributes=None, account=None)
+
+Ent0 = Temperature_Sensor(activity=None, identifier=None, attributes=None, account=None)
+Ent1 = Humidity_Sensor(identifier=None, sensor_id=None, sensor_name=None, attributes=None, account=None)
+Ent2 = Light_Sensor(identifier=None, sensor_id=None, sensor_name=None, attribute=None, account=None)
+Ent3 = Sensor_Readings(identifier=None, attributes=None, account=None)
+Ent4 = observation(identifier=None, attributes=None, account=None, Observation=None)
 
 
+Avt0 = Network_Organization(identifier=None, sensor_id=None, sensor_name=None, attributes=None, account=None)
+Avt1 = Discovery(identifier=None, sensor_id=None, sensor_name=None, attributes=None, account=None)
+Avt2 = Query(identifier=None, attributes=None, account=None)
+Avt3 = Sensor_Node_Activity(identifier=None, attributes=None, account=None)
+Avt4 = Sensor_Reading_Activity(identifier=None, attributes=None, account=None, Sensor_Reading=None)
 
+
+#---------------------Function to iterate and store serial message for sensor data received--------------------------
 
 
 

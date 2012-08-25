@@ -115,7 +115,7 @@ class Sensor_Node(Agent):
 
 
 
-class Sensor(Sensor_Node):
+class Sensor(Agent):
     def __init__(self, identifier, sensor_id, timestamp,sensor_name, data, attributes, account):
         Sensor_Node.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier 
@@ -149,7 +149,7 @@ class Sensor(Sensor_Node):
         return self.rdftriples
 
     
-class Temperature_Sensor(Sensor_Node):  
+class Temperature_Sensor(Agent):  
     def __init__(self, Temperature_Sensor, activity, identifier, attributes, account): 
         Sensor.__init__(self, identifier, attributes, account) 
         self.activity
@@ -167,7 +167,7 @@ class Temperature_Sensor(Sensor_Node):
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Temp']
         return self.rdftriples
         
-class Humidity(Sensor_Node): 
+class Humidity_Sensor(Agent): 
     def __init__(self, Humidity_Sensor, identifier, attributes, account): 
         Sensor.__init__(self, identifier, attributes, account)
         self.activity
@@ -187,7 +187,7 @@ class Humidity(Sensor_Node):
         
          
         
-class Light(Sensor_Node):    
+class Light_Sensor(Agent):    
     def __init__(self, Humidity_Sensor, identifier, attributes, account): 
         Sensor.__init__(self, identifier, attributes, account)      
     
