@@ -177,11 +177,17 @@ Avt3 = Sensor_Node_Activity(identifier=None, attributes=None, account=None)
 Avt4 = Sensor_Reading_Activity(identifier=None, attributes=None, account=None, Sensor_Reading=None)
 
 
-#---------------------Function to iterate and store serial message for sensor data received--------------------------
+#---------------------Function to check or add Home Sensor Model Instances--------------------------
 
-
-
-
+def sense_instance(self,sensor_dict):
+    sensor_dict = [Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
+    sensor_dict = [13]
+    for i in sensor_dict:
+        if isinstance(sensor_dict,list):
+            self.store.add(i)
+        else:
+            self.store.add(i)
+             
 
 
     
