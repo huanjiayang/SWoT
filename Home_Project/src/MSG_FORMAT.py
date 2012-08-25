@@ -167,7 +167,7 @@ Ent0 = Temperature_Sensor(activity=None, identifier=None, attributes=None, accou
 Ent1 = Humidity_Sensor(identifier=None, sensor_id=None, sensor_name=None, attributes=None, account=None)
 Ent2 = Light_Sensor(identifier=None, sensor_id=None, sensor_name=None, attribute=None, account=None)
 Ent3 = Sensor_Readings(identifier=None, attributes=None, account=None)
-Ent4 = observation(identifier=None, attributes=None, account=None, Observation=None)
+Ent4 = observation(identifier=None, attributes=None, account=None, Observation=None,Temperature,Humidity,Light)
 
 
 Avt0 = Network_Organization(identifier=None, sensor_id=None, sensor_name=None, attributes=None, account=None)

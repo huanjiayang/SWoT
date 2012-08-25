@@ -117,6 +117,10 @@ class Sensor_Node(Agent):
 
 class Sensor(Agent):
     def __init__(self, identifier, sensor_id, timestamp,sensor_name, data, attributes, account):
+        attributes.update({HS["sensor_id"]:sensor_id,
+                           HS["sensor_name"]:sensor_name})
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1())
         Sensor_Node.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier 
         self.attributelist.extend
@@ -150,10 +154,14 @@ class Sensor(Agent):
 
     
 class Temperature_Sensor(Agent):  
-    def __init__(self, Temperature_Sensor, activity, identifier, attributes, account): 
+    def __init__(self, Temperature_Sensor, activity,sensor_id,sensor_name, identifier, attributes, account): 
+        attributes.update({HS["sensor_id"]:sensor_id,
+                           HS["sensor_name"]:sensor_name})
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1())
         Sensor.__init__(self, identifier, attributes, account) 
         self.activity
-        self.identifier
+        self.identifier = identifier
         self._attributelist.extend
         
     
@@ -168,8 +176,12 @@ class Temperature_Sensor(Agent):
         return self.rdftriples
         
 class Humidity_Sensor(Agent): 
-    def __init__(self, Humidity_Sensor, identifier, attributes, account): 
-        Sensor.__init__(self, identifier, attributes, account)
+    def __init__(self, Humidity_Sensor,sensor_id,sensor_name, identifier, attributes=None, account=None): 
+        attributes.update({HS["sensor_id"]:sensor_id,
+                           HS["sensor_name"]:sensor_name})
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1())
+        Sensor.__init__(self, identifier, attributes=attributes, account=account)
         self.activity
         self.identifier
         self._attributelist.extend      
@@ -188,7 +200,11 @@ class Humidity_Sensor(Agent):
          
         
 class Light_Sensor(Agent):    
-    def __init__(self, Humidity_Sensor, identifier, attributes, account): 
+    def __init__(self,sensor_id,sensor_name, identifier, attributes, account):
+        attributes.update({HS["sensor_id"]:sensor_id,
+                           HS["sensor_name"]:sensor_name})
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1()) 
         Sensor.__init__(self, identifier, attributes, account)      
     
     def get_Light(self):
@@ -203,7 +219,7 @@ class Light_Sensor(Agent):
 class Network_Organization(Activity):
     def __init__(self, identifier=None, attributes=None, account=None):
         Entity.__init__(self, identifier, attributes, account)
-        self.type = Network_Organization
+        self.identifier = identifier
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -215,6 +231,7 @@ class Network_Organization(Activity):
 class Discovery(Activity):
     def __init__(self, identifier=None, attributes=None, account=None):
         Entity.__init__(self, identifier, attributes, account)
+        self.identifier = identifier
         self.type = Discovery
         
     def _toRDF(self):
@@ -226,7 +243,7 @@ class Discovery(Activity):
 class Query(Activity):
     def __init__(self, identifier=None, attributes=None, account=None):
         Entity.__init__(self, identifier, attributes, account)
-        self.type = Query
+        self.identifier = identifier
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -236,7 +253,7 @@ class Query(Activity):
 class Sensor_Node_Activity(Network_Organization): 
     def __init__(self, identifier=None, attributes=None, account=None):
         Network_Organization.__init__(self, identifier, attributes, account)
-        self.type = Sensor_Node_Activity
+        self.identifier = identifier
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -247,7 +264,7 @@ class Sensor_Node_Activity(Network_Organization):
 class Sensor_Reading_Activity(Activity): 
     def __init__(self, identifier=None, attributes=None, account=None, Sensor_Reading=None):
         Activity.__init__(self, identifier, attributes, account)
-        self.type = Sensor_Reading_Activity
+        self.identifer = identifier
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -256,9 +273,10 @@ class Sensor_Reading_Activity(Activity):
         
     
 class Sensor_Readings(Entity):
-    def __init__(self, identifier=None, attributes=None, account=None):
+    def __init__(self, identifier=None, attributes=None, account=None, reading=None):
         Entity.__init__(self, identifier, attributes, account)
-        self.type = Sensor_Readings
+        self.reading = reading
+        self.identifier = identifier
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -266,10 +284,12 @@ class Sensor_Readings(Entity):
         return self.rdftriples   
     
 class observation(Entity):
-    def __init__(self, identifier=None, attributes=None, account=None, Observation=None):
+    def __init__(self, identifier=None, attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None):
         Entity.__init__(self, identifier, attributes, account)
-        self.type = Observation
-        self.attributes
+        self.value = Temperature
+        self.Humidity = Humidity
+        self.Light  = Light
+        
         
     def _toRDF(self):
         Entity._toRDF(self)
