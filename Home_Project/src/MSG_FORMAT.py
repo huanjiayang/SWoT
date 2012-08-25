@@ -184,8 +184,9 @@ def sense_instance(self,sensor_dict):
     sensor_dict = [13]
     for i in sensor_dict:
         if isinstance(sensor_dict,list):
-            self.store.add(i)
+            return i
         else:
+            sensor_dict.append(i)
             self.store.add(i)
              
 
