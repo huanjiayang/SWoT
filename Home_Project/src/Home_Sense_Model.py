@@ -60,15 +60,15 @@ class Sensor_Node(Agent):
             identifer = 'urn:uuid:' + str(uuid.uuid1())
         Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
         
-    def __repr__(self):
-        return "SensorReading _sensor_key:%s _sensor_value:%s _sensor_condition:%s" % \
-      (self._sensor_key, self._sensor_value, self._sensor_condition)
-  
-    def __str__(self):
-        r_str = self._sensor_key + " = " + self._sensor_value + self.unit_string()
-        if (self._sensor_condition):
-            r_str += " (" + self._sensor_condition + ")"
-        return r_str
+#    def __repr__(self):
+#        return "SensorReading _sensor_key:%s _sensor_value:%s _sensor_condition:%s" % \
+#      (self._sensor_key, self._sensor_value, self._sensor_condition)
+#  
+#    def __str__(self):
+#        r_str = self._sensor_key + " = " + self._sensor_value + self.unit_string()
+#        if (self._sensor_condition):
+#            r_str += " (" + self._sensor_condition + ")"
+#        return r_str
     
     def get_node(self, node_id, data):
         self.Temp
