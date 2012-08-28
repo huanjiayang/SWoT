@@ -26,7 +26,7 @@ class Mystore():
 
     def _ToTriples(self, d0):   
         tripledict = d0._toRDF()
-        print d0.identifier
+        #print d0.identifier
         #for s in tripledict.keys():
         #    print 'subject:  '
         #    print str(s)

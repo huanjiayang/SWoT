@@ -20,6 +20,7 @@ import numpy
 import matplotlib
 import twitter
 import wx
+from webtry import *
 import uuid
 #from matplotlib.pyplot import *
 #from pylab import *
@@ -160,17 +161,18 @@ from Home_Sense_Model import *
 #---------------------Home Sensor Model Instance based on serial message received-------------------------------
 
 Agt0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
-Agt1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=None, account=None, sensor_id=HS["sensor_id"])
+Agt1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
 Agt2 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, attributes=None, account=None)
 
+
 Ent0 = Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None)
-Ent1 = Humidity_Sensor(identifier=HS["HM"], sensor_id=None, sensor_name=None, attributes=None, account=None)
-Ent2 = Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attribute=None, account=None)
+Ent1 = Humidity_Sensor(identifier=HS["HM"],sensor_id=HS["sensor_id"],sensor_name=HS["sensor_name"],attributes=None, account=None)
+Ent2 = Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attributes=None, account=None)
 Ent3 = Sensor_Readings(identifier=HS["SR"], attributes=None, account=None)
 Ent4 = observation(identifier=HS["ob"], attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None)
 
 
-Avt0 = Network_Organization(identifier=HS["NO"], sensor_id=None, sensor_name=None, attributes=None, account=None)
+Avt0 = Network_Organization(identifier=HS["NO"], network_id=None, sensor_name=None, attributes=None, account=None,starttime=None, endtime=None,)
 Avt1 = Discovery(identifier=HS["D"], sensor_id=None, sensor_name=None, attributes=None, account=None)
 Avt2 = Query(identifier=HS["Q"], attributes=None, account=None)
 Avt3 = Sensor_Node_Activity(identifier=HS["SNA"], attributes=None, account=None)
@@ -179,15 +181,24 @@ Avt4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=No
 
 #---------------------Function to check or add Home Sensor Model Instances--------------------------
 
-def sense_instance(self,sensor_dict):    
+def sense_instance(sensor_dict, sensor_store):    
     #sensor_dict = [13]
+    found = False    
     for i in sensor_dict:
         if (i != None):
-            print i
+            for s, p, o in sensor_store:
+                found = False
+                if (str(i) == str(s)):
+                    print i, " found."
+                    found = True
+                    break
+            if (found == False):
+                print i, " not in store."
+                # TODO: add to store
              
 
-sensor_dict = [Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
-sense_instance(sensor_dict)
+sensor_dict = [ag0, Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
+sense_instance(sensor_dict, sensor_graph.store)
     
    
     

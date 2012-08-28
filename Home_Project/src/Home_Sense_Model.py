@@ -53,12 +53,15 @@ class Sensor_Network(Entity):
 
 class Sensor_Node(Agent):
     
-    def __init__(self, identifier, sensor_id, sensor_name, attributes=None, account=None):
-        attributes.update({HS["sensor_id"]:sensor_id,
+    def __init__(self, identifier, sensor_id, sensor_name, attributes, account):
+        #self.sensor_id = sensor_id
+        
+        self.get_record_attributes().update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name})
         if identifier is None:
-            identifer = 'urn:uuid:' + str(uuid.uuid1())
+            identifier = 'urn:uuid:' + str(uuid.uuid1())
         Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
+        
         
 #    def __repr__(self):
 #        return "SensorReading _sensor_key:%s _sensor_value:%s _sensor_condition:%s" % \
@@ -116,16 +119,14 @@ class Sensor_Node(Agent):
 
 
 class Sensor(Agent):
-    def __init__(self, identifier, sensor_id, timestamp,sensor_name, data, attributes, account):
-        attributes.update({HS["sensor_id"]:sensor_id,
+    def __init__(self, identifier, sensor_id,sensor_name, attributes, account):
+        self.get_record_attributes().update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name})
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1())
-        Sensor_Node.__init__(self, identifier=identifier, attributes=attributes, account=account)
-        self.identifier 
-        self.attributelist.extend
-        self.sensor_id
-        self.timestamp = timestamp
+        Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
+         
+        
         
     def sensor_value(self,data):
         """Return reading value."""
@@ -153,14 +154,14 @@ class Sensor(Agent):
         return self.rdftriples
 
     
-class Temperature_Sensor(Agent):  
-    def __init__(self, Temperature_Sensor, activity,sensor_id,sensor_name, identifier, attributes, account): 
-        attributes.update({HS["sensor_id"]:sensor_id,
+class Temperature_Sensor(Sensor):  
+    def __init__(self, activity,sensor_id=None,sensor_name=None, identifier=None, attributes=None, account=None): 
+        self.get_record_attributes().update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name})
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1())
-        Sensor.__init__(self, identifier, attributes, account) 
-        self.activity
+        Sensor.__init__(self, identifier, sensor_id,sensor_name, attributes, account) 
+
         self.identifier = identifier
         self._attributelist.extend
         
@@ -175,15 +176,15 @@ class Temperature_Sensor(Agent):
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Temp']
         return self.rdftriples
         
-class Humidity_Sensor(Agent): 
-    def __init__(self, Humidity_Sensor,sensor_id,sensor_name, identifier, attributes=None, account=None): 
-        attributes.update({HS["sensor_id"]:sensor_id,
+class Humidity_Sensor(Sensor): 
+    def __init__(self,sensor_id,sensor_name, identifier, attributes=None, account=None): 
+        self.get_record_attributes().update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name})
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1())
-        Sensor.__init__(self, identifier, attributes=attributes, account=account)
-        self.activity
-        self.identifier
+        Sensor.__init__(self, identifier,sensor_id,sensor_name, attributes=attributes, account=account)
+
+        
         self._attributelist.extend      
      
     def get_humidity(self):
@@ -199,13 +200,13 @@ class Humidity_Sensor(Agent):
         
          
         
-class Light_Sensor(Agent):    
+class Light_Sensor(Sensor):    
     def __init__(self,sensor_id,sensor_name, identifier, attributes, account):
-        attributes.update({HS["sensor_id"]:sensor_id,
+        self.get_record_attributes().update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name})
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1()) 
-        Sensor.__init__(self, identifier, attributes, account)      
+        Sensor.__init__(self, identifier, attributes, account,attributes=attributes, account=account)      
     
     def get_Light(self):
           
@@ -217,8 +218,12 @@ class Light_Sensor(Agent):
         return self.rdftriples
     
 class Network_Organization(Activity):
-    def __init__(self, identifier=None, attributes=None, account=None):
-        Entity.__init__(self, identifier, attributes, account)
+    def __init__(self, identifier=None, attributes=None, account=None, network_id = None, sensor_name=None,starttime=None, endtime=None,):
+        
+        if identifier is None:
+            identifer = 'urn:uuid:' + str(uuid.uuid1()) 
+        Activity.__init__(self, identifier, attributes, account)  
+        #Entity.__init__(self, identifier, attributes, account)
         self.identifier = identifier
         
     def _toRDF(self):
@@ -229,8 +234,8 @@ class Network_Organization(Activity):
     
     
 class Discovery(Activity):
-    def __init__(self, identifier=None, attributes=None, account=None):
-        Entity.__init__(self, identifier, attributes, account)
+    def __init__(self, identifier=None, attributes=None, account=None, sensor_name=None, sensor_id=None):
+        Activity.__init__(self, identifier, attributes, account)
         self.identifier = identifier
         self.type = Discovery
         
@@ -242,11 +247,11 @@ class Discovery(Activity):
     
 class Query(Activity):
     def __init__(self, identifier=None, attributes=None, account=None):
-        Entity.__init__(self, identifier, attributes, account)
+        Activity.__init__(self, identifier, attributes, account)
         self.identifier = identifier
         
     def _toRDF(self):
-        Entity._toRDF(self)
+        Activity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Query']
         return self.rdftriples
     
