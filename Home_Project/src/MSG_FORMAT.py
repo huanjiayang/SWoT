@@ -47,8 +47,8 @@ def TwitterIt(u, p, message):
         status = api.PostUpdate(message)
         print "%s just posted: %s" % (status.user.name, status.text)
     except UnicodeDecodeError:
-        print "Your message could not be encoded.  Perhaps it contains non-ASCII characters? "
-        print "Try explicitly specifying the encoding with the  it with the --encoding flag"
+        print "Your message could not be encoded."
+        print "Try explicitly specifying message"
     except:
         print "Couldn't connect, check network, username and password!"
 #

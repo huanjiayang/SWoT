@@ -222,7 +222,7 @@ class Network_Organization(Activity):
         
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1()) 
-        Activity.__init__(self, identifier, attributes, account)  
+        Activity.__init__(self, identifier,starttime,endtime, attributes, account)  
         #Entity.__init__(self, identifier, attributes, account)
         self.identifier = identifier
         
@@ -234,8 +234,8 @@ class Network_Organization(Activity):
     
     
 class Discovery(Activity):
-    def __init__(self, identifier=None, attributes=None, account=None, sensor_name=None, sensor_id=None):
-        Activity.__init__(self, identifier, attributes, account)
+    def __init__(self, identifier=None,starttime=None,endtime=None,attributes=None, account=None, sensor_name=None, sensor_id=None):
+        Activity.__init__(self, identifier,starttime,endtime, attributes, account)
         self.identifier = identifier
         self.type = Discovery
         
@@ -246,8 +246,8 @@ class Discovery(Activity):
         
     
 class Query(Activity):
-    def __init__(self, identifier=None, attributes=None, account=None):
-        Activity.__init__(self, identifier, attributes, account)
+    def __init__(self, identifier=None,starttime=None, endtime=None, attributes=None, account=None):
+        Activity.__init__(self, identifier,starttime,endtime, attributes, account)
         self.identifier = identifier
         
     def _toRDF(self):
