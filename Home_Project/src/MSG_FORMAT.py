@@ -33,24 +33,24 @@ from Home_Sense_Model import *
 
 
 
-api = twitter.Api(consumer_key='your key here', consumer_secret='your key here', access_token_key='your key here', access_token_secret='your key here')
-
-# Twitter username & password
-twitterusername = "sense_AY"
-twitterpassword = "sensorbizy_007"
-
-
-def TwitterIt(u, p, message):
-    api = twitter.Api(username=u, password=p)
-    print u, p
-    try:
-        status = api.PostUpdate(message)
-        print "%s just posted: %s" % (status.user.name, status.text)
-    except UnicodeDecodeError:
-        print "Your message could not be encoded."
-        print "Try explicitly specifying message"
-    except:
-        print "Couldn't connect, check network, username and password!"
+#api = twitter.Api(consumer_key='your key here', consumer_secret='your key here', access_token_key='your key here', access_token_secret='your key here')
+#
+## Twitter username & password
+#twitterusername = "sense_AY"
+#twitterpassword = "sensorbizy_007"
+#
+#
+#def TwitterIt(u, p, message):
+#    api = twitter.Api(username=u, password=p)
+#    print u, p
+#    try:
+#        status = api.PostUpdate(message)
+#        print "%s just posted: %s" % (status.user.name, status.text)
+#    except UnicodeDecodeError:
+#        print "Your message could not be encoded."
+#        print "Try explicitly specifying message"
+#    except:
+#        print "Couldn't connect, check network, username and password!"
 #
 #
 #
@@ -89,8 +89,8 @@ try:
               )
         print ser.portstr 
         status = ser.read()
-        #Post status to twitter
-        api.PostUpdate(status.text)
+#        #Post status to twitter
+#        api.PostUpdate(status.text)
         time.sleep(3600)  ##sleep for 3600 seconds
 #        ser.open()
 except:
@@ -160,9 +160,13 @@ def sensor_detail(self,get_sample,sensor,Node):
             
 #---------------------Home Sensor Model Instance based on serial message received-------------------------------
 
+#within that function you create all the appropriate instances based on what is in the message, 
+#and put them into your PROVSTORE.
+
 Agt0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
 Agt1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
-Agt2 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, attributes=None, account=None)
+Agt2 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
+Agt3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, attributes=None, account=None)
 
 
 Ent0 = Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None)
@@ -201,6 +205,15 @@ def sense_instance(self,sensor_dict, sensor_store):
 sensor_dict = [ag0, Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
 sense_instance(sensor_dict, sensor_graph.store)
     
+
+#def addtoStore(self,key_id,dict):
+#    for k in dict.keys():
+#        agent = Sensor_Node(identifier=HS["Sensor_Node"]
+#        temp_ent0
+#        light_ent0
+#        Humidity_ent0
+        
+
    
     
 #    
