@@ -207,11 +207,11 @@ sense_instance(sensor_dict, sensor_graph.store)
     
 
 #def addtoStore(self,key_id,dict):
-#    for k in dict.keys():
-#        agent = Sensor_Node(identifier=HS["Sensor_Node"]
-#        temp_ent0
-#        light_ent0
-#        Humidity_ent0
+#   for k in dict.keys():
+#       agent = Sensor_Node(identifier=
+#       temp_ent = 
+#       light_ent
+#       Humidity_ent
         
 
    
