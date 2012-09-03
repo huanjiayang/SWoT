@@ -71,7 +71,7 @@ class Sensor_Node(Agent):
 
 
 class Sensor(Agent):
-    def __init__(self, identifier, sensor_id,sensor_name,sensor_type, attributes, account):
+    def __init__(self, identifier, sensor_id,sensor_name,sensor_type,temperature_sensor,light_sensor,humidity_sensor,attributes, account):
         self.attributes.update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name,HS["sensor_name"]:sensor_type})
         if identifier is None:
@@ -93,6 +93,14 @@ class Sensor(Agent):
         def get_light_sensor():
             pass
         
+        def Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None):
+            pass
+        def Humidity_Sensor(identifier=HS["HM"],sensor_id=HS["sensor_id"],sensor_name=HS["sensor_name"],attributes=None, account=None):
+            pass
+        def Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attributes=None, account=None):
+            pass
+        def Sensor_Readings(identifier=HS["SR"], attributes=None, account=None):
+            pass
 
         
     
@@ -105,7 +113,7 @@ class Sensor(Agent):
     
 
 class Network_Organization(Activity):
-    def __init__(self, identifier=None, attributes=None, account=None, network_id = None, sensor_name=None,starttime=None, endtime=None,):
+    def __init__(self, identifier=None, attributes=None, account=None, network_id = None, sensor_name=None,starttime=None, endtime=None):
         
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1()) 
@@ -144,7 +152,7 @@ class Query(Activity):
     
 class Sensor_Node_Activity(Network_Organization): 
     def __init__(self, identifier=None, attributes=None, account=None):
-        Network_Organization.__init__(self, identifier, attributes, account)
+        Activity.__init__(identifier=identifier,starttime=None,endtime=None,attributes=attributes,account=account)
         self.identifier = identifier
         
     def _toRDF(self):

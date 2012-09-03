@@ -166,14 +166,14 @@ def sensor_detail(self,get_sample,sensor,Node):
 Agt0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
 Agt1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
 Agt2 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
-Agt3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, attributes=None, account=None)
+Agt3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
 
 
-Ent0 = Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None)
-Ent1 = Humidity_Sensor(identifier=HS["HM"],sensor_id=HS["sensor_id"],sensor_name=HS["sensor_name"],attributes=None, account=None)
-Ent2 = Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attributes=None, account=None)
-Ent3 = Sensor_Readings(identifier=HS["SR"], attributes=None, account=None)
-Ent4 = observation(identifier=HS["ob"], attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None)
+#Ent0 = Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None)
+#Ent1 = Humidity_Sensor(identifier=HS["HM"],sensor_id=HS["sensor_id"],sensor_name=HS["sensor_name"],attributes=None, account=None)
+#Ent2 = Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attributes=None, account=None)
+#Ent3 = Sensor_Readings(identifier=HS["SR"], attributes=None, account=None)
+#Ent4 = observation(identifier=HS["ob"], attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None)
 
 
 Avt0 = Network_Organization(identifier=HS["NO"], network_id=None, sensor_name=None, attributes=None, account=None,starttime=None, endtime=None,)
@@ -202,18 +202,51 @@ def sense_instance(self,sensor_dict, sensor_store):
                 # TODO: add to store
              
 
-sensor_dict = [ag0, Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
-sense_instance(sensor_dict, sensor_graph.store)
+#sensor_dict = [ag0, Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
+#sense_instance(sensor_dict, sensor_graph.store)
     
 
-#def addtoStore(self,key_id,dict):
-#   for k in dict.keys():
-#       agent = Sensor_Node(identifier=
-#       temp_ent = 
-#       light_ent
-#       Humidity_ent
+def addtoStore(data,sensor_data,sensor_name):
+    
+# Open serial Port for sensor data
+    try:
+        ser = serial.Serial('COM12',115200,timeout=1,parity=serial.PARITY_NONE,
+              stopbits=serial.STOPBITS_ONE,
+              bytesize=serial.EIGHTBITS,
+              )   
+    
+    except:
+        print "Could not open serial port: ", sys.exc_info()[0]
+        sys.exit(2)
         
+# Read sensor data through serial port
+    while True:
+        data = str(ser.read(100).strip());
+        data = data.replace("\n","").replace("\r","")
+        data = data.split(",")
+        try:
+            if len(data) > 0:
+                data.append(('timestamp:', time.asctime())) 
+# Print sensor data              
+            print "data: ", data
+        except:
+            print "No data from serial port: ", sys.exc_info()[1]
+            sys.exit(2)
+# Create appropriate instances(based on Home Sensor Model) for sensor data
+    for data in sensor_data:
+        Agent0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
+        Agent1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
+        Agent2 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
+        Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
 
+        if sensor_name == "Node1":
+            Agent1 = Sensor_Node(identifier='urn:uuid:' + str(uuid.uuid1()) + "Sensor_node1")
+        elif sensor_name == "Node2":
+            Agent2 = Sensor_Node(identifier='urn:uuid:' + str(uuid.uuid1()) + "Sensor_node2")
+        
+       
+               
+               
    
     
 #    
