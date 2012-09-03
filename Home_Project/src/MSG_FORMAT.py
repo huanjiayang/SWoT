@@ -235,27 +235,34 @@ def addtoStore(data,sensor_data,sensor_name,sensor_type):
 # Create appropriate instances(based on Home Sensor Model) for sensor data
     for data in sensor_data:
         
-        Agent0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
-        Agent1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
-        Agent2 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
-        Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
-
+        
         if sensor_name == "Node1":
-            Agent1 = Sensor_Node(identifier='urn:uuid:' + str(uuid.uuid1()) + "Sensor_node1")
+            Agent1 = Sensor_Node(identifier='8766' + str(uuid.uuid1()) + "Sensor_node1")
+            if sensor_type == "light":
+               Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+               Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+            elif sensor_type == "Humidity":
+                 Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+                 Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+            elif sensor_type == "Temperature":
+                 Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+                 Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)   
+            else:
+                 print sensor_data + " does not contain required information."
+            
         elif sensor_name == "Node2":
             Agent2 = Sensor_Node(identifier='urn:uuid:' + str(uuid.uuid1()) + "Sensor_node2")
-        
-        elif sensor_type == "light":
-            Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
-            Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None,starttime=None, endtime=None)
-        elif sensor_type == "Humidity":
-            Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
-            Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None,starttime=None, endtime=None)
-        elif sensor_type == "Temperature":
-            Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
-            Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None,starttime=None, endtime=None)   
-        else:
-            print sensor_data + " does not contain required information."
+            if sensor_type == "light":
+               Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+               Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+            elif sensor_type == "Humidity":
+                 Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+                 Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+            elif sensor_type == "Temperature":
+                 Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+                 Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)   
+            else:
+                 print sensor_data + " does not contain required information."
         # close serial port    
         ser.close()
    
