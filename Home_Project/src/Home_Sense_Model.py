@@ -162,9 +162,16 @@ class Sensor_Node_Activity(Network_Organization):
     
     
 class Sensor_Reading_Activity(Activity): 
-    def __init__(self, identifier=None, attributes=None, account=None, starttime=None, endtime=None):
+    def __init__(self, identifier=None, attributes=None, account=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None):
         Activity.__init__(self, identifier=identifier,starttime=None,endtime=None,attributes=attributes,account=account)
         self.identifer = identifier
+        
+    def get_sensor_info(self):
+        Temperature = self.read_value('Temperature')[0].split('\0')[0]
+        Light = self.read_value('Light')[0].split('\0')[0]
+        Humidity = self.read_value('Humidity')[0].split('\0')[0]
+        sensor_type = self.read_value('sensor_type')[0].split('\0')[0]
+        return Sensor_Reading_Activity(Temperature, Light, Humidity,sensor_type)
         
     def _toRDF(self):
         Entity._toRDF(self)

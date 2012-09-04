@@ -241,12 +241,15 @@ def addtoStore(data,sensor_data,sensor_name,sensor_type):
             if sensor_type == "light":
                Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
                Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+               wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
             elif sensor_type == "Humidity":
                  Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
                  Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+                 wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
             elif sensor_type == "Temperature":
                  Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
                  Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)   
+                 wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
             else:
                  print sensor_data + " does not contain required information."
             
@@ -254,13 +257,33 @@ def addtoStore(data,sensor_data,sensor_name,sensor_type):
             Agent2 = Sensor_Node(identifier='urn:uuid:' + str(uuid.uuid1()) + "Sensor_node2")
             if sensor_type == "light":
                Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
-               Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+               Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+               wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
             elif sensor_type == "Humidity":
-                 Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
-                 Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+                 Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None,)
+                 Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None)
+                 wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
             elif sensor_type == "Temperature":
                  Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
-                 Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)   
+                 Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+                 wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)   
+            else:
+                 print sensor_data + " does not contain required information."
+                 
+        elif sensor_name == "Node3":
+            Agent3 = Sensor_Node(identifier='urn:uuid:' + str(uuid.uuid1()) + "Sensor_node3")
+            if sensor_type == "light":
+               Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+               Activity3 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+               wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+            elif sensor_type == "Humidity":
+                 Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None,)
+                 Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None)
+                 wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+            elif sensor_type == "Temperature":
+                 Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None, temperature_sensor=None, light_sensor=None, humidity_sensor=None, attributes=None, account=None)
+                 Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+                 wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)   
             else:
                  print sensor_data + " does not contain required information."
         # close serial port    
