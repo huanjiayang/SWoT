@@ -7,7 +7,7 @@ Created on 16 Jul 2012
 import os 
 import sys 
 import threading 
-import time 
+import time, datetime 
 from time import sleep
 import socket
 import serial
@@ -65,10 +65,16 @@ from Home_Sense_Model import *
 ##ser.close()             # close port
 
 
-
-
-
-
+# Definitions for start-time and end-time to be used for sensor data
+hours=0
+minutes = 0
+seconds = 0
+microseconds = 0
+endtime = datetime.datetime.now()
+delta = datetime.timedelta(hours=float(hours),minutes=float(minutes),seconds=float(seconds),microseconds=float(microseconds))
+starttime = endtime - delta
+print endtime
+print starttime
 
 
 
