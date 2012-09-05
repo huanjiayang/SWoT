@@ -71,7 +71,7 @@ class Sensor_Node(Agent):
 
 
 class Sensor(Agent):
-    def __init__(self, identifier, sensor_id,sensor_name,sensor_type,temperature_sensor,light_sensor,humidity_sensor,attributes, account):
+    def __init__(self, identifier, sensor_id,sensor_name,sensor_type,attributes, account):
         self.attributes.update({HS["sensor_id"]:sensor_id,
                            HS["sensor_name"]:sensor_name,HS["sensor_name"]:sensor_type})
         if identifier is None:
@@ -80,34 +80,17 @@ class Sensor(Agent):
          
         self.sensor_type = sensor_type
         self.sensor_id = sensor_id
-        self.temperature = get_temperature_sensor()
-        self.humidity = get_humidity_sensor()
-        self.light   = get_light_sensor()
         
-        def get_temperature_sensor():
-            pass
         
-        def get_humidity_sensor():
-            pass
-            
-        def get_light_sensor():
-            pass
         
-        def Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None):
-            pass
-        def Humidity_Sensor(identifier=HS["HM"],sensor_id=HS["sensor_id"],sensor_name=HS["sensor_name"],attributes=None, account=None):
-            pass
-        def Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attributes=None, account=None):
-            pass
-        def Sensor_Readings(identifier=HS["SR"], attributes=None, account=None):
-            pass
+        
 
         
     
-        
     def to_RDF(self):
         Entity.to_RDF(self)
         self.rdftriples[self.identifier][rdf['type']] = prov['Sensor']
+        self.rdftriples[self.identifier][rdf['type']] = HS['sensor_type']
         return self.rdftriples
 
     
