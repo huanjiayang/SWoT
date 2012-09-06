@@ -166,30 +166,58 @@ ser.close()
             
 #---------------------Home Sensor Model Instance based on serial message received-------------------------------
 
-#within that function you create all the appropriate instances based on what is in the message, 
-#and put them into your PROVSTORE.
+#create all the appropriate instances based on what is in the message 
+
 
 Agent0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
 Agent1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
 Agent2 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
-Agent3 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
-Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
-Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,temperature_sensor=None, light_sensor=None,humidity_sensor=None,attributes=None, account=None)
+Agent3 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
+
+Agent4 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,attributes=None, account=None)
+Agent5 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,attributes=None, account=None)
+Agent6 = Sensor(identifier=HS["Sensor"], sensor_id=None, sensor_name=None,attributes=None, account=None)
 
 
-#Ent0 = Temperature_Sensor(activity=None, identifier=HS["TS"], attributes=None, account=None)
-#Ent1 = Humidity_Sensor(identifier=HS["HM"],sensor_id=HS["sensor_id"],sensor_name=HS["sensor_name"],attributes=None, account=None)
-#Ent2 = Light_Sensor(identifier=HS["LS"], sensor_id=None, sensor_name=None, attributes=None, account=None)
-#Ent3 = Sensor_Readings(identifier=HS["SR"], attributes=None, account=None)
-#Ent4 = observation(identifier=HS["ob"], attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None)
-
-
+#activity instance in the model
 Activity0 = Network_Organization(identifier=HS["NO"], network_id=None, sensor_name=None, attributes=None, account=None,starttime=None, endtime=None,)
 Activity1 = Discovery(identifier=HS["D"], sensor_id=None, sensor_name=None, attributes=None, account=None)
 Activity2 = Query(identifier=HS["Q"], attributes=None, account=None)
 Activity3 = Sensor_Node_Activity(identifier=HS["SNA"], attributes=None, account=None)
 Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None)
 Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=None)
+
+
+# entity instance in the Model
+Entity0 = Entity(identifier=None, attributes=None, account=None)
+Entity1 = Entity(identifier=None, attributes=None, account=None)
+
+
+
+# relationship between 3 sensor nodes(agent) and sensor network(agent)
+aOB0 = actedOnBehalfOf(subordinate=Agent1, responsible=Agent0, identifier=None, attributes=None, account=None)
+aOB1 = actedOnBehalfOf(subordinate=Agent2, responsible=Agent0, identifier=None, attributes=None, account=None)
+aOB2 = actedOnBehalfOf(subordinate=Agent3, responsible=Agent0, identifier=None, attributes=None, account=None)
+
+
+# relationship between 3 sensor nodes(agent) and their sensors(agent)
+
+aOB3 = actedOnBehalfOf(subordinate=Agent4, responsible=Agent1, identifier=None, attributes=None, account=None)
+aOB4 = actedOnBehalfOf(subordinate=Agent5, responsible=Agent2, identifier=None, attributes=None, account=None)
+aOB5 = actedOnBehalfOf(subordinate=Agent6, responsible=Agent3, identifier=None, attributes=None, account=None)
+
+
+# relationship between sensors(agent) and sensor reading activity(activity)
+
+wAW0 = wasAssociatedWith(activity=Activity4, agent=Agent4, identifier=HS["wAW0"], attributes=tripledict, account=None)
+wAW1 = wasAssociatedWith(aactivity=Activity4, agent=Agent5, identifier=HS["wAW1"], attributes=tripledict, account=None)
+wAW2 = wasAssociatedWith(activity=Activity4, agent=Agent6, identifier=HS["wAW2"], attributes=tripledict, account=None)
+
+
+# relationship between sensors(agent) and entities(entity)
+wAT0 = wasAttributedTo(entity=Entity0, agent=Agent4, identifier=HS["wAT0"], attributes=None, account=None)
+wAT1 = wasAttributedTo(entity=Entity0, agent=Agent5, identifier=HS["wAT1"], attributes=None)
+wAT2 = wasAttributedTo(entity=Entity0, agent=Agent6, identifier=HS["wAT2"], attributes=None)
 
 
 #---------------------Function to check or add Home Sensor Model Instances--------------------------
@@ -270,7 +298,7 @@ def addtoStore(data,sensor_data,sensor_type):
         type3_3_value = data[20]
         
         
-        type4 = data[14]
+        type4 = data[21]
         
         
         if sensor_type == mac_address1:
