@@ -32,142 +32,22 @@ from pyprov.model.bundle import *
 from Home_Sense_Model import *
 
 
+DC = Namespace('http://purl.org/dc/elements/1.1/')
+FOAF = Namespace('http://xmlns.com/foaf/0.1/')
+HS = PROVNamespace('hs','http://homesensor.com/#')
+SN = Namespace('sn',"http://homesensor.com/schemas/sensor_network#")
+SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
+RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
+prov = Namespace("http://www.w3.org/ns/prov-dm/")
+TIME_1 = Namespace('sensors',"http://www.homesensor.com/TIME#")
+rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
 
-#api = twitter.Api(consumer_key='your key here', consumer_secret='your key here', access_token_key='your key here', access_token_secret='your key here')
-#
-## Twitter username & password
-#twitterusername = "sense_AY"
-#twitterpassword = "sensorbizy_007"
-#
-#
-#def TwitterIt(u, p, message):
-#    api = twitter.Api(username=u, password=p)
-#    print u, p
-#    try:
-#        status = api.PostUpdate(message)
-#        print "%s just posted: %s" % (status.user.name, status.text)
-#    except UnicodeDecodeError:
-#        print "Your message could not be encoded."
-#        print "Try explicitly specifying message"
-#    except:
-#        print "Couldn't connect, check network, username and password!"
-#
-#
-#
-#
-#
-##ser = serial.Serial('COM12',baudrate=115200,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_TWO,bytesize=serial.SEVENBITS)  # open first serial port
-##print ser.portstr       # check which port was really used
-###data = ser.read(10)
-##data = str(ser.readline());
-###line = ser.readline()
-##print data     # write a string
-##ser.close()             # close port
-
-
-# Definitions for start-time and end-time to be used for sensor data
-hours=0
-minutes = 0
-seconds = 0
-microseconds = 0
-endtime = datetime.datetime.now()
-delta = datetime.timedelta(hours=float(hours),minutes=float(minutes),seconds=float(seconds),microseconds=float(microseconds))
-starttime = endtime - delta
-print endtime
-print starttime
-
-
-
-
-
-
-
-
-        
-    
-
-
-#ser = serial.Serial(0)  # open first serial port
-try:
-        ser = serial.Serial('COM12',115200,timeout=1,parity=serial.PARITY_NONE,
-              stopbits=serial.STOPBITS_ONE,
-              bytesize=serial.EIGHTBITS,
-              )
-        print ser.portstr 
-        status = ser.read()
-#        #Post status to twitter
-#        api.PostUpdate(status.text)
-        time.sleep(3600)  ##sleep for 3600 seconds
-#        ser.open()
-except:
-        print "Could not open serial port: ", sys.exc_info()[0]
-        sys.exit(2)
-
-print ser.portstr       # check which port was really used
-#ser.write("hello")      # write a string
-
-while True:
-    ser.flushInput()
-    data = str(ser.read(100).strip());
-    data = data.replace("\n","").replace("\r","")
-    data = data.split(",")
-    try:
-        
-        if len(data) > 0:
-            data.append(('timestamp:', time.asctime()))
-            #print 'Got:', data
-  
-        
-#        data = int("data",16)
-#        ADC_value = raw_value / 10
-#        temperature = (ADC_value - 500) / 10                               
-#        time.sleep(0.5)
-        
-#        data = struct.unpack('>fff', data)
-#        data = struct.unpack('B', data)
-
-        print "data: ", data
-        
-        
-      
-
-#        print 'not blocked'
-
-
- 
-
-
-    except KeyboardInterrupt:
-        break
-
-
-ser.close()
-
-
-
-
-#
-#def sensor_detail(self,get_sample,sensor,Node):
-#    get_sample = self.get_temperature
-#    get_sample = self.get_humidity
-#    get_sample = self.get_Light
-#    values = get_sample()
-#    data.append(values)
-#    if len(data) > 0:
-#        data.pop(0)
-#    result = []
-#    for sensor in data[0]:
-#        result .append([])
-#    for sample in data:
-#        for sensor_id in range(len(sample)):
-#            value = sample[sensor_id]
-#            result[sensor_id].append(value)
             
             
 #---------------------Home Sensor Model Instance based on serial message received-------------------------------
 
 #create all the appropriate instances based on what is in the message 
-
+#remove hardcodings below
 
 Agent0 = Sensor_Network(identifier=HS["SN"], attributes=None, account=None)
 Agent1 = Sensor_Node(identifier=HS["Sensor_Node"], attributes=HS["sensor_id"], account=None, sensor_id=HS["sensor_id"], sensor_name=HS["sensor_name"])
@@ -242,6 +122,9 @@ wAT2 = wasAttributedTo(entity=Entity0, agent=Agent6, identifier=HS["wAT2"], attr
 #sensor_dict = [ag0, Agt0,Agt1,Agt2,Ent0,Ent1,Ent2,Ent3,Ent4,Avt0,Avt1,Avt2,Avt3,Avt4]
 #sense_instance(sensor_dict, sensor_graph.store)
 # Open serial Port for sensor data
+
+sensor_graph=Mystore('mystore', 'mystore')
+
 try:
         ser = serial.Serial('COM12',115200,timeout=1,parity=serial.PARITY_NONE,
               stopbits=serial.STOPBITS_ONE,
@@ -256,104 +139,102 @@ except:
 while True:
     data = str(ser.read(100).strip());
     data = data.replace("\n","").replace("\r","")
-    data = data.split(",")
-try:
-    if len(data) > 0:
-        data.append(('timestamp:', time.asctime())) 
-# Print sensor data              
-    print "data: ", data
-except:
+    msglist = data.split(";")
+    for msg in msglist:
+        msg = msg.split(",")
+    try:
+        #if len(data) > 0:
+        #    data.append(('timestamp:', time.asctime())) 
+    # Print sensor data              
+        print "data: ", msg
+        msg_timestamp = time.asctime()
+        addtoStore(msg, msg_timestamp)
+    except:
         print "No data from serial port: ", sys.exc_info()[1]
         sys.exit(2)
-        data(addtoStore)   
+    
+   
 
 
-def addtoStore(data,sensor_data,sensor_type):
+def addtoStore(msg,msg_timestamp):
     
 
 # Create appropriate instances(based on Home Sensor Model) for sensor data
-    for data in sensor_data:
-        mac_address1 = data[0]
-        type1 = data[1]
-        type1_value = data[2]
-        type2 = data[3]
-        type2_value = data[4]
-        type3 = data[5]
-        type3_value = data[6]
+    mac_address = msg[0]
+    type1 = msg[1]
+    type1_value = msg[2]
+    type2 = msg[3]
+    type2_value = msg[4]
+    type3 = msg[5]
+    type3_value = msg[6]    
+
+    sn1 = Sensor_Node(identifier=HS[mac_address])
+    sensor_graph.addPROVInstance(sn1)
+    
+    sensor1 = Sensor(identifier=HS[mac_address+'_1'],sensor_type=type1)
+    sensor_reading1 = Sensor_Readings(identifier=HS[str(uuid.uuid1())], value=type1_value)
+    # do the relations her as well
+    
+    
+    # do the same, except the sensor node, for type2 and type3
+    
+
+
+# get rid of the rest
+'''    
+    if sensor_type == mac_address1:
+        Agent1 = Sensor_Node(identifier=mac_address1)
+        if sensor_type == type1:
+            Agent3 = Sensor(identifier=type1,attributes=None, account=None)
+            Activity3 = Sensor_Reading_Activity(identifier=type1_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        elif sensor_type == type2:
+            Agent4 = Sensor(identifier=type2, attributes=None, account=None)
+            Activity4 = Sensor_Reading_Activity(identifier=type2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        elif sensor_type == type3:
+            Agent5 = Sensor(identifier=type3, attributes=None, account=None)
+            Activity5 = Sensor_Reading_Activity(identifier=type3_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)   
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        else:
+            print sensor_data + " does not contain required information."
         
-        mac_address2 = data[7]
-        type1_2 = data[8] 
-        type1_2_value = data[9]
-        type2_2 = data[10]
-        type2_2_value = data[11]
-        type3_2 = data[12]
-        type3_2_value = data[13]
-        
-        mac_address3 = data[14]
-        type1_3 = data[15] 
-        type1_3_value = data[16]
-        type2_3 = data[17]
-        type2_3_value = data[18]
-        type3_3 = data[19]
-        type3_3_value = data[20]
-        
-        
-        type4 = data[21]
-        
-        
-        if sensor_type == mac_address1:
-            Agent1 = Sensor_Node(identifier=mac_address1)
-            if sensor_type == type1:
-                Agent3 = Sensor(identifier=type1,attributes=None, account=None)
-                Activity3 = Sensor_Reading_Activity(identifier=type1_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            elif sensor_type == type2:
-                Agent4 = Sensor(identifier=type2, attributes=None, account=None)
-                Activity4 = Sensor_Reading_Activity(identifier=type2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            elif sensor_type == type3:
-                Agent5 = Sensor(identifier=type3, attributes=None, account=None)
-                Activity5 = Sensor_Reading_Activity(identifier=type3_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None)   
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            else:
-                print sensor_data + " does not contain required information."
-            
-        elif sensor_type == mac_address2:
-            Agent2 = Sensor_Node(identifier=mac_address2)
-            if sensor_type == type1_2:
-                Agent3 = Sensor(identifier=type1_2,  attributes=None, account=None)
-                Activity3 = Sensor_Reading_Activity(identifier=type1_2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            elif sensor_type == type2_2:
-                Agent4 = Sensor(identifier=type2_2, attributes=None, account=None,)
-                Activity4 = Sensor_Reading_Activity(identifier=type2_2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            elif sensor_type == type3_2:
-                Agent5 = Sensor(identifier=type3_2, attributes=None, account=None)
-                Activity5 = Sensor_Reading_Activity(identifier=type3_2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)   
-            else:
-                print sensor_data + " does not contain required information."
-                 
-        elif sensor_type == mac_address3:
-            Agent3 = Sensor_Node(identifier=mac_address3)
-            if sensor_type == type1_3:
-                Agent3 = Sensor(identifier=type1_3, attributes=None, account=None)
-                Activity3 = Sensor_Reading_Activity(identifier=type1_3_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            elif sensor_type == type2_3:
-                Agent4 = Sensor(identifier=type2_3,  attributes=None, account=None,)
-                Activity4 = Sensor_Reading_Activity(identifier=type2_3_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
-            elif sensor_type == type3_3:
-                Agent5 = Sensor(identifier=type3_3,  attributes=None, account=None)
-                Activity5 = Sensor_Reading_Activity(identifier=type3_3_value, attributes=None, account=None, Sensor_Reading=type3_3_value, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
-                wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)   
-            else:
-                print sensor_data + " does not contain required information."
-        # close serial port    
-        ser.close()
-   
+    elif sensor_type == mac_address2:
+        Agent2 = Sensor_Node(identifier=mac_address2)
+        if sensor_type == type1_2:
+            Agent3 = Sensor(identifier=type1_2,  attributes=None, account=None)
+            Activity3 = Sensor_Reading_Activity(identifier=type1_2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        elif sensor_type == type2_2:
+            Agent4 = Sensor(identifier=type2_2, attributes=None, account=None,)
+            Activity4 = Sensor_Reading_Activity(identifier=type2_2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        elif sensor_type == type3_2:
+            Agent5 = Sensor(identifier=type3_2, attributes=None, account=None)
+            Activity5 = Sensor_Reading_Activity(identifier=type3_2_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)   
+        else:
+            print sensor_data + " does not contain required information."
+             
+    elif sensor_type == mac_address3:
+        Agent3 = Sensor_Node(identifier=mac_address3)
+        if sensor_type == type1_3:
+            Agent3 = Sensor(identifier=type1_3, attributes=None, account=None)
+            Activity3 = Sensor_Reading_Activity(identifier=type1_3_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        elif sensor_type == type2_3:
+            Agent4 = Sensor(identifier=type2_3,  attributes=None, account=None,)
+            Activity4 = Sensor_Reading_Activity(identifier=type2_3_value, attributes=None, account=None, Sensor_Reading=None, starttime=None, endtime=None, Light=None,Temperature=None,Humidity=None,sensor_type=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)
+        elif sensor_type == type3_3:
+            Agent5 = Sensor(identifier=type3_3,  attributes=None, account=None)
+            Activity5 = Sensor_Reading_Activity(identifier=type3_3_value, attributes=None, account=None, Sensor_Reading=type3_3_value, starttime=None, endtime=None,Light=None,Temperature=None,Humidity=None,sensor_type=None)
+            wAW0 = wasAssociatedWith(a0, ag1, identifier=HS["wAW0"], attributes=tripledict)   
+        else:
+            print sensor_data + " does not contain required information."
+    # close serial port    
+    #ser.close()
+'''   
     
 #    
 #URL_HOME_SENSOR = 'http://localhost:8080/homesensorcom/'

@@ -73,8 +73,11 @@ class Sensor_Node(Agent):
 
 class Sensor(Agent):
     def __init__(self, identifier=None,sensor_id=None,sensor_name=None,sensor_type=None,attributes=None, account=None):
-        self.attributes.update({HS["sensor_id"]:sensor_id,
-                           HS["sensor_name"]:sensor_name})
+        if sensor_id is not None:
+            self.attributes.update({HS["sensor_id"]:sensor_id})
+        if sensor_name is not None:
+            self.attributes.update({HS["sensor_name"]:sensor_name})
+
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1())
         Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
@@ -91,7 +94,7 @@ class Sensor(Agent):
     def to_RDF(self):
         Entity.to_RDF(self)
         self.rdftriples[self.identifier][rdf['type']] = prov['Sensor']
-        self.rdftriples[self.identifier][rdf['type']] = HS['sensor_type']
+        self.rdftriples[self.identifier][HS['sensor_type']] = HS[sensor_type]
         return self.rdftriples
 
     
@@ -167,6 +170,7 @@ class Sensor_Readings(Entity):
     def _toRDF(self):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Readings']
+        self.rdftriples[self.identifier][HS['value']] = Literal(value)
         return self.rdftriples   
     
 #class observation(Entity):
