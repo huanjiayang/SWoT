@@ -94,7 +94,7 @@ class Sensor(Agent):
     def to_RDF(self):
         Entity.to_RDF(self)
         self.rdftriples[self.identifier][rdf['type']] = prov['Sensor']
-        self.rdftriples[self.identifier][HS['sensor_type']] = HS[sensor_type]
+        self.rdftriples[self.identifier][HS['sensor_type']] = HS['sensor_type']
         return self.rdftriples
 
     
@@ -170,8 +170,9 @@ class Sensor_Readings(Entity):
     def _toRDF(self):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Readings']
-        self.rdftriples[self.identifier][HS['value']] = Literal(value)
-        return self.rdftriples   
+        self.rdftriples[self.identifier][HS['value']] = Literal('value')
+        return self.rdftriples 
+      
     
 #class observation(Entity):
 #    def __init__(self, identifier=None, attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None):
