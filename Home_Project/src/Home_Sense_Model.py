@@ -52,14 +52,13 @@ class Sensor_Network(Entity):
 
 class Sensor_Node(Agent):
     
-    def __init__(self, identifier, sensor_id, sensor_name, attributes, account):
+    def __init__(self, identifier,attributes, sensor_id, sensor_name, account=None):
         #self.sensor_id = sensor_id
         
-        self.attributes.update({HS["sensor_id"]:sensor_id,
-                           HS["sensor_name"]:sensor_name})
-        if identifier is None:
-            identifier = 'urn:uuid:' + str(uuid.uuid1())
-        Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
+#        self.attributes.update({HS["sensor_id"]:sensor_id,HS["sensor_name"]:sensor_name})
+#        if identifier is None:
+#            identifier = 'urn:uuid:' + str(uuid.uuid1())
+        Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -138,7 +137,7 @@ class Query(Activity):
         return self.rdftriples
     
 class Sensor_Node_Activity(Network_Organization): 
-    def __init__(self, identifier=None, attributes=None, account=None):
+    def __init__(self, identifier=None, attributes=None, account=None, Sensor_Reading=None):
         Activity.__init__(identifier=identifier,starttime=None,endtime=None,attributes=attributes,account=account)
         self.identifier = identifier
         
@@ -149,13 +148,13 @@ class Sensor_Node_Activity(Network_Organization):
     
     
 class Sensor_Reading_Activity(Activity): 
-    def __init__(self, identifier=None, attributes=None, account=None, starttime=None, endtime=None, sensor_type=None):
+    def __init__(self, identifier=None, attributes=None, account=None, starttime=None, endtime=None, sensor_type=None,Sensor_Reading=None):
         Activity.__init__(self, identifier=identifier,starttime=None,endtime=None,attributes=attributes,account=account)
         self.identifer = identifier
         
    
     def _toRDF(self):
-        Entity._toRDF(self)
+        Activity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Reading_Activity']
         return self.rdftriples
         

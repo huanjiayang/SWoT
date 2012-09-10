@@ -89,13 +89,13 @@ def addtoStore(msg,msg_timestamp):
     S_Network = Sensor_Network(identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sensor_graph.addPROVInstance(S_Network) 
 
-    sn1 = Sensor_Node(identifier=HS[mac_address],attributes=None, account=None)
+    sn1 = Sensor_Node(identifier=HS[mac_address],attributes=None,sensor_id=None, sensor_name=None, account=None)
     sensor_graph.addPROVInstance(sn1)
     
-    sn2 = Sensor_Node(identifier=HS[mac_address],attributes=None, account=None)
+    sn2 = Sensor_Node(identifier=HS[mac_address],attributes=None,sensor_id=None, sensor_name=None, account=None)
     sensor_graph.addPROVInstance(sn2)
     
-    sn3 = Sensor_Node(identifier=HS[mac_address],attributes=None, account=None)
+    sn3 = Sensor_Node(identifier=HS[mac_address],attributes=None,sensor_id=None, sensor_name=None, account=None)
     sensor_graph.addPROVInstance(sn3)
     
     sensor1 = Sensor(identifier=HS[mac_address+'_1'],sensor_type=type1,attributes=None, account=None)
@@ -117,23 +117,23 @@ def addtoStore(msg,msg_timestamp):
     sensor_reading3 = Sensor_Readings(identifier=HS[str(uuid.uuid1())], value=type3_value, attributes=None, account=None)
     sensor_graph.addPROVInstance(sensor_reading3)
     
-    Activity4 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=sensor_reading1)
+    Activity4 = Sensor_Reading_Activity(identifier=HS[str(uuid.uuid1())], attributes=None, account=None, Sensor_Reading=sensor_reading1)
     sensor_graph.addPROVInstance(Activity4)
     
-    Activity5 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=sensor_reading2)
+    Activity5 = Sensor_Reading_Activity(identifier=HS[str(uuid.uuid1())], attributes=None, account=None, Sensor_Reading=sensor_reading2)
     sensor_graph.addPROVInstance(Activity5)
     
-    Activity6 = Sensor_Reading_Activity(identifier=HS["SRA"], attributes=None, account=None, Sensor_Reading=sensor_reading3)
+    Activity6 = Sensor_Reading_Activity(identifier=HS[str(uuid.uuid1())], attributes=None, account=None, Sensor_Reading=sensor_reading3)
     sensor_graph.addPROVInstance(Activity6)
     
     # entity instance in the Model
-    Entity0 = Entity(identifier=None, attributes=None, account=None)
+    Entity0 = Entity(identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sensor_graph.addPROVInstance(Entity0)
     
-    Entity1 = Entity(identifier=None, attributes=None, account=None)
+    Entity1 = Entity(identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sensor_graph.addPROVInstance(Entity1)
     
-    Entity2 = Entity(identifier=None, attributes=None, account=None)
+    Entity2 = Entity(identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sensor_graph.addPROVInstance(Entity2)
     
     # do the relations here as well
@@ -184,12 +184,13 @@ def addtoStore(msg,msg_timestamp):
     wAT2 = wasAttributedTo(entity=Entity2, agent=sensor3, identifier=HS["wAT2"], attributes=None, account=None)
     sensor_graph.addPROVInstance(wAT2)
     
-    
+    return msg
 
 data = ['Node: 8766 Temp: 23 Humidity: 65 Light: 4Node: 3fb7 Temp: 22 Humidity: 65 Light: 4']
-msg = str(data)
 
-msglist = msg.split(":")
+msg = str(data)
+msg = msg.replace("\n","").replace("\r","")
+msglist = msg.split(",")
 
 for msg in msglist:
     
