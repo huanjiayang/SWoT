@@ -99,7 +99,7 @@ class PROVNamespace(PROVIdentifier):
         
 xsd = PROVNamespace("xsd",'http://www.w3.org/2001/XMLSchema-datatypes#')
 prov = PROVNamespace("prov",'http://www.w3.org/ns/prov-dm/')
-rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
+rdf = PROVNamespace("rdf","http://www.w3.org/2000/01/rdf-schema#")
 
 
 class Record(object):

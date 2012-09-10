@@ -1,3 +1,6 @@
+v1.0.6, 17/08/2012  --  Bug fixes to rdf triple export
+* Corrected the RDF.type URL
+
 v1.0.5, 17/08/2012  --  Bug fixes to rdf triple export
 * Bug fixes
 
