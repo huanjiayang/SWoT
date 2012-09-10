@@ -23,7 +23,7 @@ HS = PROVNamespace('hs', "http://homesensor.com/")
 SN = Namespace('sn', "http://homesensor.com/schemas/sensor_network#")
 RDF = Namespace('"http://www.w3.org/2000/01/rdf-schema#')
 PROV = Namespace("http://www.w3.org/ns/prov-dm/")
-rdf = PROVNamespace("rdf", "http://www.w3.org/TR/rdf-schema/#")
+rdf = PROVNamespace("rdf", "http://www.w3.org/2000/01/rdf-schema#")
 
 
 #u = str(uuid.uuid1())
@@ -43,9 +43,9 @@ class Sensor_Network(Entity):
             identifer = 'urn:uuid:' + str(uuid.uuid1())
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
 
-    def to_RDF(self):
-        Entity.to_RDF(self)
-        self.rdftriples[self.identifier][rdf['type']] = prov['Sensor_Network']
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Network']
         return self.rdftriples
 
 
@@ -71,29 +71,17 @@ class Sensor_Node(Agent):
 
 
 class Sensor(Agent):
-    def __init__(self, identifier=None,sensor_id=None,sensor_name=None,sensor_type=None,attributes=None, account=None):
-        if sensor_id is not None:
-            self.attributes.update({HS["sensor_id"]:sensor_id})
-        if sensor_name is not None:
-            self.attributes.update({HS["sensor_name"]:sensor_name})
-
+    def __init__(self, identifier=None, sensor_type=None, attributes=None, account=None):
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1())
         Agent.__init__(self, identifier=identifier, attributes=attributes, account=account)
          
         self.sensor_type = sensor_type
-        self.sensor_id = sensor_id
-        
-        
-        
-        
-
-        
     
-    def to_RDF(self):
-        Entity.to_RDF(self)
-        self.rdftriples[self.identifier][rdf['type']] = prov['Sensor']
-        self.rdftriples[self.identifier][HS['sensor_type']] = HS['sensor_type']
+    def _toRDF(self):
+        Entity._toRDF(self)
+        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
+        self.rdftriples[self.identifier][HS['sensor_type']] = HS[self.sensor_type]
         return self.rdftriples
 
     
@@ -148,8 +136,8 @@ class Sensor_Node_Activity(Network_Organization):
     
     
 class Sensor_Reading_Activity(Activity): 
-    def __init__(self, identifier=None, attributes=None, account=None, starttime=None, endtime=None, sensor_type=None,Sensor_Reading=None):
-        Activity.__init__(self, identifier=identifier,starttime=None,endtime=None,attributes=attributes,account=account)
+    def __init__(self, identifier=None, attributes=None, account=None, starttime=None, endtime=None, Sensor_Reading=None):
+        Activity.__init__(self, identifier=identifier,starttime=starttime,endtime=endtime,attributes=attributes,account=account)
         self.identifer = identifier
         
    
@@ -162,14 +150,14 @@ class Sensor_Reading_Activity(Activity):
 class Sensor_Readings(Entity):
     def __init__(self, identifier=None, attributes=None, account=None, value=None):
         Entity.__init__(self,identifier=identifier,attributes=attributes,account=account)
-        self.reading = value
+        self.value = value
         self.identifier = identifier
         
         
     def _toRDF(self):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Sensor_Readings']
-        self.rdftriples[self.identifier][HS['value']] = Literal('value')
+        self.rdftriples[self.identifier][HS['value']] = Literal(self.value)
         return self.rdftriples 
       
     

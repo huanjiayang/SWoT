@@ -31,7 +31,7 @@ SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
 TIME_1 = Namespace('sensors',"http://www.homesensor.com/TIME#")
-rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
+rdf = PROVNamespace("rdf","http://www.w3.org/2000/01/rdf-schema#")
 
 
 #webgraph = PROVContainer()
@@ -313,125 +313,7 @@ class HS_Network:
         return json.dumps(returndict)
     
     
-    
-class PROVBuilder:
-    
-    def __init__(self):
-        self.container = PROVContainer()
-        
-        
-    def traverseStore(self,RDFstore):
-        print "let's see what we have in store:"
-        print str(RDF.type)
-        for s,p,o in RDFstore:
-            print s,p,o
-        for RDFtype_triple in RDFstore.triples((None, RDF.type, None)):
-            sub = RDFtype_triple[0]
-            print 'sub = '
-            print sub
-            rdftype = RDFtype_triple[2]
-            print 'type'
-            print rdftype
-            attrdict = {}
-            for attr in RDFstore.triples((sub, None, None)):
-                if not attr[1] == RDF.type:
-                    attrdict[attr[1]] = attr[2]
-            #if entity matches add to container
-            if rdftype == prov['Entity']:
-                print 'Entity found'
-                e = Entity(str(sub),attributes=attrdict)
-                self.container.add(e)
-            elif rdftype == prov['Activity']:
-                print 'Activity found'
-                for Activity_triple in RDFstore.triples((sub, prov['starttime'], None)):
-                    starttime = Activity_triple[2]
-                a = Activity(str(sub),attributes=attrdict,starttime=starttime)
-                self.container.add(a)
-            elif rdftype == prov['wasGeneratedBy']:
-                print 'wGB found'
-                for Activity_triple in RDFstore.triples((sub, prov['wasGeneratedBy'], None)):
-                    wasGeneratedBy = Activity_triple[2]
-                for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entity = relation_triple[2]
-                for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
-                        activity = relation_triple[2]
-                gb = wasGeneratedBy(entity, activity, identifier=str(sub))
-                self.container.add(gb)
-            elif rdftype == prov['wasStartedByActivity']:
-                print 'wSBA found'
-                for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
-                    wasStartedByActivity = Activity_triple[2]
-                for relation_triple in RDFstore.triples((sub, prov['started'], None)):
-                        started = relation_triple[2]
-                for relation_triple in RDFstore.triples((sub, prov['starter'], None)):
-                        starter = relation_triple[2]
-                sba = wasStartedByActivity(started, starter, identifier=str(sub))
-                self.container.add(sba)
-            elif rdftype == prov['wasStartedBy']:
-                print 'wSB found'
-                for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
-                    wasStartedBy = Activity_triple[2]
-                for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entity = relation_triple[2]
-                for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
-                        activity = relation_triple[2]
-                sb = wasStartedBy(activity,entity,identifier=str(sub))
-                self.container.add(sb)
-            elif rdftype == prov['wasAssociatedWith']:
-                print 'wAW found'
-                for relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
-                    wasAssociatedWith = relation_triple[2]
-                    entity = None
-                    agent = None
-                    
-                    for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entity = relation_triple[2]
-                    for relation_triple in RDFstore.triples((sub, prov['agent'], None)):
-                        agent = relation_triple[2]
-                    for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
-                        activity = relation_triple[2]
-                                     
-                    if not entity == None:
-                        print activity, "wasAssociatedWith", entity
-                    else:
-                        print activity, "wasAssociatedWith", agent
-                    aw = wasAssociatedWith(activity, agent, identifier=str(sub))
-                    self.container.add(aw)
-                
-            elif rdftype == prov['wasDerivedFrom']:
-                print 'wDF found'
-                for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
-                    wasDerivedFrom = Relation_triple[2]
-                for Relation_triple in RDFstore.triples((sub, prov['generatedentity'], None)):
-                    generatedentity = Relation_triple[2]
-                for Relation_triple in RDFstore.triples((sub, prov['usedentity'], None)):
-                    usedentity = Relation_triple[2]  
-                df = wasDerivedFrom(generatedentity, usedentity, identifier=str(sub))
-                self.container.add(df)  
-            elif rdftype == prov['actedOnBehalfOf']:
-                print 'aOBO'
-                for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
-                    responsible = Relation_triple[2]
-                for Relation_triple in RDFstore.triples((sub,prov['subordinate'], None)):
-                    subordinate = Relation_triple[2]
-                print subordinate, "actedOnBehalfOf", responsible
-                ob = actedOnBehalfOf(subordinate,responsible,identifier=str(sub))
-                self.container.add(ob)
-                
-                
-            elif rdftype == prov['wasAttributedTo']:
-                print 'wAT'
-                #for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
-                 #   wasAttributedTo = Relation_triple[2]
-                #at = wasAttributedTo(str) 
-                #self.container.add(at)
-                 
-                for Relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                    entity = Relation_triple[2]
-                for Relation_triple in RDFstore.triples((sub, prov['agent'], None)):
-                    agent = Relation_triple[2]
-                at = wasAttributedTo(entity, agent, identifier=str(sub))
-                self.container.add(at)
+
            
                 
 class test:
@@ -442,15 +324,15 @@ class test:
         return json.dumps(builder.container.to_provJSON())
     
 
-class Sensor(Entity):
-    
-    def __init__(self,identifier,attributes=None,account=None):
-        Entity.__init__(self,identifier=identifier, attributes=attributes, account=account)
-        
-    def _toRDF(self):
-        Entity._toRDF(self)
-        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
-        return self.rdftriples
+#class Sensor(Entity):
+#    
+#    def __init__(self,identifier,attributes=None,account=None):
+#        Entity.__init__(self,identifier=identifier, attributes=attributes, account=account)
+#        
+#    def _toRDF(self):
+#        Entity._toRDF(self)
+#        self.rdftriples[self.identifier][rdf['type']] = HS['Sensor']
+#        return self.rdftriples
 
     
 if __name__ == "__main__":
