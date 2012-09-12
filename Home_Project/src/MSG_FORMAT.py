@@ -12,18 +12,9 @@ from time import sleep
 import socket
 import serial
 import struct
-#import matplotlib
 import re
-#import requests
 import json
-#import numpy
-#import matplotlib
-#import twitter
-#import wx
-#from webtry import *
 import uuid
-#from matplotlib.pyplot import *
-#from pylab import *
 from pyprov.model.type import *
 from pyprov.model.relation import *
 from pyprov.model.bundle import *
@@ -55,29 +46,52 @@ class PROVBuilder:
     def __init__(self):
         self.container = PROVContainer()
         
-    def _createEntity_Agent(self,entityURI, RDFstore):
+    def _createEntity_Agent(self,entityURI, RDFstore, RDFStore):
         sss = None
         for ttt in RDFstore.triples((entityURI,RDFS['type'],None)):
             entity_type = ttt[2]
         if entity_type == HS['Sensor']:
-            for styptriple in RDFStore.triples((entityURI,HS['sensor_type'],None)):
+            for stypetriple in RDFStore.triples((entityURI,HS['sensor_type'],None)):
                 sensor_type = stypetriple[2]
             sss = Sensor(identifier = entityURI,sensor_type=sensor_type)
         elif entity_type == HS['Sensor_Node']:
             sss = Sensor_Node(identifier = entityURI)
         elif entity_type == HS['Sensor_Network']:
             sss = Sensor_Network(identifier = entityURI)
-        elif entity_type == HS['Sensor_Reading']:
-            
-            sss = Sensor_Reading(identifier = entityURI)
-            
+        elif entity_type == HS['Sensor_Readings']:
+            for stypetriple in RDFStore.triples((entityURI,HS['value'],None)):
+                value = stypetriple[2]
+            sss = Sensor_Readings(identifier = entityURI,value=value )
         return sss
+    
 
-    def _createActivity(self,activityURI):
+    def _createActivity(self,activityURI,RDFStore):
         for ttt in RDFStore.triples((activityURI,RDFS['type'],None)):
             entity_type = ttt[2]
         if entity_type == HS['Sensor']:
             sss = Sensor(identifier = activityURI)
+        elif entity_type == HS['Sensor_Node']:
+            sss = Sensor_Node(identifier = activityURI)
+        elif entity_type == HS['Sensor_Network']:
+            sss = Sensor_Network(identifier = activityURI)
+        elif entity_type == HS['Sensor_Reading_Activity']:
+            sss = Sensor_Reading_Activity(identifier = activityURI)
+        elif entity_type == HS['Network Organization']:
+            for stypetriple in RDFStore.triples((activityURI,HS['starttime'],None)):
+                starttime = stypetriple[2]
+            sss = Network_Organization(identifier = activityURI)
+        elif entity_type == HS['Discovery']:
+            for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
+                starttime = stypetriple[2]
+            sss = Discovery(identifier = activityURI)
+        elif entity_type == HS['Query']:
+            for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
+                starttime = stypetriple[2]
+            sss = Query(identifier = activityURI)
+        elif entity_type == HS['Sensor_Node_Activity']:
+            for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
+                starttime = stypetriple[2]
+            sss = Sensor_Node_Activity(identifier = activityURI)
         return sss
         
     def traverseStore(self,RDFstore):
@@ -118,7 +132,10 @@ class PROVBuilder:
                             
                             
                 for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
-                        activity = relation_triple[2]
+                    activityURI = relation_triple[2]
+                    activity = self._createActivity(activityURI,RDFstore)
+                    self.container.add(activity)
+                    
                 gb = wasGeneratedBy(entity, activity, identifier=str(sub))
                 self.container.add(gb)
             elif rdftype == prov['wasStartedByActivity']:
@@ -136,9 +153,14 @@ class PROVBuilder:
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedBy'], None)):
                     wasStartedBy = Activity_triple[2]
                 for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entity = relation_triple[2]
+                    entityURI = relation_triple[2]
+                    entity = self._createEntity_Agent(entityURI,RDFstore)
+                    self.container.add(entity)
                 for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
-                        activity = relation_triple[2]
+                    activityURI = relation_triple[2]
+                    activity = self._createActivity(activityURI,RDFstore)
+                    self.container.add(activity)
+                        
                 sb = wasStartedBy(activity,entity,identifier=str(sub))
                 self.container.add(sb)
             elif rdftype == prov['wasAssociatedWith']:
@@ -149,11 +171,17 @@ class PROVBuilder:
                     agent = None
                     
                     for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entity = relation_triple[2]
+                        entityURI = relation_triple[2]
+                        entity = self._createEntity_Agent(entityURI,RDFstore)
+                        self.container.add(entity)
+                        
                     for relation_triple in RDFstore.triples((sub, prov['agent'], None)):
                         agent = relation_triple[2]
                     for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
-                        activity = relation_triple[2]
+                        activityURI = relation_triple[2]
+                        activity = self._createActivity(activityURI,RDFstore)
+                        self.container.add(activity)
+                        
                                      
                     if not entity == None:
                         print activity, "wasAssociatedWith", entity
@@ -186,14 +214,17 @@ class PROVBuilder:
             elif rdftype == prov['wasAttributedTo']:
                 print 'wAT'
                 #for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
-                 #   wasAttributedTo = Relation_triple[2]
+                #   wasAttributedTo = Relation_triple[2]
                 #at = wasAttributedTo(str) 
                 #self.container.add(at)
                  
                 for Relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                    entity = Relation_triple[2]
+                    entityURI = Relation_triple[2]
+                    entity = self._createEntity_Agent(entityURI,RDFstore)
+                    self.container.add(entity)
                 for Relation_triple in RDFstore.triples((sub, prov['agent'], None)):
                     agent = Relation_triple[2]
+                    
                 at = wasAttributedTo(entity, agent, identifier=str(sub))
                 self.container.add(at)
 

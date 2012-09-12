@@ -94,10 +94,12 @@ class Network_Organization(Activity):
         Activity.__init__(self, identifier,starttime,endtime, attributes, account)  
         #Entity.__init__(self, identifier, attributes, account)
         self.identifier = identifier
+        self.starttime = starttime
         
     def _toRDF(self):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Network_Organization']
+        self.rdftriples[self.identifier][HS['starttime']] = HS[self.starttime]
         return self.rdftriples
         
     
@@ -106,11 +108,12 @@ class Discovery(Activity):
     def __init__(self, identifier=None,starttime=None,endtime=None,attributes=None, account=None, sensor_name=None, sensor_id=None):
         Activity.__init__(self, identifier,starttime,endtime, attributes, account)
         self.identifier = identifier
-        self.type = Discovery
+        self.starttime = starttime
         
     def _toRDF(self):
         Entity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Discovery']
+        self.rdftriples[self.identifier][HS['starttime']] = HS[self.starttime]
         return self.rdftriples
         
     
@@ -118,16 +121,19 @@ class Query(Activity):
     def __init__(self, identifier=None,starttime=None, endtime=None, attributes=None, account=None):
         Activity.__init__(self, identifier,starttime,endtime, attributes, account)
         self.identifier = identifier
+        self.starttime = starttime
         
     def _toRDF(self):
         Activity._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = HS['Query']
+        self.rdftriples[self.identifier][HS['starttime']] = HS[self.starttime]
         return self.rdftriples
     
 class Sensor_Node_Activity(Network_Organization): 
     def __init__(self, identifier=None, attributes=None, account=None, Sensor_Reading=None):
         Activity.__init__(identifier=identifier,starttime=None,endtime=None,attributes=attributes,account=account)
         self.identifier = identifier
+        
         
     def _toRDF(self):
         Entity._toRDF(self)

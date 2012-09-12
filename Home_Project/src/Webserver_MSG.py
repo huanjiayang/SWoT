@@ -17,6 +17,9 @@ from pyprov.model.relation import *
 from pyprov.model.bundle import *
 from string import     *
 from Home_Sense_Model import *
+import threading
+import itertools
+
 
 
 DC = Namespace('http://purl.org/dc/elements/1.1/')
@@ -32,7 +35,7 @@ rdf = PROVNamespace("rdf","http://www.w3.org/TR/rdf-schema/#")
 sensor_graph=Mystore('mystore', 'mystore')
 
 
-def addtoStore(msg,msg_timestamp):
+def addtoStore(msg,msg_timestamp, counter):
     
 
 # Create appropriate instances(based on Home Sensor Model) for sensor data
@@ -157,9 +160,12 @@ for msg in msglist:
     
 
     # Print sensor data              
-    print "data: ", msg
+    
     msg_timestamp = datetime.datetime.now()
-    addtoStore(msg, msg_timestamp)
+    counter = itertools.count(0)
+
+    print "data: ", msg
+    addtoStore(msg, msg_timestamp, counter)
 
 class PROVBuilder:
     
@@ -269,7 +275,7 @@ class PROVBuilder:
             elif rdftype == prov['wasAttributedTo']:
                 print 'wAT'
                 #for Relation_triple in RDFstore.triples((sub,prov['wasAttributedTo'], None)):
-                 #   wasAttributedTo = Relation_triple[2]
+                #   wasAttributedTo = Relation_triple[2]
                 #at = wasAttributedTo(str) 
                 #self.container.add(at)
                  
