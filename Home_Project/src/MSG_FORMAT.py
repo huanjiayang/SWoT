@@ -21,6 +21,7 @@ from pyprov.model.bundle import *
 from string import     *
 from rdflib import Namespace, BNode, Literal, RDF, URIRef
 from Home_Sense_Model import *
+import itertools
 
 
 DC = Namespace('http://purl.org/dc/elements/1.1/')
@@ -362,8 +363,10 @@ for msg in msglist:
     # Print sensor data              
     print "data: ", msg
     msg_timestamp = str(datetime.datetime.now())
-    print msg_timestamp
-    addtoStore(msg, msg_timestamp)
+    # Create a counter starting at 10
+    counter = itertools.count(10)
+    print msg_timestamp, counter
+    addtoStore(msg, msg_timestamp, counter)
  
   
 mybuilder = PROVBuilder()
