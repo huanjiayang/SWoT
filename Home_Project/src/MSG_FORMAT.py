@@ -47,9 +47,9 @@ class PROVBuilder:
     def __init__(self):
         self.container = PROVContainer()
         
-    def _createEntity_Agent(self,entityURI, RDFstore, RDFStore):
+    def _createEntity_Agent(self,entityURI, RDFStore):
         sss = None
-        for ttt in RDFstore.triples((entityURI,RDFS['type'],None)):
+        for ttt in RDFStore.triples((entityURI,RDFS['type'],None)):
             entity_type = ttt[2]
         if entity_type == HS['Sensor']:
             for stypetriple in RDFStore.triples((entityURI,HS['sensor_type'],None)):
@@ -167,23 +167,16 @@ class PROVBuilder:
             elif rdftype == prov['wasAssociatedWith']:
                 print 'wAW found'
                 for relation_triple in RDFstore.triples((sub, prov['wasAssociatedWith'], None)):
-                    wasAssociatedWith = relation_triple[2]
-                    entity = None
-                    agent = None
-                    
-                    for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entityURI = relation_triple[2]
-                        entity = self._createEntity_Agent(entityURI,RDFstore)
-                        self.container.add(entity)
-                        
+                    wasAssociatedWith = relation_triple[2]                        
                     for relation_triple in RDFstore.triples((sub, prov['agent'], None)):
-                        agent = relation_triple[2]
+                        agentURI = relation_triple[2]
+                        ag = self._createEntity_Agent(agentURI,RDFstore)
+                        self.container.add(ag)
                     for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
                         activityURI = relation_triple[2]
                         activity = self._createActivity(activityURI,RDFstore)
                         self.container.add(activity)
-                        
-                                     
+                          
                     if not entity == None:
                         print activity, "wasAssociatedWith", entity
                     else:
