@@ -242,7 +242,7 @@ sg=Mystore('mystore', 'mystore')
 def addtoStore(msg,msg_timestamp,counter):
     
 
-# Create appropriate instances(based on Home Sensor Model) for sensor data
+
     mac_address = msg[1]
     type1 = msg[2]
     type1_value = msg[3]
@@ -252,7 +252,8 @@ def addtoStore(msg,msg_timestamp,counter):
     type3_value = msg[7]  
     
     Literal_msg_timestamp = Literal(str(msg_timestamp))
-    
+    Literal_counter = Literal(str(counter))
+# Create appropriate instances(based on Home Sensor Model) for sensor data    
     S_Network = Sensor_Network(identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sg.addPROVInstance(S_Network) 
 
