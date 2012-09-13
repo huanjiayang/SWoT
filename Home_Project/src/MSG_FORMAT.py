@@ -32,7 +32,7 @@ SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 prov = Namespace("http://www.w3.org/ns/prov-dm/")
 TIME_1 = Namespace('sensors',"http://www.homesensor.com/TIME#")
-rdf = PROVNamespace("rdf","http://www.w3.org/2000/01/rdf-schema#")
+#rdf = PROVNamespace("rdf","http://www.w3.org/2000/01/rdf-schema#")
 
            
             
@@ -80,19 +80,19 @@ class PROVBuilder:
         elif entity_type == HS['Network Organization']:
             for stypetriple in RDFStore.triples((activityURI,HS['starttime'],None)):
                 starttime = stypetriple[2]
-            sss = Network_Organization(identifier = activityURI)
+            sss = Network_Organization(identifier = activityURI, starttime=starttime)
         elif entity_type == HS['Discovery']:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
-            sss = Discovery(identifier = activityURI)
+            sss = Discovery(identifier = activityURI, starttime=starttime)
         elif entity_type == HS['Query']:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
-            sss = Query(identifier = activityURI)
+            sss = Query(identifier = activityURI,starttime=starttime)
         elif entity_type == HS['Sensor_Node_Activity']:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
-            sss = Sensor_Node_Activity(identifier = activityURI)
+            sss = Sensor_Node_Activity(identifier = activityURI, starttime=starttime)
         return sss
         
     def traverseStore(self,RDFstore):
@@ -144,9 +144,14 @@ class PROVBuilder:
                 for Activity_triple in RDFstore.triples((sub, prov['wasStartedByActivity'], None)):
                     startingact = Activity_triple[2]
                 for relation_triple in RDFstore.triples((sub, prov['started'], None)):
-                        started = relation_triple[2]
+                    activityURI = relation_triple[2]
+                    started = self._createActivity(activityURI,RDFstore)
+                    self.container.add(started)
+                    
                 for relation_triple in RDFstore.triples((sub, prov['starter'], None)):
-                        starter = relation_triple[2]
+                    activityURI = relation_triple[2]
+                    starter = self._createActivity(activityURI,RDFstore)
+                    self.container.add(starter)
                 sba = wasStartedByActivity(started, starter, identifier=str(sub))
                 self.container.add(sba)
             elif rdftype == prov['wasStartedBy']:
@@ -180,26 +185,39 @@ class PROVBuilder:
                     if not entity == None:
                         print activity, "wasAssociatedWith", entity
                     else:
-                        print activity, "wasAssociatedWith", agent
-                    aw = wasAssociatedWith(activity, agent, identifier=str(sub))
+                        print activity, "wasAssociatedWith", ag
+                    aw = wasAssociatedWith(activity, ag, identifier=str(sub))
                     self.container.add(aw)
                 
             elif rdftype == prov['wasDerivedFrom']:
                 print 'wDF found'
                 for Relation_triple in RDFstore.triples((sub, prov['wasDerivedFrom'], None)):
+                    
                     wasDerivedFrom = Relation_triple[2]
                 for Relation_triple in RDFstore.triples((sub, prov['generatedentity'], None)):
-                    generatedentity = Relation_triple[2]
+                    entityURI = relation_triple[2]
+                    generatedentity = self._createEntity_Agent(entityURI,RDFstore)
+                    self.container.add(generatedentity)
+                    
                 for Relation_triple in RDFstore.triples((sub, prov['usedentity'], None)):
-                    usedentity = Relation_triple[2]  
+                    entityURI = relation_triple[2]
+                    usedentity = self._createEntity_Agent(entityURI,RDFstore)
+                    self.container.add(usedentity)
+                     
                 df = wasDerivedFrom(generatedentity, usedentity, identifier=str(sub))
                 self.container.add(df)  
             elif rdftype == prov['actedOnBehalfOf']:
                 print 'aOBO'
                 for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
-                    responsible = Relation_triple[2]
+                    agentURI = relation_triple[2]
+                    responsible = self._createEntity_Agent(agentURI,RDFstore)
+                    self.container.add(responsible)
+                    
                 for Relation_triple in RDFstore.triples((sub,prov['subordinate'], None)):
-                    subordinate = Relation_triple[2]
+                    agentURI = relation_triple[2]
+                    subordinate = self._createEntity_Agent(agentURI,RDFstore)
+                    self.container.add(subordinate)
+                    
                 print subordinate, "actedOnBehalfOf", responsible
                 ob = actedOnBehalfOf(subordinate,responsible,identifier=str(sub))
                 self.container.add(ob)
