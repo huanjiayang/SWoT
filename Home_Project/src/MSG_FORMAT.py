@@ -93,7 +93,7 @@ class PROVBuilder:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
             sss = Sensor_Node_Activity(identifier = activityURI, starttime=starttime)
-        return sss
+        return entity_type
         
     def traverseStore(self,RDFstore):
         print "let's see what we have in store:"
@@ -209,12 +209,12 @@ class PROVBuilder:
             elif rdftype == prov['actedOnBehalfOf']:
                 print 'aOBO'
                 for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
-                    agentURI = relation_triple[2]
+                    agentURI = Relation_triple[2]
                     responsible = self._createEntity_Agent(agentURI,RDFstore)
                     self.container.add(responsible)
                     
                 for Relation_triple in RDFstore.triples((sub,prov['subordinate'], None)):
-                    agentURI = relation_triple[2]
+                    agentURI = Relation_triple[2]
                     subordinate = self._createEntity_Agent(agentURI,RDFstore)
                     self.container.add(subordinate)
                     
@@ -262,7 +262,7 @@ sg=Mystore('mystore', 'mystore')
     #data = data.replace("\n","").replace("\r","")
     # To Test
 
-def addtoStore(msg,msg_timestamp):
+def addtoStore(msg,msg_timestamp,counter):
     
 
 # Create appropriate instances(based on Home Sensor Model) for sensor data
