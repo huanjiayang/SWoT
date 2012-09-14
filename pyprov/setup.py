@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyprov',
-    version='1.0.6',
+    version='1.0.7',
     author='Huanjia Yang',
     author_email='huanjiayang@hotmail.com',
     packages=['pyprov', 'pyprov.model','pyprov.model.examples','pyprov.model.test'],

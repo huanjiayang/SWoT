@@ -1,3 +1,6 @@
+v1.0.7, 14/09/2012  --  Bug fixes to rdf triple export
+* Do not add None record into container
+
 v1.0.6, 17/08/2012  --  Bug fixes to rdf triple export
 * Corrected the RDF.type URL
 

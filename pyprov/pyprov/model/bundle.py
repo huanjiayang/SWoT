@@ -19,32 +19,33 @@ class Bundle():
         self._idJSON = None
    
     def add(self,record):
-        if isinstance(record,PROVType):
-            self._validate_record(record)
-            if record.account is None:
-                self._elementlist.append(record)
-                record.account = self
-            elif not record.account.identifier == self.identifier:
-                record.account.add(record)
-            elif not record in self._elementlist:
-                self._elementlist.append(record)
-        elif isinstance(record,Relation):
-            self._validate_record(record)
-            if record.account is None:
-                self._relationlist.append(record)
-                record.account = self
-            elif not record.account.identifier == self.identifier:
-                record.account.add(record)
-            elif not record in self._elementlist:
-                self._relationlist.append(record)
-        elif isinstance(record,Account):
-            if record.parentaccount is None:
-                self._accountlist.append(record)
-                record.parentaccount = self
-            elif not record.parentaccount.identifier == self.identifier:
-                record.account.add(record)
-            elif not record in self._accountlist:
-                self._accountlist.append(record)
+        if record is not None:
+            if isinstance(record,PROVType):
+                self._validate_record(record)
+                if record.account is None:
+                    self._elementlist.append(record)
+                    record.account = self
+                elif not record.account.identifier == self.identifier:
+                    record.account.add(record)
+                elif not record in self._elementlist:
+                    self._elementlist.append(record)
+            elif isinstance(record,Relation):
+                self._validate_record(record)
+                if record.account is None:
+                    self._relationlist.append(record)
+                    record.account = self
+                elif not record.account.identifier == self.identifier:
+                    record.account.add(record)
+                elif not record in self._elementlist:
+                    self._relationlist.append(record)
+            elif isinstance(record,Account):
+                if record.parentaccount is None:
+                    self._accountlist.append(record)
+                    record.parentaccount = self
+                elif not record.parentaccount.identifier == self.identifier:
+                    record.account.add(record)
+                elif not record in self._accountlist:
+                    self._accountlist.append(record)
 
     def empty(self):
         self._provcontainer = {}
