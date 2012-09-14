@@ -302,15 +302,61 @@ class HS_Network:
                       'object:)' : ''}
         returnlist = []
         for s,p,o in sensor_graph.store:
-            returndict['whats_in_the_store'] = returndict['whats_in_the_store'] + str(s) + str(p) + str(o)
+            returndict['whats_in_the_store'] = returndict['whats_in_the_store'] #+ str(s) + str(p) + str(o)
             returndict['subject'] = str(s)
             returndict['predicate'] = str(p)
             returndict['object:)'] = str(o)
         
+        tttdict = {   'account': {   'acc0': {   'accountattr': 'accattrvalue',
+                               'asserter': 'asserter_name',
+                               'entity': {   'e2': {   }, 'en': {   }}}},
+    'activity': {   'a0': {   'prov:starttime': [   '2008-07-06 05:04:03',
+                                                    'xsd:dateTime'],
+                              'recipeLink': 'create-file'},
+                    'a1': {   }},
+    'entity': {   'e0': {   'creator': ['foaf:Alice', 'xsd:QName'],
+                            'path': '/shared/crime.txt',
+                            'type': 'File'},
+                  'foaf:Foo': {   'content': '',
+                                  'dcterms:create': [   '2011-11-16T16:06:00',
+                                                        'xsd:dateTime'],
+                                  'dcterms:creator': [   [   [   'foaf:Alice',
+                                                                 'xsd:QName'],
+                                                             [   'foaf:Bill',
+                                                                 'xsd:QName'],
+                                                             [   'test:Foo',
+                                                                 'xsd:QName']],
+                                                         'prov:array'],
+                                  'path': '/shared/crime.txt',
+                                  'test:testns': [   'ns0:localname',
+                                                     'xsd:QName'],
+                                  'type': 'File'}},
+    'prefix': {   'dcterms': 'http://purl.org/dc/terms/',
+                  'default': 'http://www.example.com/',
+                  'foaf': 'http://xmlns.com/foaf/0.1/',
+                  'ns0': 'http://www.test.org/',
+                  'ns1': 'http://www.example2222.com/',
+                  'prov': 'http://www.w3.org/ns/prov-dm/',
+                  'test': 'http://www.example.org/',
+                  'xsd': 'http://www.w3.org/2001/XMLSchema-datatypes#'},
+    'used': {   'u0': {   'fct': 'load',
+                          'prov:activity': 'a0',
+                          'prov:entity': 'foaf:Foo',
+                          'typeexample': ['MyValue', 'MyType']}},
+    'wasDerivedFrom': {   '_:RLAT0': {   'prov:activity': 'a0',
+                                         'prov:generatedentity': 'e0',
+                                         'prov:generation': 'g0',
+                                         'prov:usage': 'u0',
+                                         'prov:usedentity': 'foaf:Foo'}},
+    'wasGeneratedBy': {   'g0': {   'fct': 'create',
+                                    'prov:activity': 'a0',
+                                    'prov:entity': 'e0'}},
+    'wasStartedByActivity': {   '_:RLAT1': {   'prov:started': 'a1',
+                                               'prov:starter': 'a0'}}}
         returnlist.append(returndict)
             
         web.header('Content-Type', 'application/json')
-        return json.dumps(returndict)
+        return json.dumps(tttdict)
     
     
 

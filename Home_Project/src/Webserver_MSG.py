@@ -3,10 +3,12 @@ Created on 10 Sep 2012
 
 @author: AYODELE-M.AKINGBULU
 '''
+import web
 import re
-import requests
+import sys
+#import requests
 import json
-from webtry import *
+#from webtry import *
 import uuid
 from pyprov.model.type import *
 from pyprov.model.relation import *
@@ -60,6 +62,7 @@ class PROVBuilder:
     
 # Function to create activity elements in triples for Sensor Model
     def _createActivity(self,activityURI,RDFStore):
+        sss = None
         for ttt in RDFStore.triples((activityURI,RDFS['type'],None)):
             entity_type = ttt[2]
         if entity_type == HS['Sensor']:
@@ -86,7 +89,7 @@ class PROVBuilder:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
             sss = Sensor_Node_Activity(identifier = activityURI, starttime=starttime)
-        return entity_type
+        return sss
 
 # Function to match, add and traverse(query) through RDFstore for relations and elements in Model        
     def traverseStore(self,RDFstore):
@@ -121,9 +124,9 @@ class PROVBuilder:
                 for Activity_triple in RDFstore.triples((sub, prov['wasGeneratedBy'], None)):
                     generated = Activity_triple[2]
                 for relation_triple in RDFstore.triples((sub, prov['entity'], None)):
-                        entityURI = relation_triple[2]
-                        entity = self._createEntity_Agent(entityURI,RDFstore)
-                        self.container.add(entity)
+                    entityURI = relation_triple[2]
+                    entity = self._createEntity_Agent(entityURI,RDFstore)
+                    self.container.add(entity)
                             
                             
                 for relation_triple in RDFstore.triples((sub, prov['activity'], None)):
@@ -352,15 +355,8 @@ for msg in msglist:
     counter = itertools.count(0)
     print msg_timestamp, counter
     addtoStore(msg, msg_timestamp, counter)
- 
-  
+
 mybuilder = PROVBuilder()
-mybuilder.traverseStore(sg.store)
-#print mybuilder.container._elementlist
-#print json.dumps(mybuilder.container.to_provJSON())   
-print "Let's the recreated store:"     
-print mybuilder.container._provcontainer
-print sg.store.serialize(format="n3", max_depth=3)
 
 #setup threading for listening to data from serial port   
 class SerialData(Thread):
@@ -406,21 +402,29 @@ class HS_Network:
         #cur = store.cursor() 
         #query triples in store
         #cur.execute('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
-        returndict = {'whats_in_the_store' : '',
-                      'subject' : '',
-                      'predicate' : '',
-                      'object:)' : ''}
-        returnlist = []
-        for s,p,o in sensor_graph.store:
-            returndict['whats_in_the_store'] = returndict['whats_in_the_store'] + str(s) + str(p) + str(o)
-            returndict['subject'] = str(s)
-            returndict['predicate'] = str(p)
-            returndict['object:)'] = str(o)
+#        returndict = {'whats_in_the_store' : '',
+#                      'subject' : '',
+#                      'predicate' : '',
+#                      'object:)' : ''}
+#        returnlist = []
+#        for s,p,o in sg.store:
+#            returndict['whats_in_the_store'] = returndict['whats_in_the_store'] + str(s) + str(p) + str(o)
+#            returndict['subject'] = str(s)
+#            returndict['predicate'] = str(p)
+#            returndict['object:)'] = str(o)
         
-        returnlist.append(returndict)
+#        returnlist.append(returndict)
+
+        
+        mybuilder.traverseStore(sg.store)
+        #print mybuilder.container._elementlist
+        #print json.dumps(mybuilder.container.to_provJSON())   
+        print "Let's the recreated store:"     
+        print mybuilder.container._provcontainer
+#        print sg.store.serialize(format="n3", max_depth=3)
             
         web.header('Content-Type', 'application/json')
-        return json.dumps(returndict)
+        return json.dumps(mybuilder.container.to_provJSON())
     
     
 if __name__ == "__main__":
@@ -430,8 +434,10 @@ if __name__ == "__main__":
     '/homesensorcom/view/','view',
     '/test/','test'
         )
+    
     sData = SerialData()
     sData.start()
+    
     app = web.application(urls, globals()) #Run the web server.
     app.run()
     
