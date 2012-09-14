@@ -6,10 +6,6 @@ Created on 10 Sep 2012
 import re
 import requests
 import json
-import numpy
-import matplotlib
-import twitter
-import wx
 from webtry import *
 import uuid
 from pyprov.model.type import *
@@ -20,6 +16,7 @@ from Home_Sense_Model import *
 import threading
 from threading import Thread
 import itertools
+import serial
 
 
 
@@ -89,7 +86,7 @@ class PROVBuilder:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
             sss = Sensor_Node_Activity(identifier = activityURI, starttime=starttime)
-        return sss
+        return entity_type
 
 # Function to match, add and traverse(query) through RDFstore for relations and elements in Model        
     def traverseStore(self,RDFstore):
@@ -365,8 +362,65 @@ print "Let's the recreated store:"
 print mybuilder.container._provcontainer
 print sg.store.serialize(format="n3", max_depth=3)
 
+#setup threading for listening to data from serial port   
+class SerialData(Thread):
+    def __init__(self):
+        Thread.__init__(self)
+        self.started = False
+        self.done = False
+        
+    def start(self):
+        if self.started is False:
+            Thread.start(self)
+            self.started = True
     
+    def run(self):
+        while self.done is False:
+            try:
+                        ser = serial.Serial('COM12',115200,timeout=1,parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE,
+                        bytesize=serial.EIGHTBITS,
+                        )   
+            
+    
+            except:
+                        print "Could not open serial port: ", sys.exc_info()[0]
+                        sys.exit(2)
+            while True:               
+                        msg = str(data)
+                        msg = msg.replace("\n","").replace("\r","")
+                        msglist = msg.split(",")
 
+                        for msg in msglist:
+                            msg = msg.split(",")
+                        print('SerialData is running') # put serial port listening codes here
+                        print "data: ", msg
+                        msg_timestamp = datetime.datetime.now()
+                        counter = itertools.count(0)
+                        addtoStore(msg, msg_timestamp,counter)
+                        
+class HS_Network:
+    def GET(self):
+#        args = web.input()
+#        start = int(args.get('start', time() - 86400))
+        #cur = store.cursor() 
+        #query triples in store
+        #cur.execute('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
+        returndict = {'whats_in_the_store' : '',
+                      'subject' : '',
+                      'predicate' : '',
+                      'object:)' : ''}
+        returnlist = []
+        for s,p,o in sensor_graph.store:
+            returndict['whats_in_the_store'] = returndict['whats_in_the_store'] + str(s) + str(p) + str(o)
+            returndict['subject'] = str(s)
+            returndict['predicate'] = str(p)
+            returndict['object:)'] = str(o)
+        
+        returnlist.append(returndict)
+            
+        web.header('Content-Type', 'application/json')
+        return json.dumps(returndict)
     
     
 if __name__ == "__main__":
@@ -376,6 +430,8 @@ if __name__ == "__main__":
     '/homesensorcom/view/','view',
     '/test/','test'
         )
+    sData = SerialData()
+    sData.start()
     app = web.application(urls, globals()) #Run the web server.
     app.run()
     
