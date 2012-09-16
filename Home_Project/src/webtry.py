@@ -34,6 +34,19 @@ TIME_1 = Namespace('sensors',"http://www.homesensor.com/TIME#")
 rdf = PROVNamespace("rdf","http://www.w3.org/2000/01/rdf-schema#")
 
 
+sensornetworkURI = 'uri:uuid:sensnetworkayodele001'
+sensornode1URI = 'uri:uuid:sensornode01'
+sensornode2URI = 'uri:uuid:sensornode02'
+sensornode3URI = 'uri:uuid:sensornode03'
+sensortemp1URI = 'uri:uuid:sensorTEMP01'
+sensortemp2URI = 'uri:uuid:sensorTEMP02'
+sensortemp3URI = 'uri:uuid:sensorTEMP03'
+sensorlight1URI = 'uri:uuid:sensorLIGHT01'
+sensorlight2URI = 'uri:uuid:sensorLIGHT02'
+sensorlight3URI = 'uri:uuid:sensorLIGHT03'
+sensorhum1URI = 'uri:uuid:sensorHUM01'
+sensorhum2URI = 'uri:uuid:sensorHUM02'
+sensorhum3URI = 'uri:uuid:sensorHUM03'
 
 
 
@@ -126,9 +139,6 @@ wSB0 = wasStartedBy(e0,a0,identifier=HS["b0"],attributes=None)
 
 
 
-#import pprint
-#pp = pprint.PrettyPrinter(indent=4)
-#pp.pprint(webgraph.to_provJSON())
 
 
 sensor_graph=Mystore('mystore', 'mystore')
@@ -182,18 +192,7 @@ sensor_graph.addPROVInstance(wAT6)
 sensor_graph.addPROVInstance(wAT7)
 sensor_graph.addPROVInstance(wAT8)
 
-#
-#snURI = 'uri:uuid:sensnetworkayodele001'
-#sn_node1URI = 'uri:uuid:sensornode01'
-#SENSOR_NETWORK=SN[snURI]
-#sensor_node = sn_node1URI
 
-
-#sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
-#sensor_graph.store.add((SENSOR_NETWORK,RDF.type,SENSORS['sensor_node']))
-#sensor_graph.store.add((rdflib.URIRef('http://www.homesensor.com/'),RDF.type, rdflib.Literal('Google home page')))
-#sensor_graph.store.add((SENSOR_NETWORK,DC['title'],Literal(sensor_node)))
-#sensor_graph.store.add((sensornetworkURI, prov['wasGeneratedBy'], Literal('Ayo')))
 
     
     
@@ -204,89 +203,10 @@ sensor_graph.addPROVInstance(wAT8)
 render = web.template.render('templates/')
 
 
-#def get_type(self,sensorid,node_id):
-#        for line in labels:
-#            node_id, label, fieldtype = line.split(',', 2)
-#            if int(id) == int(sensorid):
-#                return fieldtype.rstrip('\r\n')
-            
-#Get Label reads in sensor names, determines the type name of the sensor
-#to generate graphs on page properly
-#def get_label(sensorid, node_id, fieldtype):
-#    for line in labels:
-#        node_id, label, fieldtype = line.split(',', 2)
-#        print 'line: '
-#        print str(line)
-#        if int(id) == int(sensorid):
-#            return labels
-        
-#def VIEW(self,id):
-#        fq = sensor_graph.store.query('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
-#        sq = sensor_graph.store.query('select ?pred ?sub where {?sub ?pred <%s> .}' % id)
-#        name = id
-#        
-#        returndict = {'whats_in_the_store' : '',
-#                      'subject' : '',
-#                      'predicate' : '',
-#                      'object:)' : ''}
-#        returnlist = []
-#        for s in fq:
-#            print s
-#            if s['predicate']['value'] in returnlist:
-#                name = s['object']['value']
-#            t = web.template('graph1.html')
-#            return t.render(name=name, id=id, fq=fq, sq=sq, qp=quote_plus)
-#            returnlist.append(returndict)
-#            web.header('Content-Type', 'application/json')
-#            return json.dumps(returndict)
-#        
-#def createEntity(self,entityType1,entityType2,entityType,identifier='e0'):
-#    entity = entityType(entityType1,entityType2)
-#    e0= entityType1
-#    e1 = entityType2
-#    return entity
-#        
+
         
         
-#def func(self,provcontainer,(sub,pred,obj)):
-#    container = provcontainer()
-#    for sub,pred,obj in sensor_graph.store:
-#        if pred == RDF.type:
-#            yield pred
-#            container.add(sub=None,pred=RDF.type,obj=None)
-#        else:
-#            if pred != RDF.type:
-#                yield (None,None,None)
-#        if sub == URIRef:
-#            yield sub
-#        else:
-#            if sub != URIRef:
-#                yield(None,pred,None)
-#            elif sub == URIRef('prov:Entity'):
-#                prov[Entity:e0]
-#                container.add(e0)
-#                prov[Entity:e1.createEntity]
-#                container.add(e1)
-#                prov[Activity:a0]
-#                container.add(a0)
-#                prov[Agent:ag0]
-#                container.add(a0)
-#                prov[wasGeneratedBy:f0]
-#                container.add(f0)
-#                prov[wasStartedBy:b0]
-#                container.add(b0)
-#                prov[wasStartedByActivity:s0]
-#                container.add(s0)
-#                prov[wasAssociatedWith:w0]
-#                container.add(w0)
-#                prov[Used:u0]
-#                container.add(u0)
-#                container.add(sub=URIRef('prov:Entity'),pred=None,obj=None)
-#            elif obj == Literal(''):
-#                yield(sub,pred,obj)
-#        #return container
-#        #return json.dumps(container)
-#        
+
         
         
 class HS_Network:
@@ -310,27 +230,18 @@ class HS_Network:
         tttdict = {   'account': {   'acc0': {   'accountattr': 'accattrvalue',
                                'asserter': 'asserter_name',
                                'entity': {   'e2': {   }, 'en': {   }}}},
-    'activity': {   'a0': {   'prov:starttime': [   '2008-07-06 05:04:03',
+    'activity': {   'activity': {   'prov:starttime': [   '2012-09-14 08:23:51',
                                                     'xsd:dateTime'],
-                              'recipeLink': 'create-file'},
+                              'recipeLink': 'sensor_readings'},
+                    'a1': {   }},
+    'agent': {   'ag': {   'prov:identifier': [   'mac_address',
+                                                    'xsd:sensor_id'],
+                              'recipeLink': 'sensor_readings'},
                     'a1': {   }},
     'entity': {   'e0': {   'creator': ['foaf:Alice', 'xsd:QName'],
                             'path': '/shared/crime.txt',
                             'type': 'File'},
-                  'foaf:Foo': {   'content': '',
-                                  'dcterms:create': [   '2011-11-16T16:06:00',
-                                                        'xsd:dateTime'],
-                                  'dcterms:creator': [   [   [   'foaf:Alice',
-                                                                 'xsd:QName'],
-                                                             [   'foaf:Bill',
-                                                                 'xsd:QName'],
-                                                             [   'test:Foo',
-                                                                 'xsd:QName']],
-                                                         'prov:array'],
-                                  'path': '/shared/crime.txt',
-                                  'test:testns': [   'ns0:localname',
-                                                     'xsd:QName'],
-                                  'type': 'File'}},
+                  
     'prefix': {   'dcterms': 'http://purl.org/dc/terms/',
                   'default': 'http://www.example.com/',
                   'foaf': 'http://xmlns.com/foaf/0.1/',
@@ -339,20 +250,26 @@ class HS_Network:
                   'prov': 'http://www.w3.org/ns/prov-dm/',
                   'test': 'http://www.example.org/',
                   'xsd': 'http://www.w3.org/2001/XMLSchema-datatypes#'},
-    'used': {   'u0': {   'fct': 'load',
-                          'prov:activity': 'a0',
-                          'prov:entity': 'foaf:Foo',
-                          'typeexample': ['MyValue', 'MyType']}},
+     'wasAttributedTo': {   '_:RLAT1': {   'prov:entity': 'sensor_reading1',
+                                                'prov:agent': 'sensor1'}},
+     'wasAssociatedWith': {   '_:RLAT1': {   'prov:activity': 'Activity4',
+                                                'prov:agent': 'sensor1'}},
+     'actedOnBehalfOf': {   '_:RLAT1': {   'prov:surbordinate': 'sensor1',
+                                                'prov:responsible': 'sensor_node1'}},
+   
     'wasDerivedFrom': {   '_:RLAT0': {   'prov:activity': 'a0',
                                          'prov:generatedentity': 'e0',
-                                         'prov:generation': 'g0',
-                                         'prov:usage': 'u0',
-                                         'prov:usedentity': 'foaf:Foo'}},
-    'wasGeneratedBy': {   'g0': {   'fct': 'create',
-                                    'prov:activity': 'a0',
-                                    'prov:entity': 'e0'}},
-    'wasStartedByActivity': {   '_:RLAT1': {   'prov:started': 'a1',
-                                               'prov:starter': 'a0'}}}
+                                         'prov:generation': 'wGB0',}},
+    
+    'wasGeneratedBy': {   'wGB0': {   'fct': 'create',
+                                    'prov:activity': 'Activity4',
+                                    'prov:entity': 'sensor1'}},
+    'wasStartedByActivity': {   '_:RLAT1': {   'prov:started': 'Network_Organization',
+                                               'prov:starter': 'Discovery'}}},
+    
+    
+      
+        
         returnlist.append(returndict)
             
         web.header('Content-Type', 'application/json')

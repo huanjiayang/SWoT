@@ -22,6 +22,10 @@ import serial
 
 
 
+
+
+render = web.template.render('templates', base='layout')
+
 # Define Namespace
 
 DC = Namespace('http://purl.org/dc/elements/1.1/')
@@ -43,52 +47,76 @@ class PROVBuilder:
 
 # Function to create Entity and Agent elements in triples for Sensor Model         
     def _createEntity_Agent(self,entityURI, RDFStore):
+        print "let's see what we have in the container for Entity_Agent:"
+        print str(RDFS.type)
         sss = None
         for ttt in RDFStore.triples((entityURI,RDFS['type'],None)):
             entity_type = ttt[2]
+            print entity_type
         if entity_type == HS['Sensor']:
             for stypetriple in RDFStore.triples((entityURI,HS['sensor_type'],None)):
                 sensor_type = stypetriple[2]
+                print sensor_type
             sss = Sensor(identifier = entityURI,sensor_type=sensor_type)
+            print sss
         elif entity_type == HS['Sensor_Node']:
             sss = Sensor_Node(identifier = entityURI)
+            print sss
         elif entity_type == HS['Sensor_Network']:
             sss = Sensor_Network(identifier = entityURI)
+            print sss
         elif entity_type == HS['Sensor_Readings']:
             for stypetriple in RDFStore.triples((entityURI,HS['value'],None)):
                 value = stypetriple[2]
+                print value
             sss = Sensor_Readings(identifier = entityURI,value=value )
+            print sss
         return sss
     
 # Function to create activity elements in triples for Sensor Model
     def _createActivity(self,activityURI,RDFStore):
+        print "let's see what we have in the container for activity:"
+        print str(RDFS.type)
         sss = None
         for ttt in RDFStore.triples((activityURI,RDFS['type'],None)):
             entity_type = ttt[2]
+            print entity_type
         if entity_type == HS['Sensor']:
             sss = Sensor(identifier = activityURI)
+            print sss
         elif entity_type == HS['Sensor_Node']:
             sss = Sensor_Node(identifier = activityURI)
+            print sss
         elif entity_type == HS['Sensor_Network']:
             sss = Sensor_Network(identifier = activityURI)
+            print sss
         elif entity_type == HS['Sensor_Reading_Activity']:
             sss = Sensor_Reading_Activity(identifier = activityURI)
+            print sss
         elif entity_type == HS['Network Organization']:
             for stypetriple in RDFStore.triples((activityURI,HS['starttime'],None)):
                 starttime = stypetriple[2]
+                print starttime
             sss = Network_Organization(identifier = activityURI, starttime=starttime)
+            print sss
         elif entity_type == HS['Discovery']:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
+                print starttime
             sss = Discovery(identifier = activityURI, starttime=starttime)
+            print sss
         elif entity_type == HS['Query']:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
+            print starttime
             sss = Query(identifier = activityURI,starttime=starttime)
+            print sss
         elif entity_type == HS['Sensor_Node_Activity']:
             for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
                 starttime = stypetriple[2]
+            print starttime
             sss = Sensor_Node_Activity(identifier = activityURI, starttime=starttime)
+            print sss
         return sss
 
 # Function to match, add and traverse(query) through RDFstore for relations and elements in Model        
@@ -108,6 +136,7 @@ class PROVBuilder:
             for attr in RDFstore.triples((sub, None, None)):
                 if not attr[1] == RDFS['type']:
                     attrdict[attr[1]] = attr[2]
+            
             #if entity matches add to container
             if rdftype == HS['Sensor']:
                 print 'Sensor found'
@@ -205,18 +234,18 @@ class PROVBuilder:
                 self.container.add(df)  
             elif rdftype == prov['actedOnBehalfOf']:
                 print 'aOBO'
-                for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
-                    agentURI = Relation_triple[2]
-                    responsible = self._createEntity_Agent(agentURI,RDFstore)
-                    self.container.add(responsible)
-                    
                 for Relation_triple in RDFstore.triples((sub,prov['subordinate'], None)):
                     agentURI = Relation_triple[2]
                     subordinate = self._createEntity_Agent(agentURI,RDFstore)
                     self.container.add(subordinate)
                     
+                for Relation_triple in RDFstore.triples((sub,prov['responsible'], None)):
+                    agentURI = Relation_triple[2]
+                    responsible = self._createEntity_Agent(agentURI,RDFstore)
+                    self.container.add(responsible)
+                    
                 print subordinate, "actedOnBehalfOf", responsible
-                ob = actedOnBehalfOf(subordinate,responsible,identifier=str(sub))
+                ob = actedOnBehalfOf(subordinate=subordinate,responsible=responsible,identifier=str(sub))
                 self.container.add(ob)
                 
                 
@@ -292,7 +321,7 @@ def addtoStore(msg,msg_timestamp,counter):
     sg.addPROVInstance(Activity6)
     
 
-    # do the relations here as well
+   
     # relationship between 3 sensor nodes(agent) and sensor network(agent)
     aOB0 = actedOnBehalfOf(subordinate=sn1, responsible=S_Network, identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sg.addPROVInstance(aOB0)
@@ -397,8 +426,10 @@ class SerialData(Thread):
                         
 class HS_Network:
     def GET(self):
-#        args = web.input()
-#        start = int(args.get('start', time() - 86400))
+        
+        #return render.NewFile()
+        #args = web.input()
+        #start = int(args.get('start', time() - 86400))
         #cur = store.cursor() 
         #query triples in store
         #cur.execute('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
@@ -425,14 +456,14 @@ class HS_Network:
             
         web.header('Content-Type', 'application/json')
         return json.dumps(mybuilder.container.to_provJSON())
-    
+          
     
 if __name__ == "__main__":
 #Links specific classes to URLs on the web server
     urls = (
     '/homesensorcom/', 'HS_Network', #Links URL homesensor.com to HS_Network Class
-    '/homesensorcom/view/','view',
-    '/test/','test'
+    '/homesensor/view/','HS_Network', #view with web GUI
+    '/sensor/','HS_Network'   #Links HS_Network Class to /sensor
         )
     
     sData = SerialData()

@@ -23,15 +23,10 @@ HS = PROVNamespace('hs', "http://homesensor.com/")
 SN = Namespace('sn', "http://homesensor.com/schemas/sensor_network#")
 RDF = Namespace('"http://www.w3.org/2000/01/rdf-schema#')
 PROV = Namespace("http://www.w3.org/ns/prov-dm/")
-rdf = PROVNamespace("rdf", "http://www.w3.org/2000/01/rdf-schema#")
 
 
-#u = str(uuid.uuid1())
-#SENSORS = SENSORS(u)
-#
-#v = str(uuid.uuid1())
 
-#SN = SN(v)
+
 
 
 # --------------------- class begins -------------------------------------------
@@ -53,11 +48,7 @@ class Sensor_Network(Entity):
 class Sensor_Node(Agent):
     
     def __init__(self, identifier,attributes, sensor_id, sensor_name, account=None):
-        #self.sensor_id = sensor_id
-        
-#        self.attributes.update({HS["sensor_id"]:sensor_id,HS["sensor_name"]:sensor_name})
-#        if identifier is None:
-#            identifier = 'urn:uuid:' + str(uuid.uuid1())
+     
         Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
         
     def _toRDF(self):
@@ -92,7 +83,7 @@ class Network_Organization(Activity):
         if identifier is None:
             identifer = 'urn:uuid:' + str(uuid.uuid1()) 
         Activity.__init__(self, identifier,starttime,endtime, attributes, account)  
-        #Entity.__init__(self, identifier, attributes, account)
+        
         self.identifier = identifier
         self.starttime = starttime
         
@@ -167,19 +158,4 @@ class Sensor_Readings(Entity):
         return self.rdftriples 
       
     
-#class observation(Entity):
-#    def __init__(self, identifier=None, attributes=None, account=None, Observation=None,Temperature=None,Humidity=None,Light=None):
-#        Entity.__init__(self, identifier, attributes, account)
-#        self.value = Temperature
-#        self.Humidity = Humidity
-#        self.Light  = Light
-#        
-#        
-#    def _toRDF(self):
-#        Entity._toRDF(self)
-#        self.rdftriples[self.identifier][rdf['type']] = HS['Observation']
-#        return self.rdftriples
-        
-          
-          
-        
+       

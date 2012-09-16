@@ -21,20 +21,11 @@ class Mystore():
         self.store = rdflib.Graph(store='Sleepycat',identifier=id)
         self.store.open(configuration, create=True) 
         self.store.bind('prov','http://www.w3.org/ns/prov-dm/')
-        #sensor_graph=rdflib.Graph(store='Sleepycat',identifier='store')
-        #sensor_graph.open("provfolder", create=True)     
+           
 
     def _ToTriples(self, d0):   
         tripledict = d0._toRDF()
-        #print d0.identifier
-        #for s in tripledict.keys():
-        #    print 'subject:  '
-        #    print str(s)
-        #    for p in tripledict[s].keys():
-        #        print 'predicate:    '
-        #        print str(p)
-        #        print 'object:     '
-        #        print tripledict[s][p]
+        
         rdftriplesdict = {}
         for sub in tripledict.keys():
             sub_rdfuri = self.PROVQName_URIRef(sub)
@@ -83,32 +74,7 @@ class Mystore():
 
               
                
-##Add triples into store
-#    def load(self,store,(sub, pred, obj)):
-#        store = plugin.get('Sleepycat', rdflib.store.Store)('rdfstore')
-#        store.open("ay_folder", create=False)
-#        store = open(store, "rb")
-#        #for line in file:
-#        #file.write(line + '\n')
-#        file.write(graph.serialize(format="n3"))
-#        load = store.load(store)
-#        for sub, pred, obj in load:
-#            sub = unicode(sub, "UTF-8")
-#            pred = unicode(pred, "UTF-8")
-#            obj = unicode(obj, "UTF-8")
-#            self.add((sub, pred, obj))
-#            store.close()
-#            
-            
-#    def save(self, store):
-#        self.graph.serialize(store, format='n3')
-#        store = open(store, "wb")
-#        writer = store.writer(store)
-#        for sub, pred, obj in self.rdftriples((None, None, None)):
-#            writer.writerow([sub.encode("UTF-8"), pred.encode("UTF-8"), \
-#            obj.encode("UTF-8")])
-#            store.close()  
-#        return
+
 # -------------------- class ends -----------------------------------------------
 # -------------------- execution begins -----------------------------------------
 
@@ -120,80 +86,4 @@ FOAF = Namespace("foaf","http://xmlns.com/foaf/0.1/")
 RDF = rdflib.Namespace("http://www.w3.org/TR/rdf-schema/#")
 S_Network = hs['SensorNetwork']
 
-sensornetworkURI = 'uri:uuid:sensnetworkayodele001'
-sensornode1URI = 'uri:uuid:sensornode01'
-sensornode2URI = 'uri:uuid:sensornode02'
-sensornode3URI = 'uri:uuid:sensornode03'
-sensortemp1URI = 'uri:uuid:sensorTEMP01'
-sensortemp2URI = 'uri:uuid:sensorTEMP02'
-sensortemp3URI = 'uri:uuid:sensorTEMP03'
-sensorlight1URI = 'uri:uuid:sensorLIGHT01'
-sensorlight2URI = 'uri:uuid:sensorLIGHT02'
-sensorlight3URI = 'uri:uuid:sensorLIGHT03'
-sensorhum1URI = 'uri:uuid:sensorHUM01'
-sensorhum2URI = 'uri:uuid:sensorHUM02'
-sensorhum3URI = 'uri:uuid:sensorHUM03'
 
-createtime = 'datetime...'
-
-#
-S_Network = URIRef("http://homesensor.com/")
-Readings = hs['Reading']
-
-Communication = URIRef("http://homesensor.com/Activity/")
-Discovery = URIRef("http://homesensor.com/Activity/")
-S_Node = URIRef("http://homesensor.com/S_node/")
-Sensor = URIRef("http://homsensor.com/Sensor/")
-
-#--------------------------------------------------------------------------------
-#store = sensor_graph.store
-
-#person = 'ayo001'
-#
-#tripledict = {}
-#starttime = datetime.datetime(2012, 7, 6, 5, 4, 3)
-#a1 = "starter"
-#a2 =   "started"
-#ag0 = Agent(sensornetworkURI)
-#a0 = Activity("a0",starttime=starttime,attributes=tripledict)
-#e0 = Entity(identifier="e0")
-#e1 = Entity(FOAF['Foo'],attributes=tripledict)
-#g0 = wasGeneratedBy(e0,a0,identifier="g0",time=None,attributes=tripledict)
-#u0 = Used(a0,e1,identifier="u0",time=None,attributes=tripledict)
-#d0 = wasDerivedFrom(e0, e1, activity=a0,generation=g0,usage=u0,attributes=None)
-#f0 = wasGeneratedBy(e0,g0,time=None,attributes=None)
-#w0 = wasAssociatedWith(ag0,a0,identifier="w0",attributes=tripledict)
-#s0 = wasStartedByActivity(a0,a1,a2,attributes=None)
-#b0 = wasStartedBy(e0,a0,identifier="b0",attributes=None)
-#        
-#graph = Graph()
-#graph.add(("blade_runner", "name", "Blade Runner"))
-#graph.add(("blade_runner", "release_date", "June 25, 1982"))
-#graph.add(("blade_runner", "directed_by", "Ridley Scott"))
-#
-#print list(graph.triples((None, None, None)))
-#print list(graph.triples(("blade_runner", None, None)))
-#print list(graph.triples(("blade_runner", "name", None)))
-#print list(graph.triples(("blade_runner", "name", "Blade Runner")))
-#print list(graph.triples(("blade_runner", None, "Blade Runner")))
-#print list(graph.triples((None, "name", "Blade Runner")))
-#print list(graph.triples((None, None, "Blade Runner")))
-#
-#print list(graph.triples(("foo", "name", "Blade Runner")))
-#print list(graph.triples(("blade_runner", "foo", "Blade Runner")))
-#print list(graph.triples(("blade_runner", "name", "foo")))
-    
-#sensor_graph = Mystore('Sleepycat', 'mystore')   
-
-#sensor_graph.addPROVInstance(e0)
-#sensor_graph.addPROVInstance(w0)
-#sensor_graph.addPROVInstance(a0)
-#sensor_graph.addPROVInstance(f0)
-#sensor_graph.addPROVInstance(ag0)
-##sensor_graph.addPROVInstance(s0)
-#sensor_graph.addPROVInstance(b0)
-#sensor_graph.addPROVInstance(d0)
-#sensor_graph.addPROVInstance(e1)
-#sensor_graph.addPROVInstance(g0)
-
-## print out a.sensor_graph
