@@ -4,7 +4,6 @@ Created on 10 Sep 2012
 @author: AYODELE-M.AKINGBULU
 '''
 import web
-import re
 import sys
 #import requests
 import json
@@ -31,6 +30,7 @@ render = web.template.render('templates', base='layout')
 DC = Namespace('http://purl.org/dc/elements/1.1/')
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 HS = PROVNamespace('hs','http://homesensor.com/#')
+rdf_HS = Namespace('http://homesensor.com/#')
 SN = Namespace('sn',"http://homesensor.com/schemas/sensor_network#")
 SENSORS = Namespace('sensors',"http://www.homesensor.com/sensors#")
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
@@ -50,26 +50,37 @@ class PROVBuilder:
         print "let's see what we have in the container for Entity_Agent:"
         print str(RDFS.type)
         sss = None
+        print '_createEntity_Agent starts with URI'
+        print entityURI
         for ttt in RDFStore.triples((entityURI,RDFS['type'],None)):
             entity_type = ttt[2]
+            print 'entity_type:'
             print entity_type
-        if entity_type == HS['Sensor']:
-            for stypetriple in RDFStore.triples((entityURI,HS['sensor_type'],None)):
+            print 'type to match:'
+            print rdf_HS['Sensor']
+        if entity_type == rdf_HS['Sensor']:
+            for stypetriple in RDFStore.triples((entityURI,rdf_HS['sensor_type'],None)):
                 sensor_type = stypetriple[2]
+                print '_createEntity_Agent: Sensor type is'
                 print sensor_type
             sss = Sensor(identifier = entityURI,sensor_type=sensor_type)
+            #sss.attributes = {HS['hs_type']:HS['Sensor'],HS['sensor_type']:HS[sensor_type]}
+            print 'created sss, which is:'
             print sss
-        elif entity_type == HS['Sensor_Node']:
+        elif entity_type == rdf_HS['Sensor_Node']:
             sss = Sensor_Node(identifier = entityURI)
+            sss.attributes = {HS['hs_type']:HS['SensorNode']}
             print sss
-        elif entity_type == HS['Sensor_Network']:
+        elif entity_type == rdf_HS['Sensor_Network']:
             sss = Sensor_Network(identifier = entityURI)
+            sss.attributes = {HS['hs_type']:HS['SensorNetwork']}
             print sss
-        elif entity_type == HS['Sensor_Readings']:
-            for stypetriple in RDFStore.triples((entityURI,HS['value'],None)):
+        elif entity_type == rdf_HS['Sensor_Readings']:
+            for stypetriple in RDFStore.triples((entityURI,rdf_HS['value'],None)):
                 value = stypetriple[2]
                 print value
             sss = Sensor_Readings(identifier = entityURI,value=value )
+            sss.attributes = {HS['hs_type']:HS['Sensor_Reading'],HS['Value']:value}
             print sss
         return sss
     
@@ -81,38 +92,39 @@ class PROVBuilder:
         for ttt in RDFStore.triples((activityURI,RDFS['type'],None)):
             entity_type = ttt[2]
             print entity_type
-        if entity_type == HS['Sensor']:
+        if entity_type == rdf_HS['Sensor']:
             sss = Sensor(identifier = activityURI)
             print sss
-        elif entity_type == HS['Sensor_Node']:
+        elif entity_type == rdf_HS['Sensor_Node']:
             sss = Sensor_Node(identifier = activityURI)
             print sss
-        elif entity_type == HS['Sensor_Network']:
+        elif entity_type == rdf_HS['Sensor_Network']:
             sss = Sensor_Network(identifier = activityURI)
             print sss
-        elif entity_type == HS['Sensor_Reading_Activity']:
+        elif entity_type == rdf_HS['Sensor_Reading_Activity']:
             sss = Sensor_Reading_Activity(identifier = activityURI)
+            sss.attributes = {HS['hs_type']:HS['SensorReadingActivity']}
             print sss
-        elif entity_type == HS['Network Organization']:
-            for stypetriple in RDFStore.triples((activityURI,HS['starttime'],None)):
+        elif entity_type == rdf_HS['Network Organization']:
+            for stypetriple in RDFStore.triples((activityURI,rdf_HS['starttime'],None)):
                 starttime = stypetriple[2]
                 print starttime
             sss = Network_Organization(identifier = activityURI, starttime=starttime)
             print sss
-        elif entity_type == HS['Discovery']:
-            for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
+        elif entity_type == rdf_HS['Discovery']:
+            for stypetriple in RDFStore.triples((activityURI,rdf_HS['starttime'], None)):
                 starttime = stypetriple[2]
                 print starttime
             sss = Discovery(identifier = activityURI, starttime=starttime)
             print sss
-        elif entity_type == HS['Query']:
-            for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
+        elif entity_type == rdf_HS['Query']:
+            for stypetriple in RDFStore.triples((activityURI, rdf_HS['starttime'], None)):
                 starttime = stypetriple[2]
             print starttime
             sss = Query(identifier = activityURI,starttime=starttime)
             print sss
-        elif entity_type == HS['Sensor_Node_Activity']:
-            for stypetriple in RDFStore.triples((activityURI, HS['starttime'], None)):
+        elif entity_type == rdf_HS['Sensor_Node_Activity']:
+            for stypetriple in RDFStore.triples((activityURI, rdf_HS['starttime'], None)):
                 starttime = stypetriple[2]
             print starttime
             sss = Sensor_Node_Activity(identifier = activityURI, starttime=starttime)
@@ -138,7 +150,7 @@ class PROVBuilder:
                     attrdict[attr[1]] = attr[2]
             
             #if entity matches add to container
-            if rdftype == HS['Sensor']:
+            if rdftype == rdf_HS['Sensor']:
                 print 'Sensor found'
                 e = Sensor(str(sub),attributes=attrdict)
                 self.container.add(e)
@@ -261,7 +273,9 @@ class PROVBuilder:
                     entity = self._createEntity_Agent(entityURI,RDFstore)
                     self.container.add(entity)
                 for Relation_triple in RDFstore.triples((sub, prov['agent'], None)):
-                    agent = Relation_triple[2]
+                    agentURI = Relation_triple[2]
+                    agent = self._createEntity_Agent(agentURI,RDFstore)
+                    self.container.add(agent)
                     
                 at = wasAttributedTo(entity, agent, identifier=str(sub))
                 self.container.add(at)
@@ -270,10 +284,9 @@ class PROVBuilder:
 sg=Mystore('mystore', 'mystore')
 
 # Function to add split msg to types and add PROV Instances
-def addtoStore(msg,msg_timestamp,counter):
+def addtoStore(msg,msg_timestamp):
     
-
-
+    #msglist = msg.split(",")
     mac_address = msg[1]
     type1 = msg[2]
     type1_value = msg[3]
@@ -281,18 +294,17 @@ def addtoStore(msg,msg_timestamp,counter):
     type2_value = msg[5]
     type3 = msg[6]
     type3_value = msg[7]  
-    
     Literal_msg_timestamp = Literal(str(msg_timestamp))
-    Literal_counter = Literal(str(counter))
+    
 # Create appropriate instances(based on Home Sensor Model) for sensor data    
     S_Network = Sensor_Network(identifier=HS[str(uuid.uuid1())], attributes=None, account=None)
     sg.addPROVInstance(S_Network) 
 
-    sn1 = Sensor_Node(identifier=HS[mac_address],attributes=None,sensor_id=None, sensor_name=None, account=None)
+    sn1 = Sensor_Node(identifier=HS[mac_address],attributes=None, account=None)
     sg.addPROVInstance(sn1)
     
     sensor1URI = mac_address+'_1'
-    sensor1 = Sensor(identifier=HS[sensor1URI],sensor_type = type1,attributes=None, account=None)
+    sensor1 = Sensor(identifier=HS[sensor1URI],sensor_type=type1,attributes=None, account=None)
     sg.addPROVInstance(sensor1)
     
     sensor_reading1 = Sensor_Readings(identifier=HS[str(uuid.uuid1())], value=type1_value)
@@ -366,7 +378,7 @@ def addtoStore(msg,msg_timestamp,counter):
     
     return msg
 
-data = ['Node,8766,Temp,23,Humidity,65,Light,4']
+data = ['Node,8A6E,Temperature,20,Humidity,60,Light,4']
 
 data = str(data)
 data = data.replace("\n","").replace("\r","")
@@ -383,7 +395,7 @@ for msg in msglist:
     # Create a counter starting at 10
     counter = itertools.count(0)
     print msg_timestamp, counter
-    addtoStore(msg, msg_timestamp, counter)
+    addtoStore(msg, msg_timestamp)
 
 mybuilder = PROVBuilder()
 
@@ -401,8 +413,9 @@ class SerialData(Thread):
     
     def run(self):
         while self.done is False:
+            #counter = itertools.count(0)
             try:
-                        ser = serial.Serial('COM12',115200,timeout=1,parity=serial.PARITY_NONE,
+                        ser = serial.Serial('COM14',115200,timeout=1,parity=serial.PARITY_NONE,
                         stopbits=serial.STOPBITS_ONE,
                         bytesize=serial.EIGHTBITS,
                         )   
@@ -411,52 +424,39 @@ class SerialData(Thread):
             except:
                         print "Could not open serial port: ", sys.exc_info()[0]
                         sys.exit(2)
-            while True:               
+            while True: 
+                        data = ser.read(1024);              
                         msg = str(data)
-                        msg = msg.replace("\n","").replace("\r","")
-                        msglist = msg.split(",")
-
-                        for msg in msglist:
-                            msg = msg.split(",")
                         print('SerialData is running') # put serial port listening codes here
                         print "data: ", msg
+                        msg = msg.replace("\n","").replace("\r","")
                         msg_timestamp = datetime.datetime.now()
-                        counter = itertools.count(0)
-                        addtoStore(msg, msg_timestamp,counter)
+                        
+                        addtoStore(msg, msg_timestamp)
                         
 class HS_Network:
     def GET(self):
         
-        #return render.NewFile()
-        #args = web.input()
-        #start = int(args.get('start', time() - 86400))
-        #cur = store.cursor() 
-        #query triples in store
-        #cur.execute('select ?pred ?obj where {<%s> ?pred ?obj .}' % id)
-#        returndict = {'whats_in_the_store' : '',
-#                      'subject' : '',
-#                      'predicate' : '',
-#                      'object:)' : ''}
-#        returnlist = []
-#        for s,p,o in sg.store:
-#            returndict['whats_in_the_store'] = returndict['whats_in_the_store'] + str(s) + str(p) + str(o)
-#            returndict['subject'] = str(s)
-#            returndict['predicate'] = str(p)
-#            returndict['object:)'] = str(o)
-        
-#        returnlist.append(returndict)
+        sg=Mystore('mystore', 'mystore')
+        for s,p,o in sg.store:
+            print 'triple starts:'
+            print s
+            print p
+            print o
+        mybuilder = PROVBuilder()
+        print "print mybuilder:"
+        mybuilder.traverseStore(sg.store)
+        print "print container:"
+        for k in mybuilder.container._provcontainer.keys():
+            print'key:'
+            print k
+            print 'value:'
+            print mybuilder.container._provcontainer[k]
+        return json.dumps(mybuilder.container.to_provJSON())
 
         
-        mybuilder.traverseStore(sg.store)
-        #print mybuilder.container._elementlist
-        #print json.dumps(mybuilder.container.to_provJSON())   
-        print "Let's the recreated store:"     
-        print mybuilder.container._provcontainer
-#        print sg.store.serialize(format="n3", max_depth=3)
-            
-        web.header('Content-Type', 'application/json')
-        return json.dumps(mybuilder.container.to_provJSON())
-          
+        
+        
     
 if __name__ == "__main__":
 #Links specific classes to URLs on the web server
@@ -465,11 +465,16 @@ if __name__ == "__main__":
     '/homesensor/view/','HS_Network', #view with web GUI
     '/sensor/','HS_Network'   #Links HS_Network Class to /sensor
         )
-    
+    testcontainer = PROVContainer()
+    testsensor = Sensor(identifier=HS['sss01'])
+    print 'testSensor'
+    print testsensor
+    testcontainer.add(testsensor)
+    print json.dumps(testcontainer.to_provJSON())
     sData = SerialData()
     sData.start()
     
     app = web.application(urls, globals()) #Run the web server.
     app.run()
     
-
+    
