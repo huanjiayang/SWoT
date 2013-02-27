@@ -64,7 +64,12 @@ class Bundle():
             if isinstance(element,Agent):
                 if not 'agent' in self._provcontainer.keys():
                     self._provcontainer['agent']=[]
-                self._provcontainer['agent'].append(element.identifier)
+                if isinstance(element.identifier,PROVQname):
+                    qqname = element.identifier.qname(nsdict)
+                else:
+                    qqname = element.identifier
+                    
+                self._provcontainer['agent'].append(qqname)
             jsondict = element.to_provJSON(nsdict)
             for key in jsondict:
                 if not key in self._provcontainer.keys():
@@ -88,15 +93,19 @@ class Bundle():
         for element in self._elementlist:
             if element.identifier is None:
                 element._idJSON = self._generate_elem_identifier()
-            else:
+            elif isinstance(element.identifier,PROVQname):
                 print "generate idJSON for %s" % str(element.identifier)
                 element._idJSON = element.identifier.qname(nsdict)
+            else:
+                element._idJSON = str(element.identifier)
         for relation in self._relationlist:
             if relation.identifier is None:
                 relation._idJSON = self._generate_rlat_identifier()
-            else:
+            elif isinstance(relation.identifier,PROVQname):
                 print "generate idJSON for %s" % str(relation.identifier)
                 relation._idJSON = relation.identifier.qname(nsdict)
+            else:
+                relation._idJSON = str(relation.identifier)
         for account in self._accountlist:
             print "generate idJSON for %s" % str(account.identifier)
             account._idJSON = account.identifier.qname(nsdict)
