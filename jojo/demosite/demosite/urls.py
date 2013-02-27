@@ -7,7 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    #                   ('^$', indexview),
+                       ('^$', indexview),
      #                  ('^demotest/$', demotest),
       #                 ('^currenttime/$', currenttime),
     # Examples:
