@@ -1,3 +1,9 @@
+v1.0.9, 17/09/2012  --  Bug fixes to rdf triple export
+* Be consistent with converting element identifiers when they are not PROVQname
+
+v1.0.8, 17/09/2012  --  Bug fixes to rdf triple export
+* correctly convert agent identifiers in agent list
+
 v1.0.7, 14/09/2012  --  Bug fixes to rdf triple export
 * Do not add None record into container
 
