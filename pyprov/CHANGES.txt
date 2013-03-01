@@ -1,3 +1,7 @@
+v1.0.10, 01/02/2013  --  Minor corrections in readme and examples
+* Updated examples to be consistent with the latest core updates;
+* Correct Readme;
+
 v1.0.9, 17/09/2012  --  Bug fixes to rdf triple export
 * Be consistent with converting element identifiers when they are not PROVQname
 
