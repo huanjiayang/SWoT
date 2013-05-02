@@ -1,56 +1,41 @@
 import os
 import sys
 import atexit
-
 import time
 import zipfile
 
 import web
 import json
-
 from web.contrib.template import render_mako
+
 
 class index:   
     def GET(self):
         print "running index()"
-        return render.index()
+        return render.maininterface()
 
-class project:   
+class test:
     def GET(self):
-        print "running project()"
-        return render.project()
-
-
-class publication:   
-    def GET(self):
-        print "running publication()"
-        return render.publication()
-    
-    
-class activity:   
-    def GET(self):
-        print "running activity()"
-        return render.activity()
-
-class interest:   
-    def GET(self):
-        print "running interest()"
-        return render.interest()
-
-class news:
-    def GET(self,news_item):
-        print "running news, getting news item: " + news_item
-        if news_item == "phd":
-            return render.phd()
-        else:
-            return "The requested news doesn't exist."
+        print "running news, getting news item: "
+        
+        
+        
+        ebookcontent=""
+        
+        ebookcontent = "<h2>this is the content</h2>"
+        
+        vars = {
+                'ebook_title': "my ebook title",
+                'ebook_content': ebookcontent
+            }
+        return render.bookreader(**vars)
 
 class others:
     def GET(self,para):
         print "accepting unknown url"
         return "The requested URL doesn't exist."
 
-class guestbook():
+class update():
     def GET(self):
         print "running guestbook()"
         return render.guestbook()
@@ -58,18 +43,15 @@ class guestbook():
     
 urls = (
     '/', 'index',
-    '/project/', 'project',
-    '/publication/', 'publication',
-    '/activity/', 'activity',
-    '/interest/', 'interest',
-    '/news/(.*)/','news',
-    '/guestbook/','guestbook',
+    '/test/', 'test',
+    '/update/', 'update',
     '/(.*)','others',
 )
 
+
 app = web.application(urls, globals())
 render = render_mako(
-           directories=['html_templates'],
+           directories=['template'],
            input_encoding='utf-8',
            output_encoding='utf-8',
            )
