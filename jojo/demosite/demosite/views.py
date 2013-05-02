@@ -19,3 +19,6 @@ def indexview(request):
     myfile.close()
     html = mytemplate.render(Context({'your_name' : 'jojo','current_time': now}))
     return HttpResponse(html)
+
+
+print "asdgfasdfg"
