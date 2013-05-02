@@ -19,7 +19,7 @@ MT = PROVNamesace('mt', "http://www.mytype.com/#")
 class Sink_Node(Agent):
     
     def __init__(self, identifier, attributes = None, account = None):
-
+        
         Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
         
     def _toRDF(self):
