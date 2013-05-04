@@ -40,11 +40,27 @@ class update():
         print "running guestbook()"
         return render.guestbook()
 
+class ebooklist:
+    def GET(self):        
+        # get the ebook list
+        ebooklist= []
+        
+        # construct a few ebooks here for test, but in your final program
+        # these ebooks and their information should be obtained automatically by listing the ebook
+        # directory 
+        ebooklist.append( {"title":"this is ebook1 title", "url":"/ebook/ebook1/"})
+        ebooklist.append( {"title":"this is ebook222 title", "url":"/ebook/ebook222/"})
+               
+        # return the list as JSON      
+        web.header('Content-Type', 'application/json')
+        return json.dumps(ebooklist)
+
     
 urls = (
     '/', 'index',
     '/test/', 'test',
     '/update/', 'update',
+    '/ebooklist/', 'ebooklist',
     '/(.*)','others',
 )
 
