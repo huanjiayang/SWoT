@@ -10,6 +10,8 @@ _logger.addHandler(_hdlr)
 from rdflib import Graph, Literal, BNode, RDF
 from rdflib.namespace import FOAF, DC
 
+prov = PROVNamespace("prov","http://www.w3.org/ns/prov-dm/")
+
 store = Graph()
 
 # Bind a few prefix, namespace pairs for pretty output
@@ -24,11 +26,13 @@ store.add((donna, RDF.type, FOAF.Person))
 store.add((donna, FOAF.nick, Literal("donna", lang="foo")))
 store.add((donna, FOAF.name, Literal("Donna Fales")))
 
-store.add((user,prov:was associated with,input))
-
-
-
-
+store.add((userinput,prov:['wasAssociatedWith'],user))
+store.add((input,prov:['wasGeneratedBy'],userinput))
+store.add((result,prov:['wasDerivedFrom'],input))
+store.add((result,prov:['wasDerivedFrom'],books))
+store.add((result,prov:['wasGeneratedBy'],calculate))
+store.add((server,prov:['wasAttributedTo'],software))
+store.add((software,prov:['wasStartedBy'],calculate))
 
 # Iterate over triples in store and print them out.
 print "--- printing raw triples ---"
