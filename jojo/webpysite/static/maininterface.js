@@ -24,3 +24,12 @@ function getebooks() {
 		}
 	});
 }
+function readbook(){
+	
+	var ebooklist = document.getElementById("ebooklist");
+	for(i=0; i<ebooklist.options.length; i++){
+		if(ebooklist.options[i].selected == true){	
+			location.assign(ebooklist.options[i].value);
+		}
+	}
+}
