@@ -44,41 +44,42 @@ class ebooklist:
         # construct a few ebooks here for test, but in your final program
         # these ebooks and their information should be obtained automatically by listing the ebook
         # directory 
-        ebooklist.append( {"title":"this is ebook1 title", "url":"/ebooks/ebook1/"})
-        ebooklist.append( {"title":"this is ebook2 title", "url":"/ebooks/ebook2/"})
+        #ebooklist.append( {"title":"this is ebook1 title", "url":"/ebooks/ebook1/"})
+        #ebooklist.append( {"title":"this is ebook2 title", "url":"/ebooks/ebook2/"})
+        
+        for dir in os.listdir("./ebooks/"):
+            ebooklist.append( {"title": dir, "url":"/ebooks/"+dir+"/"})
+        
                
         # return the list as JSON      
         web.header('Content-Type', 'application/json')
         return json.dumps(ebooklist)
 
 
-class ebook1:
-    def GET(self):
-        print "Testing ebook1"
-        render = render_mako(
-                             directories=['ebooks/ebook1'],
-                             input_encoding='utf-8',
-                             output_encoding='utf-8',
-                             )
-        return render.ebook1()   
-    
-class ebook2:
-    def GET(self):
-        print "Testing ebook2"
-        render = render_mako(
-                             directories=['ebooks/ebook2'],
-                             input_encoding='utf-8',
-                             output_encoding='utf-8',
-                             )
-        return render.ebook2()   
+class startreading:
+    def GET(self,ebookname):
+
+        ebookcontent = ''
+        rpshtmlfile = open('./ebooks/' + ebookname + '/page.html')
+        
+        ebookcontent = rpshtmlfile.read()
+        #rpshtmlpage += "<!--" + debug + "-->"
+        
+        rpshtmlfile.close()
+        
+        vars = {
+                'ebook_title': ebookname,
+                'ebook_content': ebookcontent
+            }
+        return render.bookreader(**vars)
+
     
 urls = (
     '/', 'index',
     '/bookreader/', 'bookreader',
     '/update/', 'update',
     '/ebooklist/', 'ebooklist',
-    '/ebooks/ebook1/', 'ebook1',
-    '/ebooks/ebook2/', 'ebook2',
+    '/ebooks/(.*)/', 'startreading',
     '/(.*)','others',
 )
 
