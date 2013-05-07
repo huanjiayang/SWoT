@@ -14,13 +14,9 @@ class index:
         print "running index()"
         return render.maininterface()
 
-class test:
+class bookreader:
     def GET(self):
         print "running news, getting news item: "
-        
-        
-        
-        ebookcontent=""
         
         ebookcontent = "<h2>this is the content</h2>"
         
@@ -48,19 +44,41 @@ class ebooklist:
         # construct a few ebooks here for test, but in your final program
         # these ebooks and their information should be obtained automatically by listing the ebook
         # directory 
-        ebooklist.append( {"title":"this is ebook1 title", "url":"/ebook/ebook1/"})
-        ebooklist.append( {"title":"this is ebook222 title", "url":"/ebook/ebook222/"})
+        ebooklist.append( {"title":"this is ebook1 title", "url":"/ebooks/ebook1/"})
+        ebooklist.append( {"title":"this is ebook2 title", "url":"/ebooks/ebook2/"})
                
         # return the list as JSON      
         web.header('Content-Type', 'application/json')
         return json.dumps(ebooklist)
 
+
+class ebook1:
+    def GET(self):
+        print "Testing ebook1"
+        render = render_mako(
+                             directories=['ebooks/ebook1'],
+                             input_encoding='utf-8',
+                             output_encoding='utf-8',
+                             )
+        return render.ebook1()   
+    
+class ebook2:
+    def GET(self):
+        print "Testing ebook2"
+        render = render_mako(
+                             directories=['ebooks/ebook2'],
+                             input_encoding='utf-8',
+                             output_encoding='utf-8',
+                             )
+        return render.ebook2()   
     
 urls = (
     '/', 'index',
-    '/test/', 'test',
+    '/bookreader/', 'bookreader',
     '/update/', 'update',
     '/ebooklist/', 'ebooklist',
+    '/ebooks/ebook1/', 'ebook1',
+    '/ebooks/ebook2/', 'ebook2',
     '/(.*)','others',
 )
 
@@ -71,6 +89,7 @@ render = render_mako(
            input_encoding='utf-8',
            output_encoding='utf-8',
            )
+
 
 
 if __name__ == "__main__": app.run()
