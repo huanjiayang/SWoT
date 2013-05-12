@@ -23,7 +23,7 @@
                         e.preventDefault();
                         $.post(this.action, $(this).serialize(),function(data){
                             $('#update_area #update_result').html('response data: ' + data);
-                        });
+                        },"text");
                     });
                 });
         </script>
