@@ -8,6 +8,10 @@ import web
 import json
 from web.contrib.template import render_mako
 
+index_dir = os.path.dirname(__file__)
+ebooks_dir = os.path.join(index_dir, 'ebooks')
+
+
 
 class index:   
     def GET(self):
@@ -31,10 +35,19 @@ class others:
         print "accepting unknown url"
         return "The requested URL doesn't exist."
 
-class update():
+class update:
     def GET(self):
         print "running guestbook()"
-        return render.guestbook()
+        return "TODO"#render.guestbook()
+    def POST(self):
+        post_data = web.input(bookname="")
+        bookname = post_data.get('bookname')
+        py_dir = os.path.join(ebooks_dir, bookname)
+        sys.path.insert(0, py_dir)
+        import execute
+        result = execute.execute_func()
+        sys.path.remove(sys.path[0])
+        return result
 
 class ebooklist:
     def GET(self):        
@@ -47,9 +60,10 @@ class ebooklist:
         #ebooklist.append( {"title":"this is ebook1 title", "url":"/ebooks/ebook1/"})
         #ebooklist.append( {"title":"this is ebook2 title", "url":"/ebooks/ebook2/"})
         
-        for dir in os.listdir("./ebooks/"):
-            ebooklist.append( {"title": dir, "url":"/ebooks/"+dir+"/"})
-        
+        for book_name in os.listdir(ebooks_dir):
+            if book_name.startswith('.'):
+                continue
+            ebooklist.append({"title": book_name, "url":"/ebooks/"+book_name+"/"})
                
         # return the list as JSON      
         web.header('Content-Type', 'application/json')
@@ -60,11 +74,10 @@ class startreading:
     def GET(self,ebookname):
 
         ebookcontent = ''
-        rpshtmlfile = open('./ebooks/' + ebookname + '/page.html')
-        
+        ebook_uri = '%s/%s/page.html' % (ebooks_dir, ebookname)
+        rpshtmlfile = open(ebook_uri)
         ebookcontent = rpshtmlfile.read()
         #rpshtmlpage += "<!--" + debug + "-->"
-        
         rpshtmlfile.close()
         
         vars = {
@@ -72,7 +85,6 @@ class startreading:
                 'ebook_content': ebookcontent
             }
         return render.bookreader(**vars)
-
     
 urls = (
     '/', 'index',
@@ -91,8 +103,7 @@ render = render_mako(
            output_encoding='utf-8',
            )
 
-
-
-if __name__ == "__main__": app.run()
+if __name__ == "__main__":
+    app.run()
 
 
