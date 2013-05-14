@@ -1,6 +1,6 @@
 from rdflib.graph import Graph, ConjunctiveGraph
 from rdflib import Namespace, BNode, Literal, RDF, URIRef
-from Prov_Store import *
+#from Prov_Store import *
 import rdfextras
 from rdflib import plugin
 from rdflib.store import Store, NO_STORE, VALID_STORE
@@ -91,7 +91,7 @@ class Sand_and_Recieve(Activity):
         return self.rdftriples
     
     
-class Measured_value(Entity):
+class Measured_Value(Entity):
     
     def __init__(self, identifier=None, attributes=None, value=None, sensor_name=None, sensor_id=None,account=None):
         
@@ -101,7 +101,7 @@ class Measured_value(Entity):
         
     def _toRDF(self):
         Entity._toRDF(self)
-        self.rdftriples[self.identifier][rdf['type']] = MT['Measured_value']
+        self.rdftriples[self.identifier][rdf['type']] = MT['Measured_Value']
         self.rdftriples[self.identifier][MT['value']] = Literal(self.value)
         return self.rdftriples
     
