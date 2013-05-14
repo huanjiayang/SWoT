@@ -36,18 +36,22 @@ class others:
         return "The requested URL doesn't exist."
 
 class update:
-    def GET(self):
-        print "running guestbook()"
-        return "TODO"#render.guestbook()
-    def POST(self):
-        post_data = web.input(bookname="")
-        bookname = post_data.get('bookname')
-        py_dir = os.path.join(ebooks_dir, bookname)
+    def GET(self,ebookname):
+        print "running update()"
+#        return "TODO"#render.guestbook()
+        #post_data = web.input(bookname="")
+        #bookname = post_data.get('bookname')
+        py_dir = os.path.join(ebooks_dir, ebookname)
         sys.path.insert(0, py_dir)
         import execute
         result = execute.execute_func()
         sys.path.remove(sys.path[0])
-        return result
+        #return result
+        output_position = 'update_result'
+        rps = []
+        rps.append({'finished':True,'result':str(result),'position' : output_position})
+        web.header('Content-Type', 'application/json')
+        return json.dumps(rps)
 
 class ebooklist:
     def GET(self):        
@@ -89,7 +93,7 @@ class startreading:
 urls = (
     '/', 'index',
     '/bookreader/', 'bookreader',
-    '/update/', 'update',
+    '/update/(.*)/', 'update',
     '/ebooklist/', 'ebooklist',
     '/ebooks/(.*)/', 'startreading',
     '/(.*)','others',
