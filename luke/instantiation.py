@@ -1,4 +1,4 @@
-import model.py
+import model
 import json
 import datetime
 from pyprov.model.type import *
@@ -45,4 +45,15 @@ InsGraph.add(wAW1)
 aOBO1 = actedOnBehalfOf(ag1,ag2,identifier='aOBO1')
 InsGraph.add(aOBO1)
 
+#testdict = e1._toRDF()
+#for sub in testdict.keys():
+#    print str(sub)
+#   for pred in testdict[sub].keys():
+#        print str(pred)
+#       if isinstance(testdict[sub][pred],list):
+#          for obj in testdict[sub][pred]:
+#             print 'object: ' + str(obj) + '     '
+#    else:        
+#       print str(testdict[sub][pred])
+            
 print json.dumps(examplegraph.to_provJSON(),indent=4)
