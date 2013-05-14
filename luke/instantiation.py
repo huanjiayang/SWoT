@@ -1,4 +1,4 @@
-import model
+from model import *
 import json
 import datetime
 from pyprov.model.type import *
@@ -6,16 +6,21 @@ from pyprov.model.relation import *
 from pyprov.model.bundle import *
 
 
-DC = Namespace('dc', 'http://purl.org/dc/elements/1.1/')
-FOAF = Namespace('http://xmlns.com/foaf/0.1/')
-PROV = Namespace("http://www.w3.org/ns/prov-dm/")
-RDF = Namespace('"http://www.w3.org/2000/01/rdf-schema#')
-MT = PROVNamesace('mt', "http://www.mytype.com/#")
+DC = PROVNamespace('dc', 'http://purl.org/dc/elements/1.1/')
+PROV = PROVNamespace('prov',"http://www.w3.org/ns/prov-dm/")
+RDF = PROVNamespace('rdf', "http://www.w3.org/2000/01/rdf-schema#")
+MT = PROVNamespace('mt', "http://www.mytype.com/#")
+
+data = ['Node,8766,Temp,23,Humidity,65,Light,4']
+
+data = str(data)
+data = data.replace("\n","").replace("\r","")
+msglist = data.split(",")
 
 InsGraph = PROVContainer()
 InsGraph.set_default_namespace("http://www.mytype.com/#")
 
-ag1 = Sensor_Node(MT['Sensor_Node'],None)
+ag1 = Sensor_Node(MT[msglist[1]])
 InsGraph.add(ag1)
 
 ag2 = Sink_Node(MT['Sink_Node'],None)
@@ -56,4 +61,4 @@ InsGraph.add(aOBO1)
 #    else:        
 #       print str(testdict[sub][pred])
             
-print json.dumps(examplegraph.to_provJSON(),indent=4)
+print json.dumps(InsGraph.to_provJSON(),indent=4)

@@ -13,7 +13,7 @@ DC = Namespace('dc', 'http://purl.org/dc/elements/1.1/')
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 PROV = Namespace("http://www.w3.org/ns/prov-dm/")
 RDF = Namespace('"http://www.w3.org/2000/01/rdf-schema#')
-MT = PROVNamesace('mt', "http://www.mytype.com/#")
+MT = PROVNamespace('mt', "http://www.mytype.com/#")
 
 
 class Sink_Node(Agent):
@@ -35,6 +35,10 @@ class Sensor_Node(Agent):
 
         Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
         
+        if self.attributes == None:
+            self.attributes = {}
+        self.attributes[MT['type']]=MT['Sensor_Node']
+            
     def _toRDF(self):
         Agent._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = MT['Sensor_Node']
@@ -59,9 +63,9 @@ class Measuring(Activity):
     
     def __init__(self, identifier=None, starttime=None, endtime=None, attributes=None, account=None, sensor_name=None, sensor_id=None):
         
-        Activity.__init__(self, indentifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
-        
-        self.indentifier = identifier
+        Activity.__init__(self, identifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
+            
+        self.identifier = identifier
         
     def _toRDF(self):
         Activity.to_RDF(self)
@@ -77,9 +81,9 @@ class Sand_and_Recieve(Activity):
     
     def __init__(self, identifier=None, starttime=None, endtime=None, attributes=None, account=None, sensor_name=None, sensor_id=None):
         
-        Activity.__init__(self, indentifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
+        Activity.__init__(self, identifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
         
-        self.indentifier = identifier
+        self.identifier = identifier
         
     def _toRDF(self):
         Activity.to_RDF(self)
@@ -110,7 +114,7 @@ class Sensor(Entity):
     
     def __init__(self, identifier=None, attributes=None, sensor_name=None, sensor_id=None, account=None):
         
-        Entity.__init__(self, identifier=idetifier, attributes=attributes, account=account)
+        Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
         
     def _toRDF(self):
@@ -123,7 +127,7 @@ class Request(Entity):
     
     def __init__(self, identifier=None, attributes=None, account=None):
         
-        Entity.__init__(self, identifier=idetifier, attributes=attributes, account=account)
+        Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
         
     def _toRDF(self):
@@ -136,7 +140,7 @@ class Command(Entity):
     
     def __init__(self, identifier=None, attributes=None, account=None):
         
-        Entity.__init__(self, identifier=idetifier, attributes=attributes, account=account)
+        Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
         
     def _toRDF(self):
@@ -149,7 +153,7 @@ class Respond(Entity):
     
     def __init__(self, identifier=None, attributes=None, account=None):
         
-        Entity.__init__(self, identifier=idetifier, attributes=attributes, account=account)
+        Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
         
     def _toRDF(self):
