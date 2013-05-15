@@ -2,8 +2,6 @@
 
 function requestresult() {
 	
-	var ebookname = 'summer';   // this name should be get back in some way
-	
 	$.ajax({
 		url: "/update/"+ebookname + '/',
 		type: 'GET',

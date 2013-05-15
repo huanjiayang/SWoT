@@ -86,7 +86,8 @@ class startreading:
         
         vars = {
                 'ebook_title': ebookname,
-                'ebook_content': ebookcontent
+                'ebook_content': ebookcontent,
+                'ebookname' : ebookname
             }
         return render.bookreader(**vars)
     
