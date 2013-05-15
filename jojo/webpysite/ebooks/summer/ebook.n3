@@ -1,0 +1,17 @@
+@base <urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135FX> .
+
+@prefix ebook: <http://jiaojiaojiang.com/ebook/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<> a ebook:EbookFile;
+	dcterms:created "Wed May 15 10:30:00 2013";
+	dcterms:creator "Jiaojiao Jiang";
+	dcterms:description "An example ebook called summer";
+	dcterms:language "en";
+	dcterms:title "summer";
+	ebook:hasExecution <#execution001> .
+
+<#execution001> a ebook:Execution;
+	ebook:hasResource "execute.py";
+	ebook:hasOutputPosition "update_result".

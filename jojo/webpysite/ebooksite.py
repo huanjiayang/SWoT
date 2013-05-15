@@ -8,8 +8,14 @@ import web
 import json
 from web.contrib.template import render_mako
 
+from rdflib import URIRef,Literal, Namespace, Graph, ConjunctiveGraph, RDF
+import rdflib
+from rdfextras import *
+
 index_dir = os.path.dirname(__file__)
 ebooks_dir = os.path.join(index_dir, 'ebooks')
+
+ns_ebook = Namespace("http://jiaojiaojiang.com/ebook/")
 
 
 
@@ -78,11 +84,21 @@ class startreading:
     def GET(self,ebookname):
 
         ebookcontent = ''
-        ebook_uri = '%s/%s/page.html' % (ebooks_dir, ebookname)
-        rpshtmlfile = open(ebook_uri)
+        ebook_page = '%s/%s/page.html' % (ebooks_dir, ebookname)
+        rpshtmlfile = open(ebook_page)
         ebookcontent = rpshtmlfile.read()
         #rpshtmlpage += "<!--" + debug + "-->"
         rpshtmlfile.close()
+
+        ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
+        ebook_n3_file = open(ebook_n3)
+        
+        temp_ebook_graph = Graph()        
+        temp_ebook_graph.parse(ebook_n3_file, format="n3")        
+        
+        for triple in temp_ebook_graph.triples((None, RDF.type, ns_ebook['EbookFile'])):
+            ebook_file_URI = triple[0]
+            print ebook_file_URI
         
         vars = {
                 'ebook_title': ebookname,
