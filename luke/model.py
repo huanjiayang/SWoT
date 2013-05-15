@@ -18,9 +18,14 @@ MT = PROVNamespace('mt', "http://www.mytype.com/#")
 
 class Sink_Node(Agent):
     
-    def __init__(self, identifier, attributes = None, account = None):
+    def __init__(self, identifier, attributes = None,account = None):
+        
         
         Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
+        
+        if self.attributes == None:
+            self.attributes = {}
+        self.attributes[MT['type']]=MT['Sink_Node']
         
     def _toRDF(self):
         Agent._toRDF(self)
@@ -31,13 +36,14 @@ class Sink_Node(Agent):
     
 class Sensor_Node(Agent):
     
-    def __init__(self, identifier, attributes = None, account = None):
+    def __init__(self, identifier, Sink_Node, attributes = None, account = None):
 
         Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
         
         if self.attributes == None:
             self.attributes = {}
         self.attributes[MT['type']]=MT['Sensor_Node']
+        self.attributes[MT['Sink_Node']]=Sink_Node
             
     def _toRDF(self):
         Agent._toRDF(self)
@@ -61,11 +67,20 @@ class User(Agent):
     
 class Measuring(Activity):
     
-    def __init__(self, identifier=None, starttime=None, endtime=None, attributes=None, account=None, sensor_name=None, sensor_id=None):
+    def __init__(self, Sensor_id, identifier=None, starttime=None, endtime=None, attributes=None, account=None):
         
+        if identifier is None:
+            identifier = 'urn:uuid:' + str(uuid.uuid1())
+            
         Activity.__init__(self, identifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
             
         self.identifier = identifier
+        
+        if self.attributes == None:
+            self.attributes = {}
+        self.attributes[MT['type']]=MT['Measuring']
+        self.attributes[MT['Sensor_id']]=Sensor_id
+        
         
     def _toRDF(self):
         Activity.to_RDF(self)
@@ -77,7 +92,7 @@ class Measuring(Activity):
         return self.rdftriples
 
 
-class Sand_and_Recieve(Activity):
+class Send_and_Recieve(Activity):
     
     def __init__(self, identifier=None, starttime=None, endtime=None, attributes=None, account=None, sensor_name=None, sensor_id=None):
         
@@ -87,7 +102,7 @@ class Sand_and_Recieve(Activity):
         
     def _toRDF(self):
         Activity.to_RDF(self)
-        self.rdftriples[self.identifier][rdf['type']] = MT['Sand_and_Recieve']
+        self.rdftriples[self.identifier][rdf['type']] = MT['Send_and_Recieve']
         if self.starttime is not None:
             self.rdftriples[self.identifier][MT['starttime']] = MT[self.starttime]
         if self.endtime is not None:
@@ -97,11 +112,20 @@ class Sand_and_Recieve(Activity):
     
 class Measured_Value(Entity):
     
-    def __init__(self, identifier=None, attributes=None, value=None, sensor_name=None, sensor_id=None,account=None):
+    def __init__(self, value, Sensor_id, identifier=None, attributes=None, account=None):
         
+        if identifier is None:
+            identifier = 'urn:uuid:' + str(uuid.uuid1())
+            
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
-        self.value = value
-        self.identifier = identifier
+        self.value=value
+        self.identifier=identifier
+        
+        if self.attributes == None:
+            self.attributes = {}
+        self.attributes[MT['type']]=MT['Measured_Value']
+        self.attributes[MT['Sensor_id']]=Sensor_id
+        self.attributes[MT['value']]=value
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -112,10 +136,15 @@ class Measured_Value(Entity):
 
 class Sensor(Entity):
     
-    def __init__(self, identifier=None, attributes=None, sensor_name=None, sensor_id=None, account=None):
+    def __init__(self, identifier, Sensor_Type, attributes=None, account=None):
         
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
+        
+        if self.attributes == None:
+            self.attributes = {}
+        self.attributes[MT['type']]=MT['Sensor']
+        self.attributes[MT['Sensor_Type']]=Sensor_Type
         
     def _toRDF(self):
         Entity._toRDF(self)
