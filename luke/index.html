@@ -1,0 +1,26 @@
+<head>
+	<title>sensor information query page</title>
+		<script language="javascript" src="./static/index.js" type="text/javascript"></script>
+		<script language="javascript" src="./static/jquery-1.6.1.min.js" type="text/javascript"></script>
+	
+	
+</head>
+
+<body>
+<form>
+<select id="query_type">
+			<option value="id">id</option>
+			<option value="time">time</option>
+			<option value="temperature">temperature</option>
+			<option value="humidity">humidity</option>
+</select>
+
+<input id='query_input'/>
+<input type='button' id='query_button' value='start query' onclick='query();'>
+</form>
+
+<div id='query_result'>
+
+</div>
+
+</body>
