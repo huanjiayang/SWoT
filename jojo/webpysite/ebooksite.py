@@ -16,6 +16,7 @@ index_dir = os.path.dirname(__file__)
 ebooks_dir = os.path.join(index_dir, 'ebooks')
 
 ns_ebook = Namespace("http://jiaojiaojiang.com/ebook/")
+ns_dcterms = Namespace("http://purl.org/dc/terms/")
 
 
 
@@ -124,14 +125,38 @@ class getebookinfo:
         for triple in temp_ebook_graph.triples((None, RDF.type, ns_ebook['EbookFile'])):
             ebook_file_URI = triple[0]
             print ebook_file_URI
+            
+        for triple in temp_ebook_graph.triples((ebook_file_URI, ns_dcterms['created'], None)):
+            ebook_created = triple[2]
+        for triple in temp_ebook_graph.triples((ebook_file_URI, ns_dcterms['creator'], None)):
+            ebook_creator = triple[2]
+        for triple in temp_ebook_graph.triples((ebook_file_URI, ns_dcterms['description'], None)):
+            ebook_description = triple[2]
+        for triple in temp_ebook_graph.triples((ebook_file_URI, ns_dcterms['language'], None)):
+            ebook_language = triple[2]
+        for triple in temp_ebook_graph.triples((ebook_file_URI, ns_dcterms['title'], None)):
+            ebook_title = triple[2]
+        
+        ebook_info = []
+        ebook_info.append({"title" : ebook_title,
+                           "created" : ebook_created,
+                           "creator" : ebook_creator,
+                           "description" : ebook_description,
+                           "language" : ebook_language
+                           })
+        
+        web.header('Content-Type', 'application/json')
+        return json.dumps(ebook_info)
+        
+        
 
 urls = (
     '/', 'index',
     '/bookreader/', 'bookreader',
     '/update/(.*)/', 'update',
     '/ebooklist/', 'ebooklist',
+    '/ebooks/(.*)/info/', 'getebookinfo',
     '/ebooks/(.*)/', 'startreading',
-    '/ebooks/(.*)/(.*)/', 'getebookinfo',
     '/(.*)','others',
 )
 
