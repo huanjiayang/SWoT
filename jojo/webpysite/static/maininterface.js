@@ -33,3 +33,13 @@ function readbook(){
 		}
 	}
 }
+
+bookArray = new Array("ebooklist");
+infoArray = new Array("getebookinfo"); 
+
+function changeTest (){
+	
+	var Index = document.menuForm.ebooklist.options[document.menuForm.ebooklist.selectedIndex].value;
+	document.getbookinfo.alt = infoArray[Index];
+	document.getbook.alt = bookArray[Index];
+} 

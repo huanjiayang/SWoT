@@ -51,6 +51,11 @@ class update:
         sys.path.insert(0, py_dir)
         import execute
         result = execute.execute_func()
+        
+        f=open('%s/%s/outresult.txt'% (ebooks_dir, ebookname),'w')
+        s=str(result)
+        f.write(s)
+        
         sys.path.remove(sys.path[0])
         #return result
         output_position = 'update_result'
@@ -90,6 +95,26 @@ class startreading:
         #rpshtmlpage += "<!--" + debug + "-->"
         rpshtmlfile.close()
 
+     #   ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
+     #   ebook_n3_file = open(ebook_n3)
+        
+     #   temp_ebook_graph = Graph()        
+     #   temp_ebook_graph.parse(ebook_n3_file, format="n3")        
+        
+     #   for triple in temp_ebook_graph.triples((None, RDF.type, ns_ebook['EbookFile'])):
+     #       ebook_file_URI = triple[0]
+     #       print ebook_file_URI
+        
+        vars = {
+                'ebook_title': ebookname,
+                'ebook_content': ebookcontent,
+                'ebookname' : ebookname
+            }
+        return render.bookreader(**vars)
+
+class getebookinfo:
+    def GET(self,ebookname):
+ 
         ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
         ebook_n3_file = open(ebook_n3)
         
@@ -99,20 +124,14 @@ class startreading:
         for triple in temp_ebook_graph.triples((None, RDF.type, ns_ebook['EbookFile'])):
             ebook_file_URI = triple[0]
             print ebook_file_URI
-        
-        vars = {
-                'ebook_title': ebookname,
-                'ebook_content': ebookcontent,
-                'ebookname' : ebookname
-            }
-        return render.bookreader(**vars)
-    
+
 urls = (
     '/', 'index',
     '/bookreader/', 'bookreader',
     '/update/(.*)/', 'update',
     '/ebooklist/', 'ebooklist',
     '/ebooks/(.*)/', 'startreading',
+    '/ebooks/(.*)/(.*)/', 'getebookinfo',
     '/(.*)','others',
 )
 
