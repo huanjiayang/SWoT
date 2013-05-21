@@ -112,7 +112,7 @@ class Send_and_Recieve(Activity):
     
 class Measured_Value(Entity):
     
-    def __init__(self, value, Sensor_id, identifier=None, attributes=None, account=None):
+    def __init__(self, value, value_type, Sensor_id, identifier=None, attributes=None, account=None):
         
         if identifier is None:
             identifier = 'urn:uuid:' + str(uuid.uuid1())
@@ -125,6 +125,7 @@ class Measured_Value(Entity):
             self.attributes = {}
         self.attributes[MT['type']]=MT['Measured_Value']
         self.attributes[MT['Sensor_id']]=Sensor_id
+        self.attributes[MT['value_type']]=value_type
         self.attributes[MT['value']]=value
         
     def _toRDF(self):
@@ -136,7 +137,7 @@ class Measured_Value(Entity):
 
 class Sensor(Entity):
     
-    def __init__(self, identifier, Sensor_Type, attributes=None, account=None):
+    def __init__(self, identifier, Sensor_Node, attributes=None, account=None):
         
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
@@ -144,7 +145,7 @@ class Sensor(Entity):
         if self.attributes == None:
             self.attributes = {}
         self.attributes[MT['type']]=MT['Sensor']
-        self.attributes[MT['Sensor_Type']]=Sensor_Type
+        self.attributes[MT['Sensor_Node']]=Sensor_Node
         
     def _toRDF(self):
         Entity._toRDF(self)
