@@ -52,7 +52,7 @@ class update:
         import execute
         result = execute.execute_func()
         
-        f=open('%s/%s/outresult.txt'% (ebooks_dir, ebookname),'w')
+        f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'w')
         s=str(result)
         f.write(s)
         
