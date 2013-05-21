@@ -6,14 +6,17 @@
 	</head>
 	<body onload="getebooks();">
 		<h1>A Web based e-Document reading System</h1>
-		<p>Here is a published article, you can check the algorithm in publications.<br>
+		<p>Here is a published article, you can choose one book to read.<br>
 		</p>
 		<div id="ebook">
 			<h2>Your E-Books:</h2>
-			<select name="ebooklist" id="ebooklist">
+			<select name="ebooklist" id="ebooklist" onchange="changeTest()">
 			</select>
 			<input type="button" value="submit" onclick="readbook()"/>
 		</div>
-		
+	
+	
+<p> The information of this paper : <div id="getebookinfo" ></div></p>
+	
 	</body>
 </html>
