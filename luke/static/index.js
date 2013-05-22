@@ -3,7 +3,7 @@ function query(){
 	var url = '/query/';
 	var x = document.getElementById('query_type').selectedIndex;
 	var querytype = document.getElementById('query_type')[x].value;
-	var queryvalue = querytype = document.getElementById('query_input').value;
+	var queryvalue = document.getElementById('query_input').value;
 	
 	url = url + '?' + querytype + '=' + queryvalue;
 	window.location.href = url;

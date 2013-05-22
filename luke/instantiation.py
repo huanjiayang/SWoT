@@ -102,7 +102,7 @@ def msg_process(data):
     #    else:        
     #       print str(testdict[sub][pred])
                 
-    print json.dumps(InsGraph.to_provJSON(),indent=4)
+    return json.dumps(InsGraph.to_provJSON(),indent=4)
 
 
 msg01 = ['Sink_Node,8766,Sensor_Node,8766S02,Temp,23,Sensor_id,8766S0201,Humidity,65,Sensor_id,8766S0202,Light,4,Sensor_id,8766S0203,starttime,16:13,endtime,16:15,']

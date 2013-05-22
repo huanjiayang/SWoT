@@ -1,5 +1,6 @@
 import web
 import json
+from instantiation import *
 from web.contrib.template import render_mako
 
 urls = (
@@ -22,14 +23,15 @@ class SomePage:
 
 class Query:
     def GET(self):
-        user_data = web.input(id="no data")
+        user_data = web.input()
         result = []
-        result.append({'attr':'value',
-                       'attr111':'value111',
-                       'attr444':'value444'})
+#        result.append({'attr':'value',
+ #                      'attr111':'value111',
+   #                    'attr444':'value444'})
+        result.append({msg_process(msg01)})
         
         web.header('Content-Type', 'application/json')
-        return json.dumps(result)
+        return result
     
 if __name__ == "__main__":
     app = web.application(urls, globals())
