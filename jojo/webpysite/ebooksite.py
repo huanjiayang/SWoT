@@ -53,9 +53,11 @@ class update:
         import execute
         result = execute.execute_func()
         
-        f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'w')
+        
+        f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'a')
         s=str(result)
-        f.write(s)
+        t=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
+        f.write(s+"\n"+t+"\n"+"\n")
         
         sys.path.remove(sys.path[0])
         #return result
