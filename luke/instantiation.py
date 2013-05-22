@@ -13,6 +13,9 @@ MT = PROVNamespace('mt', "http://www.mytype.com/#")
 
 InsGraph = PROVContainer()
 InsGraph.set_default_namespace("http://www.mytype.com/#")
+e1 = Sensor(identifier='1',Sensor_Node='2')
+print e1._toRDF
+e2 = Measured_Value(value='12',value_type='miao',Sensor_id='3')
 
 def msg_process(data):
     data = str(data)
@@ -109,6 +112,3 @@ msg01 = ['Sink_Node,8766,Sensor_Node,8766S02,Temp,23,Sensor_id,8766S0201,Humidit
 #            0      1     2            3     4    5     6        7         8     9     10         11      12  13   14       15        16        17   18       19
 msg02 = ['Sink_Node,4569,Sensor_Node,4569S02,Temp,26,Sensor_id,4569S0201,Humidity,64,Sensor_id,4569S0202,Light,5,Sensor_id,4569S0203,starttime,16:14,endtime,16:19,']
 #            0      1     2            3     4    5     6        7         8     9     10         11      12  13   14       15        16        17   18       19
-
-msg_process(msg01)
-msg_process(msg02)

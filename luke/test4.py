@@ -24,11 +24,21 @@ class SomePage:
 class Query:
     def GET(self):
         user_data = web.input()
-        result = []
 #        result.append({'attr':'value',
  #                      'attr111':'value111',
    #                    'attr444':'value444'})
-        result.append({msg_process(msg01)})
+        for x in user_data:
+            if (x == 'id'):
+                print 'id = ' + user_data.id
+            elif (x == 'time'):
+                print 'time = ' + user_data.time
+            elif (x == 'temperature'):
+                print 'temperature = ' + user_data.temperature
+            elif (x == 'humidity'):
+                print 'humidity = ' + user_data.humidity
+            
+        
+        result = msg_process(msg01)
         
         web.header('Content-Type', 'application/json')
         return result
