@@ -51,7 +51,9 @@ class update:
         py_dir = os.path.join(ebooks_dir, ebookname)
         sys.path.insert(0, py_dir)
         import execute
+        
         result = execute.execute_func()
+        
         
         
         f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'a')
