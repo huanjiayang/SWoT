@@ -18,21 +18,16 @@ store = Graph()
 store.bind("dc", DC)
 store.bind("foaf", FOAF)
 
-# Create an identifier to use as the subject for Donna.
-donna = BNode()
 
-# Add triples using store's add method.
-store.add((donna, RDF.type, FOAF.Person))
-store.add((donna, FOAF.nick, Literal("donna", lang="foo")))
-store.add((donna, FOAF.name, Literal("Donna Fales")))
-
-store.add((userinput,prov:['wasAssociatedWith'],user))
-store.add((input,prov:['wasGeneratedBy'],userinput))
-store.add((result,prov:['wasDerivedFrom'],input))
-store.add((result,prov:['wasDerivedFrom'],books))
+#store.add((userinput,prov:['wasAssociatedWith'],user))
+#store.add((input,prov:['wasGeneratedBy'],userinput))
+#store.add((result,prov:['wasDerivedFrom'],input))
+store.add(("update_result",prov:['wasDerivedFrom'],books))
 store.add((result,prov:['wasGeneratedBy'],calculate))
 store.add((server,prov:['wasAttributedTo'],software))
 store.add((software,prov:['wasStartedBy'],calculate))
+
+store.serialize(destination='',format='n3')
 
 # Iterate over triples in store and print them out.
 print "--- printing raw triples ---"

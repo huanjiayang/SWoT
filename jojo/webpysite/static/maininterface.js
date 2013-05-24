@@ -34,9 +34,6 @@ function readbook(){
 	}
 }
 
-bookArray = new Array("ebooklist");
-infoArray = new Array("getebookinfo"); 
-
 function changeTest (){
 	var x = document.getElementById('ebooklist').selectedIndex;
 	var ebook_info_url = document.getElementById('ebooklist')[x].value + 'info/';
