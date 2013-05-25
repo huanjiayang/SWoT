@@ -20,7 +20,6 @@ class Sink_Node(Agent):
     
     def __init__(self, identifier, attributes = None,account = None):
         
-        
         Agent.__init__(self, identifier=identifier,attributes=attributes,account=account)
         
         if self.attributes == None:
@@ -44,6 +43,7 @@ class Sensor_Node(Agent):
             self.attributes = {}
         self.attributes[MT['type']]=MT['Sensor_Node']
         self.attributes[MT['Sink_Node']]=Sink_Node
+        self.attributes[MT['value_type']]=None
             
     def _toRDF(self):
         Agent._toRDF(self)
@@ -98,7 +98,7 @@ class Send_and_Recieve(Activity):
         
         Activity.__init__(self, identifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
         
-        self.identifier = identifier
+        #self.identifier = identifier
         
     def _toRDF(self):
         Activity.to_RDF(self)
@@ -120,13 +120,15 @@ class Measured_Value(Entity):
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.value=value
         self.identifier=identifier
+        self.value_type=value_type
+
         
         if self.attributes == None:
             self.attributes = {}
         self.attributes[MT['type']]=MT['Measured_Value']
         self.attributes[MT['Sensor_id']]=Sensor_id
         self.attributes[MT['value_type']]=value_type
-        self.attributes[MT['value']]=value
+        self.attributes[MT['value']]=Literal(self.value)
         
     def _toRDF(self):
         Entity._toRDF(self)
