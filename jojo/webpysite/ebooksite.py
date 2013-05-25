@@ -50,16 +50,15 @@ class update:
         #bookname = post_data.get('bookname')
         py_dir = os.path.join(ebooks_dir, ebookname)
         sys.path.insert(0, py_dir)
-        import execute
-        
-        result = execute.execute_func()
-        
+        import execution
+        t1=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
+        result = execution.execute_func()
+        t2=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
         
         
         f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'a')
         s=str(result)
-        t=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
-        f.write(s+"\n"+t+"\n"+"\n")
+        f.write(s+"\n")
         
         sys.path.remove(sys.path[0])
         #return result
