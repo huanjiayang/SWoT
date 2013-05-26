@@ -54,7 +54,7 @@ class Query:
         result = json.dumps(result_graph.to_provJSON(),indent=4)
         web.header('Content-Type', 'application/json')
         return result
-        result_graph=None
+        #result_graph=None
     
 if __name__ == "__main__":
     app = web.application(urls, globals())

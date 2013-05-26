@@ -25,7 +25,8 @@ class Sink_Node(Agent):
         if self.attributes == None:
             self.attributes = {}
         self.attributes[MT['type']]=MT['Sink_Node']
-        
+        self.value_type = None
+                
     def _toRDF(self):
         Agent._toRDF(self)
         self.rdftriples[self.identifier][rdf['type']] = MT['Sink_Node']
@@ -43,7 +44,8 @@ class Sensor_Node(Agent):
             self.attributes = {}
         self.attributes[MT['type']]=MT['Sensor_Node']
         self.attributes[MT['Sink_Node']]=Sink_Node
-        self.attributes[MT['value_type']]=None
+        self.value_type = None
+        
             
     def _toRDF(self):
         Agent._toRDF(self)
@@ -67,7 +69,7 @@ class User(Agent):
     
 class Measuring(Activity):
     
-    def __init__(self, Sensor_id, identifier=None, starttime=None, endtime=None, attributes=None, account=None):
+    def __init__(self, Sensor_id, value_type, identifier=None, starttime=None, endtime=None, attributes=None, account=None):
         
         if identifier is None:
             identifier = 'urn:uuid:' + str(uuid.uuid1())
@@ -80,6 +82,7 @@ class Measuring(Activity):
             self.attributes = {}
         self.attributes[MT['type']]=MT['Measuring']
         self.attributes[MT['Sensor_id']]=Sensor_id
+        self.value_type = value_type
         
         
     def _toRDF(self):
@@ -129,6 +132,7 @@ class Measured_Value(Entity):
         self.attributes[MT['Sensor_id']]=Sensor_id
         self.attributes[MT['value_type']]=value_type
         self.attributes[MT['value']]=Literal(self.value)
+        self.value_type = value_type        
         
     def _toRDF(self):
         Entity._toRDF(self)
@@ -139,7 +143,7 @@ class Measured_Value(Entity):
 
 class Sensor(Entity):
     
-    def __init__(self, identifier, Sensor_Node, attributes=None, account=None):
+    def __init__(self, identifier, Sensor_Node, value_type, attributes=None, account=None):
         
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.identifier = identifier
@@ -148,6 +152,7 @@ class Sensor(Entity):
             self.attributes = {}
         self.attributes[MT['type']]=MT['Sensor']
         self.attributes[MT['Sensor_Node']]=Sensor_Node
+        self.value_type = value_type
         
     def _toRDF(self):
         Entity._toRDF(self)
