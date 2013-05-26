@@ -5,6 +5,7 @@ import time
 import zipfile
 import logging
 import uuid
+import imp
 
 import web
 import json
@@ -57,9 +58,11 @@ class update:
 #        return "TODO"#render.guestbook()
         #post_data = web.input(bookname="")
         #bookname = post_data.get('bookname')
+        
         py_dir = os.path.join(ebooks_dir, ebookname)
-        sys.path.insert(0, py_dir)
-        import execution
+        #sys.path.insert(0, py_dir)
+        execution = imp.load_source('execution','%s/%s/execution.py' % (ebooks_dir, ebookname))
+        #import execution
         t1=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
         result = execution.execute_func()
         t2=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
@@ -101,8 +104,10 @@ class update:
         s=str(result)
         f.write(s+"\n")
         
-        sys.path.remove(sys.path[0])
+        #sys.path.remove(sys.path[0])
         #return result
+        #print sys.path
+        
         
         output_position = 'update_result'
         rps = []
