@@ -3,6 +3,8 @@ import sys
 import atexit
 import time
 import zipfile
+import logging
+import uuid
 
 import web
 import json
@@ -17,8 +19,14 @@ ebooks_dir = os.path.join(index_dir, 'ebooks')
 
 ns_ebook = Namespace("http://jiaojiaojiang.com/ebook/")
 ns_dcterms = Namespace("http://purl.org/dc/terms/")
+ns_prov = Namespace('http://www.w3.org/ns/prov-dm/')
 
+store = Graph()
 
+# Bind a few prefix, namespace pairs for pretty output
+
+store.bind('ns_prov',ns_prov)
+store.bind('ebook',ns_ebook)
 
 class index:   
     def GET(self):
@@ -43,6 +51,7 @@ class others:
         return "The requested URL doesn't exist."
 
 class update:
+    
     def GET(self,ebookname):
         print "running update()"
 #        return "TODO"#render.guestbook()
@@ -56,12 +65,45 @@ class update:
         t2=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
         
         
+        result_uuid = str(uuid.uuid1())
+        store.add((ns_ebook[result_uuid],RDF.type,ns_ebook['result']))
+        store.add((ns_ebook[result_uuid],ns_ebook['source'],Literal('output.txt')))
+        store.add((ns_ebook[result_uuid],ns_ebook['value'],Literal(result)))
+        
+        calculate_uuid = str(uuid.uuid1())
+        store.add((ns_ebook[calculate_uuid],RDF.type,ns_ebook['calculate']))
+        store.add((ns_ebook[calculate_uuid],ns_prov['starttime'],Literal(t1)))
+        store.add((ns_ebook[calculate_uuid],ns_prov['endtime'],Literal(t2)))
+ 
+        #ebook_execute = '%s/%s/execution.py' % (ebooks_dir, ebookname)
+        #store.add((ebook_execute,RDF.type,ns_ebook['input']))
+        
+        software_uuid = str(uuid.uuid1())
+        store.add((ns_ebook[software_uuid],RDF.type,ns_ebook['software']))
+        
+        ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
+        ebook_n3_file = open(ebook_n3)
+        
+        temp_ebook_graph = Graph()        
+        temp_ebook_graph.parse(ebook_n3_file, format="n3")        
+        
+        for triple in temp_ebook_graph.triples((None, RDF.type, ns_ebook['EbookFile'])):
+            ebook_file_URI = triple[0]
+        
+        store.add((ns_ebook[result_uuid],ns_prov['wasDerivedFrom'],ebook_file_URI))
+        store.add((ns_ebook[result_uuid],ns_prov['wasGeneratedBy'],ns_ebook[calculate_uuid]))
+        #store.add((ns_ebook[result_uuid],ns_prov['wasDerivedFrom'],ebook_execute))
+        store.add((ns_ebook[result_uuid],ns_prov['wasStartedBy'],ns_ebook[software_uuid]))
+        
+        store.serialize(destination='%s/%s/history.n3'% (ebooks_dir, ebookname),format='n3')
+         
         f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'a')
         s=str(result)
         f.write(s+"\n")
         
         sys.path.remove(sys.path[0])
         #return result
+        
         output_position = 'update_result'
         rps = []
         rps.append({'finished':True,'result':str(result),'position' : output_position})
@@ -150,8 +192,8 @@ class getebookinfo:
         
         web.header('Content-Type', 'application/json')
         return json.dumps(ebook_info)
-        
-        
+
+
 
 urls = (
     '/', 'index',
