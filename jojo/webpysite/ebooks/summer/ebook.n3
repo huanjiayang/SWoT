@@ -18,4 +18,4 @@
 
 <urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135AB> a ebook:input;
 	ebook:hasInputType "PythonExecutable";
-	ebook:hasInputFile "whatever.py".
+	ebook:hasInputFile "execution.py".

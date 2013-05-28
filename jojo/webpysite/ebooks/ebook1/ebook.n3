@@ -13,5 +13,9 @@
 	ebook:hasExecution <#execution001> .
 
 <#execution001> a ebook:Execution;
-	ebook:hasResource "ebook_execute";
+	ebook:hasResource <urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135AB>;
 	ebook:hasOutputPosition "update_result".
+
+<urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135AB> a ebook:input;
+	ebook:hasInputType "PythonExecutable";
+	ebook:hasInputFile "execution.py".

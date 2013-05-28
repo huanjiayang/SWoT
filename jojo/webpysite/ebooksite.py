@@ -99,8 +99,8 @@ class update:
         store.add((ns_ebook[calculate_uuid],ns_prov['starttime'],Literal(t1)))
         store.add((ns_ebook[calculate_uuid],ns_prov['endtime'],Literal(t2)))
  
-        #ebook_execute = '%s/%s/execution.py' % (ebooks_dir, ebookname)
-        #store.add((ebook_execute,RDF.type,ns_ebook['input']))
+        ebook_execute = resource_URI
+        store.add((ebook_execute,RDF.type,ns_ebook['input']))
         
         software_uuid = str(uuid.uuid1())
         store.add((ns_ebook[software_uuid],RDF.type,ns_ebook['software']))
@@ -116,12 +116,13 @@ class update:
         
         store.add((ns_ebook[result_uuid],ns_prov['wasDerivedFrom'],ebook_file_URI))
         store.add((ns_ebook[result_uuid],ns_prov['wasGeneratedBy'],ns_ebook[calculate_uuid]))
-        #store.add((ns_ebook[result_uuid],ns_prov['wasDerivedFrom'],ebook_execute))
-        store.add((ns_ebook[result_uuid],ns_prov['wasStartedBy'],ns_ebook[software_uuid]))
+        store.add((ns_ebook[result_uuid],ns_prov['wasDerivedFrom'],ebook_execute))
+        store.add((ns_ebook[result_uuid],ns_prov['wasDerivedFrom'],ns_ebook[software_uuid]))
+        store.add((ns_ebook[calculate_uuid],ns_prov['used'],ns_ebook[software_uuid]))
         
         store.serialize(destination='%s/%s/history.n3'% (ebooks_dir, ebookname),format='n3')
          
-        f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'a')
+        f=open('%s/%s/output.txt'% (ebooks_dir, ebookname),'w')
         s=str(result)
         f.write(s+"\n")
         
@@ -186,7 +187,28 @@ class startreading:
 
 class getebookinfo:
     def GET(self,ebookname):
- 
+        
+        #py_dir = os.path.join(ebooks_dir, ebookname)
+        
+        #for file_name in os.listdir(py_dir):
+            #print file_name
+        history_n3 = '%s/%s/history.n3' % (ebooks_dir, ebookname)
+        if os.path.exists(history_n3):        
+            history_n3_file = open(history_n3)
+    
+            temp_history_graph = Graph()        
+            temp_history_graph.parse(history_n3_file, format="n3")        
+            
+            for triple in temp_history_graph.triples((None, RDF.type, ns_ebook['calculate'])):
+                history_calculate_URI = triple[0]
+                #print history_calculate_URI
+                
+            for triple in temp_history_graph.triples((history_calculate_URI, ns_prov['starttime'], None)):
+                calculate_created = triple[2]                
+                print calculate_created
+    
+         
+                
         ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
         ebook_n3_file = open(ebook_n3)
         

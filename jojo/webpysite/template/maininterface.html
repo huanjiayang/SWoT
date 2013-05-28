@@ -6,16 +6,16 @@
 	</head>
 	<body onload="getebooks();">
 		<h1>A Web based e-Document reading System</h1>
-		<p>Here is a published article, you can choose one book to read.<br>
+		<p>Here are some published articles, you can choose one book to read.<br>
 		</p>
 		<div id="ebook">
 			<h2>Your E-Books:</h2>
 			<select name="ebooklist" id="ebooklist" onchange="changeTest()">
 			</select>
-			<input type="button" value="submit" onclick="readbook()"/>
+			<input type="button" value="start reading" onclick="readbook()"/>
 		</div>
 	
-	
+
 <p> The information of this paper : <div id="ebookinfo" ></div></p>
 <div id="ebookinfo" >
 Ebook title: <p id='ebooktitle'></p>
@@ -23,8 +23,6 @@ Ebook author: <p id='ebookauthor'></p>
 Created at: <p id='ebookcreated'></p>
 Language:<p id='ebooklang'></p>
 Description: <p id='ebookdescription'></p>
-
 </div>
-	
 	</body>
 </html>
