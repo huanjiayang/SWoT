@@ -27,6 +27,7 @@ class Sink_Node(Agent):
         self.attributes[MT['type']]=MT['Sink_Node']
         self.value_type = None
         self.sensor_id = None
+        self.sensor_node_id = None
                 
     def _toRDF(self):
         Agent._toRDF(self)
@@ -47,6 +48,7 @@ class Sensor_Node(Agent):
         self.attributes[MT['Sink_Node']]=Sink_Node
         self.value_type = None
         self.sensor_id = None
+        self.sensor_node_id = identifier
         
             
     def _toRDF(self):
@@ -86,6 +88,7 @@ class Measuring(Activity):
         self.attributes[MT['Sensor_id']]=Sensor_id
         self.value_type = value_type
         self.sensor_id = Sensor_id
+        self.sensor_node_id = None
         
         
     def _toRDF(self):
@@ -127,6 +130,7 @@ class Measured_Value(Entity):
         self.value=value
         self.identifier=identifier
         self.value_type=value_type
+        self.sensor_node_id = None
 
         
         if self.attributes == None:
@@ -158,6 +162,7 @@ class Sensor(Entity):
         self.attributes[MT['Sensor_Node']]=Sensor_Node
         self.value_type = value_type
         self.sensor_id = identifier
+        self.sensor_node_id = Sensor_Node
         
     def _toRDF(self):
         Entity._toRDF(self)
