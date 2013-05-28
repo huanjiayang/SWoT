@@ -61,7 +61,28 @@ class update:
         
         py_dir = os.path.join(ebooks_dir, ebookname)
         #sys.path.insert(0, py_dir)
-        execution = imp.load_source('execution','%s/%s/execution.py' % (ebooks_dir, ebookname))
+        
+        ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
+        ebook_n3_file = open(ebook_n3)
+        
+        temp_ebook_graph = Graph()        
+        temp_ebook_graph.parse(ebook_n3_file, format="n3")        
+        
+        for triple in temp_ebook_graph.triples((None, RDF.type, ns_ebook['EbookFile'])):
+            ebook_file_URI = triple[0]
+            print ebook_file_URI
+            
+        for triple in temp_ebook_graph.triples((ebook_file_URI, ns_ebook['hasExecution'], None)):
+            execution_URI = triple[2]
+        for triple in temp_ebook_graph.triples((execution_URI, ns_ebook['hasResource'], None)):
+            resource_URI = triple[2]
+        for triple in temp_ebook_graph.triples((resource_URI, ns_ebook['hasInputFile'], None)):
+            filename = str(triple[2])
+        
+        filename = '%s/%s/' + filename
+        exec_file = filename % (ebooks_dir, ebookname)
+
+        execution = imp.load_source('execution',exec_file)
         #import execution
         t1=str(time.strftime('%d-%m-%y %A %X',time.localtime(time.time())))
         result = execution.execute_func()
