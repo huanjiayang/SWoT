@@ -23,8 +23,10 @@ class SomePage:
 
 class Query:
     def GET(self):
-        result_graph = PROVContainer()     
+        result_graph = PROVContainer()
+        hasElement = False   
         user_data = web.input()
+        result_graph.set_default_namespace("http://www.mytype.com/#")
 #        result.append({'attr':'value',
  #                      'attr111':'value111',
    #                    'attr444':'value444'})
@@ -34,6 +36,7 @@ class Query:
                 for elmt in InsGraph._elementlist:
                         if elmt.sensor_id == MT[user_data.sensor_id]:
                             result_graph.add(elmt)
+                            hasElement = True
                             #if result_graph == None:
                                 #return 'data not found'
             if (x == 'identifier'):
@@ -41,22 +44,27 @@ class Query:
                 for elmt in InsGraph._elementlist:
                         if elmt.identifier == MT[user_data.identifier]:
                             result_graph.add(elmt)
+                            hasElement = True
             if (x == 'value_type'):
                 print 'value_type = ' + user_data.value_type
                 for elmt in InsGraph._elementlist:
                         if elmt.value_type == MT[user_data.value_type]:
-                            result_graph.add(elmt) 
+                            result_graph.add(elmt)
+                            hasElement = True
             if (x == 'sensor_node_id'):
                 print 'sensor_node_id = ' + user_data.sensor_node_id
                 for elmt in InsGraph._elementlist:
                         if elmt.sensor_node_id == MT[user_data.sensor_node_id]:
-                            result_graph.add(elmt)          
-        
-        #result = msg_process(msg01)
-        result = json.dumps(result_graph.to_provJSON(),indent=4)
-        web.header('Content-Type', 'application/json')
-        return result
+                            result_graph.add(elmt)     
+                            hasElement = True     
+        if hasElement is True:
+            #result = msg_process(msg01)
+            result = json.dumps(result_graph.to_provJSON(),indent=4)
+            web.header('Content-Type', 'application/json')
+            return result
         #result_graph=None
+        else:
+            pass
     
 if __name__ == "__main__":
     app = web.application(urls, globals())
