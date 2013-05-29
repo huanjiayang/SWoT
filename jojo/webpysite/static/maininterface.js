@@ -49,6 +49,7 @@ function changeTest (){
 			document.getElementById('ebookcreated').innerHTML = data[0].created;
 			document.getElementById('ebooklang').innerHTML = data[0].language;
 			document.getElementById('ebookdescription').innerHTML = data[0].description;
+			document.getElementById('ebookhistory').innerHTML = data[0].history;
 		},
 		failure: function() {
 			alert('Unable to retrieve information of the ebooks');

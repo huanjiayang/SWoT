@@ -192,23 +192,8 @@ class getebookinfo:
         
         #for file_name in os.listdir(py_dir):
             #print file_name
-        history_n3 = '%s/%s/history.n3' % (ebooks_dir, ebookname)
-        if os.path.exists(history_n3):        
-            history_n3_file = open(history_n3)
-    
-            temp_history_graph = Graph()        
-            temp_history_graph.parse(history_n3_file, format="n3")        
-            
-            for triple in temp_history_graph.triples((None, RDF.type, ns_ebook['calculate'])):
-                history_calculate_URI = triple[0]
-                #print history_calculate_URI
-                
-            for triple in temp_history_graph.triples((history_calculate_URI, ns_prov['starttime'], None)):
-                calculate_created = triple[2]                
-                print calculate_created
-    
-         
-                
+        ebook_info = []
+        
         ebook_n3 = '%s/%s/ebook.n3' % (ebooks_dir, ebookname)
         ebook_n3_file = open(ebook_n3)
         
@@ -230,13 +215,40 @@ class getebookinfo:
         for triple in temp_ebook_graph.triples((ebook_file_URI, ns_dcterms['title'], None)):
             ebook_title = triple[2]
         
-        ebook_info = []
-        ebook_info.append({"title" : ebook_title,
+        
+        history_n3 = '%s/%s/history.n3' % (ebooks_dir, ebookname)
+        if os.path.exists(history_n3):      
+            history_n3_file = open(history_n3)
+    
+            temp_history_graph = Graph()        
+            temp_history_graph.parse(history_n3_file, format="n3")        
+            
+            for triple in temp_history_graph.triples((None, RDF.type, ns_ebook['calculate'])):
+                history_calculate_URI = triple[0]
+                #print history_calculate_URI
+                
+            for triple in temp_history_graph.triples((history_calculate_URI, ns_prov['starttime'], None)):
+                calculate_created = triple[2]                
+                print calculate_created
+                
+            ebook_info.append({"title" : ebook_title,
                            "created" : ebook_created,
                            "creator" : ebook_creator,
                            "description" : ebook_description,
-                           "language" : ebook_language
+                           "language" : ebook_language,
+                           "history" : calculate_created
                            })
+        else:
+            ebook_info.append({"title" : ebook_title,
+                           "created" : ebook_created,
+                           "creator" : ebook_creator,
+                           "description" : ebook_description,
+                           "language" : ebook_language,
+                           "history" : 'no history'
+                           })
+        
+        
+        
         
         web.header('Content-Type', 'application/json')
         return json.dumps(ebook_info)
