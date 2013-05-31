@@ -1,29 +1,78 @@
-<html>
+<!doctype html>
+
+<html lang="en-US">
 <head>
-<title>A Web based e-Document reading System</title>
-<script language="javascript" src="/static/maininterface.js" type="text/javascript"></script>
-<script language="javascript" src="/static/jquery-1.6.1.min.js" type="text/javascript"></script>
+<meta charset="UTF-8" />
+	<title>A Web based e-Document reading System</title>
+	<script language="javascript" src="/static/maininterface.js" type="text/javascript"></script>
+	<script language="javascript" src="/static/jquery-1.6.1.min.js" type="text/javascript"></script>
+	<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/print/main.css" rel="stylesheet" type="text/css" media="print">
+
+
 </head>
-<body onload="getebooks();">
-<h1>A Web based e-Document reading System</h1>
-<p>Here are some published articles, you can choose one book to read.<br>
-</p>
-<div id="ebook">
-<h2>Your E-Books:</h2>
-<select name="ebooklist" id="ebooklist" onchange="changeTest()">
-</select>
-<input type="button" value="start reading" onclick="readbook()"/>
-</div>
+
+<body onLoad="getebooks();">
+<div id="wrap">
+
+<section id="top">
+<nav id="mainnav">
 
 
-<p> The information of this paper : <div id="ebookinfo" ></div></p>
-<div id="ebookinfo" >
-Ebook title: <p id='ebooktitle'></p>
-Ebook author: <p id='ebookauthor'></p>
-Created at: <p id='ebookcreated'></p>
-Language:<p id='ebooklang'></p>
-Description: <p id='ebookdescription'></p>
-History:<p id='ebookhistory'></p>
+</nav>
+</section>
+<section id="page">
+<header id="pageheader" class="homeheader">
+	<h2 class="sitedescription">
+	A Web based e-Document reading System
+	<br/>
+	Here are some published articles, you can choose one book to read.
+    </h2>
+</header>
+
+<section id="contents" >
+
+<div id="ebook" class="submit_link">
+		<h2>Your E-Books:</h2>
+		<select name="ebooklist" id="ebooklist" onChange="changeTest()">
+        	<option></option>
+		</select>
+        <input type="submit" value="start reading" onClick="readbook()" class="alt_btn"/>
 </div>
+
+<div class="clear"></div>
+<br/>
+<h2 class="mainfont" > The information of this paper : <div id="ebookinfo" ></div></h3><br/>
+<div id="ebookinfo" class="mainfont">
+Ebook title: <p id='ebooktitle'></p><br/>
+Ebook author: <p id='ebookauthor'></p><br/>
+Created at: <p id='ebookcreated'></p><br/>
+Language:<p id='ebooklang'></p><br/>
+Description: <p id='ebookdescription'></p><br/>
+History:<p id='ebookhistory'></p><br/>
+</div>
+</section>
+
+
+<div class="clear"></div>
+
+<div class="clear"></div>
+</section>
+</div>
+<footer id="pagefooter">
+<div id="f-content">
+<img src="static/images/bamboo.png" width="96" height="125" alt="bamboo" id="footerimg">
+<div id="social-links">
+  
+</div>
+<div id="credits">
+<p class="sitecredit"> 2013 &amp; By Jojo </p>
+<p class="designcredit"><a href="http://www.cssheaven.org" title="Download Free CSS Templates">CSS Template</a> by CSSHeaven</p>
+
+</div>
+</div>
+
+</footer>
+
 </body>
 </html>
