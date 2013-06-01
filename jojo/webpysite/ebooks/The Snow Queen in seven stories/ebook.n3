@@ -5,11 +5,11 @@
 
 
 <> a ebook:EbookFile;
-	dcterms:created "Wed May 15 10:30:00 2013";
-	dcterms:creator "Jiaojiao Jiang";
-	dcterms:description "An example ebook called summer";
-	dcterms:language "en";
-	dcterms:title "summer";
+	dcterms:created "Wed May 22 16:45:00 2013";
+	dcterms:creator "Hans Christian Andersen";
+	dcterms:description "Story the first which describes a looking-glass and the broken fragments.";
+	dcterms:language "English";
+	dcterms:title "The snow Queen in seven stories.";
 	ebook:hasExecution <#execution001> .
 
 <#execution001> a ebook:Execution;

@@ -11,12 +11,14 @@ function getebooks() {
 			var ebookslist = document.getElementById("ebooklist");
 			// clear the html select box 
 			for(x=0; x<ebookslist.options.length; x++) {
-				ebookslist.options[x] = null;
+				ebookslist.options[x+1] = null;
 			}
+			// add one blank option for defult page
+			ebookslist.options[0] = new Option('please select a book'), false, false;
 			// put data received into the html select box
 			for(x=0; x<data.length; x++) {
 				ebook = data[x];
-				ebookslist.options[x] = new Option(ebook.title, ebook.url), false, false;
+				ebookslist.options[x+1] = new Option(ebook.title, ebook.url), false, false;
 			}
 		},
 		failure: function() {

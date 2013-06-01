@@ -24,32 +24,27 @@
 <section id="page">
 <header id="pageheader" class="homeheader">
 	<h1 class="sitedescription">
-    	${ebook_title}<br/>
-        ${ebook_content}
-    </h1>
-</header>
+    	${ebook_title}  
+    </h1></header>
+    
+ <h3>${ebook_content}</h3>
+
 
 <section id="contents">
 	<div id="update_area" class="submit_link">
     	<form id="update" action="/update/" method="post" accept-charset="utf-8">
         	<input type="hidden" id="bookname" name="bookname" value="${ebook_title}" />
-            <input type="button" onclick='requestresult();' class="alt_btn" value="test update"/>
+            <input type="button" onclick='requestresult();' class="alt_btn" value="get result"/>
         </form>       
     </div>
+    
     <script type="text/javascript" charset="utf-8">
         var ebookname = '${ebookname}';
- /*           $(document).ready(function(){
-                $('form#update').submit(function(e){
-                        e.preventDefault();
-                        $.post(this.action, $(this).serialize(),function(data){
-                            $('#update_result').html('response data: ' + data);
-                        },"text");
-                    });
-                }); */
         </script>
 </section>
 
 
+</body>
 
 <div class="clear"></div>
 
@@ -71,5 +66,5 @@
 
 </footer>
 
-</body>
+
 </html>

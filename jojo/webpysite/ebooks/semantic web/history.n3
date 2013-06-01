@@ -1,0 +1,20 @@
+@prefix ebook: <http://jiaojiaojiang.com/ebook/> .
+@prefix ns_prov: <http://www.w3.org/ns/prov-dm/> .
+
+<http://jiaojiaojiang.com/ebook/1f228d9c-cae5-11e2-967f-c82a14573998> a ebook:result;
+    ebook:source "output.txt";
+    ebook:value 1688;
+    ns_prov:wasDerivedFrom <http://jiaojiaojiang.com/ebook/1f362c11-cae5-11e2-a23c-c82a14573998>,
+        <urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135AB>,
+        <urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135FX>;
+    ns_prov:wasGeneratedBy <http://jiaojiaojiang.com/ebook/1f3611bd-cae5-11e2-ad76-c82a14573998> .
+
+<http://jiaojiaojiang.com/ebook/1f3611bd-cae5-11e2-ad76-c82a14573998> a ebook:calculate;
+    ns_prov:endtime "01-06-13 Saturday 19:00:19";
+    ns_prov:starttime "01-06-13 Saturday 19:00:19";
+    ns_prov:used <http://jiaojiaojiang.com/ebook/1f362c11-cae5-11e2-a23c-c82a14573998> .
+
+<urn:uuid:F274DBA3-96D7-457f-AA4A-DB36081135AB> a ebook:input .
+
+<http://jiaojiaojiang.com/ebook/1f362c11-cae5-11e2-a23c-c82a14573998> a ebook:software .
+

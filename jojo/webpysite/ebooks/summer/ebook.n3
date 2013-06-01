@@ -8,7 +8,7 @@
 	dcterms:created "Wed May 15 10:30:00 2013";
 	dcterms:creator "Jiaojiao Jiang";
 	dcterms:description "An example ebook called summer";
-	dcterms:language "en";
+	dcterms:language "English";
 	dcterms:title "summer";
 	ebook:hasExecution <#execution001> .
 

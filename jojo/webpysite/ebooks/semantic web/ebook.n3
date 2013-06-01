@@ -5,11 +5,11 @@
 
 
 <> a ebook:EbookFile;
-	dcterms:created "Wed May 15 10:30:00 2013";
+	dcterms:created "Sat Jun 01 09:30:00 2013";
 	dcterms:creator "Jiaojiao Jiang";
-	dcterms:description "An example ebook called summer";
-	dcterms:language "en";
-	dcterms:title "summer";
+	dcterms:description "Some information about semantic web from wikipedia";
+	dcterms:language "English";
+	dcterms:title "Semantic Web";
 	ebook:hasExecution <#execution001> .
 
 <#execution001> a ebook:Execution;
