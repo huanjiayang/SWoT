@@ -31,6 +31,9 @@ class Query:
  #                      'attr111':'value111',
    #                    'attr444':'value444'})
         for x in user_data:
+            if(x == 'show_the_database'):
+                web.header('Content-Type', 'application/json')
+                return json.dumps(InsGraph.to_provJSON(),indent=4)
             if (x == 'sensor_id'):
                 print 'sensor_id = ' + user_data.sensor_id
                 for elmt in InsGraph._elementlist:
@@ -45,6 +48,11 @@ class Query:
                         if elmt.identifier == MT[user_data.identifier]:
                             result_graph.add(elmt)
                             hasElement = True
+                for elmt in InsGraph._relationlist:
+                        if elmt.identifier == MT[user_data.identifier]:
+                            print elmt.identifier
+                            result_graph.add(elmt)
+                            hasElement = True
             if (x == 'value_type'):
                 print 'value_type = ' + user_data.value_type
                 for elmt in InsGraph._elementlist:
@@ -56,12 +64,17 @@ class Query:
                 for elmt in InsGraph._elementlist:
                         if elmt.sensor_node_id == MT[user_data.sensor_node_id]:
                             result_graph.add(elmt)     
-                            hasElement = True     
+                            hasElement = True   
+                for elmt in InsGraph._relationlist:
+                        if elmt.prov_type == PROV_REC_ACTIVITY_ASSOCIATION:
+                            if elmt.agent == MT[user_data.sensor_node_id]:
+                                result_graph.add(elmt)
+                                hasElement = True
+                        
         if hasElement is True:
             #result = msg_process(msg01)
-            result = json.dumps(result_graph.to_provJSON(),indent=4)
             web.header('Content-Type', 'application/json')
-            return result
+            return json.dumps(result_graph.to_provJSON(),indent=4)
         #result_graph=None
         else:
             pass

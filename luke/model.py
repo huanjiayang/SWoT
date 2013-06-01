@@ -76,7 +76,7 @@ class Measuring(Activity):
     def __init__(self, Sensor_id, value_type, identifier=None, starttime=None, endtime=None, attributes=None, account=None):
         
         if identifier is None:
-            identifier = 'urn:uuid:' + str(uuid.uuid1())
+            identifier = MT['measuring-' + str(uuid.uuid1())]
             
         Activity.__init__(self, identifier=identifier, starttime=starttime, endtime=endtime, attributes=attributes, account=account)
             
@@ -124,7 +124,7 @@ class Measured_Value(Entity):
     def __init__(self, value, value_type, Sensor_id, identifier=None, attributes=None, account=None):
         
         if identifier is None:
-            identifier = 'urn:uuid:' + str(uuid.uuid1())
+            identifier = MT['value-' + str(uuid.uuid1())]
             
         Entity.__init__(self, identifier=identifier, attributes=attributes, account=account)
         self.value=value
