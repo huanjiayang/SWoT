@@ -26,15 +26,15 @@ function getebooks() {
 		}
 	});
 }
+
 function readbook(){
-	
-	var ebooklist = document.getElementById("ebooklist");
-	for(i=0; i<ebooklist.options.length; i++){
-		if(ebooklist.options[i].selected == true){	
-			location.assign(ebooklist.options[i].value);
-		}
-	}
+    loc = $('#ebooklist').val();
+    is_continue = $('#is_continue').is(":checked");
+    loc += ('?is_continue=' + is_continue);
+    location.assign(loc);
 }
+
+
 
 function changeTest (){
 	var x = document.getElementById('ebooklist').selectedIndex;
