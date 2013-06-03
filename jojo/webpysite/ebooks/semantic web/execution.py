@@ -13,7 +13,7 @@ def word_count():
         return word_count
     
     
-#time.sleep(6)
+time.sleep(5)
 execute_func = word_count
 
 if __name__ == '__main__':

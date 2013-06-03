@@ -26,11 +26,12 @@ function getebooks() {
 		}
 	});
 }
-
 function readbook(){
     loc = $('#ebooklist').val();
     is_continue = $('#is_continue').is(":checked");
-    loc += ('?is_continue=' + is_continue);
+    if (is_continue) {
+        loc += '#cache';
+    }
     location.assign(loc);
 }
 
