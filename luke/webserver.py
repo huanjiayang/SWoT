@@ -65,11 +65,31 @@ class Query:
                         if elmt.sensor_node_id == MT[user_data.sensor_node_id]:
                             result_graph.add(elmt)     
                             hasElement = True   
+                a = True         
+                b = True
+                c = True   
                 for elmt in InsGraph._relationlist:
-                        if elmt.prov_type == PROV_REC_ACTIVITY_ASSOCIATION:
-                            if elmt.agent == MT[user_data.sensor_node_id]:
-                                result_graph.add(elmt)
-                                hasElement = True
+                        if elmt.__class__.__name__ == 'wasAssociatedWith':
+                            if str(elmt.agent) == str(MT[user_data.sensor_node_id]):
+                                print 'relation wasAssociatedWith found'
+                                if (a):
+                                    result_graph.add(elmt)
+                                    a = False
+                                    hasElement = True
+                        if elmt.__class__.__name__ == 'wasAttributedTo':
+                            if str(elmt.agent) == str(MT[user_data.sensor_node_id]):
+                                print 'relation wasAttributedTo found'
+                                if (b):
+                                    result_graph.add(elmt)
+                                    b = False
+                                    hasElement = True
+                        if elmt.__class__.__name__ == 'actedOnBehalfOf':
+                            if str(elmt.subordinate) == str(MT[user_data.sensor_node_id]):
+                                print 'relation actedOnBehalfOf found'
+                                if (c):
+                                    result_graph.add(elmt)
+                                    c = False
+                                    hasElement = True
                         
         if hasElement is True:
             #result = msg_process(msg01)
