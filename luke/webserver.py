@@ -24,9 +24,14 @@ class SomePage:
 class Query:
     def GET(self):
         result_graph = PROVContainer()
+        result_graph.set_default_namespace("http://www.mytype.com/#")
+        element_graph = PROVContainer()
+        element_graph.set_default_namespace("http://www.mytype.com/#")
+        relation_graph = PROVContainer()
+        relation_graph.set_default_namespace("http://www.mytype.com/#")
+        
         hasElement = False   
         user_data = web.input()
-        result_graph.set_default_namespace("http://www.mytype.com/#")
 #        result.append({'attr':'value',
  #                      'attr111':'value111',
    #                    'attr444':'value444'})
@@ -34,6 +39,16 @@ class Query:
             if(x == 'show_the_database'):
                 web.header('Content-Type', 'application/json')
                 return json.dumps(InsGraph.to_provJSON(),indent=4)
+            if(x == 'show_the_elementlist'):
+                for elmt in InsGraph._elementlist:
+                    element_graph.add(elmt)
+                web.header('Content-Type', 'application/json')
+                return json.dumps(element_graph.to_provJSON(),indent=4)
+            if(x == 'show_the_relationlist'):
+                for elmt in InsGraph._relationlist:
+                    relation_graph.add(elmt)
+                web.header('Content-Type', 'application/json')
+                return json.dumps(relation_graph.to_provJSON(),indent=4)
             if (x == 'sensor_id'):
                 print 'sensor_id = ' + user_data.sensor_id
                 for elmt in InsGraph._elementlist:
@@ -57,8 +72,21 @@ class Query:
                 print 'value_type = ' + user_data.value_type
                 for elmt in InsGraph._elementlist:
                         if elmt.value_type == MT[user_data.value_type]:
+                            a=elmt.identifier
                             result_graph.add(elmt)
                             hasElement = True
+                            for elmt in InsGraph._relationlist:
+                                    if elmt.__class__.__name__== 'Used':
+                                        if str(elmt.activity) == str(a):
+                                            result_graph.add(elmt)
+                                    if elmt.__class__.__name__== 'wasGeneratedBy':
+                                        if str(elmt.activity) == str(a):
+                                            result_graph.add(elmt)
+                                    if elmt.__class__.__name__== 'wasDerivedFrom':
+                                        if str(elmt.activity) == str(a):
+                                            result_graph.add(elmt)
+                                        
+                            
             if (x == 'sensor_node_id'):
                 print 'sensor_node_id = ' + user_data.sensor_node_id
                 for elmt in InsGraph._elementlist:
@@ -97,7 +125,7 @@ class Query:
             return json.dumps(result_graph.to_provJSON(),indent=4)
         #result_graph=None
         else:
-            pass
+            return 'Sorry, data not found!'
     
 if __name__ == "__main__":
     app = web.application(urls, globals())
