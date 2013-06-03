@@ -1,5 +1,3 @@
-
-
 function requestresult() {
 	
 	$.ajax({
@@ -16,3 +14,4 @@ function requestresult() {
 	});
 
 }
+
