@@ -53,10 +53,19 @@ class Query:
                 print 'sensor_id = ' + user_data.sensor_id
                 for elmt in InsGraph._elementlist:
                         if elmt.sensor_id == MT[user_data.sensor_id]:
+                            a=elmt.identifier
                             result_graph.add(elmt)
                             hasElement = True
-                            #if result_graph == None:
-                                #return 'data not found'
+                            for elmt in InsGraph._relationlist:
+                                    if elmt.__class__.__name__== 'Used':
+                                        if str(elmt.activity) == str(a):
+                                            result_graph.add(elmt)
+                                    if elmt.__class__.__name__== 'wasGeneratedBy':
+                                        if str(elmt.activity) == str(a):
+                                            result_graph.add(elmt)
+                                    if elmt.__class__.__name__== 'wasDerivedFrom':
+                                        if str(elmt.activity) == str(a):
+                                            result_graph.add(elmt)
             if (x == 'identifier'):
                 print 'identifier = ' + user_data.identifier
                 for elmt in InsGraph._elementlist:
