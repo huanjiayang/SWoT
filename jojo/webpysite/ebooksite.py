@@ -58,7 +58,21 @@ class update:
 #        return "TODO"#render.guestbook()
         #post_data = web.input(bookname="")
         #bookname = post_data.get('bookname')
+
+        inp_data = web.input(use_cache='false')
+        use_cache = inp_data.get('use_cache') == 'true'
+        print 'use cache:', use_cache
         
+        output_txt = '%s/%s/output.txt' % (ebooks_dir, ebookname)
+        if (os.path.exists(output_txt) and use_cache):      
+            outputfile = open(output_txt)
+            output = outputfile.read()
+            output_position = 'update_result'
+            rps = []
+            rps.append({'finished':True,'result':str(output),'position' : output_position})
+            web.header('Content-Type', 'application/json')
+            return json.dumps(rps)
+            
         py_dir = os.path.join(ebooks_dir, ebookname)
         #sys.path.insert(0, py_dir)
         
@@ -160,16 +174,6 @@ class ebooklist:
 
 class startreading:
     def GET(self,ebookname):
-        
-        inp = web.input(is_continue=False)
-        is_continue = inp.get('is_continue') == 'true'
-        
-        output_txt = '%s/%s/output.txt' % (ebooks_dir, ebookname)
-        if os.path.exists(output_txt):      
-            outputfile = open(output_txt)
-            output = outputfile.read()
-            print output
-
         ebookcontent = ''
         ebook_page = '%s/%s/page.html' % (ebooks_dir, ebookname)
         rpshtmlfile = open(ebook_page)
@@ -178,7 +182,11 @@ class startreading:
         #rpshtmlpage += "<!--" + debug + "-->"
         rpshtmlfile.close()
         
-
+        #output_txt = '%s/%s/output.txt' % (ebooks_dir, ebookname)
+        #if os.path.exists(output_txt):      
+       #     outputfile = open(output_txt)
+       #     output = outputfile.read()
+       #     print output
            
         vars = {
                 'ebook_title': ebookname,
