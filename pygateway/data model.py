@@ -1,7 +1,2 @@
-class T(object):   
-    age = 21   
-t = T()   
-t.name = "test"   
-print "dir(T):", dir(T)   
-print "dir(t):", dir(t) 
-print t.age
+import os, sys
+DataType = ['BOOLEAN','BYTE','SHORT', 'INT','LONG','UBYTE','USHORT','UINT',    'ULONG','FLOAT',    'DOUBLE',    'ASCII_STRING''UTF_STRING','OTHER','DISCARD','MIXED']
