@@ -1,13 +1,19 @@
-#ifndef __protoname_h__
-#define __protoname_h__
+#ifndef __aodv_h__
+#define __aodv_h__
 
-#include "protoname_pkt.h"
-#include <agent.h>
-#include <packet.h>
-#include <trace.h>
-#include <timer-handler.h>
-#include <random.h>
-#include <classifier-port.h>
+//#include "protoname_pkt.h"
+//#include <agent.h>
+//#include <packet.h>
+//#include <trace.h>
+//#include <timer-handler.h>
+//#include <random.h>
+
+#include <cmu-trace.h>
+#include <priqueue.h>
+#include <aodv/aodv_rtable.h>
+#include <aodv/aodv_rqueue.h>
+#include <classifier/classifier-port.h>
+
 
 #define CURRENT_TIME Scheduler::instance().clock()
 #define JITTER (Random::uniform()*0.5)
