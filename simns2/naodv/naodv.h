@@ -20,17 +20,17 @@
 
 class naodv; // forward declaration
 
-/* Timers */
+/* Timers  (Broadcast ID, Hello, Neighbor Cache, Route Cache) */
 
-class Protoname_PktTimer : public TimerHandler {
+class BroadcastTimer : public Handler {
 public:
-	Protoname_PktTimer(naodv* agent) : TimerHandler() {
-	gent_ = agent;
-	}
-protected:
-	naodv* agent_;	
-	virtual void expire(Event* e);
+	BroadcastTimer(AODV* a) : agent(a) {}
+	void	handle(Event*);
+private:
+ AODV    *agent;
+ Event	intr;
 };
+
 
 /* Agent */
 
