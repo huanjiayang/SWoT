@@ -1,3 +1,16 @@
+/*============================
+The code was enhanced by Shengjie Zhou
+The Department of Computing Science,
+Loughborough University.
+=============================*/
+
+
+#include <aodv/aodv.h>
+#include <aodv/aodv_packet.h>
+#include <random.h>
+#include <cmu-trace.h>
+//#include <mobilenode.h>
+
 int protoname_pkt::offset_;
 static class ProtonameHeaderClass : public PacketHeaderClass {
 public:
@@ -8,6 +21,17 @@ public:
 } class_rtProtoProtoname_hdr;
 
 /* Timer */
+
+//BroadcastTimer
+
+void
+BroadcastTimer::handle(Event*) {
+  agent->id_purge();
+  Scheduler::instance().schedule(this, &intr, BCAST_ID_SAVE);
+}
+
+//HelloTimer
+
 static class ProtonameClass : public TclClass {
 public:
 	ProtonameClass() : TclClass("Agent/naodv") {}

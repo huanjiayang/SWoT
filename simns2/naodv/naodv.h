@@ -27,7 +27,7 @@ public:
 	BroadcastTimer(AODV* a) : agent(a) {}
 	void	handle(Event*);
 private:
- AODV    *agent;
+ AODV   *agent;
  Event	intr;
 };
 
