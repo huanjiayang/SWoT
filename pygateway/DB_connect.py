@@ -1,6 +1,35 @@
 import os,sys,MySQLdb
+try:
+    db_con = MySQLdb.connect(host='localhost',user='root',passwd='o5kFXf98',
+                             port=3306)
+    pointer =db_con.cursor()
+    pointer.execute('show databases')
+    for databases in pointer.fetchall():
+        databases[0]      
+    if 'pygateway' in databases[0]: 
+        print "Database 'pygateway' has already exists!"
+    else:     
+        pointer.execute('create database pygateway')    
+    pointer.execute('USE pygateway')
+    #print "success"
+    num = pointer.execute('show tables')
+    insert = pointer.execute('create table value(SNID char(10),SNTY char(10),'
+        'NETIP char(15), ROLL char(10),TRID char(10),MAC char(17),SEID char(10),'
+        'SETY char(10),TEMP char(10),TIME char(10),INF char(10))') 
+    if num ==0: 
+        print 'There is no table in this database!'
+        print "Start to create a new table 'value' "
+        insert  
+    else:
+        num
+        for tables in pointer.fetchall():
+            tables[0]
+        if 'value' not in tables[0]:
+            print "Start to create a new table 'value' "
+            insert  
+        else:
+            print "Table 'value' has already exists!"        
 
-class FETCH:
     split_Dataline = []
     if os.path.isfile('DataContainer.txt')== True :
         f = open("DataContainer.txt")
@@ -33,33 +62,14 @@ class FETCH:
             temp = item[0]
             time = item[1]
             info = item[2]
+            
+            pointer.execute('insert into value values(%s,%s,%s,%s,%s,%s,%s,'
+                            '%s,%s,%s,%s)',(s_id,s_type,n_id,n_roll,t_id,t_type,
+                                            sn_id,sn_type,temp,time,info))
+        print "Insert data successfully!"
         #print value[0]
         f.close() 
-        
-try:
-    db_con = MySQLdb.connect(host='localhost',user='root',passwd='o5kFXf98',
-                             port=3306)
-    pointer =db_con.cursor()
-    pointer.execute('show databases')
-    for databases in pointer.fetchall():
-        databases[0]      
-    if 'pygateway' in databases[0]: 
-        print "Database 'pygateway' has already exists!"
-    else:     
-        pointer.execute('create database pygateway')    
-    pointer.execute('USE pygateway')
-    #print "success"
-    pointer.execute('show tables')
-    for tables in pointer.fetchall():
-        tables[0]
-    if 'value' in tables[0]:
-        print "Table 'value' has already exists!"
-    else:
-        pointer.execute('create table value(SNID char(10), SNTY char(10),NETIP char(15), ROLL char(10),TRID char(10),MAC char(17),SEID char(10),SETY char(10),TEMP char(10),TIME char(10),INF char(10))')            
-
-    pointer.execute('insert into value values(%s,%s,%s,%s)',
-                    (FETCH.s_id,FETCH.s_type,FETCH.n_id,FETCH.n_roll))
-    print "Insert data successfully!"
+ 
     db_con.commit()
     pointer.close()
     db_con.close()
