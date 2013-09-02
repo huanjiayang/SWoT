@@ -7,29 +7,39 @@ try:
     for databases in pointer.fetchall():
         databases[0]      
     if 'pygateway' in databases[0]: 
-        print "Database 'pygateway' has already exists!"
+        print "Database 'pygateway' already exists!"
     else:     
         pointer.execute('create database pygateway')    
     pointer.execute('USE pygateway')
     #print "success"
     num = pointer.execute('show tables')
-    insert = pointer.execute('create table value(SNID char(10),SNTY char(10),'
-        'NETIP char(15), ROLL char(10),TRID char(10),MAC char(17),SEID char(10),'
-        'SETY char(10),TEMP char(10),TIME char(10),INF char(10))') 
+    #print num 
     if num ==0: 
         print 'There is no table in this database!'
         print "Start to create a new table 'value' "
-        insert  
+        pointer.execute('create table value(SNID char(10),SNTY char(10),'
+        'NETIP char(15), ROLL char(10),TRID char(10),MAC char(17),SEID char(10),'
+        'SETY char(10),TEMP char(10),TIME char(10),INF char(10))') 
     else:
         num
         for tables in pointer.fetchall():
             tables[0]
+            #print tables[0]
         if 'value' not in tables[0]:
             print "Start to create a new table 'value' "
-            insert  
+            pointer.execute('create table value(SNID char(10),SNTY char(10),'
+            'NETIP char(15), ROLL char(10),TRID char(10),MAC char(17),SEID char(10),'
+            'SETY char(10),TEMP char(10),TIME char(10),INF char(10))')
         else:
-            print "Table 'value' has already exists!"        
-
+            print "Table 'value' already exists!" 
+            tabnum = pointer.execute('select * from value')       
+            if tabnum != 0:
+                tabnum 
+                for inform in pointer.fetchall():
+                    for i in range(11):
+                        sys.stdout.write("%s "%inform[i])
+                    sys.stdout.write("\n")
+                    sys.stdout.flush()
     split_Dataline = []
     if os.path.isfile('DataContainer.txt')== True :
         f = open("DataContainer.txt")

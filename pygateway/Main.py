@@ -1,6 +1,5 @@
-
-import os,web,time,sys,DB_connect
-DB_connect
+import os,web,time,sys,DB_connect,httplib
+from web.contrib.template import render_mako
 class Sensor:
     def id(self):
         print "This sensor's ID is:" + self 
@@ -25,23 +24,40 @@ class Network:
     def type(self):
         print "The type of this Network is" + self
 
-class transfile:
+class Getfile:
     def GET(self):
-        pass
+        form = searchform()
+        return render.formtest(form)
     def PUSH(self):
         pass
     def POST(self):    
-        pass
+        form = searchform()
+        if not form.validates():
+            return render.formtest(form)
+        else:
+            word = form['word'].get_value()
+            print "You are searching %s for the word %s" % (form['site'].get_value(), word)
+            raise web.redirect('/%s') % word
     def DELETE(self):
         pass  
-Input = web.input()
-passfile = Input.fh          
-fname = Input.filename
-if passfile:
-    _fl = open (os.path.join(ssPath,dlPath,fname),'w')
-    _fl.write(passfile)
-    _fl.close()
-raise web.redirect()
+    
+class SomePage:
+    def GET(self):
+        print "running index()"
+        return "This page is for user to get the information from sensor network!"
 
-if _name_ == "_main_" :
-    main()
+
+urls = (
+        '/', 'SomePage'
+        )
+
+
+render = render_mako(
+           directories=['.'],
+           input_encoding='utf-8',
+           output_encoding='utf-8',
+           )
+    
+if __name__ == "__main__":
+    app = web.application(urls, globals())
+    app.run()
