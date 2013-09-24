@@ -1,0 +1,15 @@
+#!/bin/bash
+awk -f delay.awk aodv100.tr > aodv_delay_100
+awk -f th.awk aodv100.tr > aodv_th_100
+awk -f deliver.awk aodv100.tr > aodv_deliver_100
+awk -f drop.awk aodv100.tr > aodv_drop_100
+
+awk -f delay.awk dsdv100.tr > dsdv_delay_100
+awk -f th.awk dsdv100.tr > dsdv_th_100
+awk -f deliver.awk dsdv100.tr > dsdv_deliver_100
+awk -f drop.awk dsdv100.tr > dsdv_drop_100
+
+awk -f delay.awk dsr100.tr > dsr_delay_100
+awk -f th.awk dsr100.tr > dsr_th_100
+awk -f deliver.awk dsr100.tr > dsr_deliver_100
+awk -f drop.awk dsr100.tr > dsr_drop_100

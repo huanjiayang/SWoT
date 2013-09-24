@@ -1,0 +1,5 @@
+set terminal gif
+set output "delay.gif"
+set xlabel "time"
+set ylabel "delay"
+plot "aodv_delay_100"with linespoint,"dsdv_delay_100"with linespoint,"dsr_delay_100"with linespoint

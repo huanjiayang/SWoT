@@ -1,0 +1,5 @@
+set terminal gif
+set output "aodvth.gif"
+set xlabel "time"
+set ylabel "th"
+plot "aodv_th_20"with linespoint,"newaodv_th_20"with linespoint

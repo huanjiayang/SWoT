@@ -1,0 +1,15 @@
+#!/bin/bash
+awk -f delay.awk aodv50.tr > aodv_delay_50
+awk -f th.awk aodv50.tr > aodv_th_50
+awk -f deliver.awk aodv50.tr > aodv_deliver_50
+awk -f drop.awk aodv50.tr > aodv_drop_50
+
+awk -f delay.awk dsdv50.tr > dsdv_delay_50
+awk -f th.awk dsdv50.tr > dsdv_th_50
+awk -f deliver.awk dsdv50.tr > dsdv_deliver_50
+awk -f drop.awk dsdv50.tr > dsdv_drop_50
+
+awk -f delay.awk dsr50.tr > dsr_delay_50
+awk -f th.awk dsr50.tr > dsr_th_50
+awk -f deliver.awk dsr50.tr > dsr_deliver_50
+awk -f drop.awk dsr50.tr > dsr_drop_50

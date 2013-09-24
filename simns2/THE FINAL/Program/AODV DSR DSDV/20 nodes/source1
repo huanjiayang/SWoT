@@ -1,0 +1,5 @@
+set terminal gif
+set output "drop.gif"
+set xlabel "time"
+set ylabel "drop"
+plot "dsr_drop_20"with linespoint,"aodv_drop_20"with linespoint,"dsdv_drop_20"with linespoint
